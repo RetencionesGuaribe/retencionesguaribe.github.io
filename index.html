@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pagos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e0f7fa; /* Fondo azul claro */
+            font-family: 'Roboto', sans-serif; /* Fuente moderna */
+            text-align: center;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Asegura que el logo esté detrás del contenido */
+            opacity: 0.5; /* Ajusta la opacidad según sea necesario */
+            filter: blur(8px); /* Desenfoque del 40% (ajusta el valor si es necesario) */
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            background-color: white;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 12px;
+            width: calc(100% - 24px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #00796b;
+        }
+        button {
+            background-color: #ff9800;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #fb8c00;
+            transform: scale(1.05);
+        }
+        h1, h2 {
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color: #333;
+            margin: 5px 0;
+        }
+        .fade {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .fade.show {
+            display: block;
+            opacity: 1;
+        }
+        a[href="https://tiiny.host?ref=free-site"] {
+            display: none !important;
+        }
+        .titulo-seccion {
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="images/logo.png" alt="Logo" class="logo"> <!-- Logo en la parte superior -->
+
+    <h1>Obligaciones Tributarias Guaribe</h1>
+    <div class="container">
+        <button onclick="mostrarSeccion('pago-realizado')">Calcular un pago ya realizado</button>
+        <button onclick="mostrarSeccion('nuevo-pago')">Calcular un nuevo pago</button>
+<button onclick="window.location.href='comprobante.html'">Generar Nuevo Comprobante</button>
+    </div>
+
+    <!-- Sección para calcular pago ya realizado -->
+    <div id="pago-realizado" class="container fade">
+        <h2 class="titulo-seccion">Datos de Retención por Monto</h2>
+        <label for="cuadro1">Monto Total:</label>
+        <input type="number" id="cuadro1">
+        <label for="opcion">Seleccione Retención:</label>
+        <select id="opcion">
+            <option value="75">75%</option>
+            <option value="100">100%</option>
+        </select>
+        <button onclick="calcular()">Calcular</button>
+
+        <h3 id="resultado"></h3> <!-- Base Imponible -->
+        <h3 id="iva"></h3> <!-- IVA -->
+        <h3 id="total-realizado"></h3> <!-- Total de Factura -->
+        <h3 id="iva-retenido"></h3> <!-- IVA Retenido -->
+        <h3 id="iva-pagado"></h3> <!-- IVA Pagado -->
+        <h3 id="timbre-fiscal"></h3> <!-- Timbre Fiscal -->
+        <h3 id="total-a-pagar"></h3> <!-- Total a Pagar -->
+
+        <button onclick="volverInicio()">Volver a Inicio</button>
+    </div>
+
+    <!-- Sección para calcular nuevo pago -->
+    <div id="nuevo-pago" class="container fade">
+        <h2 class="titulo-seccion">Calcular Datos de Retención</h2>
+        <label for="base">Base Imponible:</label>
+        <input type="number" id="base">
+        <label for="exento">Monto Exento:</label>
+        <input type="number" id="exento" value="0"> <!-- Valor por defecto 0 -->
+        <label for="retencion">Seleccione Retención:</label>
+        <select id="retencion">
+            <option value="75">75%</option>
+            <option value="100">100%</option>
+        </select>
+        <button onclick="calcularNuevoPago()">Calcular</button>
+
+        <h3 id="resultado-nuevo-pago"></h3>
+        <h3 id="iva-nuevo-pago"></h3>
+        <h3 id="iva-total"></h3>
+        <h3 id="iva-retenido-nuevo"></h3>
+        <h3 id="total-nuevo"></h3>
+        <h3 id="timbre-fiscal-nuevo"></h3>
+        <h3 id="real-total-a-pagar"></h3>
+
+        <button onclick="volverInicio()">Volver a Inicio</button>
+    </div>
+
+    <script>
+        // Función para mostrar las secciones con animación
+        function mostrarSeccion(seccion) {
+            document.querySelector('h1').style.display = 'none';
+            document.querySelector('.container').style.display = 'none';
+
+            document.getElementById('pago-realizado').classList.remove('show');
+            document.getElementById('nuevo-pago').classList.remove('show');
+
+            setTimeout(() => {
+                document.getElementById('pago-realizado').style.display = 'none';
+                document.getElementById('nuevo-pago').style.display = 'none';
+
+                const element = document.getElementById(seccion);
+                element.style.display = 'block';
+                setTimeout(() => {
+                    element.classList.add('show');
+                }, 10);
+            }, 500);
+        }
+
+        // Función para volver a la página de inicio
+        function volverInicio() {
+            document.getElementById('pago-realizado').classList.remove('show');
+            document.getElementById('nuevo-pago').classList.remove('show');
+
+            document.querySelector('h1').style.display = 'block';
+            document.querySelector('.container').style.display = 'block';
+            window.scrollTo(0, 0); // Desplazar la vista hacia arriba
+        }
+
+        // Calcular un pago ya realizado
+        function calcular() {
+            const monto = parseFloat(document.getElementById('cuadro1').value);
+            const opcion = document.getElementById('opcion').value;
+            let resultado;
+
+            if (isNaN(monto) || monto < 0) {
+                alert("Por favor, ingresa un monto válido.");
+                return;
+            }
+
+            if (opcion === '75') {
+                resultado = monto / (1 + 0.16 * 0.25 - 0.001);
+            } else if (opcion === '100') {
+                resultado = monto / (1 + 0.16 * 0 - 0.001);
+            }
+
+            const iva = resultado * 0.16;
+            const timbreFiscal = resultado * 0.001;
+            const ivaRetenido = opcion === '75' ? iva * 0.75 : iva;
+            const ivaPagado = opcion === '75' ? iva * 0.25 : 0;
+
+            const totalFactura = resultado + iva; // Total de la factura
+            const totalAPagar = resultado + ivaPagado - timbreFiscal; // Cálculo total a pagar
+
+            document.getElementById('resultado').innerText = `Base Imponible: ${resultado.toFixed(2)}`;
+            document.getElementById('iva').innerText = `IVA (16%): ${iva.toFixed(2)}`;
+            document.getElementById('total-realizado').innerText = `Total de Factura: ${totalFactura.toFixed(2)}`;
+            document.getElementById('iva-retenido').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
+            document.getElementById('iva-pagado').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
+            document.getElementById('timbre-fiscal').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
+            document.getElementById('total-a-pagar').innerText = `Total a Pagar: ${totalAPagar.toFixed(2)}`;
+        }
+
+        // Calcular un nuevo pago
+        function calcularNuevoPago() {
+            const base = parseFloat(document.getElementById('base').value);
+            const exento = parseFloat(document.getElementById('exento').value);
+            const retencion = document.getElementById('retencion').value;
+
+            if (isNaN(base) || base < 0) {
+                alert("Por favor, ingresa un monto válido para la base imponible.");
+                return;
+            }
+
+            let subtotal = base;
+            const iva = (base - exento) * 0.16;
+            const timbreFiscal = subtotal * 0.001;
+            const ivaRetenido = retencion === '75' ? iva * 0.75 : iva; // Retención del IVA
+            const ivaPagado = retencion === '75' ? iva * 0.25 : 0;
+
+            const total = subtotal + iva;
+            const totalAPagar = subtotal + ivaPagado - timbreFiscal;
+
+            document.getElementById('resultado-nuevo-pago').innerText = `Subtotal: ${subtotal.toFixed(2)}`;
+            document.getElementById('iva-nuevo-pago').innerText = `IVA (16%): ${iva.toFixed(2)}`;
+            document.getElementById('iva-total').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
+            document.getElementById('iva-retenido-nuevo').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
+            document.getElementById('total-nuevo').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
+            document.getElementById('real-total-a-pagar').innerText = `Total a Pagar: ${totalAPagar.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

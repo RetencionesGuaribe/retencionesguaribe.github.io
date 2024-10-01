@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobante de Retención</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 1200px;
+            height: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .logo {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    height: 80px;
+    width: auto;
+}
+
+.logo1 {
+    position: absolute;
+    top: 20px;
+    left: 120px;
+    height: 110px;
+    width: 130px;
+}
+
+        .column, .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .containerOP {
+            width: 1160px;
+            height: 130px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0;
+            margin-top: 20px;
+            position: absolute;
+            top: 650px;
+            left: 35px;
+        }
+
+        .containerOP1 {
+            width: 160px;
+            height: 120px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: grid;
+            gap: 0;
+            margin-top: 20px;
+            position: absolute;
+            top: 500px;
+            left: 1035px;
+        }
+
+        .text-modifiable {
+            position: absolute;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Estilos del popup */
+        #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* Oculto por defecto */
+    z-index: 999; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+/* Estilo del popup */
+#popup {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 1000px; /* Ancho fijo */
+    max-width: 400%; /* Ancho máximo para pantallas pequeñas */
+    z-index: 1000; /* Asegúrate de que esté por encima del overlay */
+}
+
+/* Estilo para los encabezados del popup */
+#popup h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo para los campos del formulario */
+#popup input,
+#popup select {
+    width: calc(100% - 20px); /* Ocupa el ancho total menos el padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Estilo para el botón de cerrar */
+.close-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+/* Estilo para el botón de generar */
+.generate-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block; /* Centrar el botón */
+    width: 100%; /* Ancho total */
+    margin-top: 20px;
+}
+
+.generate-button:hover,
+.close-button:hover {
+    opacity: 0.8; /* Efecto hover */
+}
+
+/* Estilo de los contenedores */
+.popup-field {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para el div de mensaje */
+.message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+        /* Reemplazables con posicionamiento absoluto */
+        .slot1, .slot2, .slot3, .slot4, .slot5, .slot6, .slot7 {
+            position: absolute;
+            font-weight: bold;
+        }
+
+        .slot1 {
+            top: 630px;
+            left: 50px;
+            font-size: 16px;
+        }
+
+        .slot2 {
+            top: 630px;
+            left: 500px;
+            font-size: 18px;
+        }
+
+        .slot3 {
+            top: 260px;
+            left: 299px;
+            font-size: 18px;
+        }
+
+        .slot4 {
+            top: 260px;
+            left: 523px;
+            font-size: 18px;
+        }
+
+        .slot5 {
+            top: 260px;
+            left: 723px;
+            font-size: 18px;
+        }
+
+        .slot6 {
+            top: 358px;
+            left: 695px;
+            font-size: 18px;
+        }
+
+        .slot7 {
+            top: 358px;
+            left: 808px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="images/logo.png" alt="Logo Derecha" class="logo">
+    <img src="images/logo1.jpg" alt="Logo Izquierda" class="logo1">
+        <div class="TITULO text-modifiable" style="top: 60px; left: 500px;">COMPROBANTE DE RETENCION</div>
+        <div class="REPUBLICA text-modifiable" style="top: 140px; left: 50px;">REPUBLICA BOLIVARIANA DE VENEZUELA</div>
+        <div class="ALCALDIA text-modifiable" style="top: 160px; left: 70px;">ALCALDIA DE SAN JOSE DE GUARIBE</div>
+        <div class="ESTADO text-modifiable" style="top: 180px; left: 130px;">ESTADO GUARICO</div>
+        <div class="comprobante-title text-modifiable" style="top: 230px; left: 300px;">COMPROBANTE NRO.</div>
+        <div class="fecha-emision text-modifiable" style="top: 230px; left: 500px;">FECHA DE EMISIÓN</div>
+        <div class="fecha-entrega text-modifiable" style="top: 230px; left: 700px;">FECHA DE ENTREGA</div>
+        <div class="numero-factura text-modifiable" style="top: 230px; left: 900px;">NÚMERO DE FACTURA:</div>
+        <div class="numerocontable-factura text-modifiable" style="top: 330px; left: 900px;">N° CONTABLE FACTURA:</div>
+        <div class="fecha-factura text-modifiable" style="top: 430px; left: 900px;">FECHA FACTURA:</div>
+        <div class="nombre-razon text-modifiable" style="top: 330px; left: 50px;">NOMBRE O RAZON SOCIAL</div>
+        <div class="nombre-sujeto text-modifiable" style="top: 600px; left: 50px;">NOMBRE O RAZÓN SOCIAL DEL SUJETO RETENIDO</div>
+        <div class="municipio text-modifiable" style="top: 360px; left: 50px;">ALCALDÍA DEL MUNICIPIO</div>
+        <div class="municipio-sj text-modifiable" style="top: 390px; left: 50px;">SAN JOSÉ DE GUARIBE</div>
+        <div class="localidad text-modifiable" style="top: 520px; left: 50px;">SAN JOSÉ DE GUARIBE - ESTADO GUARICO</div>
+        <div class="direccion-fiscal text-modifiable" style="top: 460px; left: 50px;">DIRECCIÓN FISCAL DEL AGENTE DE RETENCIÓN</div>
+        <div class="calle text-modifiable" style="top: 490px; left: 50px;">CALLE 1, LOCAL S/N, SECTOR INAVI</div>
+        <div class="registro-informacion text-modifiable" style="top: 600px; left: 500px;">REGISTRO DE INFORMACION FISCAL DEL SUJETO RETENIDO</div>
+        <div class="rif-alcaldia text-modifiable" style="top: 330px; left: 280px;">REGISTRO DE INF FISCAL DEL AGTE DE RET</div>
+        <div class="rif-alcaldia2 text-modifiable" style="top: 360px; left: 375px; font-size: 20px;">G-20000382-0</div>
+        <div class="periodo-fiscal text-modifiable" style="top: 330px; left: 690px;">PERIODO FISCAL</div>
+        <div class="añofiscal text-modifiable" style="top: 360px; left: 650px; font-size: 16px;">AÑO:</div>
+        <div class="mesfiscal text-modifiable" style="top: 360px; left: 765px; font-size: 16px;">MES:</div>
+
+        <!-- Reemplazables -->
+        <div class="slot1">REMPLAZO1</div>
+        <div class="slot2">REMPLAZO2</div>
+        <div class="slot3">REMPLAZO3</div>
+        <div class="slot4">REMPLAZO4</div>
+        <div class="slot5">REMPLAZO5</div>
+        <div class="slot6">REMPLAZO6</div>
+        <div class="slot7">REMPLAZO7</div>
+
+        <!-- Tabla -->
+        <div class="containerOP1">
+            <div class="row">TOTAL A PAGAR</div>
+            <div class="row" id="id7">7</div>
+            <div class="row" id="id8">8</div>
+            <div class="row" id="id9">9</div>
+        </div>
+
+        <div class="containerOP">
+            <div class="column">N° OP</div>
+            <div class="column">SUBTOTAL</div>
+            <div class="column">EXENTO</div>
+            <div class="column">ALI</div>
+            <div class="column">IVA</div>
+            <div class="column">TOTAL COMPRAS</div>
+            <div class="column">IVA RETENIDO</div>
+            <div class="column" id="id1">1</div> <!-- Cambiado para poder acceder y modificar -->
+            <div class="column" id="id2">2</div> <!-- subtotal -->
+            <div class="column" id="id3">3</div> <!-- excento -->
+            <div class="column">16%</div>
+            <div class="column" id="id4">4</div> <!-- IVA -->
+            <div class="column" id="id5">5</div> <!-- TOTAL COMPRAS -->
+            <div class="column" id="id6">6</div> <!-- IVA RETENIDO -->
+        </div>
+
+        <!-- Popup para ingresar datos -->
+        <div id="overlay"></div>
+<div id="popup">
+    <h2>Generar Comprobante</h2>
+    
+    <!-- Campos del formulario -->
+    <div class="popup-field">
+        <label for="provider">Proveedor:</label>
+
+
+<select id="provider">
+    <option value="manual">Manual</option>
+    <option value="AINKAA, C.A." data-rif="J409293165" data-retention="75">AINKAA, C.A.</option>
+    <option value="AUTOMOTRIZ CELTA C.A" data-rif="J311881875" data-retention="75">AUTOMOTRIZ CELTA C.A</option>
+    <option value="AUTORESPUESTOS SHAGYY, C.A." data-rif="J411510181" data-retention="100">AUTORESPUESTOS SHAGYY, C.A.</option>
+    <option value="COMERCIAL ANA K 1304, FP" data-rif="V155653066" data-retention="100">COMERCIAL ANA K 1304, FP</option>
+    <option value="COMERCIAL H Y G, C.A." data-rif="J409086860" data-retention="100">COMERCIAL H Y G, C.A.</option>
+    <option value="COMERCIAL KARJUAN & ANYILUZ, C.A." data-rif="J500107072" data-retention="100">COMERCIAL KARJUAN & ANYILUZ, C.A.</option>
+    <option value="FUNERARIA ROSTRO DE JESUS, C.A." data-rif="J502065695" data-retention="100">FUNERARIA ROSTRO DE JESUS, C.A.</option>
+    <option value="INVERSIONES AXEMTEK C.A." data-rif="J317525876" data-retention="75">INVERSIONES AXEMTEK C.A.</option>
+    <option value="INVERSIONES EL TODO PODEROSO 2020" data-rif="J500378106" data-retention="75">INVERSIONES EL TODO PODEROSO 2020</option>
+    <option value="INVERSIONES GRAN VICTORIA 2015, C.A." data-rif="J407229001" data-retention="75">INVERSIONES GRAN VICTORIA 2015, C.A.</option>
+    <option value="INVERSIONES GRATEROL 2020, C.A." data-rif="J413145120" data-retention="75">INVERSIONES GRATEROL 2020, C.A.</option>
+    <option value="INVERSIONES GSF 2024 C.A." data-rif="J504803375" data-retention="100">INVERSIONES GSF 2024 C.A.</option>
+    <option value="INVERSIONES LA FORTALEZA & ASOCIADOS C.A." data-rif="J405234610" data-retention="100">INVERSIONES LA FORTALEZA & ASOCIADOS C.A.</option>
+    <option value="INVERSIONES LA VIRTUD" data-rif="J408623625" data-retention="100">INVERSIONES LA VIRTUD</option>
+    <option value="INVERSIONES MACK C,A." data-rif="J301429192" data-retention="75">INVERSIONES MACK C,A.</option>
+    <option value="INVERSIONES ROARI C,A." data-rif="J412561286" data-retention="75">INVERSIONES ROARI C,A.</option>
+    <option value="INVERSIONES Y SUMINISTROS C&E, C.A." data-rif="J409948137" data-retention="100">INVERSIONES Y SUMINISTROS C&E, C.A.</option>
+    <option value="INVERSONES MARIA LUCILA C,A." data-rif="J500564090" data-retention="100">INVERSONES MARIA LUCILA C,A.</option>
+    <option value="MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A." data-rif="J311708928" data-retention="75">MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.</option>
+    <option value="QUIMICA ABSOLUTA C.A" data-rif="J500912706" data-retention="100">QUIMICA ABSOLUTA C.A</option>
+    <option value="RL SOLUCIONES, C.A" data-rif="J502239618" data-retention="75">RL SOLUCIONES, C.A</option>
+    <option value="TRANSFORMADORES ALTAGRACIA, C.A." data-rif="J299336254" data-retention="75">TRANSFORMADORES ALTAGRACIA, C.A.</option>
+    <option value="VIALIDADES Y CONSTRUCCIONES GUARIBE C.A" data-rif="J404862307" data-retention="100">VIALIDADES Y CONSTRUCCIONES GUARIBE C.A</option>
+    <option value="INVERSIONES RACHO LAS MARIAS, C.A." data-rif="J407275380" data-retention="75">INVERSIONES RACHO LAS MARIAS, C.A.</option>
+    <option value="SOLUCIONES GRAFICAS SIVI 2013, C.A." data-rif="J410002662" data-retention="75">SOLUCIONES GRAFICAS SIVI 2013, C.A.</option>
+    <option value="NOVEDADES J&V, C.A." data-rif="J406438340" data-retention="100">NOVEDADES J&V, C.A.</option>
+</select>
+
+
+        <div id="manualProvider" style="display: none;">
+            <label for="manualName">Nombre del Proveedor:</label>
+            <input type="text" id="manualName">
+            <label for="manualRIF">RIF del Proveedor:</label>
+            <input type="text" id="manualRIF">
+        </div>
+    </div>
+    
+    <div class="popup-field">
+        <label for="issueDate">Fecha de Emisión:</label>
+        <input type="date" id="issueDate">
+    </div>
+    
+    <div class="popup-field">
+        <label for="deliveryDate">Fecha de Entrega:</label>
+        <input type="date" id="deliveryDate">
+    </div>
+    
+    <div>
+        <label for="comprobanteNumber">Número de Comprobante:</label>
+<input type="number" id="comprobanteNumber" name="comprobanteNumber" placeholder="Ingrese número" />
+
+    </div>
+    
+    <div class="popup-field">
+        <label for="operationNumber">Número de Operación:</label>
+        <input type="text" id="operationNumber">
+    </div>
+    
+    <div class="popup-field">
+        <label for="baseimponible">Base Imponible:</label>
+        <input type="number" id="baseimponible" step="0.01" oninput="updateRetentionValues()">
+    </div>
+    
+    <div class="popup-field">
+        <label for="excento">Exento:</label>
+        <input type="number" id="excento" step="0.01" oninput="updateRetentionValues()">
+    </div>
+    
+    <div class="popup-field">
+        <label for="retentionPercentage">Porcentaje de Retención:</label>
+        <select id="retentionPercentage" onchange="updateRetentionValues()">
+            <option value="75">75%</option>
+            <option value="100">100%</option>
+        </select>
+    </div>
+    
+<<!-- Sección para mostrar valores calculados -->
+<div id="retentionValues" style="margin-top: 20px;">
+    <h3>Valores de Retención</h3>
+    <p>IVA Calculado: <span id="calculatedIVA">0.00</span></p>
+    <p>Total Factura: <span id="totalFactura">0.00</span></p>
+    <p>IVA Retenido: <span id="retainedIVA">0.00</span></p>
+    <p>Timbre Fiscal: <span id="timbreFiscal">0.00</span></p>
+    <p>Total a pagar: <span id="totalPagar">0.00</span></p>
+    
+    <!-- Nueva línea para mostrar el porcentaje de retención del proveedor seleccionado -->
+    <p>Porcentaje de Retención del Proveedor: <span id="retencionProveedorPorcentaje">0%</span></p>
+</div>
+
+    
+    <button class="generate-button" onclick="generate()">Generar Comprobante</button>
+    <button class="close-button" onclick="closePopup()">Cerrar</button>
+</div>
+
+
+    </div>
+
+    <script>
+        document.getElementById('provider').addEventListener('change', function() {
+            const manualProvider = document.getElementById('manualProvider');
+            manualProvider.style.display = this.value === 'manual' ? 'block' : 'none';
+            if (this.value !== 'manual') {
+                document.getElementById('manualName').value = '';
+                document.getElementById('manualRIF').value = '';
+            }
+
+             // Nueva funcionalidad: Actualizar el porcentaje de retención del proveedor seleccionado
+    let selectedProvider = this.selectedOptions[0];
+    let retentionPercentage = selectedProvider.getAttribute('data-retention') || '0';
+    document.getElementById('retencionProveedorPorcentaje').innerText = retentionPercentage + '%';
+    
+    // También actualizamos el porcentaje en el select de retención si es necesario
+    document.getElementById('retentionPercentage').value = retentionPercentage;
+        });
+    
+        function openPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+    
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+    
+        function calcularIVA(baseimponible, excento) {
+            return (baseimponible - excento) * 0.16;
+        }
+    
+        function calcularTotalCompras(subtotal, iva) {
+            return subtotal + iva;
+        }
+    
+        function calcularTotalAPagar() {
+            const subtotal = parseFloat(document.getElementById('id7').innerText) || 0; // Subtotal
+            const iva = parseFloat(document.getElementById('id8').innerText) || 0; // IVA
+            const totalAPagar = subtotal + iva; // Total a pagar
+            document.getElementById('id9').innerText = totalAPagar.toFixed(2); // Mostrar con 2 decimales
+        }
+    
+    function updateRetentionValues() {
+        const baseimponible = parseFloat(document.getElementById('baseimponible').value) || 0;
+        const excento = parseFloat(document.getElementById('excento').value) || 0;
+    
+        // Calcular el IVA
+        const iva = calcularIVA(baseimponible, excento);
+        document.getElementById('calculatedIVA').textContent = iva.toFixed(2); // Mostrar con 2 decimales
+    
+        // Calcular el IVA retenido
+        const retentionPercentage = parseInt(document.getElementById('retentionPercentage').value, 10);
+        const ivaRetenido = iva * (retentionPercentage / 100);
+        document.getElementById('retainedIVA').textContent = ivaRetenido.toFixed(2); // Mostrar con 2 decimales
+    
+        // Calcular el total de la factura (base imponible + IVA)
+        const totalFactura = baseimponible + iva;
+        document.getElementById('totalFactura').textContent = totalFactura.toFixed(2); // Mostrar con 2 decimales
+    
+        // Calcular el timbre fiscal (0.1% del base imponible)
+        const timbreFiscal = baseimponible * 0.001;
+        document.getElementById('timbreFiscal').textContent = timbreFiscal.toFixed(2); // Mostrar con 2 decimales
+    
+        // Calcular el total a pagar (base imponible + IVA - Timbre Fiscal + IVA a pagar)
+        const totalPagar = baseimponible + iva - timbreFiscal - ivaRetenido;
+        document.getElementById('totalPagar').textContent = totalPagar.toFixed(2); // Mostrar con 2 decimales
+    }
+    
+    // Función auxiliar para calcular el IVA (16%)
+    function calcularIVA(baseimponible, excento) {
+        return (baseimponible - excento) * 0.16;
+    }
+    
+    function generate() {
+    const provider = document.getElementById('provider').value;
+    const rif = document.getElementById('manualProvider').style.display === 'block' ? document.getElementById('manualRIF').value : document.getElementById('provider').selectedOptions[0].dataset.rif;
+    const issueDate = document.getElementById('issueDate').value;
+    const deliveryDate = document.getElementById('deliveryDate').value;
+    const comprobanteNumber = document.getElementById('comprobanteNumber').value;
+    const operationNumber = document.getElementById('operationNumber').value;
+    const baseimponible = parseFloat(document.getElementById('baseimponible').value) || 0; 
+    const excento = parseFloat(document.getElementById('excento').value) || 0;
+
+    // Generar el slot3 con el formato aaaammxxxxxxxx
+    const year = new Date(issueDate).getFullYear();
+    const month = ('0' + (new Date(issueDate).getMonth() + 1)).slice(-2); 
+    const formattedComprobanteNumber = comprobanteNumber.padStart(8, '0'); 
+    const formattedSlot3 = `${year}${month}${formattedComprobanteNumber}`;
+
+    // Reemplazar los textos en el comprobante
+    document.querySelector('.slot1').textContent = provider || 'REMPLAZO1';
+    document.querySelector('.slot2').textContent = rif || 'REMPLAZO2';
+    document.querySelector('.slot3').textContent = formattedSlot3 || 'REMPLAZO3';
+    document.querySelector('.slot4').textContent = issueDate || 'REMPLAZO4';
+    document.querySelector('.slot5').textContent = deliveryDate || 'REMPLAZO5';
+    document.querySelector('.slot6').textContent = year || 'REMPLAZO6';
+    document.querySelector('.slot7').textContent = month || 'REMPLAZO7';
+
+    // Reemplazar el N° OP, subtotal y exento
+    document.getElementById('id1').textContent = operationNumber || '1';
+    document.getElementById('id2').textContent = baseimponible.toFixed(2) || '2';
+    document.getElementById('id3').textContent = excento.toFixed(2) || '3';
+
+    // Calcular el IVA basado en el subtotal y exento ingresado
+    const iva = (baseimponible - excento) * 0.16;
+    document.getElementById('id4').textContent = iva.toFixed(2);
+
+    // Calcular el IVA retenido basado en el porcentaje seleccionado
+    const retentionPercentage = parseInt(document.getElementById('retentionPercentage').value, 10);
+    const ivaRetenido = iva * (retentionPercentage / 100);
+    document.getElementById('id6').textContent = ivaRetenido.toFixed(2);
+
+    // Calcular el total de compras
+    const totalCompras = calcularTotalCompras(baseimponible, iva);
+    document.getElementById('id5').textContent = totalCompras.toFixed(2);
+
+    // Mostrar el subtotal en el div id7
+    document.getElementById('id7').textContent = baseimponible.toFixed(2);
+
+    // Calcular el 25% del IVA si el porcentaje de retención es 75%, 0% si es 100%
+    const ivaPorcentaje25 = (retentionPercentage === 75) ? (iva * 0.25) : 0;
+    document.getElementById('id8').textContent = ivaPorcentaje25.toFixed(2);
+
+    // Calcular y mostrar el total a pagar en id9
+    calcularTotalAPagar();
+
+    // Cerrar el popup
+    closePopup();
+}
+    
+        // Abre el popup al cargar la página
+        window.onload = function() {
+            openPopup();
+        };
+    </script>
+
+</body>
+</html>
