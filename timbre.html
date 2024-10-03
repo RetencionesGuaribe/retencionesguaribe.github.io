@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobante de L.T.F</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 1200px;
+            height: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .logo {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    height: 80px;
+    width: auto;
+}
+
+.logo1 {
+    position: absolute;
+    top: 20px;
+    left: 120px;
+    height: 110px;
+    width: 130px;
+}
+
+        .column, .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .containerOP {
+            width: 1160px;
+            height: 130px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0;
+            margin-top: 20px;
+            position: absolute;
+            top: 480px;
+            left: 35px;
+        }
+
+        .containerOP1 {
+            width: 160px;
+            height: 120px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: grid;
+            gap: 0;
+            margin-top: 20px;
+            position: absolute;
+            top: 500px;
+            left: 2035px;
+        }
+
+        .text-modifiable {
+            position: absolute;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Estilos del popup */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+/* Estilo del popup */
+#popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+/* Estilo para los encabezados del popup */
+#popup h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo para los campos del formulario */
+#popup input,
+#popup select {
+    width: calc(100% - 20px); /* Ocupa el ancho total menos el padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Estilo para el botón de cerrar */
+.close-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+/* Estilo para el botón de generar */
+.generate-button {
+    background-color: #ff9800;
+    color: white;
+font-weight: bold;
+    border: none;
+            transition: background-color 0.3s, transform 0.2s;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block; /* Centrar el botón */
+    width: 100%; /* Ancho total */
+    margin-top: 20px;
+}
+
+.generate-button:hover,
+.close-button:hover {
+    background-color: #fb8c00; /* Color de fondo al pasar el ratón */
+    transform: scale(1.05); /* Aumenta un poco el tamaño */
+}
+
+.generate-button:active {
+    background-color: #388e3c; /* Color al hacer clic */
+    transform: scale(0.95); /* Disminuye el tamaño al hacer clic */
+}
+
+
+/* Estilo de los contenedores */
+.popup-field {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para el div de mensaje */
+.message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+        /* Reemplazables con posicionamiento absoluto */
+        .slot1, .slot2, .slot3, .slot4, .slot5, .slot6, .slot7 {
+            position: absolute;
+            font-weight: bold;
+        }
+
+        .slot1 {
+            top: 430px;
+            left: 50px;
+            font-size: 16px;
+        }
+
+        .slot2 {
+            top: 430px;
+            left: 730px;
+            font-size: 18px;
+        }
+
+        .slot3 {
+            top: 230px;
+            left: 727px;
+            font-size: 18px;
+        }
+
+        .slot4 {
+            top: 330px;
+            left: 1070px;
+            font-size: 18px;
+        }
+
+        .slot5 {
+            top: 430px;
+            left: 1070px;
+            font-size: 18px;
+        }
+
+        .slot6 {
+            top: 195px;
+            left: 1080px;
+            font-size: 18px;
+        }
+
+        .slot7 {
+            top: 225px;
+            left: 1080px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="images/logo.png" alt="Logo Derecha" class="logo">
+    <img src="images/logo1.jpg" alt="Logo Izquierda" class="logo1">
+        <div class="TITULO text-modifiable" style="top: 60px; left: 500px;">COMPROBANTE DE RETENCION DE L.T.F</div>
+
+        <div class="comprobante-title text-modifiable" style="top: 200px; left: 710px;">COMPROBANTE NRO.</div>
+
+        <div class="fecha-emision text-modifiable" style="top: 300px; left: 1050px;">FECHA DE EMISIÓN</div>
+        <div class="fecha-entrega text-modifiable" style="top: 400px; left: 1050px;">FECHA DE ENTREGA</div>
+
+        <div class="numero-factura text-modifiable" style="top: 720px; left: 700px; font-size: 18px;">NÚMERO DE FACTURA:</div>
+        <div class="numerocontable-factura text-modifiable" style="top: 790px; left: 700px; font-size: 18px;">N° CONTABLE FACTURA:</div>
+        <div class="fecha-factura text-modifiable" style="top: 660px; left: 700px; font-size: 18px;">FECHA FACTURA:</div>
+
+        <div class="nombre-razon text-modifiable" style="top: 200px; left: 125px; font-size: 16px;">Datos del Agente de Retencion:</div>
+        <div class="municipio text-modifiable" style="top: 230px; left: 50px; font-size: 16px;">Alcaldia Bolivariana del Municipio San Josè de Guaribe </div>
+
+        <div class="direccion-fiscal text-modifiable" style="top: 300px; left: 190px; font-size: 16px;">Dirección</div>
+        <div class="municipio-sj text-modifiable" style="top: 330px; left: 115px; font-size: 16px;">Municipio San Josè de Guaribe</div>
+
+        <div class="nombre-sujeto text-modifiable" style="top: 400px; left: 50px;">NOMBRE O RAZÓN SOCIAL DEL SUJETO RETENIDO</div>
+
+
+        <div class="registro-informacion text-modifiable" style="top: 400px; left: 700px;  font-size: 18px;">Rif del sujeto retenido</div>
+        <div class="rif-alcaldia text-modifiable" style="top: 300px; left: 670px;  font-size: 18px;">RIF del Agente de Retenciòn</div>
+        <div class="rif-alcaldia2 text-modifiable" style="top: 330px; left: 725px; font-size: 20px;">G-20000382-0</div>
+        <div class="periodo-fiscal text-modifiable" style="top: 230px; left: 690px; font-size: 18px;">I134</div>
+        <div class="añofiscal text-modifiable" style="top: 170px; left: 1090px; font-size: 16px;">BANCO</div>
+        <div class="mesfiscal text-modifiable" style="top: 720px; left: 50px; font-size: 16px;">RECIBIDO POR: Alcaldia de San Jose de Guaribe.</div>
+        <div class="mesfiscal text-modifiable" style="top: 790px; left: 50px; font-size: 16px;">FECHA POR:</div>
+
+        <!-- Reemplazables -->
+        <div class="slot1">REMPLAZO1</div>	<!-- proveedor-->
+        <div class="slot2">REMPLAZO2</div>	<!-- RIF-->
+        <div class="slot3">REMPLAZO3</div>	<!-- correlativo-->
+        <div class="slot4">REMPLAZO4</div>	<!-- fecha emision-->
+        <div class="slot5">REMPLAZO5</div>	<!-- fecha entrega-->
+        <div class="slot6">REMPLAZO6</div>	<!-- Banco-->
+        <div class="slot7">REMPLAZO7</div>	<!-- Referencia-->
+
+
+
+        <div class="containerOP">
+            <div class="column">N° OP</div>
+            <div class="column">SUBTOTAL</div>
+            <div class="column">EXENTO</div>
+            <div class="column">IVA</div> <!-- IVA-->
+            <div class="column">TOTAL COMPRAS</div> <!-- TOTAL FACTURA-->
+            <div class="column">IMP. APLICADO</div>
+            <div class="column">TIMBRE RETENIDO</div>
+            <div class="column" id="id1">1</div> <!-- Nro OP -->
+            <div class="column" id="id2">2</div> <!-- subtotal -->
+            <div class="column" id="id3">3</div> <!-- excento -->
+            <div class="column">4</div>	<!-- IVA -->
+            <div class="column" id="id4">5</div>  <!-- TOTAL COMPRAS -->
+            <div class="column" id="id5">0,1%</div> <!-- PCTJ TIMBRE -->
+            <div class="column" id="id6">7</div>
+        </div>
+
+        <!-- Popup para ingresar datos -->
+    <div id="overlay"></div>
+    <div id="popup">
+        <h2>Formulario de Facturación</h2>
+
+        <!-- Proveedores -->
+        <label for="provider">Seleccionar Proveedor:</label>
+        <select id="provider">
+<option value="manual">Manual</option>
+<option value="AINKAA, C.A." data-rif="J409293165">AINKAA, C.A.</option>
+<option value="AUTOMOTRIZ CELTA C.A" data-rif="J311881875">AUTOMOTRIZ CELTA C.A</option>
+<option value="AUTORESPUESTOS SHAGYY, C.A." data-rif="J411510181">AUTORESPUESTOS SHAGYY, C.A.</option>
+<option value="COMERCIAL ANA K 1304, FP" data-rif="V155653066">COMERCIAL ANA K 1304, FP</option>
+<option value="COMERCIAL H Y G, C.A." data-rif="J409086860">COMERCIAL H Y G, C.A.</option>
+<option value="COMERCIAL KARJUAN & ANYILUZ, C.A." data-rif="J500107072">COMERCIAL KARJUAN & ANYILUZ, C.A.</option>
+<option value="FUNERARIA ROSTRO DE JESUS, C.A." data-rif="J502065695">FUNERARIA ROSTRO DE JESUS, C.A.</option>
+<option value="INVERSIONES AXEMTEK C.A." data-rif="J317525876">INVERSIONES AXEMTEK C.A.</option>
+<option value="INVERSIONES EL TODO PODEROSO 2020" data-rif="J500378106">INVERSIONES EL TODO PODEROSO 2020</option>
+<option value="INVERSIONES GRAN VICTORIA 2015, C.A." data-rif="J407229001">INVERSIONES GRAN VICTORIA 2015, C.A.</option>
+<option value="INVERSIONES GRATEROL 2020, C.A." data-rif="J413145120">INVERSIONES GRATEROL 2020, C.A.</option>
+<option value="INVERSIONES GSF 2024 C.A." data-rif="J504803375">INVERSIONES GSF 2024 C.A.</option>
+<option value="INVERSIONES LA FORTALEZA & ASOCIADOS C.A." data-rif="J405234610">INVERSIONES LA FORTALEZA & ASOCIADOS C.A.</option>
+<option value="INVERSIONES LA VIRTUD" data-rif="J408623625">INVERSIONES LA VIRTUD</option>
+<option value="INVERSIONES MACK C,A." data-rif="J301429192">INVERSIONES MACK C,A.</option>
+<option value="INVERSIONES ROARI C,A." data-rif="J412561286">INVERSIONES ROARI C,A.</option>
+<option value="INVERSIONES Y SUMINISTROS C&E, C.A." data-rif="J409948137">INVERSIONES Y SUMINISTROS C&E, C.A.</option>
+<option value="INVERSONES MARIA LUCILA C,A." data-rif="J500564090">INVERSONES MARIA LUCILA C,A.</option>
+<option value="MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A." data-rif="J311708928">MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.</option>
+<option value="QUIMICA ABSOLUTA C.A" data-rif="J500912706">QUIMICA ABSOLUTA C.A</option>
+<option value="RL SOLUCIONES, C.A" data-rif="J502239618">RL SOLUCIONES, C.A</option>
+<option value="TRANSFORMADORES ALTAGRACIA, C.A." data-rif="J299336254">TRANSFORMADORES ALTAGRACIA, C.A.</option>
+<option value="VIALIDADES Y CONSTRUCCIONES GUARIBE C.A" data-rif="J404862307">VIALIDADES Y CONSTRUCCIONES GUARIBE C.A</option>
+<option value="INVERSIONES RACHO LAS MARIAS, C.A." data-rif="J407275380">INVERSIONES RACHO LAS MARIAS, C.A.</option>
+<option value="SOLUCIONES GRAFICAS SIVI 2013, C.A." data-rif="J410002662">SOLUCIONES GRAFICAS SIVI 2013, C.A.</option>
+<option value="NOVEDADES J&V, C.A." data-rif="J406438340">NOVEDADES J&V, C.A.</option>
+</select>
+
+
+       <!-- Campos manuales (RIF manual) -->
+        <div id="manualProvider" style="display: none;">
+            <label for="manualName">Nombre del Proveedor:</label>
+            <input type="text" id="manualName">
+
+            <label for="manualRIF">RIF:</label>
+            <input type="text" id="manualRIF">
+        </div>
+
+ <label for="banco">Seleccione el banco:</label>
+    <select id="banco">
+        <option value="Venezuela">Venezuela</option>
+        <option value="Banesco">Banesco</option>
+    </select>
+
+ <label for="numeroReferencia">Número de referencia:</label>
+    <input type="text" id="numeroReferencia" placeholder="Ingrese el número de referencia" />
+    
+        <!-- Campos para datos de facturación -->
+        <label for="baseimponible">Base Imponible:</label>
+        <input type="number" id="baseimponible" step="0.01">
+
+        <label for="excento">Monto Exento:</label>
+        <input type="number" id="excento" step="0.01">
+
+        <label for="operationNumber">Número de Operación:</label>
+        <input type="text" id="operationNumber">
+
+        <label for="comprobanteNumber">Número de Comprobante:</label>
+        <input type="text" id="comprobanteNumber">
+
+        <label for="issueDate">Fecha de Emisión:</label>
+        <input type="date" id="issueDate">
+
+        <label for="deliveryDate">Fecha de Entrega:</label>
+        <input type="date" id="deliveryDate">
+
+        <!-- Botón para cerrar el popup -->
+<button class="generate-button" onclick="generateStamp()">Generar Timbre</button>
+<button class="close-button" onclick="window.location.href='index.html'">Volver al Inicio</button>
+    </div>
+
+<script>
+    // Función para mostrar/ocultar campos de RIF manual
+    document.getElementById('provider').addEventListener('change', function() {
+        const manualProvider = document.getElementById('manualProvider');
+        manualProvider.style.display = this.value === 'manual' ? 'block' : 'none';
+    });
+
+    function generateStamp() {
+        // Obtener valores del popup
+        var baseImponible = parseFloat(document.getElementById('baseimponible').value);
+        var excento = parseFloat(document.getElementById('excento').value);
+        var operationNumber = document.getElementById('operationNumber').value;
+
+        // Verifica que los valores no sean NaN
+        if (isNaN(baseImponible) || isNaN(excento)) {
+            alert("Por favor, ingrese valores válidos para Base Imponible y Exento.");
+            return; // Salir de la función si los valores son inválidos
+        }
+
+        // Reemplazar Nro OP
+        document.getElementById('id1').textContent = operationNumber;
+
+        // Reemplazar subtotal
+        document.getElementById('id2').textContent = baseImponible.toFixed(2); // Actualiza subtotal
+
+        // Reemplazar exento
+        document.getElementById('id3').textContent = excento.toFixed(2); // Actualiza exento
+
+        // Calcular y reemplazar IVA (16%)
+        var iva = (baseImponible - excento) * 0.16;
+        document.getElementsByClassName('column')[10].textContent = iva.toFixed(2); // Reemplaza en el índice 4
+
+        // Calcular y reemplazar Total Compras
+        var totalCompras = baseImponible + iva;
+        document.getElementById('id4').textContent = totalCompras.toFixed(2); // Actualiza TOTAL COMPRAS
+
+        // Calcular y reemplazar Impuesto Aplicado (0.1%)
+        var impuestoAplicado = baseImponible * 0.001; // 0.1%
+        document.getElementById('id6').textContent = impuestoAplicado.toFixed(2); // Actualiza TIMBRE RETENIDO
+
+        // Obtener valores adicionales del formulario
+        const providerSelect = document.getElementById('provider');
+        const proveedor = providerSelect.value === "manual" 
+            ? document.getElementById('manualName').value 
+            : providerSelect.options[providerSelect.selectedIndex].text;
+        const rif = providerSelect.value === "manual" 
+            ? document.getElementById('manualRIF').value 
+            : providerSelect.options[providerSelect.selectedIndex].getAttribute('data-rif');
+        const comprobanteNum = document.getElementById('comprobanteNumber').value.padStart(8, '0');
+        const fechaEmision = document.getElementById('issueDate').value;
+        const fechaEntrega = document.getElementById('deliveryDate').value;
+        const banco = document.getElementById('banco').value;
+        const referencia = document.getElementById('numeroReferencia').value;
+
+        // Extraer aaaamm de fechaEmision
+        const fecha = new Date(fechaEmision);
+        const aaaamm = `${fecha.getFullYear()}${String(fecha.getMonth() + 1).padStart(2, '0')}`;
+
+        // Reemplazar los valores en el HTML
+        document.querySelector('.slot1').textContent = proveedor;
+        document.querySelector('.slot2').textContent = rif;
+        document.querySelector('.slot3').textContent = `${aaaamm}${comprobanteNum}`;
+        document.querySelector('.slot4').textContent = fechaEmision;
+        document.querySelector('.slot5').textContent = fechaEntrega;
+        document.querySelector('.slot6').textContent = banco;
+        document.querySelector('.slot7').textContent = referencia;
+
+        // Cerrar el popup
+        closePopup();
+
+    // Abrir la ventana de impresión
+    window.print();
+    }
+
+    // Función para abrir el popup
+    function openPopup() {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    // Función para cerrar el popup
+    function closePopup() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    // Abre el popup al cargar la página
+    window.onload = function() {
+        openPopup();
+    };
+</script>
+
+</body>
+</html>

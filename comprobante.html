@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprobante de Retención</title>
+    <script src="js/jspdf.min.js"></script> <!-- Enlace a jsPDF -->
+    <script src="js/html2canvas.js"></script> <!-- Enlace a html2canvas -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -142,9 +144,11 @@
 
 /* Estilo para el botón de generar */
 .generate-button {
-    background-color: #4CAF50;
+    background-color: #ff9800;
     color: white;
+font-weight: bold;
     border: none;
+            transition: background-color 0.3s, transform 0.2s;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
@@ -155,7 +159,8 @@
 
 .generate-button:hover,
 .close-button:hover {
-    opacity: 0.8; /* Efecto hover */
+    background-color: #fb8c00; /* Color de fondo al pasar el ratón */
+    transform: scale(1.05); /* Aumenta un poco el tamaño */
 }
 
 /* Estilo de los contenedores */
@@ -386,7 +391,7 @@
 
     
     <button class="generate-button" onclick="generate()">Generar Comprobante</button>
-    <button class="close-button" onclick="closePopup()">Cerrar</button>
+<button class="close-button" onclick="window.location.href='index.html'">Volver al Inicio</button>
 </div>
 
 
@@ -521,6 +526,9 @@
 
     // Cerrar el popup
     closePopup();
+
+    // Abrir la ventana de impresión
+    window.print();
 }
     
         // Abre el popup al cargar la página
