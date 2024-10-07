@@ -835,50 +835,101 @@ function limpiarLocalStorage() {
 
 
 function ajustarPrecios() {
-    const montoDeseado = localStorage.getItem('montoDeseado');
-    if (montoDeseado === null) {
-        alert("Por favor, seleccione un proveedor y ingrese un monto deseado válido en el popup.");
-        return;
+
+const montoDeseado = localStorage.getItem('montoDeseado');
+
+console.log('montoDeseado:', montoDeseado);
+
+if (montoDeseado === null) {
+
+    alert("Por favor, seleccione un proveedor y ingrese un monto deseado válido en el popup.");
+
+    return;
+
+}
+
+const montoDeseadoFloat = parseFloat(montoDeseado);
+
+console.log('montoDeseadoFloat:', montoDeseadoFloat);
+
+if (montoDeseadoFloat <= 0) {
+
+    alert("Por favor, ingrese un monto deseado válido en el popup.");
+
+    return;
+
+}
+
+
+const rows = document.querySelectorAll('.product-row');
+
+let subtotalConIVA = 0;
+
+let subtotalExento = 0;
+
+
+rows.forEach(row => {
+
+    const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
+
+    const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
+
+    const isExento = row.querySelector('.input-exento').checked;
+
+
+    const subtotal = cantidad * precioUnitario;
+
+    if (isExento) {
+
+        subtotalExento += subtotal;
+
+    } else {
+
+        subtotalConIVA += subtotal;
+
     }
-    const montoDeseadoFloat = parseFloat(montoDeseado);
-    if (montoDeseadoFloat <= 0) {
-        alert("Por favor, ingrese un monto deseado válido en el popup.");
-        return;
-    }
 
-    const rows = document.querySelectorAll('.product-row');
-    let subtotalConIVA = 0;
-    let subtotalExento = 0;
+});
 
-    rows.forEach(row => {
-        const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
-        const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
-        const isExento = row.querySelector('.input-exento').checked;
 
-        const subtotal = cantidad * precioUnitario;
-        if (isExento) {
-            subtotalExento += subtotal;
-        } else {
-            subtotalConIVA += subtotal;
-        }
-    });
+console.log('subtotalConIVA:', subtotalConIVA);
 
-    const totalActual = calcularTotalAPagar(subtotalConIVA, subtotalExento);
-    if (totalActual === 0) {
-        alert("El total actual es cero. No se puede ajustar.");
-        return;
-    }
+console.log('subtotalExento:', subtotalExento);
 
-    const factorAjuste = montoDeseadoFloat / totalActual;
 
-    rows.forEach(row => {
-        const precioUnitarioInput = row.querySelector('.input-precio-unitario');
-        const nuevoPrecioUnitario = parseFloat(precioUnitarioInput.value) * factorAjuste;
-        precioUnitarioInput.value = nuevoPrecioUnitario.toFixed(2);
-        calcularTotal(precioUnitarioInput);
-    });
+const totalActual = calcularTotalAPagar(subtotalConIVA, subtotalExento);
 
-    actualizarResumenGeneral();
+console.log('totalActual:', totalActual);
+
+if (totalActual === 0) {
+
+    alert("El total actual es cero. No se puede ajustar.");
+
+    return;
+
+}
+
+
+const factorAjuste = montoDeseadoFloat / totalActual;
+
+console.log('factorAjuste:', factorAjuste);
+
+
+rows.forEach(row => {
+
+    const precioUnitarioInput = row.querySelector('.input-precio-unitario');
+
+    const nuevoPrecioUnitario = parseFloat(precioUnitarioInput.value) * factorAjuste;
+
+    precioUnitarioInput.value = nuevoPrecioUnitario.toFixed(2);
+
+    calcularTotal(precioUnitarioInput);
+
+});
+
+
+actualizarResumenGeneral();
+
 }
 
 function calcularTotalAPagar(subConIVA, subExento) {
