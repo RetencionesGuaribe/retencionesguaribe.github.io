@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.65"> <!-- Ajusta la escala al 65% -->
+    <title>Factura Modificada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+
+    background-color: #f0f4f8;
+
+    font-family: 'Roboto', sans-serif;
+
+    color: #333;
+
+    margin: 0;
+
+    padding: 20px;
+
+    text-align: center;
+
+}
+
+
+.container {
+
+    font-family: 'Roboto', sans-serif;
+
+    background-color: #f8f9fa;
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    padding: 15px;
+
+    max-width: 800px;
+
+    margin: 20px auto;
+
+}
+
+
+h1 {
+
+    color: #00796b;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Inputs y Selects */
+
+input, select {
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    box-sizing: border-box;
+
+    font-size: 16px;
+
+    margin: 5px;
+
+    padding: 10px;
+
+}
+
+
+input:focus, select:focus {
+
+    border-color: #00796b;
+
+}
+
+
+/* Filas y Columnas */
+.header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+    background-color: #e9ecef;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+}
+
+.header-group {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.styled-input {
+
+    border: 1px solid #ced4da;
+
+    border-radius: 4px;
+
+    padding: 5px;
+
+    font-size: 14px;
+
+}
+
+
+.info-tag {
+
+    background-color: #007bff;
+
+    color: white;
+
+    padding: 5px 10px;
+
+    border-radius: 15px;
+
+
+    font-size: 12px;
+
+    margin-left: 10px;
+
+}
+.btn-icon {
+
+    width: 30px;
+
+    height: 30px;
+
+    font-size: 18px;
+
+    padding: 0;
+
+    margin-left: 10px;
+
+    border-radius: 50%;
+
+    background-color: #007bff;
+
+    color: white;
+
+    border: none;
+
+    cursor: pointer;
+
+}
+
+.header input, .header span {
+
+    margin-right: 10px;
+
+}
+
+
+
+.input-row {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+}
+
+
+.table-header, .product-row {
+
+    display: grid;
+
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 0.3fr 0.3fr;
+
+    gap: 5px;
+
+    align-items: center;
+
+}
+
+
+.table-header {
+
+    padding-right: 70px;
+
+}
+
+
+.table-header span {
+
+    text-align: center;
+
+}
+
+.table-container {
+
+    background-color: white;
+
+    border-radius: 5px;
+
+    padding: 10px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.table-header span:nth-child(1) { grid-column: 1; }
+
+.table-header span:nth-child(2) { grid-column: 2; }
+
+.table-header span:nth-child(3) { grid-column: 3; }
+
+.table-header span:nth-child(4) { grid-column: 4; }
+
+.table-header span:nth-child(5) { grid-column: 5; }
+
+
+.product-row {
+
+    padding: 5px 0;
+
+}
+
+
+.product-row input, .product-row label, .product-row button {
+
+    padding: 5px;
+
+}
+
+
+.input-cantidad, .input-precio-unitario, .input-precio-total, .input-total-con-descuento {
+
+    width: 100px;
+
+}
+
+
+.input-descripcion {
+
+    flex-grow: 1;
+
+    margin: 0 5px;
+
+    text-align: left;
+
+}
+
+
+/* Botones */
+
+.btn-eliminar, .btn-agregar, .btn-popup, .btn-ajuste {
+
+    border: none;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    height: 40px;
+
+    width: 40px;
+
+}
+
+.header-buttons {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.btn-eliminar {
+
+    background-color: #ff5252;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: bold;
+
+    height: 30px;
+
+    width: 30px;
+
+}
+
+
+.btn-agregar { background-color: #4caf50; }
+
+.btn-popup, .btn-ajuste { background-color: #ff9800; margin-left: 10px; }
+
+
+.btn-eliminar:hover { background-color: #ff1744; }
+
+.btn-agregar:hover { background-color: #388e3c; }
+
+.btn-popup:hover, .btn-ajuste:hover { background-color: #fb8c00; }
+
+
+/* Popup */
+
+#popup {
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: none;
+
+    height: 100%;
+
+    justify-content: center;
+
+    align-items: center;
+
+    left: 0;
+
+    position: fixed;
+
+    top: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+}
+
+
+
+.popup-content {
+
+    background-color: #ffffff;
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+    padding: 30px;
+
+    width: 90%;
+
+    max-width: 500px;
+
+    position: relative;
+
+}
+
+.popup-content h2 {
+
+    color: #333;
+
+    font-size: 24px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+
+}
+
+
+
+.popup-content label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #555;
+
+    font-weight: bold;
+
+}
+
+
+.popup-content input[type="date"],
+
+.popup-content input[type="text"],
+
+.popup-content input[type="number"],
+
+.popup-content select {
+
+    width: 100%;
+
+    padding: 10px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+
+    font-size: 16px;
+
+}
+
+.popup-content button {
+
+    background-color: #007bff;
+
+    border: none;
+
+    border-radius: 4px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    padding: 12px 20px;
+
+    width: 100%;
+
+    transition: background-color 0.3s;
+
+}
+
+
+.popup-content button:hover {
+
+    background-color: #007bff;
+
+}
+
+
+#proveedorManualContainer {
+
+    margin-top: 15px;
+
+}
+
+/* Estilo para el botón de cerrar el popup */
+
+.close-popup {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 15px;
+
+    font-size: 24px;
+
+    color: #aaa;
+
+    cursor: pointer;
+
+    transition: color 0.3s;
+
+}
+
+
+.close-popup:hover {
+
+    color: #555;
+
+}
+
+
+/* Resumen */
+
+.summary {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+}
+
+
+.summary-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 5px 10px;
+
+    background-color: #e9ecef;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+}
+
+.summary div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+.summary-item span:first-child {
+
+    font-weight: bold;
+
+}
+
+
+.summary-item.total {
+
+    background-color: #007bff;
+
+    color: white;
+
+}
+
+
+/* Exento */
+
+.exento-label {
+
+    align-items: center;
+
+    display: flex;
+
+    justify-content: center;
+
+}
+
+
+.exento-label input {
+
+    margin-right: 5px;
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container" id="draggableContainer">
+
+    <div class="header">
+
+        <input type="date" id="fecha">
+
+        <span id="proveedorText">Proveedor</span>
+
+        <span id="retencionText">Ret: --%</span>
+
+        <span id="nroOperacionText">OP: --</span>
+
+        <button class="btn-icon" onclick="agregarFila()">+</button>
+
+        <button class="btn-icon" onclick="ajustarPrecios()">!</button>
+
+        <button class="btn-icon" onclick="mostrarPopup()">⚙</button>
+
+        <button class="btn-icon" onclick="window.print()">🖨️</button>
+
+    </div>
+
+
+    <div class="table-header">
+
+        <span>Cant</span>
+
+        <span>Desc</span>
+
+        <span>    P.U.</span>
+
+        <span>Total</span>
+
+        <span>C/Desc</span>
+
+        
+
+    </div>
+        <div id="productContainer">
+            <div class="product-row">
+                <input type="number" class="input-cantidad" placeholder="0" min="0" oninput="calcularTotal(this)"> <!-- Campo de cantidad -->
+                <input type="text" class="input-descripcion" placeholder="Descripción del producto"> <!-- Campo de descripción -->
+<input type="number" class="input-precio-unitario" placeholder="0.00" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+
+<input type="number" class="input-precio-total" placeholder="0.00" step="0.01" readonly>
+                <input type="number" class="input-total-con-descuento" placeholder="0.00" step="0.01" readonly> <!-- Total con descuento -->
+                <label>
+                    <input type="checkbox" class="input-exento" onchange="actualizarResumenGeneral()"> E <!-- Checkbox de exención -->
+                </label>
+                <button class="btn-eliminar" onclick="eliminarFila(this)">X</button> <!-- Botón para eliminar fila -->
+            </div>
+        </div>
+
+        <!-- Resumen de la factura -->
+
+
+
+
+<!-- Nueva fila de resúmenes -->
+
+    <div class="summary">
+
+        <div class="summary-item"><span>Subtotal:</span> <span id="subtotalGeneral">0.00</span></div>
+
+        <div class="summary-item"><span>Exento:</span> <span id="exentoGeneral">0.00</span></div>
+
+        <div class="summary-item"><span>IVA:</span> <span id="ivaGeneral">0.00</span></div>
+
+        <div class="summary-item"><span>Total:</span> <span id="totalGeneral">0.00</span></div>
+
+        <div class="summary-item"><span>IVA a Pagar:</span> <span id="ivaAPagar">0.00</span></div>
+
+        <div class="summary-item"><span>Pago sin Timbre:</span> <span id="pagoSinTimbre">0.00</span></div>
+
+        <div class="summary-item"><span>Timbre Fiscal:</span> <span id="timbreFiscal">0.00</span></div>
+
+        <div class="summary-item total"><span>Total a Pagar:</span> <span id="totalAPagar">0.00</span></div>
+
+    </div>
+    </div>
+
+    <!-- Modal para seleccionar proveedor -->
+    <div id="popup">
+        <div class="popup-content">
+            <h2>Seleccionar Proveedor</h2> <!-- Título modal -->
+            <label for="popupFecha">Fecha:</label>
+            <input type="date" id="popupFecha"> <!-- Campo de fecha en modal -->
+            <label for="popupProveedor">Seleccionar Proveedor:</label>
+            <select id="popupProveedor" onchange="toggleProveedorManual(); actualizarRetencion()">
+
+    <option value="">--Seleccione un Proveedor--</option>
+
+    <option value="AINKAA, C.A." data-retencion="75">AINKAA, C.A.</option>
+
+    <option value="AUTOMOTRIZ CELTA C.A" data-retencion="75">AUTOMOTRIZ CELTA C.A</option>
+
+    <option value="AUTORESPUESTOS SHAGYY, C.A." data-retencion="100">AUTORESPUESTOS SHAGYY, C.A.</option>
+
+    <option value="COMERCIAL ANA K 1304, FP" data-retencion="100">COMERCIAL ANA K 1304, FP</option>
+
+    <option value="COMERCIAL H Y G, C.A." data-retencion="100">COMERCIAL H Y G, C.A.</option>
+
+    <option value="COMERCIAL KARJUAN & ANYILUZ, C.A." data-retencion="100">COMERCIAL KARJUAN & ANYILUZ, C.A.</option>
+
+    <option value="FUNERARIA ROSTRO DE JESUS, C.A." data-retencion="100">FUNERARIA ROSTRO DE JESUS, C.A.</option>
+
+    <option value="INVERSIONES AXEMTEK C.A." data-retencion="75">INVERSIONES AXEMTEK C.A.</option>
+
+    <option value="INVERSIONES EL TODO PODEROSO 2020" data-retencion="75">INVERSIONES EL TODO PODEROSO 2020</option>
+
+    <option value="INVERSIONES GRAN VICTORIA 2015, C.A." data-retencion="75">INVERSIONES GRAN VICTORIA 2015, C.A.</option>
+
+    <option value="INVERSIONES GRATEROL 2020, C.A." data-retencion="75">INVERSIONES GRATEROL 2020, C.A.</option>
+
+    <option value="INVERSIONES GSF 2024 C.A." data-retencion="100">INVERSIONES GSF 2024 C.A.</option>
+
+    <option value="INVERSIONES LA FORTALEZA & ASOCIADOS C.A." data-retencion="100">INVERSIONES LA FORTALEZA & ASOCIADOS C.A.</option>
+
+    <option value="INVERSIONES LA VIRTUD" data-retencion="100">INVERSIONES LA VIRTUD</option>
+
+    <option value="INVERSIONES MACK C,A." data-retencion="75">INVERSIONES MACK C,A.</option>
+
+    <option value="INVERSIONES ROARI C,A." data-retencion="75">INVERSIONES ROARI C,A.</option>
+
+    <option value="INVERSIONES Y SUMINISTROS C&E, C.A." data-retencion="100">INVERSIONES Y SUMINISTROS C&E, C.A.</option>
+
+    <option value="INVERSONES MARIA LUCILA C,A." data-retencion="100">INVERSONES MARIA LUCILA C,A.</option>
+
+    <option value="MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A." data-retencion="75">MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.</option>
+
+    <option value="QUIMICA ABSOLUTA C.A" data-retencion="100">QUIMICA ABSOLUTA C.A</option>
+
+    <option value="RL SOLUCIONES, C.A" data-retencion="75">RL SOLUCIONES, C.A</option>
+
+    <option value="TRANSFORMADORES ALTAGRACIA, C.A." data-retencion="75">TRANSFORMADORES ALTAGRACIA, C.A.</option>
+
+    <option value="VIALIDADES Y CONSTRUCCIONES GUARIBE C A" data-retencion="100">VIALIDADES Y CONSTRUCCIONES GUARIBE C.A</option>
+
+    <option value="INVERSIONES RACHO LAS MARIAS, C.A." data-retencion="75">INVERSIONES RACHO LAS MARIAS, C.A.</option>
+
+    <option value="SOLUCIONES GRAFICAS SIVI 2013, C.A." data-retencion="75">SOLUCIONES GRAFICAS SIVI 2013, C.A.</option>
+
+    <option value="NOVEDADES J&V, C.A." data-retencion="100">NOVEDADES J&V, C.A.</option>
+
+    <option value="manual">Ingresar Manualmente</option>
+
+</select>
+
+        <!-- Añade el contenedor del proveedor manual aquí -->
+
+        <div id="proveedorManualContainer" style="display: none;">
+
+            <label for="proveedorManual">Nombre del Proveedor:</label>
+
+            <input type="text" id="proveedorManual" placeholder="Ingrese el nombre del proveedor">
+
+        </div>
+
+
+        <label for="popupRetencion">Porcentaje de Retención:</label>
+
+        <select id="popupRetencion">
+
+            <option value="75">75%</option>
+
+            <option value="100">100%</option>
+
+            <option value="0">0%</option>
+
+        </select>
+
+        <label for="popupNroOperacion">Número de Operación:</label>
+
+        <input type="text" id="popupNroOperacion" placeholder="Ingrese el NRO de OP">
+
+        <label for="popupMontoDeseado">Monto Total Deseado:</label>
+
+        <input type="number" id="popupMontoDeseado" step="0.01" min="0">
+
+        <button onclick="seleccionarProveedor()">Seleccionar</button>
+
+    </div>
+
+</div>
+
+    <script>
+        // Habilitar el arrastre del contenedor
+        const container = document.getElementById('draggableContainer');
+        
+        container.onmousedown = function(event) {
+            let shiftX = event.clientX - container.getBoundingClientRect().left;
+            let shiftY = event.clientY - container.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                container.style.left = pageX - shiftX + 'px';
+                container.style.top = pageY - shiftY + 'px';
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.onmouseup = function() {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.onmouseup = null;
+            };
+        };
+
+        container.ondragstart = function() {
+            return false; // Previene el comportamiento de arrastre por defecto
+        };
+
+        // Mostrar el popup al cargar la página
+        window.onload = function() {
+            document.getElementById('popup').style.display = 'flex';
+            
+        };
+
+        function seleccionarProveedor() {
+    try {
+        // Limpiar localStorage solo para los datos relevantes
+        localStorage.removeItem('montoDeseado');
+
+        // Obtener elementos del DOM una sola vez
+        const fechaElement = document.getElementById('popupFecha');
+        const proveedorSelect = document.getElementById('popupProveedor');
+        const retencionSelect = document.getElementById('popupRetencion');
+        const nroOperacionElement = document.getElementById('popupNroOperacion');
+        const montoDeseadoElement = document.getElementById('popupMontoDeseado');
+
+        // Validar que los elementos existan
+        if (!fechaElement || !proveedorSelect || !retencionSelect || !nroOperacionElement || !montoDeseadoElement) {
+            throw new Error("No se encontraron todos los elementos necesarios en el DOM");
+        }
+
+        const fecha = fechaElement.value;
+        const nroOperacion = nroOperacionElement.value;
+        const montoDeseado = montoDeseadoElement.value;
+
+        let proveedorText;
+        if (proveedorSelect.value === 'manual') {
+            const proveedorManualElement = document.getElementById('proveedorManual');
+            if (!proveedorManualElement) {
+                throw new Error("No se encontró el elemento proveedorManual");
+            }
+            proveedorText = proveedorManualElement.value;
+        } else {
+            proveedorText = proveedorSelect.options[proveedorSelect.selectedIndex].text;
+        }
+
+        // Actualizar la interfaz
+        document.getElementById('fecha').value = fecha;
+        document.getElementById('proveedorText').textContent = proveedorText;
+        document.getElementById('retencionText').textContent = `Ret: ${retencionSelect.value}%`;
+        document.getElementById('nroOperacionText').textContent = nroOperacion;
+
+        // Guardar el monto deseado en localStorage
+        if (montoDeseado) {
+            sessionStorage.setItem('montoDeseado', montoDeseado);
+        }
+
+        // Ocultar la ventana modal
+        const popupElement = document.getElementById('popup');
+        if (popupElement) {
+            popupElement.style.display = 'none';
+        } else {
+            console.warn("No se encontró el elemento popup");
+        }
+
+        // Actualizar el resumen general
+        if (typeof actualizarResumenGeneral === 'function') {
+            actualizarResumenGeneral();
+        } else {
+            console.warn("La función actualizarResumenGeneral no está definida");
+        }
+
+    } catch (error) {
+        console.error("Error en seleccionarProveedor:", error);
+        alert("Ocurrió un error al seleccionar el proveedor. Por favor, intenta de nuevo.");
+    }
+}
+
+
+
+function actualizarRetencion() {
+    const proveedorSelect = document.getElementById('popupProveedor');
+    const retencionSelect = document.getElementById('popupRetencion');
+    const proveedorOption = proveedorSelect.options[proveedorSelect.selectedIndex];
+
+    if (proveedorOption.value !== 'manual') {
+        const retencion = proveedorOption.getAttribute('data-retencion');
+        retencionSelect.value = retencion;
+    }
+}
+
+function limpiarLocalStorage() {
+
+    localStorage.clear();
+
+    console.log("LocalStorage ha sido limpiado");
+
+}
+
+
+
+function ajustarPrecios() {
+    const montoDeseado = parseFloat(localStorage.getItem('montoDeseado')) || 0;
+
+    if (montoDeseado <= 0) {
+        alert("Por favor, ingrese un monto deseado válido en el popup.");
+        return;
+    }
+
+    const rows = document.querySelectorAll('.product-row');
+    let subtotalConIVA = 0;
+    let subtotalExento = 0;
+
+    rows.forEach(row => {
+        const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
+        const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
+        const isExento = row.querySelector('.input-exento').checked;
+
+        const subtotal = cantidad * precioUnitario;
+        if (isExento) {
+            subtotalExento += subtotal;
+        } else {
+            subtotalConIVA += subtotal;
+        }
+    });
+
+    const totalActual = calcularTotalAPagar(subtotalConIVA, subtotalExento);
+    if (totalActual === 0) {
+        alert("El total actual es cero. No se puede ajustar.");
+        return;
+    }
+
+    const factorAjuste = montoDeseado / totalActual;
+
+    rows.forEach(row => {
+        const precioUnitarioInput = row.querySelector('.input-precio-unitario');
+        const nuevoPrecioUnitario = parseFloat(precioUnitarioInput.value) * factorAjuste;
+        precioUnitarioInput.value = nuevoPrecioUnitario.toFixed(2);
+        calcularTotal(precioUnitarioInput);
+    });
+
+    actualizarResumenGeneral();
+    
+}
+
+function calcularTotalAPagar(subConIVA, subExento) {
+    const iva = subConIVA * 0.16;
+    const porcentajeRetencion = parseInt(document.getElementById('retencionText').innerText.match(/\d+/)[0]) || 0;
+    const ivaAPagar = porcentajeRetencion === 75 ? iva * 0.25 : (porcentajeRetencion === 0 ? iva : 0);
+    const timbreFiscal = (subConIVA + subExento) * 0.001;
+    return subConIVA + subExento + ivaAPagar - timbreFiscal;
+}
+
+function toggleProveedorManual() {
+
+    const proveedorSelect = document.getElementById('popupProveedor');
+
+    const proveedorManualContainer = document.getElementById('proveedorManualContainer');
+
+    
+
+    if (proveedorSelect.value === 'manual') {
+
+        proveedorManualContainer.style.display = 'block';
+
+    } else {
+
+        proveedorManualContainer.style.display = 'none';
+
+    }
+
+}
+
+function redondear(numero, decimales = 2) {
+
+return Number(Math.round(numero + 'e' + decimales) + 'e-' + decimales);
+
+}
+
+///////////
+
+function ajustarPrecio(event, input) {
+
+    event.preventDefault(); // Previene el comportamiento por defecto
+
+    
+
+    var step = event.deltaY < 0 ? 0.01 : -0.01; // Determina la dirección del ajuste
+
+    var newValue = parseFloat(input.value) + step;
+
+    
+
+    // Asegura que el nuevo valor tenga máximo 2 decimales
+
+    newValue = Math.round(newValue * 100) / 100;
+
+    
+
+    // Asegura que el valor no sea negativo
+
+    if (newValue >= 0) {
+
+        input.value = newValue.toFixed(2); // Fija el número de decimales a 2
+
+    }
+
+    
+
+    calcularTotal(input); // Recalcula el total
+
+}
+
+        function eliminarFila(button) {
+            const row = button.closest('.product-row'); // Localiza la fila correspondiente
+            row.remove(); // Elimina la fila del DOM
+
+            // Actualiza el resumen general
+            actualizarResumenGeneral();
+
+            // Guarda los datos en el almacenamiento local
+            guardarDatos();
+        }
+
+function agregarFila() {
+
+    const productContainer = document.getElementById('productContainer');
+
+    const newRow = document.createElement('div');
+
+    newRow.className = 'product-row';
+
+    newRow.innerHTML = `
+
+        <input type="number" class="input-cantidad" placeholder="0" min="0" oninput="calcularTotal(this)">
+
+        <input type="text" class="input-descripcion" placeholder="Descripción del producto">
+
+        <input type="number" class="input-precio-unitario" placeholder="0.00" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+
+        <input type="number" class="input-precio-total" placeholder="0.00" step="0.01" readonly>
+
+        <input type="number" class="input-total-con-descuento" placeholder="0.00" step="0.01" readonly>
+
+        <label>
+
+            <input type="checkbox" class="input-exento" onchange="actualizarResumenGeneral()"> E
+
+        </label>
+
+        <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
+
+    `;
+
+    productContainer.appendChild(newRow);
+
+    actualizarResumenGeneral();
+
+}
+
+
+
+        function guardarDatos() {
+            const rows = document.querySelectorAll('.product-row');
+            const data = Array.from(rows).map(row => {
+                return {
+                    cantidad: row.querySelector('.input-cantidad').value,
+                    descripcion: row.querySelector('.input-descripcion').value,
+                    precioUnitario: row.querySelector('.input-precio-unitario').value,
+                    precioTotal: row.querySelector('.input-precio-total').value,
+                    totalConDescuento: row.querySelector('.input-total-con-descuento').value,
+                    exentoIVA: row.querySelector('.input-exento').checked // Estado del checkbox
+                };
+            });
+            sessionStorage.setItem('productos', JSON.stringify(data)); // Almacena los datos en localStorage
+        }
+function mostrarPopup() {
+    document.getElementById('popup').style.display = 'flex';
+
+    // Reiniciar campos
+    document.getElementById('popupFecha').value = '';
+    document.getElementById('popupProveedor').selectedIndex = 0;
+    document.getElementById('popupRetencion').selectedIndex = 0;
+    document.getElementById('popupNroOperacion').value = '';
+
+    // Cargar el monto deseado guardado
+    const montoDeseadoGuardado = localStorage.getItem('montoDeseado');
+    if (montoDeseadoGuardado) {
+        document.getElementById('popupMontoDeseado').value = montoDeseadoGuardado;
+    } else {
+        document.getElementById('popupMontoDeseado').value = '';
+    }
+}
+
+function ajustarPrecioUnitario(event, input) {
+
+    // Prevenir el comportamiento por defecto del scroll
+
+    event.preventDefault();
+
+
+    // Obtener el valor actual
+
+    let valor = parseFloat(input.value) || 0;
+
+
+    // Determinar la dirección del scroll
+
+    if (event.deltaY < 0) {
+
+        // Scroll hacia arriba, incrementar
+
+        valor += 0.01;
+
+    } else {
+
+        // Scroll hacia abajo, decrementar
+
+        valor -= 0.01;
+
+    }
+
+
+    // Redondear a 2 decimales
+
+    valor = Math.round(valor * 100) / 100;
+
+
+    // Asegurarse de que el valor no sea negativo
+
+    valor = Math.max(0, valor);
+
+
+    // Actualizar el valor del input
+
+    input.value = valor.toFixed(2);
+
+
+    // Recalcular el total
+
+    calcularTotal(input);
+
+}
+
+function calcularTotal(element) {
+    const row = element.closest('.product-row');
+    const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
+    const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
+
+    // Calcular el total de la fila
+    const precioTotal = cantidad * precioUnitario;
+    const totalConDescuento = precioTotal * 0.999; // 0.1% de descuento
+
+    // Actualizar los campos de la fila
+    row.querySelector('.input-precio-total').value = precioTotal.toFixed(2);
+    row.querySelector('.input-total-con-descuento').value = totalConDescuento.toFixed(2);
+
+    // Actualizar el resumen general
+    actualizarResumenGeneral();
+}
+function actualizarResumenGeneral() {
+
+const productRows = document.querySelectorAll('.product-row');
+
+let subtotalGeneral = 0;
+
+let exentoGeneral = 0;
+
+
+productRows.forEach(row => {
+
+    // Cambiamos esto para usar el precio total sin descuento
+
+    const precioTotal = parseFloat(row.querySelector('.input-precio-total').value) || 0;
+
+    const exentoCheckbox = row.querySelector('.input-exento');
+
+
+    // Sumar al subtotal general todos los productos
+
+    subtotalGeneral += precioTotal;
+
+
+    // Sumar al exento general solo los productos marcados como exentos
+
+    if (exentoCheckbox.checked) {
+
+        exentoGeneral += precioTotal;
+
+    }
+
+});
+
+
+// El resto de la función permanece igual
+
+const ivaGeneral = (subtotalGeneral - exentoGeneral) * 0.16;
+
+const totalFactura = subtotalGeneral + ivaGeneral;
+
+
+document.getElementById('subtotalGeneral').innerText = subtotalGeneral.toFixed(2);
+
+document.getElementById('exentoGeneral').innerText = exentoGeneral.toFixed(2);
+
+document.getElementById('ivaGeneral').innerText = ivaGeneral.toFixed(2);
+
+document.getElementById('totalGeneral').innerText = totalFactura.toFixed(2);
+
+
+// Cálculos adicionales
+
+const retencionText = document.getElementById('retencionText').innerText;
+
+const porcentajeRetencion = parseInt(retencionText.match(/\d+/)[0]) || 0;
+
+
+let ivaAPagar = 0;
+
+if (porcentajeRetencion === 75) {
+
+    ivaAPagar = ivaGeneral * 0.25;
+
+} else if (porcentajeRetencion === 0) {
+
+    ivaAPagar = ivaGeneral;
+
+}
+
+
+const pagoSinTimbre = subtotalGeneral + ivaAPagar;
+
+const timbreFiscal = subtotalGeneral * 0.001;
+
+const totalAPagar = subtotalGeneral - timbreFiscal + ivaAPagar;
+
+
+document.getElementById('ivaAPagar').innerText = ivaAPagar.toFixed(2);
+
+document.getElementById('pagoSinTimbre').innerText = pagoSinTimbre.toFixed(2);
+
+document.getElementById('timbreFiscal').innerText = timbreFiscal.toFixed(2);
+
+document.getElementById('totalAPagar').innerText = totalAPagar.toFixed(2);
+
+}
+
+        function cargarDatos() {
+            const data = JSON.parse(localStorage.getItem('productos'));
+            if (data) {
+                data.forEach(item => {
+                    const productContainer = document.getElementById('productContainer');
+                    const newRow = document.createElement('div');
+                    newRow.className = 'product-row';
+                    newRow.innerHTML = `
+                        <input type="number" class="input-cantidad" value="${item.cantidad}" oninput="calcularTotal(this)">
+                        <input type="text" class="input-descripcion" value="${item.descripcion}">
+                        <input type="number" class="input-precio-unitario" value="${item.precioUnitario}" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+                        <input type="number" class="input-precio-total" value="${item.precioTotal}" readonly>
+                        <input type="number" class="input-total-con-descuento" value="${item.totalConDescuento}" readonly>
+                        <label>
+                            <input type="checkbox" class="input-exento" ${item.exentoIVA ? 'checked' : ''} onchange="actualizarResumenGeneral()"> E
+                        </label>
+                        <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
+                    `;
+                    productContainer.appendChild(newRow); // Agrega la nueva fila al contenedor
+                });
+            }
+        }
+    </script>
+</body>
+</html>
