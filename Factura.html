@@ -835,12 +835,12 @@ function limpiarLocalStorage() {
 
 
 function ajustarPrecios() {
-    const montoDeseado = parseFloat(localStorage.getItem('montoDeseado')) || 0;
+       const montoDeseado = parseFloat(localStorage.getItem('montoDeseado')) || 0;
 
-    if (montoDeseado <= 0) {
-        alert("Por favor, ingrese un monto deseado válido en el popup.");
-        return;
-    }
+       if (montoDeseado <= 0) {
+           alert("Por favor, ingrese un monto deseado válido en el popup.");
+           return;
+       }
 
     const rows = document.querySelectorAll('.product-row');
     let subtotalConIVA = 0;
