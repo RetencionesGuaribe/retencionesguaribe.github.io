@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.65"> <!-- Ajusta la escala al 65% -->
+    <title>Factura Modificada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+
+            background-color: #f0f4f8;
+
+            font-family: 'Roboto', sans-serif;
+
+            text-align: center;
+
+            color: #333;
+
+            margin: 0;
+
+            padding: 20px;
+
+        }
+
+        .container {
+
+            margin: 20px auto;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+            max-width: 100%;
+
+            background-color: white;
+
+            overflow-x: hidden;
+
+            cursor: move;
+
+        }
+
+        input, select {
+
+            margin: 5px;
+
+            padding: 10px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            font-size: 16px;
+
+            box-sizing: border-box;
+
+        }
+
+        input:focus, select:focus {
+
+            border-color: #00796b;
+
+        }
+
+        h1 {
+
+            color: #00796b;
+
+            margin-bottom: 20px;
+
+        }
+
+        .input-row {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: space-between;
+
+        }
+
+        .product-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin: 0;
+	
+
+        }
+
+.product-row input {
+
+    margin: 0;
+
+    padding: 7px; /* Puedes ajustar este valor según tus preferencias */
+
+}
+
+        .input-cantidad,
+
+        .input-precio-unitario,
+
+        .input-precio-total,
+
+        .input-total-con-descuento {
+
+            width: 100px;
+
+        }
+
+        .input-descripcion {
+
+            flex-grow: 1;
+
+            margin: 0 5px;
+
+        }
+
+        .btn-eliminar {
+
+            background-color: #ff5252;
+
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 6px 10px;
+
+            border-radius: 5px;
+
+            margin-left: 10px;
+
+        }
+
+        .btn-eliminar:hover {
+
+            background-color: #ff1744;
+
+        }
+
+        .btn-agregar {
+
+            background-color: #4caf50;
+
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 10px;
+
+            border-radius: 5px;
+
+            width: 40px;
+
+            height: 40px;
+
+            font-size: 20px;
+
+        }
+
+        .btn-agregar:hover {
+
+            background-color: #388e3c;
+
+        }
+
+        .btn-popup {
+
+            background-color: #ff9800;
+
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 10px;
+
+            border-radius: 5px;
+
+            width: 40px;
+
+            height: 40px;
+
+            font-size: 20px;
+
+            margin-left: 10px;
+
+        }
+
+        .btn-popup:hover {
+
+            background-color: #fb8c00;
+
+        }
+
+        #popup {
+
+            display: none;
+
+            position: fixed;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.5);
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+        .popup-content {
+
+            background-color: white;
+
+            padding: 20px;
+
+            border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+            text-align: left;
+
+        }
+
+        .popup-content button {
+
+            margin-top: 10px;
+
+            background-color: #ff9800;
+
+            color: white;
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 10px;
+
+            border-radius: 5px;
+
+            transition: background-color 0.3s;
+
+        }
+
+        .popup-content button:hover {
+
+            background-color: #fb8c00;
+
+        }
+
+        .table-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+        }
+
+        .summary {
+
+            display: flex;
+
+            justify-content: space-around;
+
+            margin-top: 20px;
+
+        }
+
+.btn-ajuste {
+
+    background-color: #ff9800;
+
+    color: white;
+
+    border: none;
+
+    cursor: pointer;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+    width: 40px;
+
+    height: 40px;
+
+    font-size: 20px;
+
+    margin-left: 10px;
+
+}
+
+
+.btn-ajuste:hover {
+
+    background-color: #f57c00;
+
+}
+
+        .summary-item {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 10px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            background-color: #f9f9f9;
+
+            width: 150px;
+
+            box-sizing: border-box;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container" id="draggableContainer">
+        <div class="input-row">
+            <div>
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha"> <!-- Campo para seleccionar la fecha -->
+            </div>
+            <div>
+                <label for="proveedor">Proveedor:</label>
+                <span id="proveedorText">--Seleccione un Proveedor--</span> <!-- Proveedor seleccionado -->
+            </div>
+            <div>
+                <label for="retencion">Porcentaje de Retención:</label>
+                <span id="retencionText">--%</span> <!-- Porcentaje de retención -->
+            </div>
+            <div>
+                <label for="nroOperacion">Número de Operación:</label>
+                <span id="nroOperacionText">--</span> <!-- Número de operación -->
+            </div>
+            <button class="btn-agregar" onclick="agregarFila()">+</button>
+
+    <button class="btn-ajuste" onclick="ajustarPrecios()">!</button>
+
+    <button class="btn-popup" onclick="mostrarPopup()">#</button>
+        </div>
+
+        <h3 id="resultadoAjuste"></h3> <!-- Espacio para resultados de ajustes -->
+
+        <!-- Encabezados de productos -->
+        <div class="table-header">
+            <span>Cantidad</span>
+            <span>Descripción</span>
+            <span>Precio Unitario</span>
+            <span>Precio Total</span>
+            <span>Total con Descuento (0.1%)</span>
+        </div>
+        <div id="productContainer">
+            <div class="product-row">
+                <input type="number" class="input-cantidad" placeholder="0" min="0" oninput="calcularTotal(this)"> <!-- Campo de cantidad -->
+                <input type="text" class="input-descripcion" placeholder="Descripción del producto"> <!-- Campo de descripción -->
+<input type="number" class="input-precio-unitario" placeholder="0.00" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+
+<input type="number" class="input-precio-total" placeholder="0.00" step="0.01" readonly>
+                <input type="number" class="input-total-con-descuento" placeholder="0.00" step="0.01" readonly> <!-- Total con descuento -->
+                <label>
+                    <input type="checkbox" class="input-exento" onchange="actualizarResumenGeneral()"> Exento IVA <!-- Checkbox de exención -->
+                </label>
+                <button class="btn-eliminar" onclick="eliminarFila(this)">Eliminar</button> <!-- Botón para eliminar fila -->
+            </div>
+        </div>
+
+        <!-- Resumen de la factura -->
+
+<div class="summary">
+
+    <div class="summary-item">Subtotal: <span id="subtotalGeneral">0.00</span></div>
+
+    <div class="summary-item">Exento: <span id="exentoGeneral">0.00</span></div>
+
+    <div class="summary-item">IVA: <span id="ivaGeneral">0.00</span></div>
+
+    <div class="summary-item">Total: <span id="totalGeneral">0.00</span></div>
+
+</div>
+
+
+<!-- Nueva fila de resúmenes -->
+
+<div class="summary">
+
+    <div class="summary-item">IVA a Pagar: <span id="ivaAPagar">0.00</span></div>
+
+    <div class="summary-item">Pago sin Timbre: <span id="pagoSinTimbre">0.00</span></div>
+
+    <div class="summary-item">Timbre Fiscal: <span id="timbreFiscal">0.00</span></div>
+
+    <div class="summary-item">Total a Pagar: <span id="totalAPagar">0.00</span></div>
+
+</div>
+    </div>
+
+    <!-- Modal para seleccionar proveedor -->
+    <div id="popup">
+        <div class="popup-content">
+            <h2>Seleccionar Proveedor</h2> <!-- Título modal -->
+            <label for="popupFecha">Fecha:</label>
+            <input type="date" id="popupFecha"> <!-- Campo de fecha en modal -->
+            <label for="popupProveedor">Seleccionar Proveedor:</label>
+            <select id="popupProveedor"> <!-- Selección de proveedor -->
+                <option value="">--Seleccione un Proveedor--</option>
+                <option value="Proveedor1" data-retencion="75">Proveedor 1</option>
+                <option value="Proveedor2" data-retencion="100">Proveedor 2</option>
+                <option value="manual">Ingresar Manualmente</option>
+            </select>
+            <label for="popupRetencion">Porcentaje de Retención:</label>
+            <select id="popupRetencion"> <!-- Selección de retención -->
+                <option value="75">75%</option>
+                <option value="100">100%</option>
+                <option value="0">0%</option>
+            </select>
+            <label for="popupNroOperacion">Número de Operación:</label>
+            <input type="text" id="popupNroOperacion" placeholder="Ingrese el NRO de OP"> <!-- Campo para número de operación -->
+<label for="popupMontoDeseado">Monto Total Deseado:</label>
+
+    <input type="number" id="popupMontoDeseado" step="0.01" min="0">
+            <button onclick="seleccionarProveedor()">Seleccionar</button> <!-- Botón para confirmar selección -->
+        </div>
+    </div>
+
+    <script>
+        // Habilitar el arrastre del contenedor
+        const container = document.getElementById('draggableContainer');
+        
+        container.onmousedown = function(event) {
+            let shiftX = event.clientX - container.getBoundingClientRect().left;
+            let shiftY = event.clientY - container.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                container.style.left = pageX - shiftX + 'px';
+                container.style.top = pageY - shiftY + 'px';
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.onmouseup = function() {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.onmouseup = null;
+            };
+        };
+
+        container.ondragstart = function() {
+            return false; // Previene el comportamiento de arrastre por defecto
+        };
+
+        // Mostrar el popup al cargar la página
+        window.onload = function() {
+            document.getElementById('popup').style.display = 'flex';
+            cargarDatos(); // Cargar datos desde localStorage
+        };
+
+function seleccionarProveedor() {
+    const fecha = document.getElementById('popupFecha').value;
+    const proveedorSelect = document.getElementById('popupProveedor');
+    const proveedorText = proveedorSelect.options[proveedorSelect.selectedIndex].text;
+    const retencionSelect = document.getElementById('popupRetencion');
+    const retencionText = retencionSelect.options[retencionSelect.selectedIndex].text;
+    const nroOperacion = document.getElementById('popupNroOperacion').value;
+    const montoDeseado = document.getElementById('popupMontoDeseado').value;
+
+    // Actualiza los campos en la interfaz
+    document.getElementById('fecha').value = fecha;
+    document.getElementById('proveedorText').innerText = proveedorText;
+    document.getElementById('retencionText').innerText = retencionText;
+    document.getElementById('nroOperacionText').innerText = nroOperacion;
+
+    // Guarda el monto deseado en localStorage
+    if (montoDeseado) {
+        localStorage.setItem('montoDeseado', montoDeseado);
+    }
+
+    // Oculta la ventana modal
+    document.getElementById('popup').style.display = 'none';
+
+    // Actualiza el resumen general para reflejar los cambios
+    actualizarResumenGeneral();
+}
+
+function seleccionarProveedor() {
+    const fecha = document.getElementById('popupFecha').value;
+    const proveedorSelect = document.getElementById('popupProveedor');
+    const proveedorText = proveedorSelect.options[proveedorSelect.selectedIndex].text;
+    const retencionSelect = document.getElementById('popupRetencion');
+    const retencionText = retencionSelect.options[retencionSelect.selectedIndex].text;
+    const nroOperacion = document.getElementById('popupNroOperacion').value;
+    const montoDeseado = document.getElementById('popupMontoDeseado').value;
+
+    // Actualiza los campos en la interfaz
+    document.getElementById('fecha').value = fecha;
+    document.getElementById('proveedorText').innerText = proveedorText;
+    document.getElementById('retencionText').innerText = retencionText;
+    document.getElementById('nroOperacionText').innerText = nroOperacion;
+
+    // Guarda el monto deseado en localStorage
+    if (montoDeseado) {
+        localStorage.setItem('montoDeseado', montoDeseado);
+    }
+
+    // Oculta la ventana modal
+    document.getElementById('popup').style.display = 'none';
+
+    // Actualiza el resumen general para reflejar los cambios
+    actualizarResumenGeneral();
+}
+
+        function calcularTotal(element) {
+            const row = element.closest('.product-row'); // Localiza la fila correspondiente
+            const cantidadInput = row.querySelector('.input-cantidad');
+            const precioUnitarioInput = row.querySelector('.input-precio-unitario');
+            const precioTotalInput = row.querySelector('.input-precio-total');
+            const totalConDescuentoInput = row.querySelector('.input-total-con-descuento');
+
+            // Validación de entradas
+            const cantidad = parseFloat(cantidadInput.value) || 0;
+            const precioUnitario = parseFloat(precioUnitarioInput.value) || 0;
+
+            if (cantidad < 0) {
+                alert("La cantidad no puede ser negativa.");
+                cantidadInput.value = 0; // Reinicia a 0
+            }
+
+            if (precioUnitario < 0) {
+                alert("El precio unitario no puede ser negativo.");
+                precioUnitarioInput.value = 0; // Reinicia a 0
+            }
+
+            // Cálculo del precio total
+            const precioTotal = cantidad * precioUnitario;
+            precioTotalInput.value = precioTotal.toFixed(2); // Actualiza el precio total
+
+            // Cálculo total con descuento del 0.1%
+            const totalConDescuento = precioTotal * 0.999; // Aplica el descuento del 0.1%
+            totalConDescuentoInput.value = totalConDescuento.toFixed(2); // Actualiza el total con descuento
+
+            // Actualiza el resumen general
+            actualizarResumenGeneral();
+
+            // Guarda los datos en el almacenamiento local
+            guardarDatos();
+        }
+
+function ajustarPrecios() {
+
+    const montoDeseado = parseFloat(localStorage.getItem('montoDeseado')) || 0;
+
+
+    if (montoDeseado <= 0) {
+
+        alert("Por favor, ingrese un monto deseado válido en el popup.");
+
+        return;
+
+    }
+
+
+    const rows = document.querySelectorAll('.product-row');
+
+
+    let totalActual = 0;
+
+    let totalCantidades = 0;
+
+    let totalExento = 0;
+
+
+    // Obtener el porcentaje de retención
+
+    const retencionText = document.getElementById('retencionText').innerText;
+
+    const porcentajeRetencion = parseInt(retencionText) || 0;
+
+
+    // Calcular el total actual y la suma de cantidades
+
+    rows.forEach(row => {
+
+        const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
+
+        const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
+
+        const exentoCheckbox = row.querySelector('.input-exento');
+
+
+        totalActual += cantidad * precioUnitario;
+
+        totalCantidades += cantidad;
+
+
+        if (exentoCheckbox.checked) {
+
+            totalExento += cantidad * precioUnitario;
+
+        }
+
+    });
+
+
+    if (totalCantidades === 0) {
+
+        alert("No hay productos para ajustar.");
+
+        return;
+
+    }
+
+
+    // Función para calcular el total a pagar dado un subtotal
+
+    function calcularTotalAPagar(subtotal) {
+
+        const iva = (subtotal - totalExento) * 0.16;
+
+        let ivaAPagar = 0;
+
+
+        if (porcentajeRetencion === 75) {
+
+            ivaAPagar = iva * 0.25;
+
+        } else if (porcentajeRetencion === 0) {
+
+            ivaAPagar = iva;
+
+        }
+
+
+        const timbreFiscal = subtotal * 0.001;
+
+        return subtotal + ivaAPagar - timbreFiscal;
+
+    }
+
+
+    // Encontrar el subtotal correcto usando búsqueda binaria
+
+    let subtotalBajo = 0;
+
+    let subtotalAlto = montoDeseado * 2; // Asumimos que el subtotal no será más del doble del monto deseado
+
+    let subtotalMedio;
+
+    let totalAPagar;
+
+
+    while (subtotalAlto - subtotalBajo > 0.01) {
+
+        subtotalMedio = (subtotalBajo + subtotalAlto) / 2;
+
+        totalAPagar = calcularTotalAPagar(subtotalMedio);
+
+
+        if (totalAPagar < montoDeseado) {
+
+            subtotalBajo = subtotalMedio;
+
+        } else {
+
+            subtotalAlto = subtotalMedio;
+
+        }
+
+    }
+
+
+    // Calcular el factor de ajuste
+
+    const factorAjuste = subtotalMedio / (totalActual - totalExento);
+
+
+    // Ajustar los precios unitarios
+
+    rows.forEach(row => {
+
+        const precioUnitarioInput = row.querySelector('.input-precio-unitario');
+
+        const precioUnitarioActual = parseFloat(precioUnitarioInput.value) || 0;
+
+        const exentoCheckbox = row.querySelector('.input-exento');
+
+
+        if (!exentoCheckbox.checked) {
+
+            const nuevoPrecioUnitario = precioUnitarioActual * factorAjuste;
+
+            precioUnitarioInput.value = nuevoPrecioUnitario.toFixed(2);
+
+            calcularTotal(precioUnitarioInput);
+
+        }
+
+    });
+
+
+    actualizarResumenGeneral();
+
+}
+
+///////////
+
+function ajustarPrecio(event, input) {
+
+    event.preventDefault(); // Previene el comportamiento por defecto
+
+    
+
+    var step = event.deltaY < 0 ? 0.01 : -0.01; // Determina la dirección del ajuste
+
+    var newValue = parseFloat(input.value) + step;
+
+    
+
+    // Asegura que el nuevo valor tenga máximo 2 decimales
+
+    newValue = Math.round(newValue * 100) / 100;
+
+    
+
+    // Asegura que el valor no sea negativo
+
+    if (newValue >= 0) {
+
+        input.value = newValue.toFixed(2); // Fija el número de decimales a 2
+
+    }
+
+    
+
+    calcularTotal(input); // Recalcula el total
+
+}
+
+        function eliminarFila(button) {
+            const row = button.closest('.product-row'); // Localiza la fila correspondiente
+            row.remove(); // Elimina la fila del DOM
+
+            // Actualiza el resumen general
+            actualizarResumenGeneral();
+
+            // Guarda los datos en el almacenamiento local
+            guardarDatos();
+        }
+
+function agregarFila() {
+
+    const productContainer = document.getElementById('productContainer');
+
+    const newRow = document.createElement('div');
+
+    newRow.className = 'product-row';
+
+    newRow.innerHTML = `
+
+        <input type="number" class="input-cantidad" placeholder="0" min="0" oninput="calcularTotal(this)">
+
+        <input type="text" class="input-descripcion" placeholder="Descripción del producto">
+
+        <input type="number" class="input-precio-unitario" placeholder="0.00" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+
+        <input type="number" class="input-precio-total" placeholder="0.00" step="0.01" readonly>
+
+        <input type="number" class="input-total-con-descuento" placeholder="0.00" step="0.01" readonly>
+
+        <label>
+
+            <input type="checkbox" class="input-exento" onchange="actualizarResumenGeneral()"> Exento IVA
+
+        </label>
+
+        <button class="btn-eliminar" onclick="eliminarFila(this)">Eliminar</button>
+
+    `;
+
+    productContainer.appendChild(newRow);
+
+    actualizarResumenGeneral();
+
+}
+
+function actualizarResumenGeneral() {
+
+    const productRows = document.querySelectorAll('.product-row');
+
+    let subtotalGeneral = 0;
+
+    let exentoGeneral = 0;
+
+
+    productRows.forEach(row => {
+
+        const precioTotal = parseFloat(row.querySelector('.input-precio-total').value) || 0;
+
+        const exentoCheckbox = row.querySelector('.input-exento');
+
+
+        subtotalGeneral += precioTotal;
+
+        if (exentoCheckbox.checked) {
+
+            exentoGeneral += precioTotal;
+
+        }
+
+    });
+
+
+    const ivaGeneral = (subtotalGeneral - exentoGeneral) * 0.16; // Cálculo del IVA
+
+    const totalFactura = subtotalGeneral + ivaGeneral; // Total final
+
+
+    // Actualiza los valores en el resumen
+
+    document.getElementById('subtotalGeneral').innerText = subtotalGeneral.toFixed(2);
+
+    document.getElementById('exentoGeneral').innerText = exentoGeneral.toFixed(2);
+
+    document.getElementById('ivaGeneral').innerText = ivaGeneral.toFixed(2);
+
+    document.getElementById('totalGeneral').innerText = totalFactura.toFixed(2);
+
+
+    // Nuevos cálculos
+
+    const retencionText = document.getElementById('retencionText').innerText;
+
+    const porcentajeRetencion = parseInt(retencionText) || 0;
+
+    
+
+    let ivaAPagar = 0;
+
+    if (porcentajeRetencion === 75) {
+
+        ivaAPagar = ivaGeneral * 0.25;
+
+    } else if (porcentajeRetencion === 0) {
+
+        ivaAPagar = ivaGeneral;
+
+    }
+
+    
+
+    const pagoSinTimbre = subtotalGeneral + ivaAPagar;
+
+    const timbreFiscal = subtotalGeneral * 0.001; // 0.1% del subtotal
+
+    const totalAPagar = pagoSinTimbre - timbreFiscal;
+
+
+    // Actualiza los nuevos valores en el resumen
+
+    document.getElementById('ivaAPagar').innerText = ivaAPagar.toFixed(2);
+
+    document.getElementById('pagoSinTimbre').innerText = pagoSinTimbre.toFixed(2);
+
+    document.getElementById('timbreFiscal').innerText = timbreFiscal.toFixed(2);
+
+    document.getElementById('totalAPagar').innerText = totalAPagar.toFixed(2);
+
+}
+
+        function guardarDatos() {
+            const rows = document.querySelectorAll('.product-row');
+            const data = Array.from(rows).map(row => {
+                return {
+                    cantidad: row.querySelector('.input-cantidad').value,
+                    descripcion: row.querySelector('.input-descripcion').value,
+                    precioUnitario: row.querySelector('.input-precio-unitario').value,
+                    precioTotal: row.querySelector('.input-precio-total').value,
+                    totalConDescuento: row.querySelector('.input-total-con-descuento').value,
+                    exentoIVA: row.querySelector('.input-exento').checked // Estado del checkbox
+                };
+            });
+            localStorage.setItem('productos', JSON.stringify(data)); // Almacena los datos en localStorage
+        }
+function mostrarPopup() {
+    document.getElementById('popup').style.display = 'flex';
+
+    // Reiniciar campos
+    document.getElementById('popupFecha').value = '';
+    document.getElementById('popupProveedor').selectedIndex = 0;
+    document.getElementById('popupRetencion').selectedIndex = 0;
+    document.getElementById('popupNroOperacion').value = '';
+
+    // Cargar el monto deseado guardado
+    const montoDeseadoGuardado = localStorage.getItem('montoDeseado');
+    if (montoDeseadoGuardado) {
+        document.getElementById('popupMontoDeseado').value = montoDeseadoGuardado;
+    } else {
+        document.getElementById('popupMontoDeseado').value = '';
+    }
+}
+
+function ajustarPrecioUnitario(event, input) {
+
+    // Prevenir el comportamiento por defecto del scroll
+
+    event.preventDefault();
+
+
+    // Obtener el valor actual
+
+    let valor = parseFloat(input.value) || 0;
+
+
+    // Determinar la dirección del scroll
+
+    if (event.deltaY < 0) {
+
+        // Scroll hacia arriba, incrementar
+
+        valor += 0.01;
+
+    } else {
+
+        // Scroll hacia abajo, decrementar
+
+        valor -= 0.01;
+
+    }
+
+
+    // Redondear a 2 decimales
+
+    valor = Math.round(valor * 100) / 100;
+
+
+    // Asegurarse de que el valor no sea negativo
+
+    valor = Math.max(0, valor);
+
+
+    // Actualizar el valor del input
+
+    input.value = valor.toFixed(2);
+
+
+    // Recalcular el total
+
+    calcularTotal(input);
+
+}
+
+        function cargarDatos() {
+            const data = JSON.parse(localStorage.getItem('productos'));
+            if (data) {
+                data.forEach(item => {
+                    const productContainer = document.getElementById('productContainer');
+                    const newRow = document.createElement('div');
+                    newRow.className = 'product-row';
+                    newRow.innerHTML = `
+                        <input type="number" class="input-cantidad" value="${item.cantidad}" oninput="calcularTotal(this)">
+                        <input type="text" class="input-descripcion" value="${item.descripcion}">
+                        <input type="number" class="input-precio-unitario" value="${item.precioUnitario}" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+                        <input type="number" class="input-precio-total" value="${item.precioTotal}" readonly>
+                        <input type="number" class="input-total-con-descuento" value="${item.totalConDescuento}" readonly>
+                        <label>
+                            <input type="checkbox" class="input-exento" ${item.exentoIVA ? 'checked' : ''} onchange="actualizarResumenGeneral()"> Exento IVA
+                        </label>
+                        <button class="btn-eliminar" onclick="eliminarFila(this)">Eliminar</button>
+                    `;
+                    productContainer.appendChild(newRow); // Agrega la nueva fila al contenedor
+                });
+            }
+        }
+    </script>
+</body>
+</html>
