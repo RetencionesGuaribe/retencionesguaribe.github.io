@@ -96,16 +96,33 @@
     </div>
 
     <!-- Sección para calcular pago ya realizado -->
-    <div id="pago-realizado" class="container fade">
-        <h2 class="titulo-seccion">Datos de Retención por Monto</h2>
-        <label for="cuadro1">Monto Total:</label>
-        <input type="number" id="cuadro1">
-        <label for="opcion">Seleccione Retención:</label>
-        <select id="opcion">
-            <option value="75">75%</option>
-            <option value="100">100%</option>
-        </select>
-        <button onclick="calcular()">Calcular</button>
+<div id="pago-realizado" class="container fade">
+
+    <h2 class="titulo-seccion">Datos de Retención por Monto</h2>
+
+    <label for="proveedor-realizado">Seleccione Proveedor:</label>
+
+    <select id="proveedor-realizado" onchange="actualizarRetencion('proveedor-realizado', 'opcion')">
+
+        <!-- Se llenará dinámicamente -->
+
+    </select>
+
+    <label for="cuadro1">Monto Total:</label>
+
+    <input type="number" id="cuadro1">
+
+    <label for="opcion">Retención:</label>
+
+    <select id="opcion">
+
+        <option value="75">75%</option>
+
+        <option value="100">100%</option>
+
+    </select>
+
+    <button onclick="calcular()">Calcular</button>
 
         <h3 id="resultado"></h3> <!-- Base Imponible -->
         <h3 id="iva"></h3> <!-- IVA -->
@@ -120,67 +137,128 @@
 
     <!-- Sección para calcular nuevo pago -->
 <div id="nuevo-pago" class="container fade">
-
     <h2 class="titulo-seccion">Calcular Datos de Retención</h2>
-
-    <label for="total-factura">Total de Factura (opcional):</label>
-
-    <input type="number" id="total-factura">
-
-    <label for="base">Base Imponible:</label>
-
-    <input type="number" id="base">
-
-    <label for="exento">Monto Exento:</label>
-
-    <input type="number" id="exento" value="0">
-
-    <label for="retencion">Seleccione Retención:</label>
-
-    <select id="retencion">
-
-        <option value="75">75%</option>
-
-        <option value="100">100%</option>
-
+    <label for="proveedor-nuevo">Seleccione Proveedor:</label>
+    <select id="proveedor-nuevo" onchange="actualizarRetencion('proveedor-nuevo', 'retencion')">
+        <!-- Se llenará dinámicamente -->
     </select>
-
+    <label for="tipo-calculo">Tipo de Cálculo:</label>
+    <select id="tipo-calculo" onchange="cambiarTipoCalculo()">
+        <option value="base">Desde Base Imponible</option>
+        <option value="total">Desde Total de Factura</option>
+    </select>
+    <div id="calculo-base">
+        <label for="base">Base Imponible:</label>
+        <input type="number" id="base">
+    </div>
+    <div id="calculo-total" style="display:none;">
+        <label for="total-factura">Total de Factura:</label>
+        <input type="number" id="total-factura">
+    </div>
+    <label for="exento">Monto Exento:</label>
+    <input type="number" id="exento" value="0">
+    <label for="retencion">Retención:</label>
+    <select id="retencion">
+        <option value="75">75%</option>
+        <option value="100">100%</option>
+    </select>
     <button onclick="calcularNuevoPago()">Calcular</button>
 
-	<h3 id="subtotal-resultado"></h3>
-        <h3 id="resultado-nuevo-pago"></h3>
-	<h3 id="exento-resultado"></h3>
-        <h3 id="iva-nuevo-pago"></h3>
-	<h3 id="total-factura-nuevo"></h3>
-        <h3 id="iva-total"></h3>
-        <h3 id="iva-retenido-nuevo"></h3>
-        <h3 id="total-nuevo"></h3>
-        <h3 id="timbre-fiscal-nuevo"></h3>
-        <h3 id="real-total-a-pagar"></h3>
+    <h3 id="subtotal-nuevo-pago"></h3>
+    <h3 id="base-imponible-nuevo-pago"></h3>
+    <h3 id="exento-nuevo-pago"></h3>
+    <h3 id="iva-nuevo-pago"></h3>
+    <h3 id="total-factura-nuevo"></h3>
+    <h3 id="iva-retenido-nuevo"></h3>
+    <h3 id="iva-pagado-nuevo"></h3>
+    <h3 id="timbre-fiscal-nuevo"></h3>
+    <h3 id="real-total-a-pagar"></h3>
 
-        <button onclick="volverInicio()">Volver a Inicio</button>
-    </div>
+    <button onclick="volverInicio()">Volver a Inicio</button>
+</div>
 
     <script>
-        // Función para mostrar las secciones con animación
-        function mostrarSeccion(seccion) {
-            document.querySelector('h1').style.display = 'none';
-            document.querySelector('.container').style.display = 'none';
 
-            document.getElementById('pago-realizado').classList.remove('show');
-            document.getElementById('nuevo-pago').classList.remove('show');
+// Lista de proveedores
+const proveedores = [
+    { nombre: "AINKAA, C.A.", retencion: "75" },
+    { nombre: "AUTOMOTRIZ CELTA C.A", retencion: "75" },
+    { nombre: "AUTORESPUESTOS SHAGYY, C.A.", retencion: "100" },
+    { nombre: "COMERCIAL ANA K 1304, FP", retencion: "100" },
+    { nombre: "COMERCIAL H Y G, C.A.", retencion: "100" },
+    { nombre: "COMERCIAL KARJUAN & ANYILUZ, C.A.", retencion: "100" },
+    { nombre: "FUNERARIA ROSTRO DE JESUS, C.A.", retencion: "100" },
+    { nombre: "INVERSIONES AXEMTEK C.A.", retencion: "75" },
+    { nombre: "INVERSIONES EL TODO PODEROSO 2020", retencion: "75" },
+    { nombre: "INVERSIONES GRAN VICTORIA 2015, C.A.", retencion: "75" },
+    { nombre: "INVERSIONES GRATEROL 2020, C.A.", retencion: "75" },
+    { nombre: "INVERSIONES GSF 2024 C.A.", retencion: "100" },
+    { nombre: "INVERSIONES LA FORTALEZA & ASOCIADOS C.A.", retencion: "100" },
+    { nombre: "INVERSIONES LA VIRTUD", retencion: "100" },
+    { nombre: "INVERSIONES MACK C,A.", retencion: "75" },
+    { nombre: "INVERSIONES ROARI C,A.", retencion: "75" },
+    { nombre: "INVERSIONES Y SUMINISTROS C&E, C.A.", retencion: "100" },
+    { nombre: "INVERSONES MARIA LUCILA C,A.", retencion: "100" },
+    { nombre: "MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.", retencion: "75" },
+    { nombre: "QUIMICA ABSOLUTA C.A", retencion: "100" },
+    { nombre: "RL SOLUCIONES, C.A", retencion: "75" },
+    { nombre: "TRANSFORMADORES ALTAGRACIA, C.A.", retencion: "75" },
+    { nombre: "VIALIDADES Y CONSTRUCCIONES GUARIBE C A", retencion: "100" },
+    { nombre: "INVERSIONES RACHO LAS MARIAS, C.A.", retencion: "75" },
+    { nombre: "SOLUCIONES GRAFICAS SIVI 2013, C.A.", retencion: "75" },
+    { nombre: "NOVEDADES J&V, C.A.", retencion: "100" }
+];
 
-            setTimeout(() => {
-                document.getElementById('pago-realizado').style.display = 'none';
-                document.getElementById('nuevo-pago').style.display = 'none';
+// Función para llenar el select de proveedores
+function llenarSelectProveedores(selectId) {
+    const select = document.getElementById(selectId);
+    select.innerHTML = '<option value="">Seleccione un proveedor</option>';
+    proveedores.forEach(proveedor => {
+        const option = document.createElement('option');
+        option.value = proveedor.nombre;
+        option.textContent = proveedor.nombre;
+        option.dataset.retencion = proveedor.retencion;
+        select.appendChild(option);
+    });
+}
 
-                const element = document.getElementById(seccion);
-                element.style.display = 'block';
-                setTimeout(() => {
-                    element.classList.add('show');
-                }, 10);
-            }, 500);
+// Función para actualizar la retención basada en el proveedor seleccionado
+function actualizarRetencion(proveedorSelectId, retencionSelectId) {
+    const proveedorSelect = document.getElementById(proveedorSelectId);
+    const retencionSelect = document.getElementById(retencionSelectId);
+    const selectedOption = proveedorSelect.options[proveedorSelect.selectedIndex];
+    if (selectedOption.dataset.retencion) {
+        retencionSelect.value = selectedOption.dataset.retencion;
+    }
+}
+
+// Función para mostrar las secciones con animación
+function mostrarSeccion(seccion) {
+    document.querySelector('h1').style.display = 'none';
+    document.querySelector('.container').style.display = 'none';
+
+    document.getElementById('pago-realizado').classList.remove('show');
+    document.getElementById('nuevo-pago').classList.remove('show');
+
+    setTimeout(() => {
+        document.getElementById('pago-realizado').style.display = 'none';
+        document.getElementById('nuevo-pago').style.display = 'none';
+
+        const element = document.getElementById(seccion);
+        element.style.display = 'block';
+        
+        // Llenar el select de proveedores correspondiente
+        if (seccion === 'pago-realizado') {
+            llenarSelectProveedores('proveedor-realizado');
+        } else if (seccion === 'nuevo-pago') {
+            llenarSelectProveedores('proveedor-nuevo');
         }
+
+        setTimeout(() => {
+            element.classList.add('show');
+        }, 10);
+    }, 500);
+}
 
         // Función para volver a la página de inicio
         function volverInicio() {
@@ -227,50 +305,56 @@
         }
 
         // Calcular un nuevo pago
+function cambiarTipoCalculo() {
+
+    const tipoCalculo = document.getElementById('tipo-calculo').value;
+
+    document.getElementById('calculo-base').style.display = tipoCalculo === 'base' ? 'block' : 'none';
+
+    document.getElementById('calculo-total').style.display = tipoCalculo === 'total' ? 'block' : 'none';
+
+}
+
+
 function calcularNuevoPago() {
-    const totalFacturaInput = parseFloat(document.getElementById('total-factura').value);
-    let base = parseFloat(document.getElementById('base').value);
+    const tipoCalculo = document.getElementById('tipo-calculo').value;
     const exento = parseFloat(document.getElementById('exento').value) || 0;
     const retencion = document.getElementById('retencion').value;
 
-    let subtotal, iva, totalFactura, baseImponible;
+    let baseImponible, totalFactura;
 
-    if (!isNaN(totalFacturaInput) && totalFacturaInput > 0) {
-        // Cálculo basado en el total de la factura
-        totalFactura = totalFacturaInput;
-        iva = (totalFactura - exento) / 1.16 * 0.16;
-        subtotal = totalFactura - iva;
-        baseImponible = subtotal - exento;
-    } else if (!isNaN(base) && base > 0) {
-        // Cálculo basado en la base imponible
-        baseImponible = base;
-        subtotal = baseImponible + exento;
-        iva = baseImponible * 0.16;
-        totalFactura = subtotal + iva;
+    if (tipoCalculo === 'base') {
+        baseImponible = parseFloat(document.getElementById('base').value);
+        if (isNaN(baseImponible) || baseImponible < 0) {
+            alert("Por favor, ingresa un monto válido para la base imponible.");
+            return;
+        }
+        const iva = baseImponible * 0.16;
+        totalFactura = baseImponible + exento + iva;
     } else {
-        alert("Por favor, ingresa un monto válido para el Total de Factura o la Base Imponible.");
-        return;
+        totalFactura = parseFloat(document.getElementById('total-factura').value);
+        if (isNaN(totalFactura) || totalFactura < 0) {
+            alert("Por favor, ingresa un monto válido para el total de la factura.");
+            return;
+        }
+        baseImponible = (totalFactura - exento) / 1.16;
     }
 
+    const iva = baseImponible * 0.16;
+    const subtotal = baseImponible + exento;
     const timbreFiscal = subtotal * 0.001;
     const ivaRetenido = retencion === '75' ? iva * 0.75 : iva;
     const ivaPagado = retencion === '75' ? iva * 0.25 : 0;
-    const totalAPagar = subtotal + ivaPagado - timbreFiscal;
 
-    // Actualizar los campos de entrada
-    document.getElementById('total-factura').value = totalFactura.toFixed(2);
-    document.getElementById('base').value = baseImponible.toFixed(2);
-
-    // Mostrar resultados
-    document.getElementById('resultado-nuevo-pago').innerText = `Base Imponible: ${baseImponible.toFixed(2)}`;
-    document.getElementById('exento-resultado').innerText = `Monto Exento: ${exento.toFixed(2)}`;
-    document.getElementById('subtotal-resultado').innerText = `Subtotal: ${subtotal.toFixed(2)}`;
+    document.getElementById('subtotal-nuevo-pago').innerText = `Subtotal: ${subtotal.toFixed(2)}`;
+    document.getElementById('base-imponible-nuevo-pago').innerText = `Base Imponible: ${baseImponible.toFixed(2)}`;
+    document.getElementById('exento-nuevo-pago').innerText = `Exento: ${exento.toFixed(2)}`;
     document.getElementById('iva-nuevo-pago').innerText = `IVA (16%): ${iva.toFixed(2)}`;
     document.getElementById('total-factura-nuevo').innerText = `Total de Factura: ${totalFactura.toFixed(2)}`;
-    document.getElementById('iva-total').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
-    document.getElementById('iva-retenido-nuevo').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
-    document.getElementById('total-nuevo').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
-    document.getElementById('real-total-a-pagar').innerText = `Total a Pagar: ${totalAPagar.toFixed(2)}`;
+    document.getElementById('iva-retenido-nuevo').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
+    document.getElementById('iva-pagado-nuevo').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
+    document.getElementById('timbre-fiscal-nuevo').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
+    document.getElementById('real-total-a-pagar').innerText = `Total a Pagar: ${(subtotal + ivaPagado - timbreFiscal).toFixed(2)}`;
 }
     </script>
 </body>
