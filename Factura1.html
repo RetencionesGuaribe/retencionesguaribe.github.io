@@ -6,7 +6,7 @@
     <title>Factura Modificada</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
+body {
     background-color: #f0f4f8;
     font-family: 'Roboto', sans-serif;
     color: #333;
@@ -498,600 +498,810 @@ input:focus, select:focus {
 
 </div>
 
-    <script>
-        // Habilitar el arrastre del contenedor
-        const container = document.getElementById('draggableContainer');
-        
-        container.onmousedown = function(event) {
-            let shiftX = event.clientX - container.getBoundingClientRect().left;
-            let shiftY = event.clientY - container.getBoundingClientRect().top;
-
-            function moveAt(pageX, pageY) {
-                container.style.left = pageX - shiftX + 'px';
-                container.style.top = pageY - shiftY + 'px';
-            }
-
-            function onMouseMove(event) {
-                moveAt(event.pageX, event.pageY);
-            }
-
-            document.addEventListener('mousemove', onMouseMove);
-            document.onmouseup = function() {
-                document.removeEventListener('mousemove', onMouseMove);
-                document.onmouseup = null;
-            };
-        };
-
-        container.ondragstart = function() {
-            return false; // Previene el comportamiento de arrastre por defecto
-        };
-
-        // Mostrar el popup al cargar la página
-        window.onload = function() {
-            document.getElementById('popup').style.display = 'flex';
-            
-        };
-
-function seleccionarProveedor() {
-    const fecha = document.getElementById('popupFecha').value;
-    const proveedorSelect = document.getElementById('popupProveedor');
-    const retencionSelect = document.getElementById('popupRetencion');
-    const nroOperacion = document.getElementById('popupNroOperacion').value;
-    const montoDeseado = document.getElementById('popupMontoDeseado').value;
-
-    let proveedorText;
-    if (proveedorSelect.value === 'manual') {
-        proveedorText = document.getElementById('proveedorManual').value;
-    } else {
-        proveedorText = proveedorSelect.options[proveedorSelect.selectedIndex].text;
-    }
-
-    // Actualiza los campos en la interfaz
-    document.getElementById('fecha').value = fecha;
-    document.getElementById('proveedorText').innerText = proveedorText;
-
-    // Actualiza la retención
-    document.getElementById('retencionText').innerText = `Ret: ${retencionSelect.value}%`;
-
-    document.getElementById('nroOperacionText').innerText = nroOperacion;
-
-    // Guarda el monto deseado en localStorage
-    if (montoDeseado) {
-        localStorage.setItem('montoDeseado', montoDeseado);
-    }
-
-    // Oculta la ventana modal
-    document.getElementById('popup').style.display = 'none';
-
-    // Actualiza el resumen general para reflejar los cambios
-    actualizarResumenGeneral();
-}
-
-
-
-function actualizarRetencion() {
-    const proveedorSelect = document.getElementById('popupProveedor');
-    const retencionSelect = document.getElementById('popupRetencion');
-    const proveedorOption = proveedorSelect.options[proveedorSelect.selectedIndex];
-
-    if (proveedorOption.value !== 'manual') {
-        const retencion = proveedorOption.getAttribute('data-retencion');
-        retencionSelect.value = retencion;
-    }
-}
-
-function limpiarLocalStorage() {
-
-    localStorage.clear();
-
-    console.log("LocalStorage ha sido limpiado");
-
-}
-
-
-
-function ajustarPrecios() {
-
-const montoDeseado = localStorage.getItem('montoDeseado');
-
-console.log('montoDeseado:', montoDeseado);
-
-if (montoDeseado === null) {
-
-    alert("Por favor, seleccione un proveedor y ingrese un monto deseado válido en el popup.");
-
-    return;
-
-}
-
-const montoDeseadoFloat = parseFloat(montoDeseado);
-
-console.log('montoDeseadoFloat:', montoDeseadoFloat);
-
-if (montoDeseadoFloat <= 0) {
-
-    alert("Por favor, ingrese un monto deseado válido en el popup.");
-
-    return;
-
-}
-
-
-const rows = document.querySelectorAll('.product-row');
-
-let subtotalConIVA = 0;
-
-let subtotalExento = 0;
-
-
-rows.forEach(row => {
-
-    const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
-
-    const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
-
-    const isExento = row.querySelector('.input-exento').checked;
-
-
-    const subtotal = cantidad * precioUnitario;
-
-    if (isExento) {
-
-        subtotalExento += subtotal;
-
-    } else {
-
-        subtotalConIVA += subtotal;
-
-    }
-
-});
-
-
-console.log('subtotalConIVA:', subtotalConIVA);
-
-console.log('subtotalExento:', subtotalExento);
-
-
-const totalActual = calcularTotalAPagar(subtotalConIVA, subtotalExento);
-
-console.log('totalActual:', totalActual);
-
-if (totalActual === 0) {
-
-    alert("El total actual es cero. No se puede ajustar.");
-
-    return;
-
-}
-
-
-const factorAjuste = montoDeseadoFloat / totalActual;
-
-console.log('factorAjuste:', factorAjuste);
-
-
-rows.forEach(row => {
-
-    const precioUnitarioInput = row.querySelector('.input-precio-unitario');
-
-    const nuevoPrecioUnitario = parseFloat(precioUnitarioInput.value) * factorAjuste;
-
-    precioUnitarioInput.value = nuevoPrecioUnitario.toFixed(2);
-
-    calcularTotal(precioUnitarioInput);
-
-});
-
-
-actualizarResumenGeneral();
-
-}
-
-function calcularTotalAPagar(subConIVA, subExento) {
-    const iva = subConIVA * 0.16;
-    const porcentajeRetencion = parseInt(document.getElementById('retencionText').innerText.match(/\d+/)[0]) || 0;
-    const ivaAPagar = porcentajeRetencion === 75 ? iva * 0.25 : (porcentajeRetencion === 0 ? iva : 0);
-    const timbreFiscal = (subConIVA + subExento) * 0.001;
-    return subConIVA + subExento + ivaAPagar - timbreFiscal;
-}
-
-function toggleProveedorManual() {
-
-    const proveedorSelect = document.getElementById('popupProveedor');
-
-    const proveedorManualContainer = document.getElementById('proveedorManualContainer');
-
+<script>
+    // Lista de productos comunes para el autocompletado
+const productosComunes = [
+    // Carnes y embutidos
+    "Kg pollo beneficiado",
+    "Kg carne molida",
+    "Kg carne corte ganso",
+    "Kg salchicha",
+    "Mortadela 500gr",
+
+    // Lácteos y huevos
+    "Kg queso blanco",
+    "Kg queso amarillo",
+    "Cartón de huevos",
+    "Mantequilla Deline (caja 1x24)",
+
+    // Bebidas
+    "Cajas de refresco",
+    "Cajas de agua 600ml",
+    "Lt Jugos YUKI",
+    "Bolsas de hielo",
+
+    // Aceites y grasas
+    "Aceite (litro)",
+    "Paila de aceite Maxidiesel 50 litros",
+    "Paila aceite hidráulico 68 litros",
+    "Aceite PDV 2 tiempos",
+
+    // Harinas y cereales
+    "Bulto harina Kaly 1x20",
+    "Bulto harina trigo 1x20",
+    "Bulto arroz 1x20",
+    "Kg pasta",
+
+    // Verduras y frutas
+    "Kg cebolla",
+    "Kg ajo",
+    "Kg ají dulce",
+    "Kg papa",
+    "Kg naranja",
+    "Kg mandarina",
+    "Kg patilla",
+    "Melón",
+    "Kg cambur",
+    "Zanahoria",
+    "Repollo",
+    "Aliños verdes",
+
+    // Condimentos y salsas
+    "Cubitos",
+    "Kg sal",
+    "Mayonesa 500g",
+    "Salsa de tomate",
+
+    // Azúcar y café
+    "Kg azúcar",
+    "Café 250gr",
+
+    // Artículos desechables
+    "Cajas de bandejas 700 ML 10x25",
+    "Bulto de platos plásticos #8 50x10",
+    "Bulto de platos plásticos #9 50x10",
+    "Paquete de vasos 100U #77",
+    "Bultos de vasos #77 25x100",
+    "Paquete de vasos de café #47 (caja 1x50x20U)",
+    "Bultos de vasos para café #47 25x100",
+    "Bulto de cubiertos 10x100",
+    "Bulto servilletas Brilux cuadradas 30x250H",
+    "Rollo de papel envoplas",
+    "Paquete de bolsas sin asa 1kg",
+    "Paquete de bolsas negras para basura 100UND",
+    "Bolsas Negras Para Basura Tipo B-40 Kg Calibre 14 100u",
+
+    // Artículos de limpieza
+    "Litros de cloro",
+    "Litros de desinfectante",
+    "Litros de desengrasante",
+    "Litros de jabón líquido concentrado",
+    "Litros de cera roja",
+    "Litros de cera blanca",
+    "Pañitos de cocina",
+    "Docenas de cepillo suave",
+    "Bulto de ACE en polvo 20kg",
+
+    // Materiales de construcción
+    "Sacos de cemento",
+    "Cabillas 1/2 y 3/8",
+    "Sacos de cal",
+    "Viga 2x1",
+    "Barra lisa",
+
+    // Herramientas
+    "Pala cuadrada con cabo",
+    "Pala construcción Bellota profesional", // Reemplazado por "Pala cuadrada con cabo"
+    "Discos de desbaste",
+    "Disco diamantado de corte",
+    "Disco run 7",
+    "Discos de corte rápido 7''",
+    "Discos trozadora 14''",
+    "Pliego de lijas",
+    "Copa de alambre",
+    "Par de guantes de carnaza",
+    "Kit para pintar",
+    "Tijera de podar",
+    "Nylon desmalezadora",
+    "Machete gavilan",
+    "Electrodos",
+    "Alambre liso",
+    "Barniz caoba",
+    "Brocha covo 3",
+    "Cerradura cisa",
+    "Llave dahai",
+    "Teipe cobra",
+    "Teipe negro tipo cobra 10 unid",
+    "Socate Negro",
+    "Cajetin plastico 4x2",
+
+    // Artículos eléctricos
+    "Cable 8THW / 200m",
+    "Cable 10THW / 100m",
+    "Cable 12THW / 150m",
+    "Cable 12THW / 100m",
+    "Metros de cable spot 2*1",
+    "Enchufe vinil metal",
+    "Toma corriente doble",
+    "Luminarias LED 200W",
+    "Bombillos LED 15W",
+    "Sócate plafón",
+    "Electrodos Kg",
+    "Kg electrodos Lincon",
+    "Batería 1100AP",
+    "Motor ventilador condensador",
+    "Cable Numero 12 Thw Thhn 7 Hilos 100% Cobre (50 Mts)",
+
+    // Artículos de pintura
+    "Galón de pintura satinada",
+    "Galón de pintura en caucho",
+    "Fondo titan anticorrosivo",
+    "Manpica galón esmalte",
+    "Esmalte de pinturas",
+    "Cunete de pintura caucho",
+    "Teflón profesional 3/4",
+    "Teflón mediano amarillo",
+    "Goles de pintura Pintusa azul",
+
+    // Artículos de plomería
+    "Codos 3/4",
+    "Llave de chorro Wequp",
+    "Fondo 2 en 1 blanco 1/4",
+    "Metros de manguera culebra",
+    "Metros naylon guarana",
+    "Llave de arresto",
+    "Sifón",
+    "Herraje New oasis",
+    "Asiento de sanitario",
+    "Lavamanos",
+    "Soporte de lavamanos",
+    "Cerradura pistín fijo",
+    "Cerraduras sobreponer",
+    "Canilla flexible",
+    "Llaves de arresto",
+    "Poceta",
+    "Herraje",
+    "Tubos de electricidad",
+    "Recarga de bombona de gas de acetileno",
+    "Recarga de oxígeno industrial",
+    "Teipes cobra",
+    "Rollo de alambre liso 50kg",
+    "Nylon desmalezadora 100m",
+    "Lentes transparentes",
+    "Copa 1/ 3/4",
+    "Bisagra x2",
+    "Par de guantes de carnaza",
+    "Viga 2x1",
+    "Galon de fondo",
+    "Saco de cal",
+    "PQ Bolsa negra 100 UND",
+    "Cerradura pistín fijo",
+    "Cunete de pintura caucho",
+    "Tomacorriente doble",
+    "Lavamanos",
+    "Llave",
+    "Llave de arresto",
+    "Soporte de lavamanos",
+    "Sifón",
+    "Herraje",
+    "Poceta",
+    "Tejlón",
+    "Llaves de arresto",
+    "Canilla flexible",
+    "Bombillos LED 15W",
+    "Luminarias LED 200W",
+    "Cable 12THW / 150Mts",
+    "Socate Plafon",
+    "ESMALTE DE PINTURAS",
+    "CABLE 12THW / 100M",
+    "3 LUMINARIAS LED 200W",
+    "CERRADURAS",
+    "BROCHAS DE 4\"",
+    "KIT PARA PINTAR",
+    "RECARGAS DE OXIGENO INDUSTRIAL",
+ "TEIPES COBRAS",
+    "RECARGA DE BOMBONA DE GAS DE ACETILENO",
+    "TUBOS DE ELECTRICIDAD",
+    "SACOS DE CEMENTO",
+    "CABILLAS 1/2  3/8",
+    "SACOS DE CAL",
+    "PALA CONSTRUCCION BELLOTA PROFESIONAL",
+    "DISCOS DESBASTE",
+    "DISCO DIAMANTADO DE CORTE",
+    "DISCOS DE CORTE RAPIDO 7''",
+    "DISCOS TROZADORA 14''",
+    "LUMINARIAS LED 200W",
+    "PLIEGO DE LIJAS",
+    "BARRA LISA",
+    "COPA DE ALAMBRE",
+    "BISAGRA X2",
+    "PAR DE GUANTES DE CARNASA",
+    "VIGA 2X1",
+    "GALON DE FONDO",
+    "SACO DE CAL",
+    "PQ BOLSA NEGRA 100 UND",
+    "CERRADURA PISTIN FIJO",
+    "CUNETE DE P INTURA CAUCHO",
+    "TOMAC ORRIENTE DOBLE",
+    "LAVAMANOS",
+    "LLAVE",
+    "LLAVE DE ARRESTO",
+    "SOPORTE DE LAVAMANOS",
+    "SIFON",
+    "HERRAJE",
+    "POCETA",
+    "TEFLON",
+    "LLAVES DE ARRESTO",
+    "CANILLA FLEXIBLE",
+    "BOMBILLOS LED 15W",
+    "LUMINARIAS LED 200W",
+    "cable 8thw /200m",
+    "cable 10thw /100m",
+    "cable 12thw /150m",
+    "ROLLO DE ALAMBRE LISO 50KG",
+    "GALON DE PINTURA EN CAUCHO",
+    "KG ELECTRODO",
+    "CUNETE DE PINTURA CAUCHO",
+    "litros de cloro",
+    "litros de desinfectante",
+    "litros dedesinfectante mistolin",
+    "litros de jabon liquido concentrado",
+    "litros de cera  roja",
+    "litros de cera blanca",
+    "pañitos de cocina",
+    "cajas de vasos de café #77 100 U",
+    "Cajas de vasos #47 1x50x20U",
+    "bulto. Servilletas",
+    "cajas de bandejas de aluminio",
+    "bulto de cucharillas soperas ",
+    "bultos de tenerdores plasticos",
+    "bulto de cuchillos de plastico",
+    "rollo de papel envoplas",
+    "paq. De bolsas sin asa 1kg",
+    "bulto de bandejas medianas 10x25",
+    "galones de pintura satinada",
+    "rollos de alambre liso ",
+    "electrodos kg",
+    "sacos de cal ",
+    "discos de corte rapido #7",
+    "brochas #4",
+    "brochas #3",
+    "PAILA DE  ACEITE MAXIDIESEL 50 LITROS",
+    "PAILA ACEITE HIDRAULICO 68 LITROS",
+    "Fondo titan anticorrosivo",
+    "manpica galon esmalte",
+    "Kg electrodos Lincon",
+    "Asiento de sanitario",
+    "Herraje New oasis",
+    "copa 1/ 3/4",
+    "Codos 3/4",
+    "Metros de cable spot 2*1",
+    "enchufe vin il metal",
+    "teflon profesional 3/4",
+    "pala cuadrada con cabo",
+    "aceite PDV 2 tiempos",
+    "lentes transparentes",
+    "cerraduras sobreponer",
+    "codos 3/4",
+    "llave de chorro wequp",
+    "fondo 2 en 1 blanco 1/4",
+    "mts de manguera culebra",
+    "mts naylon guarana",
+    "sacos de cal",
+    "teflon mediano amarillo",
+    "Kg Naranja",
+    "Kg Mandarina",
+    "Kg Patilla",
+    "Melon",
+    "Kg Cambur",
+    "CAJAS DE AGUA 600ML",
+    "BOLSAS NEGRAS DE BASURA 100UND ",
+    "Cajas de refresco",
+    "Lt Jugos YUKI",
+    "Galletas sal ricas",
+    "Kg Queso",
+    "Mayonesa",
+    "Salsas de tomate",
+    "Pq Vasos #77",
+    "Pq de servilletas",
+    "Bolsas de hielo",
+    "Cajas de agua 600ml",
+    "Kg Azucar",
+    "Cafe 250gr",
+    "Pq vasos de cafe",
+    "resma de hojas blancas",
+    "docena de carpetas amarillas",
+    "docenas de boligrafos",
+    "POLLO BENFICIADO KG",
+    "CARNE MOLIDA KG",
+    "PASTA KG",
+    "ARROZ  KG",
+    "HARINAS KALY ",
+    "MANTEQUILLA DELINE",
+    "CEBOLLA KG",
+    "AJI DULCE KG",
+    "AJO",
+    "CUBITOS",
+    "ACEITES",
+    "QUESO BLANCO KG",
+    "AZUCAR KG",
+    "CAJA DE BANDEJAS DE ALUMINIO",
+    " PANELADA CAJAS ",
+    "CAFÉ 250 GRAMOS",
+    "HUEVOS CARTON",
+"Libreta",
+
+"Bolígrafo Paper Mate Kilométrico (caja)",
+
+"Resaltador KORES",
+
+"Caja hoja Carta HP 8.5\"",
+
+"Caja hoja Oficio HP 8.5\"",
+
+"Clip Binder Mordaza 41mm (Caja x20 Und Ofimak)",
+
+"Lápiz MONGOL",
+
+"Tinta para sello PRINTA",
+
+"Almohadilla de sello POINTER",
+
+"Caja grapas 100U",
+
+"Caja clip metálicos 100U",
+
+"Resma papel carbón KORES",
+
+// Artículos eléctricos y de iluminación
+"Cable Numero 8 Thw 7h 200 Mt",
+"Teipes negros cobra",
+"Bombillos LED 12w",
+"Socate Plafon N28",
+"Cajetin 4x2 plástico",
+"Interruptor de luz doble",
+"Lámparas LED Superficiales 24w",
+"Lámpara Reflector 40w para Socate E27 110v (x5u)",
+"Docena Teipe Negro Cobra",
+
+// Artículos de oficina y papelería
+"Caja de resma de hojas T/Carta",
+"Caja de resma de hojas T/Oficio",
+"Bolígrafos",
+"Carpetas amarillas manila",
+"Carpetas marrón",
+"Paquete de fundas protectoras",
+"Toner MXP Samsung 111",
+"Toner MXP HP 85A",
+
+];
+
+    // Habilitar el arrastre del contenedor
+    const container = document.getElementById('draggableContainer');
     
+    container.onmousedown = function(event) {
+        let shiftX = event.clientX - container.getBoundingClientRect().left;
+        let shiftY = event.clientY - container.getBoundingClientRect().top;
 
-    if (proveedorSelect.value === 'manual') {
-
-        proveedorManualContainer.style.display = 'block';
-
-    } else {
-
-        proveedorManualContainer.style.display = 'none';
-
-    }
-
-}
-
-function redondear(numero, decimales = 2) {
-
-return Number(Math.round(numero + 'e' + decimales) + 'e-' + decimales);
-
-}
-
-///////////
-
-function ajustarPrecio(event, input) {
-
-    event.preventDefault(); // Previene el comportamiento por defecto
-
-    
-
-    var step = event.deltaY < 0 ? 0.01 : -0.01; // Determina la dirección del ajuste
-
-    var newValue = parseFloat(input.value) + step;
-
-    
-
-    // Asegura que el nuevo valor tenga máximo 2 decimales
-
-    newValue = Math.round(newValue * 100) / 100;
-
-    
-
-    // Asegura que el valor no sea negativo
-
-    if (newValue >= 0) {
-
-        input.value = newValue.toFixed(2); // Fija el número de decimales a 2
-
-    }
-
-    
-
-    calcularTotal(input); // Recalcula el total
-
-}
-
-        function eliminarFila(button) {
-            const row = button.closest('.product-row'); // Localiza la fila correspondiente
-            row.remove(); // Elimina la fila del DOM
-
-            // Actualiza el resumen general
-            actualizarResumenGeneral();
-
-            // Guarda los datos en el almacenamiento local
-            guardarDatos();
+        function moveAt(pageX, pageY) {
+            container.style.left = pageX - shiftX + 'px';
+            container.style.top = pageY - shiftY + 'px';
         }
 
-function agregarFila() {
-
-    const productContainer = document.getElementById('productContainer');
-
-    const newRow = document.createElement('div');
-
-    newRow.className = 'product-row';
-
-    newRow.innerHTML = `
-
-        <input type="number" class="input-cantidad" placeholder="0" min="0" oninput="calcularTotal(this)">
-
-        <input type="text" class="input-descripcion" placeholder="Descripción del producto">
-
-        <input type="number" class="input-precio-unitario" placeholder="0.00" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
-
-        <input type="number" class="input-precio-total" placeholder="0.00" step="0.01" readonly>
-
-        <input type="number" class="input-total-con-descuento" placeholder="0.00" step="0.01" readonly>
-
-        <label>
-
-            <input type="checkbox" class="input-exento" onchange="actualizarResumenGeneral()"> E
-
-        </label>
-
-        <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
-
-    `;
-
-    productContainer.appendChild(newRow);
-
-    actualizarResumenGeneral();
-
-}
-
-
-
-        function guardarDatos() {
-            const rows = document.querySelectorAll('.product-row');
-            const data = Array.from(rows).map(row => {
-                return {
-                    cantidad: row.querySelector('.input-cantidad').value,
-                    descripcion: row.querySelector('.input-descripcion').value,
-                    precioUnitario: row.querySelector('.input-precio-unitario').value,
-                    precioTotal: row.querySelector('.input-precio-total').value,
-                    totalConDescuento: row.querySelector('.input-total-con-descuento').value,
-                    exentoIVA: row.querySelector('.input-exento').checked // Estado del checkbox
-                };
-            });
-            localStorage.setItem('productos', JSON.stringify(data)); // Almacena los datos en localStorage
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
         }
-function mostrarPopup() {
-    document.getElementById('popup').style.display = 'flex';
 
-    // Reiniciar campos
-    document.getElementById('popupFecha').value = '';
-    document.getElementById('popupProveedor').selectedIndex = 0;
-    document.getElementById('popupRetencion').selectedIndex = 0;
-    document.getElementById('popupNroOperacion').value = '';
+        document.addEventListener('mousemove', onMouseMove);
+        document.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.onmouseup = null;
+        };
+    };
 
-    // Cargar el monto deseado guardado
-    const montoDeseadoGuardado = localStorage.getItem('montoDeseado');
-    if (montoDeseadoGuardado) {
-        document.getElementById('popupMontoDeseado').value = montoDeseadoGuardado;
-    } else {
-        document.getElementById('popupMontoDeseado').value = '';
-    }
-}
+    container.ondragstart = function() {
+        return false; // Previene el comportamiento de arrastre por defecto
+    };
 
-document.getElementById("plantilla-select").addEventListener("change", function() {
-  const seleccionada = this.value;
-  if (seleccionada === "") {
-    // No hacer nada si se selecciona la opción por defecto
-    return;
-  }
+    // Mostrar el popup al cargar la página
+    window.onload = function() {
+        document.getElementById('popup').style.display = 'flex';
+        inicializarAutocompletado();
+    };
 
-  const plantillaSeleccionada = plantillas.find(plantilla => plantilla.nombre === seleccionada);
-
-  if (plantillaSeleccionada) {
-    // Carga la plantilla seleccionada
-    fetch(plantillaSeleccionada.ruta)
-      .then(response => response.text())
-      .then(data => {
-        // Mostrar la plantilla en el popup
-        document.getElementById("plantilla-container").innerHTML = data;
-      });
-  }
-});
-
-function ajustarPrecioUnitario(event, input) {
-
-    // Prevenir el comportamiento por defecto del scroll
-
-    event.preventDefault();
-
-
-    // Obtener el valor actual
-
-    let valor = parseFloat(input.value) || 0;
-
-
-    // Determinar la dirección del scroll
-
-    if (event.deltaY < 0) {
-
-        // Scroll hacia arriba, incrementar
-
-        valor += 0.01;
-
-    } else {
-
-        // Scroll hacia abajo, decrementar
-
-        valor -= 0.01;
-
+    function inicializarAutocompletado() {
+        document.addEventListener('input', function(e) {
+            if (e.target && e.target.classList.contains('input-descripcion')) {
+                const valor = e.target.value.toLowerCase();
+                const sugerencias = productosComunes.filter(producto => 
+                    producto.toLowerCase().includes(valor)
+                );
+                
+                // Actualizar el datalist
+                const datalist = document.getElementById('productos-list');
+                datalist.innerHTML = sugerencias.map(producto => `<option value="${producto}">`).join('');
+            }
+        });
     }
 
+    function seleccionarProveedor() {
+        const fecha = document.getElementById('popupFecha').value;
+        const proveedorSelect = document.getElementById('popupProveedor');
+        const retencionSelect = document.getElementById('popupRetencion');
+        const nroOperacion = document.getElementById('popupNroOperacion').value;
+        const montoDeseado = document.getElementById('popupMontoDeseado').value;
 
-    // Redondear a 2 decimales
+        let proveedorText;
+        if (proveedorSelect.value === 'manual') {
+            proveedorText = document.getElementById('proveedorManual').value;
+        } else {
+            proveedorText = proveedorSelect.options[proveedorSelect.selectedIndex].text;
+        }
 
-    valor = Math.round(valor * 100) / 100;
+        // Actualiza los campos en la interfaz
+        document.getElementById('fecha').value = fecha;
+        document.getElementById('proveedorText').innerText = proveedorText;
 
+        // Actualiza la retención
+        document.getElementById('retencionText').innerText = `Ret: ${retencionSelect.value}%`;
 
-    // Asegurarse de que el valor no sea negativo
+        document.getElementById('nroOperacionText').innerText = nroOperacion;
 
-    valor = Math.max(0, valor);
+        // Guarda el monto deseado en localStorage
+        if (montoDeseado) {
+            localStorage.setItem('montoDeseado', montoDeseado);
+        }
 
+        // Oculta la ventana modal
+        document.getElementById('popup').style.display = 'none';
 
-    // Actualizar el valor del input
-
-    input.value = valor.toFixed(2);
-
-
-    // Recalcular el total
-
-    calcularTotal(input);
-
-}
-
-function calcularTotal(element) {
-    const row = element.closest('.product-row');
-    const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
-    const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
-
-    // Calcular el total de la fila
-    const precioTotal = cantidad * precioUnitario;
-    const totalConDescuento = precioTotal * 0.999; // 0.1% de descuento
-
-    // Actualizar los campos de la fila
-    row.querySelector('.input-precio-total').value = precioTotal.toFixed(2);
-    row.querySelector('.input-total-con-descuento').value = totalConDescuento.toFixed(2);
-
-    // Actualizar el resumen general
-    actualizarResumenGeneral();
-}
-function actualizarResumenGeneral() {
-
-const productRows = document.querySelectorAll('.product-row');
-
-let subtotalGeneral = 0;
-
-let exentoGeneral = 0;
-
-
-productRows.forEach(row => {
-
-    // Cambiamos esto para usar el precio total sin descuento
-
-    const precioTotal = parseFloat(row.querySelector('.input-precio-total').value) || 0;
-
-    const exentoCheckbox = row.querySelector('.input-exento');
-
-
-    // Sumar al subtotal general todos los productos
-
-    subtotalGeneral += precioTotal;
-
-
-    // Sumar al exento general solo los productos marcados como exentos
-
-    if (exentoCheckbox.checked) {
-
-        exentoGeneral += precioTotal;
-
+        // Actualiza el resumen general para reflejar los cambios actualizarResumenGeneral();
     }
 
-});
+    function actualizarRetencion() {
+        const proveedorSelect = document.getElementById('popupProveedor');
+        const retencionSelect = document.getElementById('popupRetencion');
+        const proveedorOption = proveedorSelect.options[proveedorSelect.selectedIndex];
 
+        if (proveedorOption.value !== 'manual') {
+            const retencion = proveedorOption.getAttribute('data-retencion');
+            retencionSelect.value = retencion;
+        }
+    }
 
-// El resto de la función permanece igual
+    function limpiarLocalStorage() {
+        localStorage.clear();
+        console.log("LocalStorage ha sido limpiado");
+    }
 
-const ivaGeneral = (subtotalGeneral - exentoGeneral) * 0.16;
+    function ajustarPrecios() {
+        const montoDeseado = localStorage.getItem('montoDeseado');
+        console.log('montoDeseado:', montoDeseado);
 
-const totalFactura = subtotalGeneral + ivaGeneral;
+        if (montoDeseado === null) {
+            alert("Por favor, seleccione un proveedor y ingrese un monto deseado válido en el popup.");
+            return;
+        }
 
+        const montoDeseadoFloat = parseFloat(montoDeseado);
+        console.log('montoDeseadoFloat:', montoDeseadoFloat);
 
-document.getElementById('subtotalGeneral').innerText = subtotalGeneral.toFixed(2);
+        if (montoDeseadoFloat <= 0) {
+            alert("Por favor, ingrese un monto deseado válido en el popup.");
+            return;
+        }
 
-document.getElementById('exentoGeneral').innerText = exentoGeneral.toFixed(2);
+        const rows = document.querySelectorAll('.product-row');
+        let subtotalConIVA = 0;
+        let subtotalExento = 0;
 
-document.getElementById('ivaGeneral').innerText = ivaGeneral.toFixed(2);
+        rows.forEach(row => {
+            const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
+            const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
+            const isExento = row.querySelector('.input-exento').checked;
 
-document.getElementById('totalGeneral').innerText = totalFactura.toFixed(2);
+            const subtotal = cantidad * precioUnitario;
 
-
-// Cálculos adicionales
-
-const retencionText = document.getElementById('retencionText').innerText;
-
-const porcentajeRetencion = parseInt(retencionText.match(/\d+/)[0]) || 0;
-
-
-let ivaAPagar = 0;
-
-if (porcentajeRetencion === 75) {
-
-    ivaAPagar = ivaGeneral * 0.25;
-
-} else if (porcentajeRetencion === 0) {
-
-    ivaAPagar = ivaGeneral;
-
-}
-
-
-const pagoSinTimbre = subtotalGeneral + ivaAPagar;
-
-const timbreFiscal = subtotalGeneral * 0.001;
-
-const totalAPagar = subtotalGeneral - timbreFiscal + ivaAPagar;
-
-
-document.getElementById('ivaAPagar').innerText = ivaAPagar.toFixed(2);
-
-document.getElementById('pagoSinTimbre').innerText = pagoSinTimbre.toFixed(2);
-
-document.getElementById('timbreFiscal').innerText = timbreFiscal.toFixed(2);
-
-document.getElementById('totalAPagar').innerText = totalAPagar.toFixed(2);
-
-}
-
-// Obtener la lista de plantillas en la carpeta plantillas
-
-const plantillasFolder = 'plantillas/';
-
-const plantillas = [];
-
-
-fetch(plantillasFolder)
-
-  .then(response => response.text())
-
-  .then(data => {
-
-    const files = data.split('\n');
-
-    files.forEach(file => {
-
-      if (file.endsWith('.txt')) {
-
-        plantillas.push({
-
-          nombre: file.replace('.txt', ''),
-
-          ruta: plantillasFolder + file
-
+            if (isExento) {
+                subtotalExento += subtotal;
+            } else {
+                subtotalConIVA += subtotal;
+            }
         });
 
-      }
+        console.log('subtotalConIVA:', subtotalConIVA);
+        console.log('subtotalExento:', subtotalExento);
 
-    });
+        const totalActual = calcularTotalAPagar(subtotalConIVA, subtotalExento);
+        console.log('totalActual:', totalActual);
 
+        if (totalActual === 0) {
+            alert("El total actual es cero. No se puede ajustar.");
+            return;
+        }
+
+        const factorAjuste = montoDeseadoFloat / totalActual;
+        console.log('factorAjuste:', factorAjuste);
+
+        rows.forEach(row => {
+            const precioUnitarioInput = row.querySelector('.input-precio-unitario');
+            const nuevoPrecioUnitario = parseFloat(precioUnitarioInput.value) * factorAjuste;
+
+            precioUnitarioInput.value = nuevoPrecioUnitario.toFixed(2);
+
+            calcularTotal(precioUnitarioInput);
+        });
+
+        actualizarResumenGeneral();
+    }
+
+    function calcularTotalAPagar(subConIVA, subExento) {
+        const iva = subConIVA * 0.16;
+        const porcentajeRetencion = parseInt(document.getElementById('retencionText').innerText.match(/\d+/)[0]) || 0;
+        const ivaAPagar = porcentajeRetencion === 75 ? iva * 0.25 : (porcentajeRetencion === 0 ? iva : 0);
+        const timbreFiscal = (subConIVA + subExento) * 0.001;
+        return subConIVA + subExento + ivaAPagar - timbreFiscal;
+    }
+
+    function toggleProveedorManual() {
+        const proveedorSelect = document.getElementById('popupProveedor');
+        const proveedorManualContainer = document.getElementById('proveedorManualContainer');
+
+        if (proveedorSelect.value === 'manual') {
+            proveedorManualContainer.style.display = 'block';
+        } else {
+            proveedorManualContainer.style.display = 'none';
+        }
+    }
+
+    function redondear(numero, decimales = 2) {
+        return Number(Math.round(numero + 'e' + decimales) + 'e-' + decimales);
+    }
+
+    function ajustarPrecio(event, input) {
+        event.preventDefault(); // Previene el comportamiento por defecto
+
+        let valor = parseFloat(input.value) || 0;
+
+        if (event.deltaY < 0) {
+            // Scroll hacia arriba, incrementar
+            valor += 0.01;
+        } else {
+            // Scroll hacia abajo, decrementar
+            valor -= 0.01;
+        }
+
+        // Redondear a 2 decimales
+        valor = Math.round(valor * 100) / 100;
+
+        // Asegurarse de que el valor no sea negativo
+        valor = Math.max(0, valor);
+
+        // Actualizar el valor del input
+        input.value = valor.toFixed(2);
+
+        // Recalcular el total
+        calcularTotal(input);
+    }
+
+    function eliminarFila(button) {
+        const row = button.closest('.product-row'); // Localiza la fila correspondiente
+        row.remove(); // Elimina la fila del DOM
+
+        // Actualiza el resumen general
+        actualizarResumenGeneral();
+
+        // Guarda los datos en el almacenamiento local
+        guardarDatos();
+    }
+
+    function agregarFila() {
+        const productContainer = document.getElementById('productContainer');
+        const newRow = document.createElement('div');
+        newRow.className = 'product-row';
+        newRow.innerHTML = `
+            <input type="number" class="input-cantidad" placeholder="0" min="0" oninput="calcularTotal(this)">
+            <input type="text" class="input-descripcion" placeholder="Descripción del producto" list="productos-list">
+            <datalist id="productos-list">
+                ${productosComunes.map(producto => `<option value="${producto}">`).join('')}
+            </datalist>
+            <input type="number" class="input-precio-unitario" placeholder="0.00" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+            <input type="number" class="input-precio-total" placeholder="0.00" step="0.01" readonly>
+            <input type="number" class="input-total-con-descuento" placeholder="0.00" step="0.01" readonly>
+            <label>
+                <input type="checkbox" class="input-exento" onchange="actualizarResumenGeneral()"> E
+            </label>
+            <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
+        `;
+        productContainer.appendChild(newRow);
+        actualizarResumenGeneral();
+    }
+
+    function guardarDatos() {
+        const rows = document.querySelectorAll('.product-row');
+        const data = Array.from(rows).map(row => {
+            return {
+                cantidad: row.querySelector('.input-cantidad').value,
+                descripcion: row.querySelector('.input-descripcion').value,
+                precioUnitario: row.querySelector('.input-precio-unitario').value,
+                precioTotal: row.querySelector('.input-precio-total').value,
+                totalConDescuento: row.querySelector('.input-total-con-descuento').value,
+                exentoIVA: row.querySelector('.input-exento').checked // Estado del checkbox
+            };
+        });
+        localStorage.setItem('productos', JSON.stringify(data)); // Almacena los datos en localStorage
+    }
+
+    function mostrarPopup() {
+        document.getElementById('popup').style.display = 'flex';
+
+        // Reiniciar campos
+        document.getElementById('popupFecha').value = '';
+        document.getElementById('popupProveedor').selectedIndex = 0;
+        document.getElementById('popupRetencion').selectedIndex = 0;
+        document.getElementById('popupNroOperacion').value = '';
+
+        // Cargar el monto deseado guardado
+        const montoDeseadoGuardado = localStorage.getItem('montoDeseado');
+        if (montoDeseadoGuardado) {
+            document.getElementById('popupMontoDeseado').value = montoDeseadoGuardado;
+        } else {
+            document.getElementById('popupMontoDeseado').value = '';
+        }
+    }
+
+    function ajustarPrecioUnitario(event, input) {
+        event.preventDefault(); // Previene el comportamiento por defecto del scroll
+
+        let valor = parseFloat(input.value) || 0;
+
+        if (event.deltaY < 0) {
+            // Scroll hacia arriba, incrementar
+            valor += 0.01;
+        } else {
+            // Scroll hacia abajo, decrementar
+            valor -= 0.01;
+        }
+
+        // Redondear a 2 decimales
+        valor = Math.round(valor * 100) / 100;
+
+        // Asegurarse de que el valor no sea negativo
+        valor = Math.max(0, valor);
+
+        // Actualizar el valor del input
+        input.value = valor.toFixed(2);
+
+        // Recalcular el total
+        calcularTotal(input);
+    }
+
+    function calcularTotal(element) {
+        const row = element.closest('.product-row');
+        const cantidad = parseFloat(row.querySelector('.input-cantidad').value) || 0;
+        const precioUnitario = parseFloat(row.querySelector('.input-precio-unitario').value) || 0;
+
+        // Calcular el total de la fila
+        const precioTotal = cantidad * precioUnitario;
+        const totalConDescuento = precioTotal * 0.999; // 0.1% de descuento
+
+        // Actualizar los campos de la fila
+        row.querySelector('.input-precio-total').value = precioTotal.toFixed(2);
+        row.querySelector('.input-total-con-descuento').value = totalConDescuento.toFixed(2);
+
+        // Actualizar el resumen general
+        actualizarResumenGeneral();
+    }
+
+    function actualizarResumenGeneral() {
+        const productRows = document.querySelectorAll('.product-row');
+        let subtotalGeneral = 0;
+        let exentoGeneral = 0;
+
+        productRows.forEach(row => {
+            const precioTotal = parseFloat(row.querySelector('.input-precio-total').value) || 0;
+            const exentoCheckbox = row.querySelector('.input-exento');
+
+            // Sumar al subtotal general todos los productos
+            subtotalGeneral += precioTotal;
+
+            // Sumar al exento general solo los productos marcados como exentos
+            if (exentoCheckbox.checked) {
+                exentoGeneral += precioTotal;
+            }
+        });
+
+        // El resto de la función permanece igual
+
+        const ivaGeneral = (subtotalGeneral - exentoGeneral) * 0.16;
+        const totalFactura = subtotalGeneral + ivaGeneral;
+
+        document.getElementById('subtotalGeneral').innerText = subtotalGeneral.toFixed(2);
+        document.getElementById('exentoGeneral').innerText = exentoGeneral.toFixed(2);
+        document.getElementById('ivaGeneral').innerText = ivaGeneral.toFixed(2);
+        document.getElementById('totalGeneral').innerText = totalFactura.toFixed(2);
+
+        // Cálculos adicionales
+        const retencionText = document.getElementById('retencionText').innerText;
+        const porcentajeRetencion = parseInt(retencionText.match(/\d+/)[0]) || 0;
+
+        let ivaAPagar = 0;
+
+        if (porcentajeRetencion === 75) {
+            ivaAPagar = ivaGeneral * 0.25;
+        } else if (porcentajeRetencion === 0) {
+            ivaAPagar = ivaGeneral;
+        }
+
+        const pagoSinTimbre = subtotalGeneral + ivaAPagar;
+        const timbreFiscal = subtotalGeneral * 0.001;
+        const totalAPagar = subtotalGeneral - timbreFiscal + ivaAPagar;
+
+        document.getElementById('ivaAPagar').innerText = ivaAPagar.toFixed(2);
+        document.getElementById('pagoSinTimbre').innerText = pagoSinTimbre.toFixed(2);
+        document.getElementById('timbreFiscal').innerText = timbreFiscal.toFixed(2);
+        document.getElementById('totalAPagar').innerText = totalAPagar.toFixed(2);
+    }
+
+    // Obtener la lista de plantillas en la carpeta plantillas
+    const plantillasFolder = 'plantillas/';
+    const plantillas = [];
+
+    fetch(plantillasFolder)
+        .then(response => response.text())
+        .then(data => {
+            const files = data.split('\n');
+            files.forEach(file => {
+                if (file.endsWith('.txt')) {
+                    plantillas.push({
+                        nombre: file.replace('.txt', ''),
+                        ruta: plantillasFolder + file
+                    });
+                }
+            });
+
+            // Crear la lista desplegable de plantillas
+            const select = document.getElementById('plantilla-select');
+            select.innerHTML = ''; // Limpiar la lista desplegable
+            plantillas.forEach(plantilla => {
+                const option = document.createElement('option');
+                option.value = plantilla.nombre;
+                option.text = plantilla.nombre;
+                select.appendChild(option);
+            });
+        });
 
     // Crear la lista desplegable de plantillas
-
     const select = document.getElementById('plantilla-select');
-
-    select.innerHTML = ''; // Limpiar la lista desplegable
-
     plantillas.forEach(plantilla => {
-
-      const option = document.createElement('option');
-
-      option.value = plantilla.nombre;
-
-      option.text = plantilla.nombre;
-
-      select.appendChild(option);
-
+        const option = document.createElement('option');
+        option.value = plantilla.nombre;
+        option.text = plantilla.nombre; // Reemplazar {{nombre}} con el nombre real de la plantilla
+        select.appendChild(option);
     });
 
-  });
-// Crear la lista desplegable de plantillas
-const select = document.getElementById('plantilla-select');
-plantillas.forEach(plantilla => {
-  const option = document.createElement('option');
-  option.value = plantilla.nombre;
-  option.text = plantilla.nombre; // Reemplazar {{nombre}} con el nombre real de la plantilla
-  select.appendChild(option);
-});
-
-        function cargarDatos() {
-            const data = JSON.parse(localStorage.getItem('productos'));
-            if (data) {
-                data.forEach(item => {
-                    const productContainer = document.getElementById('productContainer');
-                    const newRow = document.createElement('div');
-                    newRow.className = 'product-row';
-                    newRow.innerHTML = `
-                        <input type="number" class="input-cantidad" value="${item.cantidad}" oninput="calcularTotal(this)">
-                        <input type="text" class="input-descripcion" value="${item.descripcion}">
-                        <input type="number" class="input-precio-unitario" value="${item.precioUnitario}" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
-                        <input type="number" class="input-precio-total" value="${item.precioTotal}" readonly>
-                        <input type="number" class="input-total-con-descuento" value="${item.totalConDescuento}" readonly>
-                        <label>
-                            <input type="checkbox" class="input-exento" ${item.exentoIVA ? 'checked' : ''} onchange="actualizarResumenGeneral()"> E
-                        </label>
-                        <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
-                    `;
-                    productContainer.appendChild(newRow); // Agrega la nueva fila al contenedor
-                });
-            }
+    function cargarDatos() {
+        const data = JSON.parse(localStorage.getItem('productos'));
+        if (data) {
+            data.forEach(item => {
+                const productContainer = document.getElementById('productContainer');
+                const newRow = document.createElement('div');
+                newRow.className = 'product-row';
+                newRow.innerHTML = `
+                    <input type="number" class="input-cantidad" value="${item.cantidad}" oninput="calcularTotal(this)">
+                    <input type="text" class="input-descripcion" value="${item.descripcion}">
+                    <input type="number" class="input-precio-unitario" value="${item.precioUnitario}" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+                    <input type="number" class="input-precio-total" value="${item.precioTotal}" readonly>
+                    <input type="number" class="input-total-con-descuento" value="${item.totalConDescuento}" readonly>
+                    <label>
+                        <input type="checkbox" class="input-exento" ${item.exentoIVA ? 'checked' : ''} onchange="actualizarResumenGeneral()"> E
+                    </label>
+                    <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
+                `;
+                productContainer.appendChild(newRow); // Agrega la nueva fila al contenedor
+            });
         }
-    </script>
+    }
+</script >
 </body>
 </html>
