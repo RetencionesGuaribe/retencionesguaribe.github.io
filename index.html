@@ -134,6 +134,7 @@
 
         <h3 id="resultado-nuevo-pago"></h3>
         <h3 id="iva-nuevo-pago"></h3>
+        <h3 id="total-factura-nuevo"></h3>
         <h3 id="iva-total"></h3>
         <h3 id="iva-retenido-nuevo"></h3>
         <h3 id="total-nuevo"></h3>
@@ -210,31 +211,32 @@
 
         // Calcular un nuevo pago
         function calcularNuevoPago() {
-            const base = parseFloat(document.getElementById('base').value);
-            const exento = parseFloat(document.getElementById('exento').value);
-            const retencion = document.getElementById('retencion').value;
+    const base = parseFloat(document.getElementById('base').value);
+    const exento = parseFloat(document.getElementById('exento').value);
+    const retencion = document.getElementById('retencion').value;
 
-            if (isNaN(base) || base < 0) {
-                alert("Por favor, ingresa un monto válido para la base imponible.");
-                return;
-            }
+    if (isNaN(base) || base < 0) {
+        alert("Por favor, ingresa un monto válido para la base imponible.");
+        return;
+    }
 
-            let subtotal = base;
-            const iva = (base - exento) * 0.16;
-            const timbreFiscal = subtotal * 0.001;
-            const ivaRetenido = retencion === '75' ? iva * 0.75 : iva; // Retención del IVA
-            const ivaPagado = retencion === '75' ? iva * 0.25 : 0;
+    let subtotal = base;
+    const iva = (base - exento) * 0.16;
+    const timbreFiscal = subtotal * 0.001;
+    const ivaRetenido = retencion === '75' ? iva * 0.75 : iva; // Retención del IVA
+    const ivaPagado = retencion === '75' ? iva * 0.25 : 0;
 
-            const total = subtotal + iva;
-            const totalAPagar = subtotal + ivaPagado - timbreFiscal;
+    const totalFactura = subtotal + iva; // Nuevo cálculo para el total de la factura
+    const totalAPagar = subtotal + ivaPagado - timbreFiscal;
 
-            document.getElementById('resultado-nuevo-pago').innerText = `Subtotal: ${subtotal.toFixed(2)}`;
-            document.getElementById('iva-nuevo-pago').innerText = `IVA (16%): ${iva.toFixed(2)}`;
-            document.getElementById('iva-total').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
-            document.getElementById('iva-retenido-nuevo').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
-            document.getElementById('total-nuevo').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
-            document.getElementById('real-total-a-pagar').innerText = `Total a Pagar: ${totalAPagar.toFixed(2)}`;
-        }
+    document.getElementById('resultado-nuevo-pago').innerText = `Subtotal: ${subtotal.toFixed(2)}`;
+    document.getElementById('iva-nuevo-pago').innerText = `IVA (16%): ${iva.toFixed(2)}`;
+    document.getElementById('total-factura-nuevo').innerText = `Total de Factura: ${totalFactura.toFixed(2)}`; // Nueva línea
+    document.getElementById('iva-total').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
+    document.getElementById('iva-retenido-nuevo').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
+    document.getElementById('total-nuevo').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
+    document.getElementById('real-total-a-pagar').innerText = `Total a Pagar: ${totalAPagar.toFixed(2)}`;
+}
     </script>
 </body>
 </html>
