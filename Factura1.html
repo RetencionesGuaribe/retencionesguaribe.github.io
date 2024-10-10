@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.65"> <!-- Ajusta la escala al 65% -->
     <title>Factura Modificada</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
 body {
     background-color: #f0f4f8;
@@ -499,380 +498,240 @@ input:focus, select:focus {
 </div>
 
 <script>
-    // Lista de productos comunes para el autocompletado
+
+function manejarSeleccionProducto() {
+    document.addEventListener('change', function(e) {
+        if (e.target && e.target.classList.contains('input-descripcion')) {
+            const selectedOption = Array.from(document.getElementById('productos-list').options).find(option => option.value === e.target.value);
+            if (selectedOption) {
+                const precio = selectedOption.getAttribute('data-precio');
+                const row = e.target.closest('.product-row');
+                const precioInput = row.querySelector('.input-precio-unitario');
+                precioInput.value = precio;
+                calcularTotal(precioInput);
+            }
+        }
+    });
+}
+
+
 const productosComunes = [
-    // Carnes y embutidos
-    "Kg pollo beneficiado",
-    "Kg carne molida",
-    "Kg carne corte ganso",
-    "Kg salchicha",
-    "Mortadela 500gr",
+///alimentos
+    { descripcion: "Kg pollo beneficiado", precio: 210 },
+    { descripcion: "Kg carne molida", precio: 240 },
+    { descripcion: "Kg carne corte ganso", precio: 230 },
+    { descripcion: "Kg salchicha", precio: 210 },
+    { descripcion: "Mortadela 500gr", precio: 94 },
+    { descripcion: "Kg queso blanco", precio: 200 },
+    { descripcion: "Kg queso amarillo", precio: 380 },
+    { descripcion: "Cartón de huevos", precio: 180 },
 
-    // Lácteos y huevos
-    "Kg queso blanco",
-    "Kg queso amarillo",
-    "Cartón de huevos",
-    "Mantequilla Deline (caja 1x24)",
+    { descripcion: "Kg sal", precio: 30 },
+    { descripcion: "Mayonesa Mavesa 500g", precio: 166 },
+    { descripcion: "Salsa de tomate Pampero", precio: 85 },
+    { descripcion: "Kg azúcar", precio: 60 },
+    { descripcion: "Café 250gr", precio: 150 },
+    { descripcion: "Aceite Comestible Litro", precio: 120 },
+    { descripcion: "Kg pasta", precio: 65 },
+    { descripcion: "Cubito", precio: 25 },
+    { descripcion: "Galletas sal ricas", precio: 145 },
+    { descripcion: "Bolsas de hielo", precio: 75 },
+    { descripcion: "ARROZ  KG", precio: 65 },
+    { descripcion: "HARINAS KALY ", precio: 50 },
+    { descripcion: "MANTEQUILLA DELINE", precio: 50 },
 
-    // Bebidas
-    "Cajas de refresco",
-    "Cajas de agua 600ml",
-    "Lt Jugos YUKI",
-    "Bolsas de hielo",
+    { descripcion: "Kg cebolla", precio: 70 },
+    { descripcion: "Kg ajo", precio: 362 },
+    { descripcion: "Kg ají dulce", precio: 75 },
+    { descripcion: "Kg papa", precio: 53 },
+    { descripcion: "Zanahoria", precio: 80 },
+    { descripcion: "Repollo", precio: 150 },
+    { descripcion: "Aliños verdes", precio: 111 },
 
-    // Aceites y grasas
-    "Aceite (litro)",
-    "Paila de aceite Maxidiesel 50 litros",
-    "Paila aceite hidráulico 68 litros",
-    "Aceite PDV 2 tiempos",
+    { descripcion: "Kg Naranja", precio: 95 },
+    { descripcion: "Kg Mandarina", precio: 95 },
+    { descripcion: "Kg Patilla", precio: 150 },
+    { descripcion: "Melon", precio: 130 },
+    { descripcion: "Kg Cambur", precio: 60 },
 
-    // Harinas y cereales
-    "Bulto harina Kaly 1x20",
-    "Bulto harina trigo 1x20",
-    "Bulto arroz 1x20",
-    "Kg pasta",
 
-    // Verduras y frutas
-    "Kg cebolla",
-    "Kg ajo",
-    "Kg ají dulce",
-    "Kg papa",
-    "Kg naranja",
-    "Kg mandarina",
-    "Kg patilla",
-    "Melón",
-    "Kg cambur",
-    "Zanahoria",
-    "Repollo",
-    "Aliños verdes",
 
-    // Condimentos y salsas
-    "Cubitos",
-    "Kg sal",
-    "Mayonesa 500g",
-    "Salsa de tomate",
+//bultos de comida
+    { descripcion: "Bulto harina Kaly 1x20", precio: 630 },
+    { descripcion: "Bulto harina trigo 1x20", precio: 600 },
+    { descripcion: "Bulto arroz 1x20", precio: 740 },
+    { descripcion: "Mantequilla Deline (caja 1x24)", precio: 541 },
+    { descripcion: "Cajas de refresco", precio: 240 },
+    { descripcion: "CAJAS DE AGUA 600ML", precio: 340 },
+    { descripcion: " PANELADA CAJAS ", precio: 800 },
 
-    // Azúcar y café
-    "Kg azúcar",
-    "Café 250gr",
+//Productos Plasticos
+    { descripcion: "Cajas de bandejas 700 ML 10x25", precio: 1227 },
+    { descripcion: "Bulto de platos plásticos #8 50x10", precio: 1200 },
+    { descripcion: "Bulto de platos plásticos #9 50x10", precio: 1373 },
+    { descripcion: "Bultos de vasos #77 25x100", precio: 1250 },
+    { descripcion: "Paquete de vasos de café #47 (caja 1x50x20U)", precio: 900 },
+    { descripcion: "Bultos de vasos para café #47 25x100", precio: 793 },
+    { descripcion: "Bulto de cubiertos 10x100", precio: 530 },
+    { descripcion: "Bulto servilletas Brilux cuadradas 30x250H", precio: 722 },
+    { descripcion: "Rollo de papel envoplas", precio: 555 },
+    { descripcion: "Paquete de bolsas negras para basura 100UND", precio: 865 },
+    { descripcion: "Bolsas Negras Para Basura Tipo B-40 Kg Calibre 14 100u", precio: 871 },
+    { descripcion: "PQ BOLSA NEGRA 100 UND", precio: 761 },
+    { descripcion: "paq. De bolsas sin asa 1kg", precio: 397 },
+    { descripcion: "bulto de bandejas medianas 10x25", precio: 2230 },
+    { descripcion: "BOLSAS NEGRAS DE BASURA 100UND ", precio: 800 },
 
-    // Artículos desechables
-    "Cajas de bandejas 700 ML 10x25",
-    "Bulto de platos plásticos #8 50x10",
-    "Bulto de platos plásticos #9 50x10",
-    "Paquete de vasos 100U #77",
-    "Bultos de vasos #77 25x100",
-    "Paquete de vasos de café #47 (caja 1x50x20U)",
-    "Bultos de vasos para café #47 25x100",
-    "Bulto de cubiertos 10x100",
-    "Bulto servilletas Brilux cuadradas 30x250H",
-    "Rollo de papel envoplas",
-    "Paquete de bolsas sin asa 1kg",
-    "Paquete de bolsas negras para basura 100UND",
-    "Bolsas Negras Para Basura Tipo B-40 Kg Calibre 14 100u",
+//Productos de Limpieza
+    { descripcion: "Litro de cloro", precio: 30 },
+    { descripcion: "Litro de desinfectante", precio: 31 },
+    { descripcion: "Litro de desengrasante", precio: 48 },
+    { descripcion: "Litro de jabón líquido", precio: 46 },
+    { descripcion: "Litros de cera Roja", precio: 48 },
+    { descripcion: "Litros de cera Blanca", precio: 40 },
+    { descripcion: "Litros de cera Verde", precio: 40 },
+    { descripcion: "Pañitos de cocina", precio: 55 },
+    { descripcion: "Docena de cepillo suave", precio: 930 },
+    { descripcion: "Bulto de ACE en polvo 20kg", precio: 1620 },
+    { descripcion: "Pala cuadrada con cabo", precio: 563 },
 
-    // Artículos de limpieza
-    "Litros de cloro",
-    "Litros de desinfectante",
-    "Litros de desengrasante",
-    "Litros de jabón líquido concentrado",
-    "Litros de cera roja",
-    "Litros de cera blanca",
-    "Pañitos de cocina",
-    "Docenas de cepillo suave",
-    "Bulto de ACE en polvo 20kg",
+//servicios publicos
+    { descripcion: "Disco de desbaste", precio: 103 },
+    { descripcion: "Disco diamantado de corte", precio: 232 },
+    { descripcion: "Disco run 7", precio: 200 },
+    { descripcion: "Disco de corte rápido 7''", precio: 190 },
+    { descripcion: "Disco trozadora 14''", precio: 245 },
+    { descripcion: "Nylon Cuadrado desmalezadora 15m 3mm COVO", precio: 240 },
+    { descripcion: "Nylon Dentado Desmalezadora 3.30mm x42m trimmer", precio: 530 },
+    { descripcion: "Cuchilla desmalezadora Bellota", precio: 200 },
+    { descripcion: "KG ELECTRODO", precio: 180 },
+    { descripcion: "Metro Alambre liso", precio: 82 },
+    { descripcion: "RECARGA DE OXIGENO INDUSTRIAL", precio: 3200 },
+    { descripcion: "RECARGA DE BOMBONA DE GAS DE ACETILENO", precio: 4800 },
+    { descripcion: "PLIEGO DE LIJAS", precio: 95 },
+    { descripcion: "PAR DE GUANTES DE CARNASA", precio: 142 },
+    { descripcion: "PLIEGO DE LIJAS", precio: 95 },
+    { descripcion: "ROLLO DE ALAMBRE LISO 50KG", precio: 4960 },
+    { descripcion: "mts naylon guarana", precio: 12 },
 
-    // Materiales de construcción
-    "Sacos de cemento",
-    "Cabillas 1/2 y 3/8",
-    "Sacos de cal",
-    "Viga 2x1",
-    "Barra lisa",
 
-    // Herramientas
-    "Pala cuadrada con cabo",
-    "Pala construcción Bellota profesional", // Reemplazado por "Pala cuadrada con cabo"
-    "Discos de desbaste",
-    "Disco diamantado de corte",
-    "Disco run 7",
-    "Discos de corte rápido 7''",
-    "Discos trozadora 14''",
-    "Pliego de lijas",
-    "Copa de alambre",
-    "Par de guantes de carnaza",
-    "Kit para pintar",
-    "Tijera de podar",
-    "Nylon desmalezadora",
-    "Machete gavilan",
-    "Electrodos",
-    "Alambre liso",
-    "Barniz caoba",
-    "Brocha covo 3",
-    "Cerradura cisa",
-    "Llave dahai",
-    "Teipe cobra",
-    "Teipe negro tipo cobra 10 unid",
-    "Socate Negro",
-    "Cajetin plastico 4x2",
+    { descripcion: "Pala cuadrada con cabo", precio: 563 },
+    { descripcion: "Tijera de podar", precio: 362 },
+    { descripcion: "Machete gavilan", precio: 266 },
+    { descripcion: "Cerradura cisa", precio: 806 },
+    { descripcion: "Llave dahai", precio: 30 },
+    { descripcion: "CERRADURA", precio: 413 },
+    { descripcion: "PALA CONSTRUCCION BELLOTA PROFESIONAL", precio: 633 },
+    { descripcion: "COPA DE ALAMBRE", precio: 158 },
+    { descripcion: "CERRADURA PISTIN FIJO", precio: 1268 },
+    { descripcion: "cerraduras sobreponer", precio: 625 },
 
-    // Artículos eléctricos
-    "Cable 8THW / 200m",
-    "Cable 10THW / 100m",
-    "Cable 12THW / 150m",
-    "Cable 12THW / 100m",
-    "Metros de cable spot 2*1",
-    "Enchufe vinil metal",
-    "Toma corriente doble",
-    "Luminarias LED 200W",
-    "Bombillos LED 15W",
-    "Sócate plafón",
-    "Electrodos Kg",
-    "Kg electrodos Lincon",
-    "Batería 1100AP",
-    "Motor ventilador condensador",
-    "Cable Numero 12 Thw Thhn 7 Hilos 100% Cobre (50 Mts)",
+//Materiales construccion
 
-    // Artículos de pintura
-    "Galón de pintura satinada",
-    "Galón de pintura en caucho",
-    "Fondo titan anticorrosivo",
-    "Manpica galón esmalte",
-    "Esmalte de pinturas",
-    "Cunete de pintura caucho",
-    "Teflón profesional 3/4",
-    "Teflón mediano amarillo",
-    "Goles de pintura Pintusa azul",
+    { descripcion: "BISAGRA X2", precio: 130 },
+    { descripcion: "VIGA 2X1", precio: 412 },
+    { descripcion: "BARRA LISA", precio: 444 },
+    { descripcion: "SACO DE CEMENTO", precio: 333 },
+    { descripcion: "CABILLA 1/2  3/8", precio: 224 },
+    { descripcion: "SACO DE CAL", precio: 183 },
+    { descripcion: "LAVAMANOS", precio: 1300 },
+    { descripcion: "POCETA", precio: 4000 },
+    { descripcion: "Asiento de sanitario", precio: 686 },
 
-    // Artículos de plomería
-    "Codos 3/4",
-    "Llave de chorro Wequp",
-    "Fondo 2 en 1 blanco 1/4",
-    "Metros de manguera culebra",
-    "Metros naylon guarana",
-    "Llave de arresto",
-    "Sifón",
-    "Herraje New oasis",
-    "Asiento de sanitario",
-    "Lavamanos",
-    "Soporte de lavamanos",
-    "Cerradura pistín fijo",
-    "Cerraduras sobreponer",
-    "Canilla flexible",
-    "Llaves de arresto",
-    "Poceta",
-    "Herraje",
-    "Tubos de electricidad",
-    "Recarga de bombona de gas de acetileno",
-    "Recarga de oxígeno industrial",
-    "Teipes cobra",
-    "Rollo de alambre liso 50kg",
-    "Nylon desmalezadora 100m",
-    "Lentes transparentes",
-    "Copa 1/ 3/4",
-    "Bisagra x2",
-    "Par de guantes de carnaza",
-    "Viga 2x1",
-    "Galon de fondo",
-    "Saco de cal",
-    "PQ Bolsa negra 100 UND",
-    "Cerradura pistín fijo",
-    "Cunete de pintura caucho",
-    "Tomacorriente doble",
-    "Lavamanos",
-    "Llave",
-    "Llave de arresto",
-    "Soporte de lavamanos",
-    "Sifón",
-    "Herraje",
-    "Poceta",
-    "Tejlón",
-    "Llaves de arresto",
-    "Canilla flexible",
-    "Bombillos LED 15W",
-    "Luminarias LED 200W",
-    "Cable 12THW / 150Mts",
-    "Socate Plafon",
-    "ESMALTE DE PINTURAS",
-    "CABLE 12THW / 100M",
-    "3 LUMINARIAS LED 200W",
-    "CERRADURAS",
-    "BROCHAS DE 4\"",
-    "KIT PARA PINTAR",
-    "RECARGAS DE OXIGENO INDUSTRIAL",
- "TEIPES COBRAS",
-    "RECARGA DE BOMBONA DE GAS DE ACETILENO",
-    "TUBOS DE ELECTRICIDAD",
-    "SACOS DE CEMENTO",
-    "CABILLAS 1/2  3/8",
-    "SACOS DE CAL",
-    "PALA CONSTRUCCION BELLOTA PROFESIONAL",
-    "DISCOS DESBASTE",
-    "DISCO DIAMANTADO DE CORTE",
-    "DISCOS DE CORTE RAPIDO 7''",
-    "DISCOS TROZADORA 14''",
-    "LUMINARIAS LED 200W",
-    "PLIEGO DE LIJAS",
-    "BARRA LISA",
-    "COPA DE ALAMBRE",
-    "BISAGRA X2",
-    "PAR DE GUANTES DE CARNASA",
-    "VIGA 2X1",
-    "GALON DE FONDO",
-    "SACO DE CAL",
-    "PQ BOLSA NEGRA 100 UND",
-    "CERRADURA PISTIN FIJO",
-    "CUNETE DE P INTURA CAUCHO",
-    "TOMAC ORRIENTE DOBLE",
-    "LAVAMANOS",
-    "LLAVE",
-    "LLAVE DE ARRESTO",
-    "SOPORTE DE LAVAMANOS",
-    "SIFON",
-    "HERRAJE",
-    "POCETA",
-    "TEFLON",
-    "LLAVES DE ARRESTO",
-    "CANILLA FLEXIBLE",
-    "BOMBILLOS LED 15W",
-    "LUMINARIAS LED 200W",
-    "cable 8thw /200m",
-    "cable 10thw /100m",
-    "cable 12thw /150m",
-    "ROLLO DE ALAMBRE LISO 50KG",
-    "GALON DE PINTURA EN CAUCHO",
-    "KG ELECTRODO",
-    "CUNETE DE PINTURA CAUCHO",
-    "litros de cloro",
-    "litros de desinfectante",
-    "litros dedesinfectante mistolin",
-    "litros de jabon liquido concentrado",
-    "litros de cera  roja",
-    "litros de cera blanca",
-    "pañitos de cocina",
-    "cajas de vasos de café #77 100 U",
-    "Cajas de vasos #47 1x50x20U",
-    "bulto. Servilletas",
-    "cajas de bandejas de aluminio",
-    "bulto de cucharillas soperas ",
-    "bultos de tenerdores plasticos",
-    "bulto de cuchillos de plastico",
-    "rollo de papel envoplas",
-    "paq. De bolsas sin asa 1kg",
-    "bulto de bandejas medianas 10x25",
-    "galones de pintura satinada",
-    "rollos de alambre liso ",
-    "electrodos kg",
-    "sacos de cal ",
-    "discos de corte rapido #7",
-    "brochas #4",
-    "brochas #3",
-    "PAILA DE  ACEITE MAXIDIESEL 50 LITROS",
-    "PAILA ACEITE HIDRAULICO 68 LITROS",
-    "Fondo titan anticorrosivo",
-    "manpica galon esmalte",
-    "Kg electrodos Lincon",
-    "Asiento de sanitario",
-    "Herraje New oasis",
-    "copa 1/ 3/4",
-    "Codos 3/4",
-    "Metros de cable spot 2*1",
-    "enchufe vin il metal",
-    "teflon profesional 3/4",
-    "pala cuadrada con cabo",
-    "aceite PDV 2 tiempos",
-    "lentes transparentes",
-    "cerraduras sobreponer",
-    "codos 3/4",
-    "llave de chorro wequp",
-    "fondo 2 en 1 blanco 1/4",
-    "mts de manguera culebra",
-    "mts naylon guarana",
-    "sacos de cal",
-    "teflon mediano amarillo",
-    "Kg Naranja",
-    "Kg Mandarina",
-    "Kg Patilla",
-    "Melon",
-    "Kg Cambur",
-    "CAJAS DE AGUA 600ML",
-    "BOLSAS NEGRAS DE BASURA 100UND ",
-    "Cajas de refresco",
-    "Lt Jugos YUKI",
-    "Galletas sal ricas",
-    "Kg Queso",
-    "Mayonesa",
-    "Salsas de tomate",
-    "Pq Vasos #77",
-    "Pq de servilletas",
-    "Bolsas de hielo",
-    "Cajas de agua 600ml",
-    "Kg Azucar",
-    "Cafe 250gr",
-    "Pq vasos de cafe",
-    "resma de hojas blancas",
-    "docena de carpetas amarillas",
-    "docenas de boligrafos",
-    "POLLO BENFICIADO KG",
-    "CARNE MOLIDA KG",
-    "PASTA KG",
-    "ARROZ  KG",
-    "HARINAS KALY ",
-    "MANTEQUILLA DELINE",
-    "CEBOLLA KG",
-    "AJI DULCE KG",
-    "AJO",
-    "CUBITOS",
-    "ACEITES",
-    "QUESO BLANCO KG",
-    "AZUCAR KG",
-    "CAJA DE BANDEJAS DE ALUMINIO",
-    " PANELADA CAJAS ",
-    "CAFÉ 250 GRAMOS",
-    "HUEVOS CARTON",
-"Libreta",
 
-"Bolígrafo Paper Mate Kilométrico (caja)",
+//MAteriales electricos
+    { descripcion: "Teipe cobra", precio: 80 },
+    { descripcion: "Teipe negro tipo cobra 10 unid", precio: 750 },
+    { descripcion: "Docena Teipe Negro Cobra", precio: 890 },
+    { descripcion: "Metro de cable spot 2*1", precio: 155 },
+    { descripcion: "Cable Numero 12 Thw Thhn 7 Hilos 100% Cobre (50 Mts)", precio: 1250 },
+    { descripcion: "Socate Plafon", precio: 80 },
+    { descripcion: "CABLE 12THW / 100M", precio: 2500 },
+    { descripcion: "LUMINARIA LED 200W", precio: 1200 },
+    { descripcion: "TUBO DE ELECTRICIDAD", precio: 155 },
+    { descripcion: "TOMACORRIENTE DOBLE", precio:76 },
+    { descripcion: "BOMBILLOS LED 15W", precio: 80 },
+    { descripcion: "cable 8thw /200m", precio: 7296 },
+    { descripcion: "cable 10thw /100m", precio: 1745 },
+    { descripcion: "cable 12thw /150m", precio: 2390 },
+    { descripcion: "Kg electrodos Lincon", precio: 187 },
+    { descripcion: "enchufe vinil metal", precio: 47 },
+    { descripcion: "Bombillos LED 12w", precio: 75 },
+    { descripcion: "Cajetin 4x2 plástico", precio: 30 },
+    { descripcion: "Interruptor de luz doble", precio: 70 },
+    { descripcion: "Lámparas LED Superficiales 24w", precio: 185 },
+    { descripcion: "Lámpara Reflector 40w para Socate E27 110v (x5u)", precio: 170 },
 
-"Resaltador KORES",
 
-"Caja hoja Carta HP 8.5\"",
 
-"Caja hoja Oficio HP 8.5\"",
 
-"Clip Binder Mordaza 41mm (Caja x20 Und Ofimak)",
 
-"Lápiz MONGOL",
+//materiales plomeria
 
-"Tinta para sello PRINTA",
+    { descripcion: "Teflón profesional 3/4", precio: 70 },
+    { descripcion: "Teflón mediano amarillo", precio: 100 },
+    { descripcion: "LLAVE LAVAMANOS", precio: 768 },
+    { descripcion: "LLAVE DE ARRESTO", precio: 261 },
+    { descripcion: "SOPORTE DE LAVAMANOS", precio: 108 },
+    { descripcion: "SIFON", precio: 180 },
+    { descripcion: "HERRAJE", precio: 700 },
+    { descripcion: "CANILLA FLEXIBLE", precio: 104 },
+    { descripcion: "Herraje New oasis", precio: 626 },
+    { descripcion: "copa 1/ 3/4", precio: 94 },
+    { descripcion: "Codos 3/4", precio: 78 },
+    { descripcion: "codos 3/4", precio: 78 },
+    { descripcion: "llave de chorro wequp", precio: 250 },
+    { descripcion: "mts de manguera culebra", precio: 31 },
 
-"Almohadilla de sello POINTER",
 
-"Caja grapas 100U",
+//Repuestos Vehiculos
+    { descripcion: "PAILA DE  ACEITE MAXIDIESEL SAE 50 LUBRIPLUS", precio: 3400 },
+    { descripcion: "PAILA ACEITE HIDRAULICO AW68 ISO 68 MOBIL", precio: 4200 },
+    { descripcion: "aceite PDV 2 tiempos", precio: 281 },
+    { descripcion: "Batería 1100AP", precio: 4000 },
+    { descripcion: "Motor ventilador condensador", precio: 1665 },
 
-"Caja clip metálicos 100U",
 
-"Resma papel carbón KORES",
+//Pinturas
 
-// Artículos eléctricos y de iluminación
-"Cable Numero 8 Thw 7h 200 Mt",
-"Teipes negros cobra",
-"Bombillos LED 12w",
-"Socate Plafon N28",
-"Cajetin 4x2 plástico",
-"Interruptor de luz doble",
-"Lámparas LED Superficiales 24w",
-"Lámpara Reflector 40w para Socate E27 110v (x5u)",
-"Docena Teipe Negro Cobra",
+    { descripcion: "Barniz caoba", precio: 927 },
+    { descripcion: "Brocha covo 3", precio: 57 },
+    { descripcion: "Goles de pintura Pintusa azul", precio: 370 },
+    { descripcion: "ESMALTE DE PINTURAS", precio: 1332 },
+    { descripcion: "brochas #4", precio: 168 },
+    { descripcion: "brochas #3", precio: 107 },
+    { descripcion: "KIT PARA PINTAR", precio: 250 },
+    { descripcion: "GALON DE FONDO", precio: 1600 },
+    { descripcion: "CUNETE DE PINTURA CAUCHO CLASE A", precio: 1200 },
+    { descripcion: "GALON DE PINTURA EN CAUCHO", precio: 383 },
+    { descripcion: "galones de pintura satinada", precio: 1300 },
+    { descripcion: "Fondo titan anticorrosivo", precio: 1095 },
+    { descripcion: "manpica galon esmalte", precio: 1725 },
+    { descripcion: "fondo 2 en 1 blanco 1/4", precio: 312 },
 
-// Artículos de oficina y papelería
-"Caja de resma de hojas T/Carta",
-"Caja de resma de hojas T/Oficio",
-"Bolígrafos",
-"Carpetas amarillas manila",
-"Carpetas marrón",
-"Paquete de fundas protectoras",
-"Toner MXP Samsung 111",
-"Toner MXP HP 85A",
+//Papeleria
+    { descripcion: "Resma de hojas blancas Carta", precio: 289 },
+    { descripcion: "Resma de hojas blancas Oficio", precio: 330 },
+    { descripcion: "Docena de carpetas amarillas", precio: 225 },
+    { descripcion: "Docena de boligrafos Offiesk", precio: 247 },
+    { descripcion: "Libreta", precio: 75 },
+    { descripcion: "Bolígrafo Paper Mate Kilométrico (caja)", precio: 180 },
+    { descripcion: "Resaltador KORES", precio: 41 },
+    { descripcion: "Caja hoja Carta HP 8.5\"", precio: 2375 },
+    { descripcion: "Caja hoja Oficio HP 8.5\"", precio: 2375 },
+    { descripcion: "Clip Binder Mordaza 41mm (Caja x20 Und Ofimak)", precio: 286 },
+    { descripcion: "Lápiz MONGOL", precio: 25 },
+    { descripcion: "Tinta para sello PRINTA", precio: 182 },
+    { descripcion: "Almohadilla de sello POINTER", precio: 182 },
+    { descripcion: "Caja grapas 500U", precio: 292 },
+    { descripcion: "Caja clip metálicos 100U", precio: 115 },
+    { descripcion: "Resma papel carbón KORES", precio: 187 },
+    { descripcion: "Bolígrafo Paper mate", precio: 30 },
+    { descripcion: "Carpeta amarilla manila Carta", precio: 30 },
+    { descripcion: "Carpeta marró Carta", precio: 35 },
+    { descripcion: "Paquete de fundas protectoras", precio: 220 },
+    { descripcion: "Toner MXP Samsung 111", precio: 555 },
+    { descripcion: "Toner MXP HP 85A", precio: 444 }
 
 ];
 
@@ -905,24 +764,25 @@ const productosComunes = [
 
     // Mostrar el popup al cargar la página
     window.onload = function() {
-        document.getElementById('popup').style.display = 'flex';
-        inicializarAutocompletado();
-    };
+    document.getElementById('popup').style.display = 'flex';
+    inicializarAutocompletado();
+    manejarSeleccionProducto();
+};
 
-    function inicializarAutocompletado() {
-        document.addEventListener('input', function(e) {
-            if (e.target && e.target.classList.contains('input-descripcion')) {
-                const valor = e.target.value.toLowerCase();
-                const sugerencias = productosComunes.filter(producto => 
-                    producto.toLowerCase().includes(valor)
-                );
-                
-                // Actualizar el datalist
-                const datalist = document.getElementById('productos-list');
-                datalist.innerHTML = sugerencias.map(producto => `<option value="${producto}">`).join('');
-            }
-        });
-    }
+function inicializarAutocompletado() {
+    document.addEventListener('input', function(e) {
+        if (e.target && e.target.classList.contains('input-descripcion')) {
+            const valor = e.target.value.toLowerCase();
+            const sugerencias = productosComunes.filter(producto => 
+                producto.descripcion.toLowerCase().includes(valor)
+            );
+            
+            // Actualizar el datalist
+            const datalist = document.getElementById('productos-list');
+            datalist.innerHTML = sugerencias.map(producto => `<option value="${producto.descripcion}" data-precio="${producto.precio}">`).join('');
+        }
+    });
+}
 
     function seleccionarProveedor() {
         const fecha = document.getElementById('popupFecha').value;
@@ -1100,11 +960,16 @@ const productosComunes = [
         const newRow = document.createElement('div');
         newRow.className = 'product-row';
         newRow.innerHTML = `
-            <input type="number" class="input-cantidad" placeholder="0" min="0" oninput="calcularTotal(this)">
-            <input type="text" class="input-descripcion" placeholder="Descripción del producto" list="productos-list">
-            <datalist id="productos-list">
-                ${productosComunes.map(producto => `<option value="${producto}">`).join('')}
-            </datalist>
+
+<input type="number" class="input-cantidad" placeholder="0" min="0" oninput="calcularTotal(this)">
+
+<input type="text" class="input-descripcion" placeholder="Descripción del producto" list="productos-list">
+
+<datalist id="productos-list">
+
+    ${productosComunes.map(producto => `<option value="${producto.descripcion}" data-precio="${producto.precio}">`).join('')}
+
+</datalist>
             <input type="number" class="input-precio-unitario" placeholder="0.00" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
             <input type="number" class="input-precio-total" placeholder="0.00" step="0.01" readonly>
             <input type="number" class="input-total-con-descuento" placeholder="0.00" step="0.01" readonly>
