@@ -398,6 +398,61 @@ font-weight: bold;
     </div>
 
     <script>
+
+                // Abre el popup al cargar la página
+                window.onload = function() {
+    setTimeout(function() {
+        cargarDatosDesdeSessionStorage();
+        console.log("Valor de prueba:", localStorage.getItem('test'));
+        openPopup();
+    }, 100);
+};
+
+function cargarDatosDesdeSessionStorage() {
+    console.log("Contenido de sessionStorage:", JSON.stringify(sessionStorage));
+
+    const baseYa = sessionStorage.getItem('baseya');
+    const baseNu = sessionStorage.getItem('basenu');
+    const proveedorYa = sessionStorage.getItem('proveedorya');
+    const proveedorNu = sessionStorage.getItem('proveedornu');
+    const excentoNu = sessionStorage.getItem('excentonu');
+
+    console.log("baseya:", baseYa);
+    console.log("basenu:", baseNu);
+    console.log("proveedorya:", proveedorYa);
+    console.log("proveedornu:", proveedorNu);
+    console.log("excentonu:", excentoNu);
+
+    const baseImponible = baseYa || baseNu;
+    const proveedor = proveedorYa || proveedorNu;
+    const excento = excentoNu;
+
+    if (baseImponible) {
+        document.getElementById('baseimponible').value = baseImponible;
+        console.log(`Base imponible cargada: ${baseImponible}`);
+    }
+
+    if (proveedor) {
+        document.getElementById('provider').value = proveedor;
+        console.log(`Proveedor cargado: ${proveedor}`);
+        // Disparar el evento change en el selector de proveedor
+        document.getElementById('provider').dispatchEvent(new Event('change'));
+    }
+
+    if (excento) {
+        document.getElementById('excento').value = excento;
+        console.log(`Excento cargado: ${excento}`);
+        // Disparar el evento input para actualizar los cálculos
+        const excentoInput = document.getElementById('excento');
+        excentoInput.dispatchEvent(new Event('input'));
+    }
+
+    // Disparar el evento input para actualizar los cálculos
+    const baseimponibleInput = document.getElementById('baseimponible');
+    baseimponibleInput.dispatchEvent(new Event('input'));
+
+    console.log("Finalizada la carga de datos desde sessionStorage");
+}
         document.getElementById('provider').addEventListener('change', function() {
             const manualProvider = document.getElementById('manualProvider');
             manualProvider.style.display = this.value === 'manual' ? 'block' : 'none';
@@ -472,13 +527,21 @@ font-weight: bold;
     }
     
     function generate() {
+
     const provider = document.getElementById('provider').value;
+
     const rif = document.getElementById('manualProvider').style.display === 'block' ? document.getElementById('manualRIF').value : document.getElementById('provider').selectedOptions[0].dataset.rif;
+
     const issueDate = document.getElementById('issueDate').value;
+
     const deliveryDate = document.getElementById('deliveryDate').value;
+
     const comprobanteNumber = document.getElementById('comprobanteNumber').value;
+
     const operationNumber = document.getElementById('operationNumber').value;
+
     const baseimponible = parseFloat(document.getElementById('baseimponible').value) || 0; 
+
     const excento = parseFloat(document.getElementById('excento').value) || 0;
 
     // Generar el slot3 con el formato aaaammxxxxxxxx
@@ -524,17 +587,41 @@ font-weight: bold;
     // Calcular y mostrar el total a pagar en id9
     calcularTotalAPagar();
 
+
     // Cerrar el popup
     closePopup();
 
     // Abrir la ventana de impresión
     window.print();
+
+    // Limpiar localStorage después de generar el comprobante
+
+    setTimeout(function() {
+
+localStorage.removeItem('generadoya');
+
+localStorage.removeItem('generadonu');
+
+localStorage.removeItem('proveedorya');
+
+localStorage.removeItem('proveedornu');
+
+localStorage.removeItem('baseya');
+
+localStorage.removeItem('basenu');
+
+localStorage.removeItem('excentonu');
+
+}, 1000);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    cargarDatosDesdeSessionStorage();
+
+});
     
-        // Abre el popup al cargar la página
-        window.onload = function() {
-            openPopup();
-        };
+
     </script>
 
 </body>
