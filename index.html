@@ -392,12 +392,12 @@ function generarComprobantes() {
     const token = 'generadoya';
     const proveedorSelect = document.getElementById('proveedor-realizado');
     const proveedorSeleccionado = proveedorSelect.options[proveedorSelect.selectedIndex].value;
-    const subtotal = document.getElementById('subtotal-nuevo-pago').innerText.split(': ')[1];
+    const baseImponible = document.getElementById('resultado').innerText.split(': ')[1];
 
     console.log("Datos a guardar:", {
         token: token,
         proveedor: proveedorSeleccionado,
-        base: subtotal
+        base: baseImponible
     });
 
     // Borrar los datos de la sección "nuevo pago" si existen
@@ -406,14 +406,12 @@ function generarComprobantes() {
     sessionStorage.removeItem('basenu');
     sessionStorage.removeItem('excentonu');
 
-    // Guardar el token, proveedor y subtotal en el almacenamiento de sesión
+    // Guardar el token, proveedor y base imponible en la memoria local
     sessionStorage.setItem('generadoya', token);
     sessionStorage.setItem('proveedorya', proveedorSeleccionado);
-    sessionStorage.setItem('baseya', subtotal);
+    sessionStorage.setItem('baseya', baseImponible);
 
     console.log("Datos guardados en sessionStorage. Contenido actual:", sessionStorage);
-
-    sessionStorage.setItem('test', 'Este es un valor de prueba');
 
     // Abrir comprobante.html en una nueva pestaña
     window.open('comprobante.html', '_blank');
