@@ -409,49 +409,68 @@ font-weight: bold;
 };
 
 function cargarDatosDesdeSessionStorage() {
-    console.log("Contenido de sessionStorage:", JSON.stringify(sessionStorage));
+  console.log("Contenido de sessionStorage:", JSON.stringify(sessionStorage));
 
-    const baseYa = sessionStorage.getItem('baseya');
-    const baseNu = sessionStorage.getItem('basenu');
-    const proveedorYa = sessionStorage.getItem('proveedorya');
-    const proveedorNu = sessionStorage.getItem('proveedornu');
-    const excentoNu = sessionStorage.getItem('excentonu');
+  const baseYa = sessionStorage.getItem('baseya');
+  const baseNu = sessionStorage.getItem('basenu');
+  const proveedorYa = sessionStorage.getItem('proveedorya');
+  const proveedorNu = sessionStorage.getItem('proveedornu');
+  const excentoNu = sessionStorage.getItem('excentonu');
 
-    console.log("baseya:", baseYa);
-    console.log("basenu:", baseNu);
-    console.log("proveedorya:", proveedorYa);
-    console.log("proveedornu:", proveedorNu);
-    console.log("excentonu:", excentoNu);
+  console.log("baseya:", baseYa);
+  console.log("basenu:", baseNu);
+  console.log("proveedorya:", proveedorYa);
+  console.log("proveedornu:", proveedorNu);
+  console.log("excentonu:", excentoNu);
 
-    const baseImponible = baseYa || baseNu;
-    const proveedor = proveedorYa || proveedorNu;
-    const excento = excentoNu;
+  const baseImponible = baseYa || baseNu;
+  const proveedor = proveedorYa || proveedorNu;
+  const excento = excentoNu;
 
-    if (baseImponible) {
-        document.getElementById('baseimponible').value = baseImponible;
-        console.log(`Base imponible cargada: ${baseImponible}`);
-    }
+  if (baseImponible) {
+    document.getElementById('baseimponible').value = baseImponible;
+    console.log(`Base imponible cargada: ${baseImponible}`);
+  }
 
-    if (proveedor) {
-        document.getElementById('provider').value = proveedor;
-        console.log(`Proveedor cargado: ${proveedor}`);
-        // Disparar el evento change en el selector de proveedor
-        document.getElementById('provider').dispatchEvent(new Event('change'));
-    }
+  if (proveedor) {
+    document.getElementById('provider').value = proveedor;
+    console.log(`Proveedor cargado: ${proveedor}`);
+    // Disparar el evento change en el selector de proveedor
+    document.getElementById('provider').dispatchEvent(new Event('change'));
+  }
 
-    if (excento) {
-        document.getElementById('excento').value = excento;
-        console.log(`Excento cargado: ${excento}`);
-        // Disparar el evento input para actualizar los cálculos
-        const excentoInput = document.getElementById('excento');
-        excentoInput.dispatchEvent(new Event('input'));
-    }
-
+  if (excento) {
+    document.getElementById('excento').value = excento;
+    console.log(`Excento cargado: ${excento}`);
     // Disparar el evento input para actualizar los cálculos
-    const baseimponibleInput = document.getElementById('baseimponible');
-    baseimponibleInput.dispatchEvent(new Event('input'));
+    const excentoInput = document.getElementById('excento');
+    excentoInput.dispatchEvent(new Event('input'));
+  }
 
-    console.log("Finalizada la carga de datos desde sessionStorage");
+  // Disparar el evento input para actualizar los cálculos
+  const baseimponibleInput = document.getElementById('baseimponible');
+  baseimponibleInput.dispatchEvent(new Event('input'));
+
+  console.log("Finalizada la carga de datos desde sessionStorage");
+
+  // Eliminar datos de la memoria después de 5 segundos
+  setTimeout(function() {
+  sessionStorage.removeItem('generadoya');
+
+  sessionStorage.removeItem('generadonu');
+
+  sessionStorage.removeItem('proveedorya');
+
+  sessionStorage.removeItem('proveedornu');
+
+  sessionStorage.removeItem('baseya');
+
+  sessionStorage.removeItem('basenu');
+
+  sessionStorage.removeItem('excentonu');
+
+  console.log("Datos eliminados de la memoria");
+  }, 5000); // 5 segundos
 }
         document.getElementById('provider').addEventListener('change', function() {
             const manualProvider = document.getElementById('manualProvider');
