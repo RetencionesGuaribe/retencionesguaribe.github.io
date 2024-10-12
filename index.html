@@ -132,6 +132,9 @@
         <h3 id="timbre-fiscal"></h3> <!-- Timbre Fiscal -->
         <h3 id="total-a-pagar"></h3> <!-- Total a Pagar -->
 
+    <!-- Nuevo botón para generar comprobantes -->
+
+    <button onclick="generarComprobantes()">Generar Comprobantes</button>
         <button onclick="volverInicio()">Volver a Inicio</button>
     </div>
 
@@ -144,12 +147,12 @@
     </select>
     <label for="tipo-calculo">Tipo de Cálculo:</label>
     <select id="tipo-calculo" onchange="cambiarTipoCalculo()">
-        <option value="base">Desde Base Imponible</option>
+        <option value="base">Desde Subtotal:</option>
         <option value="total">Desde Total de Factura</option>
     </select>
     <div id="calculo-base">
-        <label for="base">Base Imponible:</label>
-        <input type="number" id="base">
+        <label for="subtotal">Subtotal:</label>
+        <input type="number" id="subtotal">
     </div>
     <div id="calculo-total" style="display:none;">
         <label for="total-factura">Total de Factura:</label>
@@ -173,6 +176,10 @@
     <h3 id="iva-pagado-nuevo"></h3>
     <h3 id="timbre-fiscal-nuevo"></h3>
     <h3 id="real-total-a-pagar"></h3>
+
+ <!-- Nuevo botón para generar comprobantes -->
+
+    <button onclick="generarComprobantesNuevo()">Generar Comprobantes Nuevo</button>
 
     <button onclick="volverInicio()">Volver a Inicio</button>
 </div>
@@ -271,38 +278,42 @@ function mostrarSeccion(seccion) {
         }
 
         // Calcular un pago ya realizado
-        function calcular() {
-            const monto = parseFloat(document.getElementById('cuadro1').value);
-            const opcion = document.getElementById('opcion').value;
-            let resultado;
+function calcular() {
+    const monto = parseFloat(document.getElementById('cuadro1').value);
+    const opcion = document.getElementById('opcion').value;
+    const proveedorSelect = document.getElementById('proveedor-realizado');
+    const proveedorSeleccionado = proveedorSelect.options[proveedorSelect.selectedIndex].value;
 
-            if (isNaN(monto) || monto < 0) {
-                alert("Por favor, ingresa un monto válido.");
-                return;
-            }
+    if (isNaN(monto) || monto < 0) {
+        alert("Por favor, ingresa un monto válido.");
+        return;
+    }
 
-            if (opcion === '75') {
-                resultado = monto / (1 + 0.16 * 0.25 - 0.001);
-            } else if (opcion === '100') {
-                resultado = monto / (1 + 0.16 * 0 - 0.001);
-            }
+    let resultado;
+    if (opcion === '75') {
+        resultado = monto / (1 + 0.16 * 0.25 - 0.001);
+    } else if (opcion === '100') {
+        resultado = monto / (1 + 0.16 * 0 - 0.001);
+    }
 
-            const iva = resultado * 0.16;
-            const timbreFiscal = resultado * 0.001;
-            const ivaRetenido = opcion === '75' ? iva * 0.75 : iva;
-            const ivaPagado = opcion === '75' ? iva * 0.25 : 0;
+    const iva = resultado * 0.16;
+    const timbreFiscal = resultado * 0.001;
+    const ivaRetenido = opcion === '75' ? iva * 0.75 : iva;
+    const ivaPagado = opcion === '75' ? iva * 0.25 : 0;
+    const totalFactura = resultado + iva;
+    const totalAPagar = resultado + ivaPagado - timbreFiscal;
 
-            const totalFactura = resultado + iva; // Total de la factura
-            const totalAPagar = resultado + ivaPagado - timbreFiscal; // Cálculo total a pagar
+    // Mostrar resultados...
+    document.getElementById('resultado').innerText = `Base Imponible: ${resultado.toFixed(2)}`;
+    document.getElementById('iva').innerText = `IVA (16%): ${iva.toFixed(2)}`;
+    document.getElementById('total-realizado').innerText = `Total de Factura: ${totalFactura.toFixed(2)}`;
+    document.getElementById('iva-retenido').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
+    document.getElementById('iva-pagado').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
+    document.getElementById('timbre-fiscal').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
+    document.getElementById('total-a-pagar').innerText = `Total a Pagar: ${totalAPagar.toFixed(2)}`;
 
-            document.getElementById('resultado').innerText = `Base Imponible: ${resultado.toFixed(2)}`;
-            document.getElementById('iva').innerText = `IVA (16%): ${iva.toFixed(2)}`;
-            document.getElementById('total-realizado').innerText = `Total de Factura: ${totalFactura.toFixed(2)}`;
-            document.getElementById('iva-retenido').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
-            document.getElementById('iva-pagado').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
-            document.getElementById('timbre-fiscal').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
-            document.getElementById('total-a-pagar').innerText = `Total a Pagar: ${totalAPagar.toFixed(2)}`;
-        }
+    // No guardamos nada en localStorage aquí
+}
 
         // Calcular un nuevo pago
 function cambiarTipoCalculo() {
@@ -321,41 +332,139 @@ function calcularNuevoPago() {
     const exento = parseFloat(document.getElementById('exento').value) || 0;
     const retencion = document.getElementById('retencion').value;
 
-    let baseImponible, totalFactura;
-
     if (tipoCalculo === 'base') {
-        baseImponible = parseFloat(document.getElementById('base').value);
-        if (isNaN(baseImponible) || baseImponible < 0) {
-            alert("Por favor, ingresa un monto válido para la base imponible.");
+        // Cálculo desde la base imponible
+        const subtotal = parseFloat(document.getElementById('subtotal').value);
+        if (isNaN(subtotal) || subtotal < 0) {
+            alert("Por favor, ingresa un subtotal válido.");
             return;
         }
+
+        const baseImponible = subtotal - exento;
         const iva = baseImponible * 0.16;
-        totalFactura = baseImponible + exento + iva;
+        const totalFactura = subtotal + iva;
+        const timbreFiscal = subtotal * 0.001;
+        const ivaRetenido = retencion === '75' ? iva * 0.75 : iva;
+        const ivaPagado = retencion === '75' ? iva * 0.25 : 0;
+
+        document.getElementById('subtotal-nuevo-pago').innerText = `Subtotal: ${subtotal.toFixed(2)}`;
+        document.getElementById('base-imponible-nuevo-pago').innerText = `Base Imponible: ${baseImponible.toFixed(2)}`;
+        document.getElementById('exento-nuevo-pago').innerText = `Exento: ${exento.toFixed(2)}`;
+        document.getElementById('iva-nuevo-pago').innerText = `IVA (16%): ${iva.toFixed(2)}`;
+        document.getElementById('total-factura-nuevo').innerText = `Total de Factura: ${totalFactura.toFixed(2)}`;
+        document.getElementById('iva-retenido-nuevo').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
+        document.getElementById('iva-pagado-nuevo').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
+        document.getElementById('timbre-fiscal-nuevo').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
+        document.getElementById('real-total-a-pagar').innerText = `Total a Pagar: ${(subtotal + ivaPagado - timbreFiscal).toFixed(2)}`;
     } else {
-        totalFactura = parseFloat(document.getElementById('total-factura').value);
+        // Cálculo desde el total de la factura
+        const totalFactura = parseFloat(document.getElementById('total-factura').value);
         if (isNaN(totalFactura) || totalFactura < 0) {
-            alert("Por favor, ingresa un monto válido para el total de la factura.");
+            alert("Por favor, ingresa un total de factura válido.");
             return;
         }
-        baseImponible = (totalFactura - exento) / 1.16;
+
+        const totalFacturaSinExento = totalFactura - exento;
+        const iva = totalFacturaSinExento * 0.16 / 1.16;
+        const baseImponible = iva / 0.16;
+        const subtotal = baseImponible + exento;
+        const timbreFiscal = subtotal * 0.001;
+        const ivaRetenido = retencion === '75' ? iva * 0.75 : iva;
+        const ivaPagado = retencion === '75' ? iva * 0.25 : 0;
+
+        document.getElementById('subtotal-nuevo-pago').innerText = `Subtotal: ${subtotal.toFixed(2)}`;
+        document.getElementById('base-imponible-nuevo-pago').innerText = `Base Imponible: ${baseImponible.toFixed(2)}`;
+        document.getElementById('exento-nuevo-pago').innerText = `Exento: ${exento.toFixed(2)}`;
+        document.getElementById('iva-nuevo-pago').innerText = `IVA (16%): ${iva.toFixed(2)}`;
+        document.getElementById('total-factura-nuevo').innerText = `Total de Factura: ${totalFactura.toFixed(2)}`;
+        document.getElementById('iva-retenido-nuevo').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
+        document.getElementById('iva-pagado-nuevo').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
+        document.getElementById('timbre-fiscal-nuevo').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2) }`;
+        document.getElementById('real-total-a-pagar').innerText = `Total a Pagar: ${(subtotal + ivaPagado - timbreFiscal).toFixed(2)}`;
     }
-
-    const iva = baseImponible * 0.16;
-    const subtotal = baseImponible + exento;
-    const timbreFiscal = subtotal * 0.001;
-    const ivaRetenido = retencion === '75' ? iva * 0.75 : iva;
-    const ivaPagado = retencion === '75' ? iva * 0.25 : 0;
-
-    document.getElementById('subtotal-nuevo-pago').innerText = `Subtotal: ${subtotal.toFixed(2)}`;
-    document.getElementById('base-imponible-nuevo-pago').innerText = `Base Imponible: ${baseImponible.toFixed(2)}`;
-    document.getElementById('exento-nuevo-pago').innerText = `Exento: ${exento.toFixed(2)}`;
-    document.getElementById('iva-nuevo-pago').innerText = `IVA (16%): ${iva.toFixed(2)}`;
-    document.getElementById('total-factura-nuevo').innerText = `Total de Factura: ${totalFactura.toFixed(2)}`;
-    document.getElementById('iva-retenido-nuevo').innerText = `IVA Retenido: ${ivaRetenido.toFixed(2)}`;
-    document.getElementById('iva-pagado-nuevo').innerText = `IVA Pagado: ${ivaPagado.toFixed(2)}`;
-    document.getElementById('timbre-fiscal-nuevo').innerText = `Timbre Fiscal: ${timbreFiscal.toFixed(2)}`;
-    document.getElementById('real-total-a-pagar').innerText = `Total a Pagar: ${(subtotal + ivaPagado - timbreFiscal).toFixed(2)}`;
 }
+
+// Añadir esta función al final de tu script existente
+
+function generarComprobantes() {
+    console.log("Iniciando generarComprobantes...");
+
+    const token = 'generadoya';
+    const proveedorSelect = document.getElementById('proveedor-realizado');
+    const proveedorSeleccionado = proveedorSelect.options[proveedorSelect.selectedIndex].value;
+    const subtotal = document.getElementById('subtotal-nuevo-pago').innerText.split(': ')[1];
+
+    console.log("Datos a guardar:", {
+        token: token,
+        proveedor: proveedorSeleccionado,
+        base: subtotal
+    });
+
+    // Borrar los datos de la sección "nuevo pago" si existen
+    sessionStorage.removeItem('generadonu');
+    sessionStorage.removeItem('proveedornu');
+    sessionStorage.removeItem('basenu');
+    sessionStorage.removeItem('excentonu');
+
+    // Guardar el token, proveedor y subtotal en el almacenamiento de sesión
+    sessionStorage.setItem('generadoya', token);
+    sessionStorage.setItem('proveedorya', proveedorSeleccionado);
+    sessionStorage.setItem('baseya', subtotal);
+
+    console.log("Datos guardados en sessionStorage. Contenido actual:", sessionStorage);
+
+    sessionStorage.setItem('test', 'Este es un valor de prueba');
+
+    // Abrir comprobante.html en una nueva pestaña
+    window.open('comprobante.html', '_blank');
+
+    // Abrir timbre.html en otra nueva pestaña
+    window.open('timbre.html', '_blank');
+}
+
+function generarComprobantesNuevo() {
+    console.log("Iniciando generarComprobantesNuevo...");
+
+    const token = 'generadonu';
+    const proveedorSelect = document.getElementById('proveedor-nuevo');
+    const proveedorSeleccionado = proveedorSelect.options[proveedorSelect.selectedIndex].value;
+    const subtotal = document.getElementById('subtotal-nuevo-pago').innerText.split(': ')[1];
+    const exento = document.getElementById('exento').value;
+
+    console.log("Datos a guardar:", {
+        token: token,
+        proveedor: proveedorSeleccionado,
+        base: subtotal,
+        exento: exento
+    });
+
+    // Eliminar el token anterior si existe
+    sessionStorage.removeItem('generadoya');
+
+    // Guardar el nuevo token y los datos en el almacenamiento de sesión
+    sessionStorage.setItem('generadonu', token);
+    sessionStorage.setItem('proveedornu', proveedorSeleccionado);
+    sessionStorage.setItem('basenu', subtotal);
+    sessionStorage.setItem('excentonu', exento);
+
+    console.log("Datos guardados en sessionStorage. Contenido actual:", sessionStorage);
+
+    // Abrir comprobante.html en una nueva pestaña
+    window.open('comprobante.html', '_blank');
+
+    // Abrir timbre.html en otra nueva pestaña
+    window.open('timbre.html', '_blank');
+}
+
+console.log("Datos guardados en localStorage:", {
+    generadoya: localStorage.getItem('generadoya'),
+    proveedorya: localStorage.getItem('proveedorya'),
+    baseya: localStorage.getItem('baseya'),
+    generadonu: localStorage.getItem('generadonu'),
+    proveedornu: localStorage.getItem('proveedornu'),
+    basenu: localStorage.getItem('basenu'),
+    excentonu: localStorage.getItem('excentonu')
+});
     </script>
 </body>
 </html>
