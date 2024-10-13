@@ -416,16 +416,46 @@ function cargarDatosDesdeSessionStorage() {
   const proveedorYa = sessionStorage.getItem('proveedorya');
   const proveedorNu = sessionStorage.getItem('proveedornu');
   const excentoNu = sessionStorage.getItem('excentonu');
+  const fecha1Ya = sessionStorage.getItem('fecha1ya');
+  const fecha2Ya = sessionStorage.getItem('fecha2ya');
+  const opYa = sessionStorage.getItem('opya');
+  const comprobanteYa = sessionStorage.getItem('comprobanteya');
+  const bancoyA = sessionStorage.getItem('bancoya');
+  const referenciaya = sessionStorage.getItem('referenciaya');
+  const fecha1Nu = sessionStorage.getItem('fecha1nu');
+  const fecha2Nu = sessionStorage.getItem('fecha2nu');
+  const opNu = sessionStorage.getItem('opnu');
+  const comprobantenu = sessionStorage.getItem('comprobantenu');
+  const bancono = sessionStorage.getItem('banconu');
+  const referencianu = sessionStorage.getItem('referencianu');
 
   console.log("baseya:", baseYa);
   console.log("basenu:", baseNu);
   console.log("proveedorya:", proveedorYa);
   console.log("proveedornu:", proveedorNu);
   console.log("excentonu:", excentoNu);
+  console.log("fecha1ya:", fecha1Ya);
+  console.log("fecha2ya:", fecha2Ya);
+  console.log("opya:", opYa);
+  console.log("comprobanteya:", comprobanteYa);
+  console.log("bancoya:", bancoyA);
+  console.log("referenciaya:", referenciaya);
+  console.log("fecha1nu:", fecha1Nu);
+  console.log("fecha2nu:", fecha2Nu);
+  console.log("opnu:", opNu);
+  console.log("comprobantenu:", comprobantenu);
+  console.log("banconu:", bancono);
+  console.log("referencianu:", referencianu);
 
   const baseImponible = baseYa || baseNu;
   const proveedor = proveedorYa || proveedorNu;
   const excento = excentoNu;
+  const fecha1 = fecha1Ya || fecha1Nu;
+  const fecha2 = fecha2Ya || fecha2Nu;
+  const op = opYa || opNu;
+  const comprobante = comprobanteYa || comprobantenu;
+  const banco = bancoyA || bancono;
+  const referencia = referenciaya || referencianu;
 
   if (baseImponible) {
     document.getElementById('baseimponible').value = baseImponible;
@@ -444,7 +474,37 @@ function cargarDatosDesdeSessionStorage() {
     console.log(`Excento cargado: ${excento}`);
     // Disparar el evento input para actualizar los cálculos
     const excentoInput = document.getElementById('excento');
-    excentoInput.dispatchEvent(new Event('input'));
+    excentoInput.dispatchEvent(new Event(' input'));
+  }
+
+  if (fecha1) {
+    document.getElementById('issueDate').value = fecha1;
+    console.log(`Fecha de emisión cargada: ${fecha1}`);
+  }
+
+  if (fecha2) {
+    document.getElementById('deliveryDate').value = fecha2;
+    console.log(`Fecha de entrega cargada: ${fecha2}`);
+  }
+
+  if (op) {
+    document.getElementById('operationNumber').value = op;
+    console.log(`Número de operación cargado: ${op}`);
+  }
+
+  if (comprobante) {
+    document.getElementById('comprobanteNumber').value = comprobante;
+    console.log(`Número de comprobante cargado: ${comprobante}`);
+  }
+
+  if (banco) {
+    // No hay un campo específico para el banco en el formulario actual
+    console.log(`Banco cargado: ${banco}`);
+  }
+
+  if (referencia) {
+    // No hay un campo específico para la referencia en el formulario actual
+    console.log(`Referencia cargada: ${referencia}`);
   }
 
   // Disparar el evento input para actualizar los cálculos
@@ -455,21 +515,26 @@ function cargarDatosDesdeSessionStorage() {
 
   // Eliminar datos de la memoria después de 5 segundos
   setTimeout(function() {
-  sessionStorage.removeItem('generadoya');
-
-  sessionStorage.removeItem('generadonu');
-
-  sessionStorage.removeItem('proveedorya');
-
-  sessionStorage.removeItem('proveedornu');
-
-  sessionStorage.removeItem('baseya');
-
-  sessionStorage.removeItem('basenu');
-
-  sessionStorage.removeItem('excentonu');
-
-  console.log("Datos eliminados de la memoria");
+    sessionStorage.removeItem('generadoya');
+    sessionStorage.removeItem('generadonu');
+    sessionStorage.removeItem('proveedorya');
+    sessionStorage.removeItem('proveedornu');
+    sessionStorage.removeItem('baseya');
+    sessionStorage.removeItem('basenu');
+    sessionStorage.removeItem('excentonu');
+    sessionStorage.removeItem('fecha1nu');
+    sessionStorage.removeItem('fecha2nu');
+    sessionStorage.removeItem('opnu');
+    sessionStorage.removeItem('comprobantenu');
+    sessionStorage.removeItem('banconu');
+    sessionStorage.removeItem('referencianu');
+    sessionStorage.removeItem('fecha1ya');
+    sessionStorage.removeItem('fecha2ya');
+    sessionStorage.removeItem('opya');
+    sessionStorage.removeItem('comprobanteya');
+    sessionStorage.removeItem('bancoya');
+    sessionStorage.removeItem('referenciaya');
+    console.log("Datos eliminados de la memoria");
   }, 5000); // 5 segundos
 }
         document.getElementById('provider').addEventListener('change', function() {
@@ -617,20 +682,43 @@ function cargarDatosDesdeSessionStorage() {
 
     setTimeout(function() {
 
-localStorage.removeItem('generadoya');
+    sessionStorage.removeItem('generadoya');
 
-localStorage.removeItem('generadonu');
+    sessionStorage.removeItem('generadonu');
 
-localStorage.removeItem('proveedorya');
+    sessionStorage.removeItem('proveedorya');
 
-localStorage.removeItem('proveedornu');
+    sessionStorage.removeItem('proveedornu');
 
-localStorage.removeItem('baseya');
+    sessionStorage.removeItem('baseya');
 
-localStorage.removeItem('basenu');
+    sessionStorage.removeItem('basenu');
 
-localStorage.removeItem('excentonu');
+    sessionStorage.removeItem('excentonu');
 
+    sessionStorage.removeItem('fecha1nu');
+
+    sessionStorage.removeItem('fecha2nu');
+
+    sessionStorage.removeItem('opnu');
+
+    sessionStorage.removeItem('comprobantenu');
+
+    sessionStorage.removeItem('banconu');
+
+    sessionStorage.removeItem('referencianu');
+
+    sessionStorage.removeItem('fecha1ya');
+
+    sessionStorage.removeItem('fecha2ya');
+
+    sessionStorage.removeItem('opya');
+
+    sessionStorage.removeItem('comprobanteya');
+
+    sessionStorage.removeItem('bancoya');
+
+    sessionStorage.removeItem('referenciaya');
 }, 1000);
 }
 
