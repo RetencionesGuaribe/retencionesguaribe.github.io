@@ -329,6 +329,12 @@ input:focus, select:focus {
         <button class="btn-icon" onclick="mostrarPopup()">⚙</button>
 
         <button class="btn-icon" onclick="window.print()">🖨️</button>
+        
+        <input type="file" id="inputCargarFactura" style="display: none;" onchange="cargarFactura(event)" accept=".json">
+
+<button class="btn-icon" onclick="document.getElementById('inputCargarFactura').click()">↑</button>
+
+<button class="btn-icon" onclick="guardarFactura()">💾</button>
 
     </div>
 
@@ -514,16 +520,95 @@ function manejarSeleccionProducto() {
     });
 }
 
+function guardarFactura() {
+    const rows = Array.from(document.querySelectorAll('.product-row')).map(row => ({
+        cantidad: row.querySelector('.input-cantidad').value,
+        descripcion: row.querySelector('.input-descripcion').value,
+        precioUnitario: row.querySelector('.input-precio-unitario').value,
+        precioTotal: row.querySelector('.input-precio-total').value,
+        totalConDescuento: row.querySelector('.input-total-con-descuento').value,
+        exento: row.querySelector('.input-exento').checked
+    }));
+
+    const facturaData = {
+        fecha: document.getElementById('fecha').value,
+        proveedor: document.getElementById('proveedorText').innerText,
+        retencion: document.getElementById('retencionText').innerText,
+        nroOperacion: document.getElementById('nroOperacionText').innerText,
+        productos: rows,
+        subtotal: document.getElementById('subtotalGeneral').innerText,
+        exento: document.getElementById('exentoGeneral').innerText,
+        iva: document.getElementById('ivaGeneral').innerText,
+        total: document.getElementById('totalGeneral').innerText
+    };
+
+    const dataStr = JSON.stringify(facturaData, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `factura_${document.getElementById('proveedorText').innerText}_${document.getElementById('nroOperacionText').innerText}_Total_${document.getElementById('totalAPagar').innerText}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function cargarFactura(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+        const facturaData = JSON.parse(e.target.result);
+        
+        document.getElementById('fecha').value = facturaData.fecha;
+        document.getElementById('proveedorText').innerText = facturaData.proveedor;
+        document.getElementById('retencionText').innerText = facturaData.retencion;
+        document.getElementById('nroOperacionText').innerText = facturaData.nroOperacion;
+
+        const productContainer = document.getElementById('productContainer');
+        productContainer.innerHTML = ''; // Limpiar el contenedor de productos
+
+        facturaData.productos.forEach(producto => {
+            const newRow = document.createElement('div');
+            newRow.className = 'product-row';
+            newRow.innerHTML = `
+                <input type="number" class="input-cantidad" value="${producto.cantidad}" oninput="calcularTotal(this)">
+                <input type="text" class="input-descripcion" value="${producto.descripcion}">
+                <input type="number" class="input-precio-unitario" value="${producto.precioUnitario}" step="0.01" oninput="calcularTotal(this)">
+                <input type="number" class="input-precio-total" value="${producto.precioTotal}" readonly>
+                <input type="number" class="input-total-con-descuento" value="${producto.totalConDescuento}" readonly>
+                <label>
+                    <input type="checkbox" class="input-exento" ${producto.exento ? 'checked' : ''} onchange="actualizarResumenGeneral()"> E
+                </label>
+                <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
+            `;
+            productContainer.appendChild(newRow);
+        });
+
+        document.getElementById('subtotalGeneral').innerText = facturaData.subtotal;
+        document.getElementById('exentoGeneral').innerText = facturaData.exento;
+        document.getElementById('ivaGeneral').innerText = facturaData.iva;
+        document.getElementById('totalGeneral').innerText = facturaData.total;
+        
+        actualizarResumenGeneral();
+    };
+
+    reader.readAsText(file);
+}
+
 
 const productosComunes = [
-///alimentos
     { descripcion: "Kg pollo beneficiado", precio: 210 },
+    { descripcion: "Pollo picado x Kg", precio: 230 },
+    { descripcion: "Pollo Entero", precio: 580 },
     { descripcion: "Kg carne molida", precio: 240 },
     { descripcion: "Kg carne corte ganso", precio: 230 },
     { descripcion: "Kg salchicha", precio: 210 },
     { descripcion: "Mortadela 500gr", precio: 94 },
     { descripcion: "Kg queso blanco", precio: 200 },
+    { descripcion: "Bandeja Queso Guayanes", precio: 120 },
+    { descripcion: "Queso Duro x Kg", precio: 190 },
     { descripcion: "Kg queso amarillo", precio: 380 },
+    { descripcion: "Mortadela cilindro 500g", precio: 175 },
     { descripcion: "Cartón de huevos", precio: 180 },
 
     { descripcion: "Kg sal", precio: 30 },
@@ -531,14 +616,26 @@ const productosComunes = [
     { descripcion: "Salsa de tomate Pampero", precio: 85 },
     { descripcion: "Kg azúcar", precio: 60 },
     { descripcion: "Café 250gr", precio: 150 },
-    { descripcion: "Aceite Comestible Litro", precio: 120 },
+    { descripcion: "Aceite Comestible Litro", precio: 130 },
     { descripcion: "Kg pasta", precio: 65 },
     { descripcion: "Cubito", precio: 25 },
     { descripcion: "Galletas sal ricas", precio: 145 },
-    { descripcion: "Bolsas de hielo", precio: 75 },
-    { descripcion: "ARROZ  KG", precio: 65 },
-    { descripcion: "HARINAS KALY ", precio: 50 },
-    { descripcion: "MANTEQUILLA DELINE", precio: 50 },
+    { descripcion: "Bolsa de hielo", precio: 75 },
+    { descripcion: "Arroz", precio: 65 },
+    { descripcion: "Harina Kaly", precio: 50 },
+    { descripcion: "Harina Pan", precio: 65 },
+    { descripcion: "Mantequilla Deline peque�a", precio: 50 },
+    { descripcion: "Bolsa de Pan frances 12u", precio: 39 },
+    { descripcion: "Docena Pan frances", precio: 39 },
+    { descripcion: "Bolsa de pan canilla 5u", precio: 40 },
+    { descripcion: "Pan canilla por unidad", precio: 12 },
+    
+    { descripcion: "Refresco Sun cola 2Lt", precio: 40 },
+    { descripcion: "Refresco Pepsi 2Lt", precio: 75 },
+    { descripcion: "Refresco Coca Cola 2Lt", precio: 80 },
+    { descripcion: "Panelada", precio: 25 },
+    { descripcion: "Panelista", precio: 30 },
+    { descripcion: "Jugo Naranja Justy", precio: 43 },
 
     { descripcion: "Kg cebolla", precio: 70 },
     { descripcion: "Kg ajo", precio: 362 },
@@ -562,9 +659,13 @@ const productosComunes = [
     { descripcion: "Bulto harina trigo 1x20", precio: 600 },
     { descripcion: "Bulto arroz 1x20", precio: 740 },
     { descripcion: "Mantequilla Deline (caja 1x24)", precio: 541 },
-    { descripcion: "Cajas de refresco", precio: 240 },
-    { descripcion: "CAJAS DE AGUA 600ML", precio: 340 },
-    { descripcion: " PANELADA CAJAS ", precio: 800 },
+    { descripcion: "Caja de refrescos Sun", precio: 240 },
+    { descripcion: "Caja de refrescos Pepsi", precio: 333 },
+    { descripcion: "Caja de refrescos Coca Cola", precio: 350 },
+    { descripcion: "Caja de refrescos varios", precio: 310 },
+    { descripcion: "CAJA DE AGUA 600ML", precio: 360 },
+    { descripcion: "CAJA DE AGUA 1Lt", precio: 400 },
+    { descripcion: " Caja de Paneladas ", precio: 800 },
 
 //Productos Plasticos
     { descripcion: "Cajas de bandejas 700 ML 10x25", precio: 1227 },
@@ -615,7 +716,7 @@ const productosComunes = [
     { descripcion: "Disco Tronzadora 14 Pulgadas Dewalt", precio: 222 },
     { descripcion: "Disco Corte Tronzadora 14 Dewalt Dw44640", precio: 266 },
     { descripcion: "Disco Para Tronzadora 14 X 1/8 X 1", precio: 131 },
-    { descripcion: "Disco De Corte Tronzadora 12 Pulgadas Mayoristas ", precio: 180 },
+    { descripcion: "Disco De Corte Tronzadora 12 Pulgadas ", precio: 180 },
     { descripcion: "Disco Dewalt trozadora 14''", precio: 245 },
 
 
@@ -634,7 +735,7 @@ const productosComunes = [
     { descripcion: "KG Electrodos 7018 5/32 Lincoln", precio: 145 },
     { descripcion: "Caja Electrodos Acero Inoxidable Aws E308 3/32 5kg", precio: 636 },
     { descripcion: "Caja Electrodos Inoxidables 1/8 Welding Pro", precio: 598 },
-    { descripcion: "Hoffman (2.4mm)x14 ", precio: 131 },
+    { descripcion: "Electrodos Hoffman (2.4mm)x14 ", precio: 131 },
 
     { descripcion: "Alambre Dulce Liso Galvanizado Rollo 800gr ", precio: 118 },
     { descripcion: "Kg Alambre Liso Galvanizado Calibre 12", precio: 150 },
@@ -786,7 +887,6 @@ const productosComunes = [
     { descripcion: "Bateria 1100 Amp Duncan 24mr", precio: 4480 },
     { descripcion: "Bateria 1100 Amp 24mr Extrema Willard", precio: 4141 },
     { descripcion: "Bateria Fulgor 30h 1100amp", precio: 6475 },
-
     { descripcion: "Motor ventilador condensador", precio: 1665 },
     { descripcion: "Filtro Aceite Planta Electrica Generac", precio: 941 },
 
@@ -1000,6 +1100,10 @@ function inicializarAutocompletado() {
         if (montoDeseado) {
             localStorage.setItem('montoDeseado', montoDeseado);
         }
+        
+        if (proveedorSelect) {
+            localStorage.setItem('proveedorSelect', proveedorSelect);
+        }
 
         // Oculta la ventana modal
         document.getElementById('popup').style.display = 'none';
@@ -1203,6 +1307,7 @@ function inicializarAutocompletado() {
             document.getElementById('popupMontoDeseado').value = '';
         }
     }
+    
 
     function ajustarPrecioUnitario(event, input) {
         event.preventDefault(); // Previene el comportamiento por defecto del scroll
