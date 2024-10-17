@@ -443,10 +443,22 @@ function saveComprobanteToFile() {
         timbreRetenido: document.getElementById('id6').textContent
     };
 
+    // Obtener el nombre del proveedor
+    const proveedor = comprobante.proveedor.replace(/[^a-zA-Z0-9]/g, '_');
+
+    // Obtener el número de orden con "OP" prefijo
+    const numeroOrden = `OP${comprobante.operationNumber}`;
+
+    // Obtener el número de comprobante sin ceros iniciales ni fecha, con "Tim" prefijo
+    const numeroComprobante = `Tim${comprobante.comprobanteNum.slice(-8).replace(/^0+/, '')}`;
+
+    // Crear el nombre del archivo
+    const fileName = `${proveedor}_${numeroOrden}_${numeroComprobante}.json`;
+
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(comprobante));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", `comprobante_${comprobante.comprobanteNum}.json`);
+    downloadAnchorNode.setAttribute("download", fileName);
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
