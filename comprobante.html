@@ -223,6 +223,61 @@ font-weight: bold;
             left: 808px;
             font-size: 18px;
         }
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.popup-button {
+    flex: 1;
+    margin: 0 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.generate-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.generate-button:hover {
+    background-color: #45a049;
+}
+
+.load-button {
+    background-color: #008CBA;
+    color: white;
+}
+
+.load-button:hover {
+    background-color: #007B9E;
+}
+
+.close-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.close-button:hover {
+    background-color: #d32f2f;
+}
+
+.popup-button:active {
+    transform: scale(0.95);
+}
+
+.popup-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
     </style>
 </head>
 <body>
@@ -257,7 +312,7 @@ font-weight: bold;
         <!-- Reemplazables -->
         <div class="slot1">REMPLAZO1</div>
         <div class="slot2">REMPLAZO2</div>
-        <div class="slot3">REMPLAZO3</div>
+        <div class="slot3 cursor-pointer" onclick="saveComprobanteToFile()">REMPLAZO3</div>
         <div class="slot4">REMPLAZO4</div>
         <div class="slot5">REMPLAZO5</div>
         <div class="slot6">REMPLAZO6</div>
@@ -279,7 +334,7 @@ font-weight: bold;
             <div class="column">IVA</div>
             <div class="column">TOTAL COMPRAS</div>
             <div class="column">IVA RETENIDO</div>
-            <div class="column" id="id1">1</div> <!-- Cambiado para poder acceder y modificar -->
+            <div class="column cursor-pointer" id="id1" onclick="reopenPopup()">1</div> <!-- Cambiado para poder acceder y modificar -->
             <div class="column" id="id2">2</div> <!-- subtotal -->
             <div class="column" id="id3">3</div> <!-- excento -->
             <div class="column">16%</div>
@@ -390,14 +445,154 @@ font-weight: bold;
 </div>
 
     
-    <button class="generate-button" onclick="generate()">Generar Comprobante</button>
-<button class="close-button" onclick="window.location.href='index.html'">Volver al Inicio</button>
+<div class="button-container">
+
+    <button class="popup-button generate-button" onclick="generate()">Generar Comprobante</button>
+
+    <button class="popup-button load-button" onclick="loadComprobanteFromJson()">Cargar Comprobante</button>
+
+    <button class="popup-button close-button" onclick="window.location.href='index.html'">Volver al Inicio</button>
+
 </div>
 
 
     </div>
 
     <script>
+
+function saveComprobanteToFile() {
+    const comprobante = {
+        operationNumber: document.getElementById('id1').textContent,
+        baseImponible: document.getElementById('id2').textContent,
+        excento: document.getElementById('id3').textContent,
+        proveedor: document.querySelector('.slot1').textContent,
+        rif: document.querySelector('.slot2').textContent,
+        comprobanteNum: document.querySelector('.slot3').textContent,
+        fechaEmision: document.querySelector('.slot4').textContent,
+        fechaEntrega: document.querySelector('.slot5').textContent,
+        ano: document.querySelector('.slot6').textContent,
+        mes: document.querySelector('.slot7').textContent,
+        iva: document.getElementById('id4').textContent,
+        totalCompras: document.getElementById('id5').textContent,
+        ivaRetenido: document.getElementById('id6').textContent,
+        subtotal: document.getElementById('id7').textContent,
+        ivaPorcentaje25: document.getElementById('id8').textContent,
+        totalAPagar: document.getElementById('id9').textContent
+    };
+
+    const proveedor = comprobante.proveedor.replace(/[^a-zA-Z0-9]/g, '_');
+    const numeroOrden = `OP${comprobante.operationNumber}`;
+    const numeroComprobante = `Com${comprobante.comprobanteNum.slice(-8).replace(/^0+/, '')}`;
+    const fileName = `${proveedor}_${numeroOrden}_${numeroComprobante}.json`;
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(comprobante));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", fileName);
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
+
+function reopenPopup() {
+    const operationNumber = document.getElementById('id1').textContent;
+    const baseImponible = document.getElementById('id2').textContent;
+    const excento = document.getElementById('id3').textContent;
+    const proveedor = document.querySelector('.slot1').textContent;
+    const rif = document.querySelector('.slot2').textContent;
+    const comprobanteNum = document.querySelector('.slot3').textContent.slice(-8);
+    const fechaEmision = document.querySelector('.slot4').textContent;
+    const fechaEntrega = document.querySelector('.slot5').textContent;
+
+    document.getElementById('operationNumber').value = operationNumber;
+    document.getElementById('baseimponible').value = baseImponible;
+    document.getElementById('excento').value = excento;
+    document.getElementById('provider').value = proveedor;
+    document.getElementById('comprobanteNumber').value = comprobanteNum;
+    document.getElementById('issueDate').value = fechaEmision;
+    document.getElementById('deliveryDate').value = fechaEntrega;
+
+    if (document.getElementById('provider').value === "") {
+        document.getElementById('provider').value = "manual";
+        document.getElementById('manualName').value = proveedor;
+        document.getElementById('manualRIF').value = rif;
+        document.getElementById('manualProvider').style.display = 'block';
+    }
+
+    openPopup();
+}
+
+function loadComprobanteFromJson() {
+    console.log("Iniciando carga de comprobante desde JSON");
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+    input.onchange = function() {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            try {
+                const comprobante = JSON.parse(event.target.result);
+                console.log("Datos cargados:", comprobante);
+
+                // Cargar datos en el formulario
+                document.getElementById('operationNumber').value = comprobante.operationNumber || '';
+                document.getElementById('baseimponible').value = comprobante.baseImponible || '';
+                document.getElementById('excento').value = comprobante.excento || '';
+                
+                const providerSelect = document.getElementById('provider');
+                providerSelect.value = comprobante.proveedor || 'manual';
+                
+                if (providerSelect.value === 'manual') {
+                    document.getElementById('manualProvider').style.display = 'block';
+                    document.getElementById('manualName').value = comprobante.proveedor || '';
+                    document.getElementById('manualRIF').value = comprobante.rif || '';
+                } else {
+                    document.getElementById('manualProvider').style.display = 'none';
+                }
+
+                document.getElementById('comprobanteNumber').value = comprobante.comprobanteNum ? comprobante.comprobanteNum.slice(-8) : '';
+                document.getElementById('issueDate').value = comprobante.fechaEmision || '';
+                document.getElementById('deliveryDate').value = comprobante.fechaEntrega || '';
+
+                // Actualizar valores de retención
+                const retentionPercentage = providerSelect.selectedOptions[0].getAttribute('data-retention') || '75';
+                document.getElementById('retentionPercentage').value = retentionPercentage;
+                document.getElementById('retencionProveedorPorcentaje').innerText = retentionPercentage + '%';
+
+                // Actualizar cálculos
+                updateRetentionValues();
+
+                // Actualizar valores en el comprobante
+                document.querySelector('.slot1').textContent = comprobante.proveedor || 'REMPLAZO1';
+                document.querySelector('.slot2').textContent = comprobante.rif || 'REMPLAZO2';
+                document.querySelector('.slot3').textContent = comprobante.comprobanteNum || 'REMPLAZO3';
+                document.querySelector('.slot4').textContent = comprobante.fechaEmision || 'REMPLAZO4';
+                document.querySelector('.slot5').textContent = comprobante.fechaEntrega || 'REMPLAZO5';
+                document.querySelector('.slot6').textContent = comprobante.ano || 'REMPLAZO6';
+                document.querySelector('.slot7').textContent = comprobante.mes || 'REMPLAZO7';
+
+                document.getElementById('id1').textContent = comprobante.operationNumber || '1';
+                document.getElementById('id2').textContent = comprobante.baseImponible || '2';
+                document.getElementById('id3').textContent = comprobante.excento || '3';
+                document.getElementById('id4').textContent = comprobante.iva || '4';
+                document.getElementById('id5').textContent = comprobante.totalCompras || '5';
+                document.getElementById('id6').textContent = comprobante.ivaRetenido || '6';
+                document.getElementById('id7').textContent = comprobante.subtotal || '7';
+                document.getElementById('id8').textContent = comprobante.ivaPorcentaje25 || '8';
+                document.getElementById('id9').textContent = comprobante.totalAPagar || '9';
+
+                console.log("Datos cargados exitosamente");
+                openPopup();
+            } catch (error) {
+                console.error("Error al cargar el archivo JSON:", error);
+                alert("Error al cargar el archivo. Por favor, asegúrese de que es un JSON válido.");
+            }
+        };
+        reader.readAsText(file);
+    };
+    input.click();
+}
 
                 // Abre el popup al cargar la página
                 window.onload = function() {
