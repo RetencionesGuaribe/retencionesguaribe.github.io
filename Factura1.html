@@ -418,34 +418,35 @@ input:focus, select:focus {
 
     <div class="container" id="draggableContainer">
 
-    <div class="header">
-
-        <input type="date" id="fecha">
-
-        <span id="proveedorText">Proveedor</span>
-
-        <span id="retencionText">Ret: --%</span>
-
-        <span id="nroOperacionText">OP: --</span>
-
-        <button class="btn-icon" onclick="agregarFila()">+</button>
-
-        <button class="btn-icon" onclick="ajustarPrecios()">!</button>
-
-        <button class="btn-icon" onclick="mostrarPopup()">⚙</button>
-
-        <button class="btn-icon" onclick="window.print()">🖨️</button>
-        
-        <input type="file" id="inputCargarFactura" style="display: none;" onchange="cargarFactura(event)" accept=".json">
-
-<button class="btn-icon" onclick="document.getElementById('inputCargarFactura').click()">↑</button>
-
-<button class="btn-icon" onclick="guardarFactura()">💾</button>
-
-<button class="btn-icon" onclick="guardarFacturaSheety()">💾 Sheety</button>
-<button class="btn-icon" onclick="buscarFacturaSheety()">🔍 Sheety</button>
-
+<div class="header">
+    <input type="date" id="fecha">
+    <span id="proveedorText">Proveedor</span>
+    <span id="retencionText">Ret: --%</span>
+    <span id="nroOperacionText">OP: --</span>
+    <button class="btn-icon" onclick="agregarFila()">+</button>
+    <button class="btn-icon" onclick="ajustarPrecios()">!</button>
+    <button class="btn-icon" onclick="mostrarPopup()">⚙</button>
+    <button class="btn-icon" onclick="window.print()">🖨️</button>
+<button class="btn-icon" onclick="mostrarPopupArchivos()">📂</button>
+<div id="popupArchivos" style="display: none;">
+    <div class="popup-content">
+        <h2>Gestionar Factura (Archivo)</h2>
+        <button onclick="cargarFactura()">Cargar desde Archivo</button>
+        <button onclick="guardarFactura()">Guardar en Archivo</button>
+        <button onclick="cerrarPopupArchivos()">Cerrar</button>
     </div>
+</div>
+
+    <button class="btn-icon" onclick="mostrarPopupSheety()">📄</button> <div id="popupSheety" style="display: none;"> 
+        <div class="popup-content">
+            <h2>Gestionar Factura (Sheety)</h2>
+            <button onclick="guardarFacturaSheety()">Guardar en Sheety</button> 
+            <button onclick="buscarFacturaSheety()">Cargar desde Sheety</button>
+	    <button onclick="cerrarPopupSheety()">Cerrar</button>
+        </div>
+    </div>
+</div>
+
 
 
     <div class="table-header">
@@ -649,78 +650,43 @@ function manejarSeleccionProducto() {
 }
 
 function guardarFactura() {
-    const rows = Array.from(document.querySelectorAll('.product-row')).map(row => ({
-        cantidad: row.querySelector('.input-cantidad').value,
-        descripcion: row.querySelector('.input-descripcion').value,
-        precioUnitario: row.querySelector('.input-precio-unitario').value,
-        precioTotal: row.querySelector('.input-precio-total').value,
-        totalConDescuento: row.querySelector('.input-total-con-descuento').value,
-        exento: row.querySelector('.input-exento').checked
-    }));
 
-    const facturaData = {
-        fecha: document.getElementById('fecha').value,
-        proveedor: document.getElementById('proveedorText').innerText,
-        retencion: document.getElementById('retencionText').innerText,
-        nroOperacion: document.getElementById('nroOperacionText').innerText,
-        productos: rows,
-        subtotal: document.getElementById('subtotalGeneral').innerText,
-        exento: document.getElementById('exentoGeneral').innerText,
-        iva: document.getElementById('ivaGeneral').innerText,
-        total: document.getElementById('totalGeneral').innerText
-    };
+    guardarFacturaEnArchivo();
 
-    const dataStr = JSON.stringify(facturaData, null, 2);
-    const blob = new Blob([dataStr], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `factura_${document.getElementById('proveedorText').innerText}_${document.getElementById('nroOperacionText').innerText}_Total_${document.getElementById('totalAPagar').innerText}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+    cerrarPopupArchivos();
+
 }
 
-function cargarFactura(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    
-    reader.onload = function(e) {
-        const facturaData = JSON.parse(e.target.result);
-        
-        document.getElementById('fecha').value = facturaData.fecha;
-        document.getElementById('proveedorText').innerText = facturaData.proveedor;
-        document.getElementById('retencionText').innerText = facturaData.retencion;
-        document.getElementById('nroOperacionText').innerText = facturaData.nroOperacion;
+function cargarFactura() {
 
-        const productContainer = document.getElementById('productContainer');
-        productContainer.innerHTML = ''; // Limpiar el contenedor de productos
+    const input = document.createElement('input');
 
-        facturaData.productos.forEach(producto => {
-            const newRow = document.createElement('div');
-            newRow.className = 'product-row';
-            newRow.innerHTML = `
-                <input type="number" class="input-cantidad" value="${producto.cantidad}" oninput="calcularTotal(this)">
-                <input type="text" class="input-descripcion" value="${producto.descripcion}">
-                <input type="number" class="input-precio-unitario" value="${producto.precioUnitario}" step="0.01" oninput="calcularTotal(this)">
-                <input type="number" class="input-precio-total" value="${producto.precioTotal}" readonly>
-                <input type="number" class="input-total-con-descuento" value="${producto.totalConDescuento}" readonly>
-                <label>
-                    <input type="checkbox" class="input-exento" ${producto.exento ? 'checked' : ''} onchange="actualizarResumenGeneral()"> E
-                </label>
-                <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
-            `;
-            productContainer.appendChild(newRow);
-        });
+    input.type = 'file';
 
-        document.getElementById('subtotalGeneral').innerText = facturaData.subtotal;
-        document.getElementById('exentoGeneral').innerText = facturaData.exento;
-        document.getElementById('ivaGeneral').innerText = facturaData.iva;
-        document.getElementById('totalGeneral').innerText = facturaData.total;
-        
-        actualizarResumenGeneral();
+    input.accept = '.json';
+
+    input.onchange = function(event) {
+
+        const file = event.target.files[0];
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            const facturaData = JSON.parse(e.target.result);
+
+            cargarFacturaEnInterfaz(facturaData);
+
+        };
+
+        reader.readAsText(file);
+
     };
 
-    reader.readAsText(file);
+    input.click();
+
+    cerrarPopupArchivos();
+
 }
 
 
@@ -1285,6 +1251,7 @@ async function guardarFacturaSheety() {
         alert('Error al guardar la factura: ' + error.message);
 
     }
+document.getElementById('popupSheety').style.display = 'none';
 
 }
 
@@ -1453,6 +1420,7 @@ async function buscarFacturaSheety() {
         alert('Error al buscar la factura: ' + error.message);
 
     }
+document.getElementById('popupSheety').style.display = 'none';
 
 }
 
@@ -1472,6 +1440,201 @@ function agregarFilaConProducto(producto) {
         <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
     `;
     productContainer.appendChild(newRow);
+}
+
+
+function cargarFacturaDesdeArchivo() {
+
+    const input = document.createElement('input');
+
+    input.type = 'file';
+
+    input.accept = '.json';
+
+    input.onchange = function(event) {
+
+        const file = event.target.files[0];
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            const facturaData = JSON.parse(e.target.result);
+
+            cargarFacturaEnInterfaz(facturaData);
+
+        };
+
+        reader.readAsText(file);
+
+    };
+
+    input.click();
+
+}
+
+
+function guardarFacturaEnArchivo() {
+
+    const facturaData = obtenerDatosFactura();
+
+    const dataStr = JSON.stringify(facturaData, null, 2);
+
+    const blob = new Blob([dataStr], { type: "application/json" });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+
+    a.href = url;
+
+    a.download = `factura_${facturaData.proveedor}_${facturaData.nroOperacion}_Total_${facturaData.totalAPagar}.json`;
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+}
+
+function obtenerDatosFactura() {
+
+    const rows = Array.from(document.querySelectorAll('.product-row')).map(row => ({
+
+        cantidad: row.querySelector('.input-cantidad').value,
+
+        descripcion: row.querySelector('.input-descripcion').value,
+
+        precioUnitario: row.querySelector('.input-precio-unitario').value,
+
+        precioTotal: row.querySelector('.input-precio-total').value,
+
+        totalConDescuento: row.querySelector('.input-total-con-descuento').value,
+
+        exento: row.querySelector('.input-exento').checked
+
+    }));
+
+
+    return {
+
+        fecha: document.getElementById('fecha').value,
+
+        proveedor: document.getElementById('proveedorText').innerText,
+
+        retencion: document.getElementById('retencionText').innerText,
+
+        nroOperacion: document.getElementById('nroOperacionText').innerText,
+
+        productos: rows,
+
+        subtotal: document.getElementById('subtotalGeneral').innerText,
+
+        exento: document.getElementById('exentoGeneral').innerText,
+
+        iva: document.getElementById('ivaGeneral').innerText,
+
+        total: document.getElementById('totalGeneral').innerText,
+
+        ivaAPagar: document.getElementById('ivaAPagar').innerText,
+
+        timbreFiscal: document.getElementById('timbreFiscal').innerText,
+
+        totalAPagar: document.getElementById('totalAPagar').innerText
+
+    };
+
+}
+
+
+function cargarFacturaEnInterfaz(facturaData) {
+
+    document.getElementById('fecha').value = facturaData.fecha;
+
+    document.getElementById('proveedorText').innerText = facturaData.proveedor;
+
+    document.getElementById('retencionText').innerText = facturaData.retencion;
+
+    document.getElementById('nroOperacionText').innerText = facturaData.nroOperacion;
+
+
+    const productContainer = document.getElementById('productContainer');
+
+    productContainer.innerHTML = ''; // Limpiar el contenedor de productos
+
+
+    facturaData.productos.forEach(producto => {
+
+        const newRow = document.createElement('div');
+
+        newRow.className = 'product-row';
+
+        newRow.innerHTML = `
+
+            <input type="number" class="input-cantidad" value="${producto.cantidad}" oninput="calcularTotal(this)">
+
+            <input type="text" class="input-descripcion" value="${producto.descripcion}">
+
+            <input type="number" class="input-precio-unitario" value="${producto.precioUnitario}" step="0.01" oninput="calcularTotal(this)" onwheel="ajustarPrecioUnitario(event, this)">
+
+            <input type="number" class="input-precio-total" value="${producto.precioTotal}" readonly>
+
+            <input type="number" class="input-total-con-descuento" value="${producto.totalConDescuento}" readonly>
+
+            <label>
+
+                <input type="checkbox" class="input-exento" ${producto.exento ? 'checked' : ''} onchange="actualizarResumenGeneral()"> E
+
+            </label>
+
+            <button class="btn-eliminar" onclick="eliminarFila(this)">X</button>
+
+        `;
+
+        productContainer.appendChild(newRow);
+
+    });
+
+
+    document.getElementById('subtotalGeneral').innerText = facturaData.subtotal;
+
+    document.getElementById('exentoGeneral').innerText = facturaData.exento;
+
+    document.getElementById('ivaGeneral').innerText = facturaData.iva;
+
+    document.getElementById('totalGeneral').innerText = facturaData.total;
+
+    document.getElementById('ivaAPagar').innerText = facturaData.ivaAPagar;
+
+    document.getElementById('timbreFiscal').innerText = facturaData.timbreFiscal;
+
+    document.getElementById('totalAPagar').innerText = facturaData.totalAPagar;
+
+
+    actualizarResumenGeneral();
+
+    cerrarPopupArchivos();
+
+}
+
+function mostrarPopupArchivos() {
+
+    document.getElementById('popupArchivos').style.display = 'block';
+
+}
+
+
+function cerrarPopupArchivos() {
+
+    document.getElementById('popupArchivos').style.display = 'none';
+
+}
+
+function mostrarPopupSheety() {
+    document.getElementById('popupSheety').style.display = 'block';
+}
+
+function cerrarPopupSheety() {
+    document.getElementById('popupSheety').style.display = 'none';
 }
 </script >
 <script src="db/apifactura.js"></script>
