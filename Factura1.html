@@ -514,64 +514,9 @@ input:focus, select:focus {
             <label for="popupFecha">Fecha:</label>
             <input type="date" id="popupFecha"> <!-- Campo de fecha en modal -->
             <label for="popupProveedor">Seleccionar Proveedor:</label>
-            <select id="popupProveedor" onchange="toggleProveedorManual(); actualizarRetencion()">
-
+<select id="popupProveedor" onchange="toggleProveedorManual(); actualizarRetencion()">
     <option value="">--Seleccione un Proveedor--</option>
-
-    <option value="AINKAA, C.A." data-retencion="75">AINKAA, C.A.</option>
-
-    <option value="AUTOMOTRIZ CELTA C.A" data-retencion="75">AUTOMOTRIZ CELTA C.A</option>
-
-    <option value="AUTORESPUESTOS SHAGYY, C.A." data-retencion="100">AUTORESPUESTOS SHAGYY, C.A.</option>
-
-    <option value="COMERCIAL ANA K 1304, FP" data-retencion="100">COMERCIAL ANA K 1304, FP</option>
-
-    <option value="COMERCIAL H Y G, C.A." data-retencion="100">COMERCIAL H Y G, C.A.</option>
-
-    <option value="COMERCIAL KARJUAN & ANYILUZ, C.A." data-retencion="100">COMERCIAL KARJUAN & ANYILUZ, C.A.</option>
-
-    <option value="FUNERARIA ROSTRO DE JESUS, C.A." data-retencion="100">FUNERARIA ROSTRO DE JESUS, C.A.</option>
-
-    <option value="INVERSIONES AXEMTEK C.A." data-retencion="75">INVERSIONES AXEMTEK C.A.</option>
-
-    <option value="INVERSIONES EL TODO PODEROSO 2020" data-retencion="75">INVERSIONES EL TODO PODEROSO 2020</option>
-
-    <option value="INVERSIONES GRAN VICTORIA 2015, C.A." data-retencion="75">INVERSIONES GRAN VICTORIA 2015, C.A.</option>
-
-    <option value="INVERSIONES GRATEROL 2020, C.A." data-retencion="75">INVERSIONES GRATEROL 2020, C.A.</option>
-
-    <option value="INVERSIONES GSF 2024 C.A." data-retencion="100">INVERSIONES GSF 2024 C.A.</option>
-
-    <option value="INVERSIONES LA FORTALEZA & ASOCIADOS C.A." data-retencion="100">INVERSIONES LA FORTALEZA & ASOCIADOS C.A.</option>
-
-    <option value="INVERSIONES LA VIRTUD" data-retencion="100">INVERSIONES LA VIRTUD</option>
-
-    <option value="INVERSIONES MACK C,A." data-retencion="75">INVERSIONES MACK C,A.</option>
-
-    <option value="INVERSIONES ROARI C,A." data-retencion="75">INVERSIONES ROARI C,A.</option>
-
-    <option value="INVERSIONES Y SUMINISTROS C&E, C.A." data-retencion="100">INVERSIONES Y SUMINISTROS C&E, C.A.</option>
-
-    <option value="INVERSONES MARIA LUCILA C,A." data-retencion="100">INVERSONES MARIA LUCILA C,A.</option>
-
-    <option value="MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A." data-retencion="75">MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.</option>
-
-    <option value="QUIMICA ABSOLUTA C.A" data-retencion="100">QUIMICA ABSOLUTA C.A</option>
-
-    <option value="RL SOLUCIONES, C.A" data-retencion="75">RL SOLUCIONES, C.A</option>
-
-    <option value="TRANSFORMADORES ALTAGRACIA, C.A." data-retencion="75">TRANSFORMADORES ALTAGRACIA, C.A.</option>
-
-    <option value="VIALIDADES Y CONSTRUCCIONES GUARIBE C A" data-retencion="100">VIALIDADES Y CONSTRUCCIONES GUARIBE C.A</option>
-
-    <option value="INVERSIONES RACHO LAS MARIAS, C.A." data-retencion="75">INVERSIONES RACHO LAS MARIAS, C.A.</option>
-
-    <option value="SOLUCIONES GRAFICAS SIVI 2013, C.A." data-retencion="75">SOLUCIONES GRAFICAS SIVI 2013, C.A.</option>
-
-    <option value="NOVEDADES J&V, C.A." data-retencion="100">NOVEDADES J&V, C.A.</option>
-
     <option value="manual">Ingresar Manualmente</option>
-
 </select>
 
         <!-- Añade el contenedor del proveedor manual aquí -->
@@ -631,6 +576,10 @@ input:focus, select:focus {
 
     </div>
 </div>
+
+<script src="db/proveedores.js"></script>
+<script src="db/apifactura.js"></script>
+<script src="db/productos.js"></script>
 
 <script>
 
@@ -779,17 +728,16 @@ function inicializarAutocompletado() {
         // Actualiza el resumen general para reflejar los cambios actualizarResumenGeneral();
     }
 
-    function actualizarRetencion() {
-        const proveedorSelect = document.getElementById('popupProveedor');
-        const retencionSelect = document.getElementById('popupRetencion');
-        const proveedorOption = proveedorSelect.options[proveedorSelect.selectedIndex];
+function actualizarRetencion() {
+    const proveedorSelect = document.getElementById('popupProveedor');
+    const retencionSelect = document.getElementById('popupRetencion');
+    const selectedOption = proveedorSelect.selectedOptions[0];
 
-        if (proveedorOption.value !== 'manual') {
-            const retencion = proveedorOption.getAttribute('data-retencion');
-            retencionSelect.value = retencion;
-        }
+    if (proveedorSelect.value !== '' && proveedorSelect.value !== 'manual') {
+        const retencion = selectedOption.getAttribute('data-retencion');
+        retencionSelect.value = retencion;
     }
-
+}
     function limpiarLocalStorage() {
         localStorage.clear();
         console.log("LocalStorage ha sido limpiado");
@@ -1636,9 +1584,34 @@ function mostrarPopupSheety() {
 function cerrarPopupSheety() {
     document.getElementById('popupSheety').style.display = 'none';
 }
+
+function cargarProveedores() {
+    const proveedorSelect = document.getElementById('popupProveedor');
+    
+    // Mantener las opciones por defecto
+    const defaultOptions = proveedorSelect.innerHTML;
+    
+    // Ordenar proveedores alfabéticamente
+    proveedores.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    
+    // Agregar los proveedores de la lista
+    const proveedoresOptions = proveedores.map(proveedor => 
+        `<option value="${proveedor.nombre}" 
+                data-rif="${proveedor.rif}" 
+                data-retencion="${proveedor.retencion}">
+            ${proveedor.nombre}
+        </option>`
+    ).join('');
+    
+    proveedorSelect.innerHTML = defaultOptions + proveedoresOptions;
+}
+
+// Llamar a la función cuando el documento esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    cargarProveedores();
+});
 </script >
-<script src="db/apifactura.js"></script>
-<script src="db/productos.js"></script>
+
 </body>
 </html>
 
