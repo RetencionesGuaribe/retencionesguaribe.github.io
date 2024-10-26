@@ -100,11 +100,6 @@ const proveedores = [
     retencion: 100
   },
   {
-    nombre: "RL SOLUCIONES, C.A",
-    rif: "J502239618",
-    retencion: 75
-  },
-  {
     nombre: "TRANSFORMADORES ALTAGRACIA, C.A.",
     rif: "J299336254",
     retencion: 75
