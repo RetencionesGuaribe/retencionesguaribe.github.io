@@ -281,59 +281,57 @@
     <button onclick="volverInicio()">Volver a Inicio</button>
 </div>
 
+<script src="db/proveedores.js"></script>
     <script>
 
-// Lista de proveedores
-const proveedores = [
-    { nombre: "AINKAA, C.A.", retencion: "75" },
-    { nombre: "AUTOMOTRIZ CELTA C.A", retencion: "75" },
-    { nombre: "AUTORESPUESTOS SHAGYY, C.A.", retencion: "100" },
-    { nombre: "COMERCIAL ANA K 1304, FP", retencion: "100" },
-    { nombre: "COMERCIAL H Y G, C.A.", retencion: "100" },
-    { nombre: "COMERCIAL KARJUAN & ANYILUZ, C.A.", retencion: "100" },
-    { nombre: "FUNERARIA ROSTRO DE JESUS, C.A.", retencion: "100" },
-    { nombre: "INVERSIONES AXEMTEK C.A.", retencion: "75" },
-    { nombre: "INVERSIONES EL TODO PODEROSO 2020", retencion: "75" },
-    { nombre: "INVERSIONES GRAN VICTORIA 2015, C.A.", retencion: "75" },
-    { nombre: "INVERSIONES GRATEROL 2020, C.A.", retencion: "75" },
-    { nombre: "INVERSIONES GSF 2024 C.A.", retencion: "100" },
-    { nombre: "INVERSIONES LA FORTALEZA & ASOCIADOS C.A.", retencion: "100" },
-    { nombre: "INVERSIONES LA VIRTUD", retencion: "100" },
-    { nombre: "INVERSIONES MACK C,A.", retencion: "75" },
-    { nombre: "INVERSIONES ROARI C,A.", retencion: "75" },
-    { nombre: "INVERSIONES Y SUMINISTROS C&E, C.A.", retencion: "100" },
-    { nombre: "INVERSONES MARIA LUCILA C,A.", retencion: "100" },
-    { nombre: "MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.", retencion: "75" },
-    { nombre: "QUIMICA ABSOLUTA C.A", retencion: "100" },
-    { nombre: "RL SOLUCIONES, C.A", retencion: "75" },
-    { nombre: "TRANSFORMADORES ALTAGRACIA, C.A.", retencion: "75" },
-    { nombre: "VIALIDADES Y CONSTRUCCIONES GUARIBE C A", retencion: "100" },
-    { nombre: "INVERSIONES RACHO LAS MARIAS, C.A.", retencion: "75" },
-    { nombre: "SOLUCIONES GRAFICAS SIVI 2013, C.A.", retencion: "75" },
-    { nombre: "NOVEDADES J&V, C.A.", retencion: "100" }
-];
+
 
 // Función para llenar el select de proveedores
+
 function llenarSelectProveedores(selectId) {
+
     const select = document.getElementById(selectId);
+
     select.innerHTML = '<option value="">Seleccione un proveedor</option>';
+
+    
+
     proveedores.forEach(proveedor => {
+
         const option = document.createElement('option');
+
         option.value = proveedor.nombre;
+
         option.textContent = proveedor.nombre;
+
         option.dataset.retencion = proveedor.retencion;
+
+        option.dataset.rif = proveedor.rif;
+
         select.appendChild(option);
+
     });
+
 }
 
 // Función para actualizar la retención basada en el proveedor seleccionado
+
 function actualizarRetencion(proveedorSelectId, retencionSelectId) {
+
     const proveedorSelect = document.getElementById(proveedorSelectId);
+
     const retencionSelect = document.getElementById(retencionSelectId);
+
     const selectedOption = proveedorSelect.options[proveedorSelect.selectedIndex];
-    if (selectedOption.dataset.retencion) {
+
+    
+
+    if (selectedOption && selectedOption.dataset.retencion) {
+
         retencionSelect.value = selectedOption.dataset.retencion;
+
     }
+
 }
 
 // Función para mostrar las secciones con animación
@@ -363,7 +361,6 @@ function mostrarSeccion(seccion) {
         }, 10);
     }, 500);
 }
-
         // Función para volver a la página de inicio
         function volverInicio() {
             document.getElementById('pago-realizado').classList.remove('show');
