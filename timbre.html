@@ -345,33 +345,7 @@ font-weight: bold;
         <!-- Proveedores -->
         <label for="provider">Seleccionar Proveedor:</label>
         <select id="provider">
-<option value="manual">Manual</option>
-<option value="AINKAA, C.A." data-rif="J409293165">AINKAA, C.A.</option>
-<option value="AUTOMOTRIZ CELTA C.A" data-rif="J311881875">AUTOMOTRIZ CELTA C.A</option>
-<option value="AUTORESPUESTOS SHAGYY, C.A." data-rif="J411510181">AUTORESPUESTOS SHAGYY, C.A.</option>
-<option value="COMERCIAL ANA K 1304, FP" data-rif="V155653066">COMERCIAL ANA K 1304, FP</option>
-<option value="COMERCIAL H Y G, C.A." data-rif="J409086860">COMERCIAL H Y G, C.A.</option>
-<option value="COMERCIAL KARJUAN & ANYILUZ, C.A." data-rif="J500107072">COMERCIAL KARJUAN & ANYILUZ, C.A.</option>
-<option value="FUNERARIA ROSTRO DE JESUS, C.A." data-rif="J502065695">FUNERARIA ROSTRO DE JESUS, C.A.</option>
-<option value="INVERSIONES AXEMTEK C.A." data-rif="J317525876">INVERSIONES AXEMTEK C.A.</option>
-<option value="INVERSIONES EL TODO PODEROSO 2020" data-rif="J500378106">INVERSIONES EL TODO PODEROSO 2020</option>
-<option value="INVERSIONES GRAN VICTORIA 2015, C.A." data-rif="J407229001">INVERSIONES GRAN VICTORIA 2015, C.A.</option>
-<option value="INVERSIONES GRATEROL 2020, C.A." data-rif="J413145120">INVERSIONES GRATEROL 2020, C.A.</option>
-<option value="INVERSIONES GSF 2024 C.A." data-rif="J504803375">INVERSIONES GSF 2024 C.A.</option>
-<option value="INVERSIONES LA FORTALEZA & ASOCIADOS C.A." data-rif="J405234610">INVERSIONES LA FORTALEZA & ASOCIADOS C.A.</option>
-<option value="INVERSIONES LA VIRTUD" data-rif="J408623625">INVERSIONES LA VIRTUD</option>
-<option value="INVERSIONES MACK C,A." data-rif="J301429192">INVERSIONES MACK C,A.</option>
-<option value="INVERSIONES ROARI C,A." data-rif="J412561286">INVERSIONES ROARI C,A.</option>
-<option value="INVERSIONES Y SUMINISTROS C&E, C.A." data-rif="J409948137">INVERSIONES Y SUMINISTROS C&E, C.A.</option>
-<option value="INVERSONES MARIA LUCILA C,A." data-rif="J500564090">INVERSONES MARIA LUCILA C,A.</option>
-<option value="MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A." data-rif="J311708928">MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.</option>
-<option value="QUIMICA ABSOLUTA C.A" data-rif="J500912706">QUIMICA ABSOLUTA C.A</option>
-<option value="RL SOLUCIONES, C.A" data-rif="J502239618">RL SOLUCIONES, C.A</option>
-<option value="TRANSFORMADORES ALTAGRACIA, C.A." data-rif="J299336254">TRANSFORMADORES ALTAGRACIA, C.A.</option>
-<option value="VIALIDADES Y CONSTRUCCIONES GUARIBE C.A" data-rif="J404862307">VIALIDADES Y CONSTRUCCIONES GUARIBE C.A</option>
-<option value="INVERSIONES RACHO LAS MARIAS, C.A." data-rif="J407275380">INVERSIONES RACHO LAS MARIAS, C.A.</option>
-<option value="SOLUCIONES GRAFICAS SIVI 2013, C.A." data-rif="J410002662">SOLUCIONES GRAFICAS SIVI 2013, C.A.</option>
-<option value="NOVEDADES J&V, C.A." data-rif="J406438340">NOVEDADES J&V, C.A.</option>
+    <option value="manual">Manual</option>
 </select>
 
 
@@ -511,14 +485,19 @@ function loadComprobanteFromFile(event) {
     function generateStamp() {
         // Obtener valores del popup
         var baseImponible = parseFloat(document.getElementById('baseimponible').value);
-        var excento = parseFloat(document.getElementById('excento').value);
+        var excento = document.getElementById('excento').value ? parseFloat(document.getElementById('excento').value) : 0;
         var operationNumber = document.getElementById('operationNumber').value;
 
-        // Verifica que los valores no sean NaN
-        if (isNaN(baseImponible) || isNaN(excento)) {
-            alert("Por favor, ingrese valores válidos para Base Imponible y Exento.");
-            return; // Salir de la función si los valores son inválidos
-        }
+
+    // Verifica que los valores no sean NaN
+
+    if (isNaN(baseImponible)) {
+
+        alert("Por favor, ingrese un valor válido para Base Imponible.");
+
+        return; // Salir de la función si el valor es inválido
+
+    }
 
         // Reemplazar Nro OP
         document.getElementById('id1').textContent = operationNumber;
@@ -772,6 +751,45 @@ function reopenPopup() {
 
 }
 
+// Función para cargar los proveedores al select
+
+function cargarProveedores() {
+
+    const providerSelect = document.getElementById('provider');
+
+    
+
+    // Mantener la opción manual
+
+    providerSelect.innerHTML = '<option value="manual">Manual</option>';
+
+    
+
+    // Agregar los proveedores desde el array
+
+    proveedores.forEach(proveedor => {
+
+        const option = document.createElement('option');
+
+        option.value = proveedor.nombre;
+
+        option.text = proveedor.nombre;
+
+        option.setAttribute('data-rif', proveedor.rif);
+
+        option.setAttribute('data-retencion', proveedor.retencion);
+
+        providerSelect.appendChild(option);
+
+    });
+
+}
+
+
+// Llamar a la función cuando se carga la página
+
+document.addEventListener('DOMContentLoaded', cargarProveedores);
+
     // Abre el popup al cargar la página
 window.onload = function() {
     setTimeout(function() {
@@ -780,6 +798,6 @@ window.onload = function() {
     }, 100);
 };
 </script>
-
+<script src="db/proveedores.js"></script>
 </body>
 </html>
