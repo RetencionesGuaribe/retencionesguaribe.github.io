@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobante de L.T.F</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 1200px;
+            height: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .logo {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    height: 80px;
+    width: auto;
+}
+
+.logo1 {
+    position: absolute;
+    top: 20px;
+    left: 120px;
+    height: 110px;
+    width: 130px;
+}
+
+        .column, .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .containerOP {
+            width: 1160px;
+            height: 130px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0;
+            margin-top: 20px;
+            position: absolute;
+            top: 480px;
+            left: 35px;
+        }
+
+        .containerOP1 {
+            width: 160px;
+            height: 120px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: grid;
+            gap: 0;
+            margin-top: 20px;
+            position: absolute;
+            top: 500px;
+            left: 2035px;
+        }
+
+        .text-modifiable {
+            position: absolute;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Estilos del popup */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+/* Estilo del popup */
+#popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+                background: #f8f8f8;
+		color: #333;
+            padding: 20px;
+	border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            display: none;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Estilo para los encabezados del popup */
+#popup h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo para los campos del formulario */
+#popup input,
+#popup select {
+    width: calc(100% - 20px); /* Ocupa el ancho total menos el padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+background: white;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Estilo para el botón de cerrar */
+.close-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+/* Estilo para el botón de generar */
+.generate-button {
+    background-color: #ff9800;
+    color: white;
+font-weight: bold;
+    border: none;
+            transition: background-color 0.3s, transform 0.2s;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block; /* Centrar el botón */
+    width: 100%; /* Ancho total */
+    margin-top: 20px;
+}
+
+.generate-button:hover,
+.close-button:hover {
+    background-color: #fb8c00; /* Color de fondo al pasar el ratón */
+    transform: scale(1.05); /* Aumenta un poco el tamaño */
+	transition: all 0.3s ease;
+}
+
+.generate-button:active {
+    background-color: #388e3c; /* Color al hacer clic */
+    transform: scale(0.95); /* Disminuye el tamaño al hacer clic */
+}
+
+
+/* Estilo de los contenedores */
+.popup-field {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para el div de mensaje */
+.message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+        /* Reemplazables con posicionamiento absoluto */
+        .slot1, .slot2, .slot3, .slot4, .slot5, .slot6, .slot7 {
+            position: absolute;
+            font-weight: bold;
+        }
+
+        .slot1 {
+            top: 430px;
+            left: 50px;
+            font-size: 16px;
+        }
+
+        .slot2 {
+            top: 430px;
+            left: 730px;
+            font-size: 18px;
+        }
+
+        .slot3 {
+            top: 230px;
+            left: 727px;
+            font-size: 18px;
+        }
+
+        .slot4 {
+            top: 330px;
+            left: 1070px;
+            font-size: 18px;
+        }
+
+        .slot5 {
+            top: 430px;
+            left: 1070px;
+            font-size: 18px;
+        }
+
+        .slot6 {
+            top: 195px;
+            left: 1080px;
+            font-size: 18px;
+        }
+
+        .slot7 {
+            top: 225px;
+            left: 1080px;
+            font-size: 18px;
+        }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.action-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 5px;
+}
+
+.generate-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.load-button {
+    background-color: #2196F3;
+    color: white;
+}
+
+.close-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.action-button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.action-button:active {
+    transform: scale(0.95);
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="images/logo.png" alt="Logo Derecha" class="logo">
+    <img src="images/logo1.jpg" alt="Logo Izquierda" class="logo1">
+        <div class="TITULO text-modifiable" style="top: 60px; left: 500px;">COMPROBANTE DE RETENCION DE L.T.F</div>
+
+        <div class="comprobante-title text-modifiable" style="top: 200px; left: 710px;">COMPROBANTE NRO.</div>
+
+        <div class="fecha-emision text-modifiable" style="top: 300px; left: 1050px;">FECHA DE EMISIÓN</div>
+        <div class="fecha-entrega text-modifiable" style="top: 400px; left: 1050px;">FECHA DE ENTREGA</div>
+
+        <div class="numero-factura text-modifiable" style="top: 720px; left: 700px; font-size: 18px;">NÚMERO DE FACTURA:</div>
+        <div class="numerocontable-factura text-modifiable" style="top: 790px; left: 700px; font-size: 18px;">N° CONTABLE FACTURA:</div>
+        <div class="fecha-factura text-modifiable" style="top: 660px; left: 700px; font-size: 18px;">FECHA FACTURA:</div>
+
+        <div class="nombre-razon text-modifiable" style="top: 200px; left: 125px; font-size: 16px;">Datos del Agente de Retencion:</div>
+        <div class="municipio text-modifiable" style="top: 230px; left: 50px; font-size: 16px;">Alcaldia Bolivariana del Municipio San Josè de Guaribe </div>
+
+        <div class="direccion-fiscal text-modifiable" style="top: 300px; left: 190px; font-size: 16px;">Dirección</div>
+        <div class="municipio-sj text-modifiable" style="top: 330px; left: 115px; font-size: 16px;">Municipio San Josè de Guaribe</div>
+
+        <div class="nombre-sujeto text-modifiable" style="top: 400px; left: 50px;">NOMBRE O RAZÓN SOCIAL DEL SUJETO RETENIDO</div>
+
+
+        <div class="registro-informacion text-modifiable" style="top: 400px; left: 700px;  font-size: 18px;">Rif del sujeto retenido</div>
+        <div class="rif-alcaldia text-modifiable" style="top: 300px; left: 670px;  font-size: 18px;">RIF del Agente de Retenciòn</div>
+        <div class="rif-alcaldia2 text-modifiable" style="top: 330px; left: 725px; font-size: 20px;">G-20000382-0</div>
+        <div class="periodo-fiscal text-modifiable" style="top: 230px; left: 690px; font-size: 18px;">I134</div>
+        <div class="añofiscal text-modifiable" style="top: 170px; left: 1090px; font-size: 16px;">BANCO</div>
+        <div class="mesfiscal text-modifiable" style="top: 720px; left: 50px; font-size: 16px;">RECIBIDO POR: Alcaldia de San Jose de Guaribe.</div>
+        <div class="mesfiscal text-modifiable" style="top: 790px; left: 50px; font-size: 16px;">FECHA POR:</div>
+
+        <!-- Reemplazables -->
+        <div class="slot1">REMPLAZO1</div>	<!-- proveedor-->
+        <div class="slot2">REMPLAZO2</div>	<!-- RIF-->
+        <div class="slot3 cursor-pointer" onclick="saveComprobanteToFile()">REMPLAZO3</div>	<!-- correlativo-->
+        <div class="slot4">REMPLAZO4</div>	<!-- fecha emision-->
+        <div class="slot5">REMPLAZO5</div>	<!-- fecha entrega-->
+        <div class="slot6">REMPLAZO6</div>	<!-- Banco-->
+        <div class="slot7">REMPLAZO7</div>	<!-- Referencia-->
+
+
+
+        <div class="containerOP">
+            <div class="column">N° OP</div>
+            <div class="column">SUBTOTAL</div>
+            <div class="column">EXENTO</div>
+            <div class="column">IVA</div> <!-- IVA-->
+            <div class="column">TOTAL COMPRAS</div> <!-- TOTAL FACTURA-->
+            <div class="column">IMP. APLICADO</div>
+            <div class="column">TIMBRE RETENIDO</div>
+            <div class="column cursor-pointer" id="id1" onclick="reopenPopup()">1</div> <!-- Nro OP -->
+            <div class="column" id="id2">2</div> <!-- subtotal -->
+            <div class="column" id="id3">3</div> <!-- excento -->
+            <div class="column">4</div>	<!-- IVA -->
+            <div class="column" id="id4">5</div>  <!-- TOTAL COMPRAS -->
+            <div class="column" id="id5">0,1%</div> <!-- PCTJ TIMBRE -->
+            <div class="column" id="id6">7</div>
+        </div>
+
+        <!-- Popup para ingresar datos -->
+    <div id="overlay"></div>
+    <div id="popup">
+        <h2>TIMBRE FISCAL</h2>
+
+        <!-- Proveedores -->
+        <label for="provider">Seleccionar Proveedor:</label>
+        <select id="provider">
+    <option value="manual">Manual</option>
+</select>
+
+
+       <!-- Campos manuales (RIF manual) -->
+        <div id="manualProvider" style="display: none;">
+            <label for="manualName">Nombre del Proveedor:</label>
+            <input type="text" id="manualName">
+
+            <label for="manualRIF">RIF:</label>
+            <input type="text" id="manualRIF">
+        </div>
+
+ <label for="banco">Seleccione el banco:</label>
+    <select id="banco">
+        <option value="Venezuela">Venezuela</option>
+        <option value="Banesco">Banesco</option>
+    </select>
+
+ <label for="numeroReferencia">Número de referencia:</label>
+    <input type="text" id="numeroReferencia" placeholder="Ingrese el número de referencia" />
+    
+        <!-- Campos para datos de facturación -->
+        <label for="baseimponible">Base Imponible:</label>
+        <input type="number" id="baseimponible" step="0.01">
+
+        <label for="excento">Monto Exento:</label>
+        <input type="number" id="excento" step="0.01">
+
+        <label for="operationNumber">Número de Operación:</label>
+        <input type="text" id="operationNumber">
+
+        <label for="comprobanteNumber">Número de Comprobante:</label>
+        <input type="text" id="comprobanteNumber">
+
+        <label for="issueDate">Fecha de Emisión:</label>
+        <input type="date" id="issueDate">
+
+        <label for="deliveryDate">Fecha de Entrega:</label>
+        <input type="date" id="deliveryDate">
+
+<div class="button-container">
+
+    <button class="action-button generate-button" onclick="generateStamp()">Generar Timbre</button>
+
+    <input type="file" id="fileInput" style="display: none;" onchange="loadComprobanteFromFile(event)">
+
+    <button class="action-button load-button" onclick="document.getElementById('fileInput').click()">Cargar Comprobante</button>
+
+    <button class="action-button close-button" onclick="window.location.href='index.html'">Volver al Inicio</button>
+
+</div>
+
+<script src="db/proveedores.js"></script>
+
+<script>
+
+function saveComprobanteToFile() {
+    const comprobante = {
+        operationNumber: document.getElementById('id1').textContent,
+        baseImponible: document.getElementById('id2').textContent,
+        excento: document.getElementById('id3').textContent,
+        proveedor: document.querySelector('.slot1').textContent,
+        rif: document.querySelector('.slot2').textContent,
+        comprobanteNum: document.querySelector('.slot3').textContent,
+        fechaEmision: document.querySelector('.slot4').textContent,
+        fechaEntrega: document.querySelector('.slot5').textContent,
+        banco: document.querySelector('.slot6').textContent,
+        referencia: document.querySelector('.slot7').textContent,
+        iva: document.getElementsByClassName('column')[10].textContent,
+        totalCompras: document.getElementById('id4').textContent,
+        timbreRetenido: document.getElementById('id6').textContent
+    };
+
+    // Obtener el nombre del proveedor
+    const proveedor = comprobante.proveedor.replace(/[^a-zA-Z0-9]/g, '_');
+
+    // Obtener el número de orden con "OP" prefijo
+    const numeroOrden = `OP${comprobante.operationNumber}`;
+
+    // Obtener el número de comprobante sin ceros iniciales ni fecha, con "Tim" prefijo
+    const numeroComprobante = `Tim${comprobante.comprobanteNum.slice(-8).replace(/^0+/, '')}`;
+
+    // Crear el nombre del archivo
+    const fileName = `${proveedor}_${numeroOrden}_${numeroComprobante}.json`;
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(comprobante));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", fileName);
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
+
+function loadComprobanteFromFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const comprobante = JSON.parse(e.target.result);
+                
+                // Rellenar el formulario con los datos del comprobante
+                document.getElementById('operationNumber').value = comprobante.operationNumber;
+                document.getElementById('baseimponible').value = comprobante.baseImponible;
+                document.getElementById('excento').value = comprobante.excento;
+                document.getElementById('comprobanteNumber').value = comprobante.comprobanteNum.slice(-8);
+                document.getElementById('issueDate').value = comprobante.fechaEmision;
+                document.getElementById('deliveryDate').value = comprobante.fechaEntrega;
+                document.getElementById('banco').value = comprobante.banco;
+                document.getElementById('numeroReferencia').value = comprobante.referencia;
+
+                // Manejar el proveedor
+                const providerSelect = document.getElementById('provider');
+                const providerOption = Array.from(providerSelect.options).find(option => option.text === comprobante.proveedor);
+                if (providerOption) {
+                    providerSelect.value = providerOption.value;
+                } else {
+                    providerSelect.value = 'manual';
+                    document.getElementById('manualName').value = comprobante.proveedor;
+                    document.getElementById('manualRIF').value = comprobante.rif;
+                    document.getElementById('manualProvider').style.display = 'block';
+                }
+
+                alert('Comprobante cargado con éxito');
+            } catch (error) {
+                alert('Error al cargar el archivo: ' + error.message);
+            }
+        };
+        reader.readAsText(file);
+    }
+}
+    // Función para mostrar/ocultar campos de RIF manual
+    document.getElementById('provider').addEventListener('change', function() {
+        const manualProvider = document.getElementById('manualProvider');
+        manualProvider.style.display = this.value === 'manual' ? 'block' : 'none';
+    });
+
+    function generateStamp() {
+        // Obtener valores del popup
+        var baseImponible = parseFloat(document.getElementById('baseimponible').value);
+        var excento = document.getElementById('excento').value ? parseFloat(document.getElementById('excento').value) : 0;
+        var operationNumber = document.getElementById('operationNumber').value;
+
+
+    // Verifica que los valores no sean NaN
+
+    if (isNaN(baseImponible)) {
+
+        alert("Por favor, ingrese un valor válido para Base Imponible.");
+
+        return; // Salir de la función si el valor es inválido
+
+    }
+
+        // Reemplazar Nro OP
+        document.getElementById('id1').textContent = operationNumber;
+
+        // Reemplazar subtotal
+        document.getElementById('id2').textContent = baseImponible.toFixed(2); // Actualiza subtotal
+
+        // Reemplazar exento
+        document.getElementById('id3').textContent = excento.toFixed(2); // Actualiza exento
+
+        // Calcular y reemplazar IVA (16%)
+        var iva = (baseImponible - excento) * 0.16;
+        document.getElementsByClassName('column')[10].textContent = iva.toFixed(2); // Reemplaza en el índice 4
+
+        // Calcular y reemplazar Total Compras
+        var totalCompras = baseImponible + iva;
+        document.getElementById('id4').textContent = totalCompras.toFixed(2); // Actualiza TOTAL COMPRAS
+
+        // Calcular y reemplazar Impuesto Aplicado (0.1%)
+        var impuestoAplicado = baseImponible * 0.001; // 0.1%
+        document.getElementById('id6').textContent = impuestoAplicado.toFixed(2); // Actualiza TIMBRE RETENIDO
+
+        // Obtener valores adicionales del formulario
+        const providerSelect = document.getElementById('provider');
+        const proveedor = providerSelect.value === "manual" 
+            ? document.getElementById('manualName').value 
+            : providerSelect.options[providerSelect.selectedIndex].text;
+        const rif = providerSelect.value === "manual" 
+            ? document.getElementById('manualRIF').value 
+            : providerSelect.options[providerSelect.selectedIndex].getAttribute('data-rif');
+        const comprobanteNum = document.getElementById('comprobanteNumber').value.padStart(8, '0');
+        const fechaEmision = document.getElementById('issueDate').value;
+        const fechaEntrega = document.getElementById('deliveryDate').value;
+        const banco = document.getElementById('banco').value;
+        const referencia = document.getElementById('numeroReferencia').value;
+
+        // Extraer aaaamm de fechaEmision
+        const fecha = new Date(fechaEmision);
+        const aaaamm = `${fecha.getFullYear()}${String(fecha.getMonth() + 1).padStart(2, '0')}`;
+
+        // Reemplazar los valores en el HTML
+        document.querySelector('.slot1').textContent = proveedor;
+        document.querySelector('.slot2').textContent = rif;
+        document.querySelector('.slot3').textContent = `${aaaamm}${comprobanteNum}`;
+        document.querySelector('.slot4').textContent = fechaEmision;
+        document.querySelector('.slot5').textContent = fechaEntrega;
+        document.querySelector('.slot6').textContent = banco;
+        document.querySelector('.slot7').textContent = referencia;
+
+        // Cerrar el popup
+        closePopup();
+
+    // Abrir la ventana de impresión
+    window.print();
+    }
+
+    // Función para abrir el popup
+    function openPopup() {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    // Función para cerrar el popup
+    function closePopup() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+    }
+
+function cargarDatosDesdeSessionStorage() {
+    console.log("Contenido de sessionStorage:", JSON.stringify(sessionStorage));
+
+    const baseYa = sessionStorage.getItem('baseya');
+    const baseNu = sessionStorage.getItem('basenu');
+    const proveedorYa = sessionStorage.getItem('proveedorya');
+    const proveedorNu = sessionStorage.getItem('proveedornu');
+    const excentoNu = sessionStorage.getItem('excentonu');
+
+    const fecha1Ya = sessionStorage.getItem('fecha1ya');
+    const fecha2Ya = sessionStorage.getItem('fecha2ya');
+    const comprobanteYa = sessionStorage.getItem('comprobanteya');
+    const opYa = sessionStorage.getItem('opya');
+    const referenciaYa = sessionStorage.getItem('referenciaya');
+    const bancoYa = sessionStorage.getItem('bancoya');
+
+    const fecha1Nu = sessionStorage.getItem('fecha1nu');
+    const fecha2Nu = sessionStorage.getItem('fecha2nu');
+    const comprobanteNu = sessionStorage.getItem('comprobantenu');
+    const opNu = sessionStorage.getItem('opnu');
+    const referenciaNu = sessionStorage.getItem('referencianu');
+    const bancoNu = sessionStorage.getItem('banconu');
+
+    console.log("baseya:", baseYa);
+    console.log("basenu:", baseNu);
+    console.log("proveedorya:", proveedorYa);
+    console.log("proveedornu:", proveedorNu);
+    console.log("excentonu:", excentoNu);
+
+    console.log("fecha1ya:", fecha1Ya);
+    console.log("fecha2ya:", fecha2Ya);
+    console.log("comprobanteya:", comprobanteYa);
+    console.log("opya:", opYa);
+    console.log("referenciaya:", referenciaYa);
+    console.log("bancoya:", bancoYa);
+
+    console.log("fecha1nu:", fecha1Nu);
+    console.log("fecha2nu:", fecha2Nu);
+    console.log("comprobantenu:", comprobanteNu);
+    console.log("opnu:", opNu);
+    console.log("referencianu:", referenciaNu);
+    console.log("banconu:", bancoNu);
+
+    const baseImponible = baseYa || baseNu;
+    const proveedor = proveedorYa || proveedorNu;
+    const excento = excentoNu;
+
+    const fechaEmision = fecha1Ya || fecha1Nu;
+    const fechaEntrega = fecha2Ya || fecha2Nu;
+    const comprobanteNumber = comprobanteYa || comprobanteNu;
+    const operationNumber = opYa || opNu;
+    const referencia = referenciaYa || referenciaNu;
+    const banco = bancoYa || bancoNu;
+
+    if (baseImponible) {
+        document.getElementById('baseimponible').value = baseImponible;
+        console.log(`Base imponible cargada: ${baseImponible}`);
+    }
+
+    if (proveedor) {
+        const providerSelect = document.getElementById('provider');
+        providerSelect.value = proveedor;
+        console.log(`Proveedor cargado: ${proveedor}`);
+
+        // Disparar el evento change en el selector de proveedor
+        providerSelect.dispatchEvent(new Event('change'));
+
+        // Actualizar el % de retención automáticamente
+        const selectedProvider = providerSelect.selectedOptions[0];
+        const retentionPercentage = selectedProvider.getAttribute('data-retention') || '0';
+        document.getElementById('id5').textContent = retentionPercentage + '%';
+    }
+
+    if (excento) {
+        document.getElementById('excento').value = excento;
+        console.log(`Excento cargado: ${excento}`);
+
+        // Disparar el evento input para actualizar los cálculos
+        const excentoInput = document.getElementById('excento');
+        excentoInput.dispatchEvent(new Event('input'));
+    }
+
+    if (fechaEmision) {
+        document.getElementById('issueDate').value = fechaEmision;
+        console.log(`Fecha de emisión cargada: ${fechaEmision}`);
+    }
+
+    if (fechaEntrega) {
+        document.getElementById('deliveryDate').value = fechaEntrega;
+        console.log(`Fecha de entrega cargada: ${fechaEntrega}`);
+    }
+
+    if (comprobanteNumber) {
+        document.getElementById('comprobanteNumber').value = comprobanteNumber;
+        const comprobanteNumSinCeros = comprobanteNumber.replace(/^0+/, '');
+
+        document.getElementById('comprobanteNumber').value = comprobanteNumSinCeros;
+        console.log(`Comprobante cargado: ${comprobanteNumber}`);
+    }
+
+    if (operationNumber) {
+        document.getElementById('operationNumber').value = operationNumber;
+        console.log(`Orden de pago cargada: ${operationNumber}`);
+    }
+
+    if (referencia) {
+        document.getElementById('numeroReferencia').value = referencia;
+        console.log(`Número de referencia cargado: ${referencia}`);
+    }
+
+    if (banco) {
+        document.getElementById('banco').value = banco;
+        console.log(`Banco cargado: ${banco}`);
+    }
+
+    console.log("Finalizada la carga de datos desde sessionStorage");
+}
+
+function reopenPopup() {
+
+    // Recupera los valores actuales
+
+    const operationNumber = document.getElementById('id1').textContent;
+
+    const baseImponible = document.getElementById('id2').textContent;
+
+    const excento = document.getElementById('id3').textContent;
+
+    const proveedor = document.querySelector('.slot1').textContent;
+
+    const rif = document.querySelector('.slot2').textContent;
+
+    const comprobanteNum = document.querySelector('.slot3').textContent.slice(-8);
+
+    const fechaEmision = document.querySelector('.slot4').textContent;
+
+    const fechaEntrega = document.querySelector('.slot5').textContent;
+
+    const banco = document.querySelector('.slot6').textContent;
+
+    const referencia = document.querySelector('.slot7').textContent;
+
+
+    // Rellena el formulario con los valores actuales
+
+    document.getElementById('operationNumber').value = operationNumber;
+
+    document.getElementById('baseimponible').value = baseImponible;
+
+    document.getElementById('excento').value = excento;
+
+    document.getElementById('provider').value = proveedor;
+
+    document.getElementById('comprobanteNumber').value = comprobanteNum;
+
+    document.getElementById('issueDate').value = fechaEmision;
+
+    document.getElementById('deliveryDate').value = fechaEntrega;
+
+    document.getElementById('banco').value = banco;
+
+    document.getElementById('numeroReferencia').value = referencia;
+
+
+    // Si el proveedor no está en la lista, selecciona 'manual' y rellena los campos
+
+    if (document.getElementById('provider').value === "") {
+
+        document.getElementById('provider').value = "manual";
+
+        document.getElementById('manualName').value = proveedor;
+
+        document.getElementById('manualRIF').value = rif;
+
+        document.getElementById('manualProvider').style.display = 'block';
+
+    }
+
+
+    // Abre el popup
+
+    openPopup();
+
+}
+
+// Función para cargar los proveedores al select
+
+function cargarProveedores() {
+
+    const providerSelect = document.getElementById('provider');
+
+    
+
+    // Mantener la opción manual
+
+    providerSelect.innerHTML = '<option value="manual">Manual</option>';
+
+    
+
+    // Agregar los proveedores desde el array
+
+    proveedores.forEach(proveedor => {
+
+        const option = document.createElement('option');
+
+        option.value = proveedor.nombre;
+
+        option.text = proveedor.nombre;
+
+        option.setAttribute('data-rif', proveedor.rif);
+
+        option.setAttribute('data-retencion', proveedor.retencion);
+
+        providerSelect.appendChild(option);
+
+    });
+
+}
+
+
+// Llamar a la función cuando se carga la página
+
+document.addEventListener('DOMContentLoaded', cargarProveedores);
+
+    // Abre el popup al cargar la página
+window.onload = function() {
+    setTimeout(function() {
+        cargarDatosDesdeSessionStorage();
+        openPopup();
+    }, 100);
+};
+</script>
+</body>
+</html>
