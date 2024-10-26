@@ -355,34 +355,7 @@ font-weight: bold;
 
 <select id="provider">
     <option value="manual">Manual</option>
-    <option value="AINKAA, C.A." data-rif="J409293165" data-retention="75">AINKAA, C.A.</option>
-    <option value="AUTOMOTRIZ CELTA C.A" data-rif="J311881875" data-retention="75">AUTOMOTRIZ CELTA C.A</option>
-    <option value="AUTORESPUESTOS SHAGYY, C.A." data-rif="J411510181" data-retention="100">AUTORESPUESTOS SHAGYY, C.A.</option>
-    <option value="COMERCIAL ANA K 1304, FP" data-rif="V155653066" data-retention="100">COMERCIAL ANA K 1304, FP</option>
-    <option value="COMERCIAL H Y G, C.A." data-rif="J409086860" data-retention="100">COMERCIAL H Y G, C.A.</option>
-    <option value="COMERCIAL KARJUAN & ANYILUZ, C.A." data-rif="J500107072" data-retention="100">COMERCIAL KARJUAN & ANYILUZ, C.A.</option>
-    <option value="FUNERARIA ROSTRO DE JESUS, C.A." data-rif="J502065695" data-retention="100">FUNERARIA ROSTRO DE JESUS, C.A.</option>
-    <option value="INVERSIONES AXEMTEK C.A." data-rif="J317525876" data-retention="75">INVERSIONES AXEMTEK C.A.</option>
-    <option value="INVERSIONES EL TODO PODEROSO 2020" data-rif="J500378106" data-retention="75">INVERSIONES EL TODO PODEROSO 2020</option>
-    <option value="INVERSIONES GRAN VICTORIA 2015, C.A." data-rif="J407229001" data-retention="75">INVERSIONES GRAN VICTORIA 2015, C.A.</option>
-    <option value="INVERSIONES GRATEROL 2020, C.A." data-rif="J413145120" data-retention="75">INVERSIONES GRATEROL 2020, C.A.</option>
-    <option value="INVERSIONES GSF 2024 C.A." data-rif="J504803375" data-retention="100">INVERSIONES GSF 2024 C.A.</option>
-    <option value="INVERSIONES LA FORTALEZA & ASOCIADOS C.A." data-rif="J405234610" data-retention="100">INVERSIONES LA FORTALEZA & ASOCIADOS C.A.</option>
-    <option value="INVERSIONES LA VIRTUD" data-rif="J408623625" data-retention="100">INVERSIONES LA VIRTUD</option>
-    <option value="INVERSIONES MACK C,A." data-rif="J301429192" data-retention="75">INVERSIONES MACK C,A.</option>
-    <option value="INVERSIONES ROARI C,A." data-rif="J412561286" data-retention="75">INVERSIONES ROARI C,A.</option>
-    <option value="INVERSIONES Y SUMINISTROS C&E, C.A." data-rif="J409948137" data-retention="100">INVERSIONES Y SUMINISTROS C&E, C.A.</option>
-    <option value="INVERSONES MARIA LUCILA C,A." data-rif="J500564090" data-retention="100">INVERSONES MARIA LUCILA C,A.</option>
-    <option value="MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A." data-rif="J311708928" data-retention="75">MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.</option>
-    <option value="QUIMICA ABSOLUTA C.A" data-rif="J500912706" data-retention="100">QUIMICA ABSOLUTA C.A</option>
-    <option value="RL SOLUCIONES, C.A" data-rif="J502239618" data-retention="75">RL SOLUCIONES, C.A</option>
-    <option value="TRANSFORMADORES ALTAGRACIA, C.A." data-rif="J299336254" data-retention="75">TRANSFORMADORES ALTAGRACIA, C.A.</option>
-    <option value="VIALIDADES Y CONSTRUCCIONES GUARIBE C.A" data-rif="J404862307" data-retention="100">VIALIDADES Y CONSTRUCCIONES GUARIBE C.A</option>
-    <option value="INVERSIONES RACHO LAS MARIAS, C.A." data-rif="J407275380" data-retention="75">INVERSIONES RACHO LAS MARIAS, C.A.</option>
-    <option value="SOLUCIONES GRAFICAS SIVI 2013, C.A." data-rif="J410002662" data-retention="75">SOLUCIONES GRAFICAS SIVI 2013, C.A.</option>
-    <option value="NOVEDADES J&V, C.A." data-rif="J406438340" data-retention="100">NOVEDADES J&V, C.A.</option>
 </select>
-
 
         <div id="manualProvider" style="display: none;">
             <label for="manualName">Nombre del Proveedor:</label>
@@ -431,7 +404,7 @@ font-weight: bold;
         </select>
     </div>
     
-<<!-- Sección para mostrar valores calculados -->
+<!-- Sección para mostrar valores calculados -->
 <div id="retentionValues" style="margin-top: 20px;">
     <h3>Valores de Retención</h3>
     <p>IVA Calculado: <span id="calculatedIVA">0.00</span></p>
@@ -457,6 +430,8 @@ font-weight: bold;
 
 
     </div>
+
+<script src="db/proveedores.js"></script>
 
     <script>
 
@@ -921,6 +896,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cargarDatosDesdeSessionStorage();
 
+});
+
+function cargarProveedores() {
+    const providerSelect = document.getElementById('provider');
+    
+    // Asegurarse de que la opción manual esté presente
+    providerSelect.innerHTML = '<option value="manual">Manual</option>';
+    
+    // Ordenar proveedores alfabéticamente por nombre
+    proveedores.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    
+    // Agregar cada proveedor como una opción
+    proveedores.forEach(proveedor => {
+        const option = document.createElement('option');
+        option.value = proveedor.nombre;
+        option.textContent = proveedor.nombre;
+        option.setAttribute('data-rif', proveedor.rif);
+        option.setAttribute('data-retention', proveedor.retencion);
+        providerSelect.appendChild(option);
+    });
+}
+
+// Llamar a la función cuando el documento esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    cargarProveedores();
+    cargarDatosDesdeSessionStorage();
 });
     
 
