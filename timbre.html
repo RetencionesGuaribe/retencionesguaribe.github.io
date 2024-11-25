@@ -974,13 +974,15 @@ function loadComprobanteFromFile(event) {
                     document.getElementById('manualRIF').value = comprobante.rif;
                     document.getElementById('manualProvider').style.display = 'block';
                 }
-				const retencionIVA = document.getElementById('retencionIVA');
 
-    if (comprobante.retencionIVA) {
+                // Actualizar el porcentaje de retención
+                const retencionIVA = document.getElementById('retencionIVA');
+                if (comprobante.retencionIVA) {
+                    retencionIVA.value = comprobante.retencionIVA;
+                }
 
-        retencionIVA.value = comprobante.retencionIVA;
-
-    }
+                // Llamar a la función para actualizar el resumen
+                actualizarResumen();
 
                 alert('Comprobante cargado con éxito');
             } catch (error) {
@@ -1121,14 +1123,14 @@ function cargarDatosDesdeSessionStorage() {
 
     const fecha1Ya = sessionStorage.getItem('fecha1ya');
     const fecha2Ya = sessionStorage.getItem('fecha2ya');
-    const comprobanteYa = sessionStorage.getItem('comprobanteya');
+    const comprobanteYa = sessionStorage.getItem('comprobanteya2');
     const opYa = sessionStorage.getItem('opya');
     const referenciaYa = sessionStorage.getItem('referenciaya');
     const bancoYa = sessionStorage.getItem('bancoya');
 
     const fecha1Nu = sessionStorage.getItem('fecha1nu');
     const fecha2Nu = sessionStorage.getItem('fecha2nu');
-    const comprobanteNu = sessionStorage.getItem('comprobantenu');
+    const comprobanteNu = sessionStorage.getItem('comprobantenu2');
     const opNu = sessionStorage.getItem('opnu');
     const referenciaNu = sessionStorage.getItem('referencianu');
     const bancoNu = sessionStorage.getItem('banconu');
@@ -1141,7 +1143,7 @@ function cargarDatosDesdeSessionStorage() {
 
     console.log("fecha1ya:", fecha1Ya);
     console.log("fecha2ya:", fecha2Ya);
-    console.log("comprobanteya:", comprobanteYa);
+    console.log("comprobanteya2:", comprobanteYa);
     console.log("opya:", opYa);
     console.log("referenciaya:", referenciaYa);
     console.log("bancoya:", bancoYa);

@@ -162,9 +162,13 @@
         <input type="number" id="opya">
 
 
-        <label for="comprobanteya">Correlativo:</label>
+        <label for="comprobanteya">Correlativo Retencion:</label>
 
         <input type="number" id="comprobanteya">
+		
+		        <label for="comprobanteya2">Correlativo Timbre:</label>
+
+        <input type="number" id="comprobanteya2">
 
 
         <label for="bancoya">Banco:</label>
@@ -252,8 +256,10 @@
         <input type="date" id="fecha2nu">
         <label for="opnu">Número de Orden:</label>
         <input type="number" id="opnu">
-        <label for="comprobrantenu">Número de Comprobante:</label>
+        <label for="comprobrantenu">Correlativo Retencion:</label>
         <input type="number" id="comprobrantenu">
+		<label for="comprobrantenu2">Correlativo Timbre:</label>
+        <input type="number" id="comprobrantenu2">
         <label for="banconu">Banco:</label>
         <select id="banconu">
             <option value="Venezuela">Venezuela</option>
@@ -501,6 +507,8 @@ function generarComprobantes() {
 
     sessionStorage.removeItem('comprobantenu');
 
+	sessionStorage.removeItem('comprobantenu2');
+	
     sessionStorage.removeItem('banconu');
 
     sessionStorage.removeItem('referencianu');
@@ -513,6 +521,7 @@ function generarComprobantes() {
     const fecha2ya = document.getElementById('fecha2ya').value;
     const opya = document.getElementById('opya').value;
     const comprobanteya = document.getElementById('comprobanteya').value;
+	const comprobanteya2 = document.getElementById('comprobanteya2').value;
     const bancoya = document.getElementById('bancoya').value;
     const referenciaya = document.getElementById('referenciaya').value;
 
@@ -524,6 +533,7 @@ function generarComprobantes() {
         fecha2: fecha2ya,
         op: opya,
         comprobante: comprobanteya,
+		comprobante2: comprobanteya2,
         banco: bancoya,
         referencia: referenciaya
     });
@@ -536,6 +546,7 @@ function generarComprobantes() {
     sessionStorage.setItem('fecha2ya', fecha2ya);
     sessionStorage.setItem('opya', opya);
     sessionStorage.setItem('comprobanteya', comprobanteya);
+	sessionStorage.setItem('comprobanteya2', comprobanteya2);
     sessionStorage.setItem('bancoya', bancoya);
     sessionStorage.setItem('referenciaya', referenciaya);
 
@@ -547,6 +558,7 @@ function generarComprobantes() {
     console.log("Fecha 2 guardada: ", fecha2ya);
     console.log("Orden de pago guardada: ", opya);
     console.log("Correlativo guardado: ", comprobanteya);
+	console.log("Correlativo timbre guardado: ", comprobanteya2);
     console.log("Banco guardado: ", bancoya);
     console.log("Referencia guardada: ", referenciaya);
 
@@ -571,6 +583,7 @@ function generarComprobantesNuevo() {
     sessionStorage.removeItem('fecha2ya'); // Entrega
     sessionStorage.removeItem('opya'); // Orden de pago
     sessionStorage.removeItem('comprobanteya'); // Correlativo
+	sessionStorage.removeItem('comprobanteya2'); // Correlativo
     sessionStorage.removeItem('bancoya'); // Banco
     sessionStorage.removeItem('referenciaya'); // Número de referencia
     console.log("Datos de la sección 'Pago Realizado' eliminados de sessionStorage");
@@ -587,6 +600,7 @@ function generarComprobantesNuevo() {
     const fecha2nu = document.getElementById('fecha2nu').value;
     const opnu = document.getElementById('opnu').value;
     const comprobantenu = document.getElementById('comprobrantenu').value;
+	const comprobantenu2 = document.getElementById('comprobrantenu2').value;
     const banconu = document.getElementById('banconu').value;
     const referencianu = document.getElementById('referencianu').value;
 
@@ -599,6 +613,7 @@ function generarComprobantesNuevo() {
         fecha2nu: fecha2nu,
         opnu: opnu,
         comprobantenu: comprobantenu,
+		comprobantenu2: comprobantenu2,
         banconu: banconu,
         referencianu: referencianu
     });
@@ -612,6 +627,7 @@ function generarComprobantesNuevo() {
     sessionStorage.setItem('fecha2nu', fecha2nu);
     sessionStorage.setItem('opnu', opnu);
     sessionStorage.setItem('comprobantenu', comprobantenu);
+	sessionStorage.setItem('comprobantenu2', comprobantenu2);
     sessionStorage.setItem('banconu', banconu);
     sessionStorage.setItem('referencianu', referencianu);
 
@@ -625,6 +641,7 @@ function generarComprobantesNuevo() {
     console.log("Fecha de entrega guardada: ", fecha2nu);
     console.log("Número de orden guardado: ", opnu);
     console.log("Número de comprobante guardado: ", comprobantenu);
+	console.log("Número de comprobante timbre guardado: ", comprobantenu2);
     console.log("Banco guardado: ", banconu);
     console.log("Número de referencia guardado: ", referencianu);
 
