@@ -431,27 +431,47 @@ font-weight: bold;
 
 <script src="db/proveedores.js"></script>
 
+
+
     <script>
+
+
+function guardarComprobanteOnline(comprobante) {
+  const webAppUrl = "https://script.google.com/macros/s/AKfycbzuoi6FdNqO6wTotgd3LSb4lxYxNsRJS_1Q2aJlCvx0JMvH0G4_heXSx_V1srWYWC7V/exec"; 
+  
+  fetch(webAppUrl, {
+    method: 'POST',
+    mode: 'no-cors', 
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(comprobante)
+  })
+  .then(response => {
+    console.log('Comprobante guardado online');
+    console.log('Respuesta:', response);
+  })
+  .catch(error => {
+    console.error('Error guardando comprobante', error);
+  });
+}
 
 function saveComprobanteToFile() {
     const comprobante = {
-        operationNumber: document.getElementById('id1').textContent,
-        baseImponible: document.getElementById('id2').textContent,
-        excento: document.getElementById('id3').textContent,
         proveedor: document.querySelector('.slot1').textContent,
         rif: document.querySelector('.slot2').textContent,
         comprobanteNum: document.querySelector('.slot3').textContent,
         fechaEmision: document.querySelector('.slot4').textContent,
         fechaEntrega: document.querySelector('.slot5').textContent,
-        ano: document.querySelector('.slot6').textContent,
-        mes: document.querySelector('.slot7').textContent,
-        iva: document.getElementById('id4').textContent,
-        totalCompras: document.getElementById('id5').textContent,
-        ivaRetenido: document.getElementById('id6').textContent,
-        subtotal: document.getElementById('id7').textContent,
-        ivaPorcentaje25: document.getElementById('id8').textContent,
-        totalAPagar: document.getElementById('id9').textContent
+        operationNumber: document.getElementById('id1').textContent,
+        baseImponible: document.getElementById('id2').textContent,
+        excento: document.getElementById('id3').textContent,
+        // Añadir estos campos explícitamente
+		numeroComprobante: String(document.getElementById('comprobanteNumber').value), // Convertir a string
+        numeroOperacion: document.getElementById('operationNumber').value
     };
+	
+
 
     const proveedor = comprobante.proveedor.replace(/[^a-zA-Z0-9]/g, '_');
     const numeroOrden = `OP${comprobante.operationNumber}`;
@@ -465,6 +485,8 @@ function saveComprobanteToFile() {
     document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
+	    // Guardar online
+    guardarComprobanteOnline(comprobante);
 }
 
 function reopenPopup() {
@@ -895,6 +917,8 @@ document.addEventListener('DOMContentLoaded', function() {
     cargarDatosDesdeSessionStorage();
 
 });
+
+
 
 function cargarProveedores() {
     const providerSelect = document.getElementById('provider');
