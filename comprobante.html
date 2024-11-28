@@ -441,24 +441,18 @@ function guardarComprobanteOnline(comprobante) {
   
   fetch(webAppUrl, {
     method: 'POST',
+    mode: 'no-cors', 
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(comprobante)
   })
   .then(response => {
-    if (!response.ok) {
-      throw new Error('Error en la respuesta del servidor');
-    }
-    return response.json(); // Parsear la respuesta JSON
-  })
-  .then(data => {
     console.log('Comprobante guardado online');
-    alert(data.message); // Mostrar mensaje de éxito o error
+    console.log('Respuesta:', response);
   })
   .catch(error => {
     console.error('Error guardando comprobante', error);
-    alert('Error al guardar el comprobante: ' + error.message); // Mostrar mensaje de error
   });
 }
 
