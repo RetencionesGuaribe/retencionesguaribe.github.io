@@ -422,7 +422,6 @@ input:focus, select:focus {
     <input type="date" id="fecha">
     <span id="proveedorText">Proveedor</span>
     <span id="retencionText">Ret: --%</span>
-	<span id="timbreText">Tim: --%</span>
     <span id="nroOperacionText">OP: --</span>
     <button class="btn-icon" onclick="agregarFila()">+</button>
     <button class="btn-icon" onclick="ajustarPrecios()">!</button>
@@ -552,12 +551,6 @@ input:focus, select:focus {
         <label for="popupMontoDeseado">Monto Total Deseado:</label>
 
         <input type="number" id="popupMontoDeseado" step="0.01" min="0">
-		
-		<label for="popupTimbre">Porcentaje Timbre Fiscal:</label>
-            <select id="popupTimbre">
-                <option value="0.1">0.1%</option>
-                <option value="3">3%</option>
-            </select>
 
         <button onclick="seleccionarProveedor()">Seleccionar</button>
 
@@ -698,37 +691,42 @@ function inicializarAutocompletado() {
 }
 
     function seleccionarProveedor() {
-    const fecha = document.getElementById('popupFecha').value;
-    const proveedorSelect = document.getElementById('popupProveedor');
-    const retencionSelect = document.getElementById('popupRetencion');
-    const nroOperacion = document.getElementById('popupNroOperacion').value;
-    const montoDeseado = document.getElementById('popupMontoDeseado').value;
-    const timbreSelect = document.getElementById('popupTimbre');
+        const fecha = document.getElementById('popupFecha').value;
+        const proveedorSelect = document.getElementById('popupProveedor');
+        const retencionSelect = document.getElementById('popupRetencion');
+        const nroOperacion = document.getElementById('popupNroOperacion').value;
+        const montoDeseado = document.getElementById('popupMontoDeseado').value;
 
-    let proveedorText;
-    if (proveedorSelect.value === 'manual') {
-        proveedorText = document.getElementById('proveedorManual').value;
-    } else {
-        proveedorText = proveedorSelect.options[proveedorSelect.selectedIndex].text;
+        let proveedorText;
+        if (proveedorSelect.value === 'manual') {
+            proveedorText = document.getElementById('proveedorManual').value;
+        } else {
+            proveedorText = proveedorSelect.options[proveedorSelect.selectedIndex].text;
+        }
+
+        // Actualiza los campos en la interfaz
+        document.getElementById('fecha').value = fecha;
+        document.getElementById('proveedorText').innerText = proveedorText;
+
+        // Actualiza la retención
+        document.getElementById('retencionText').innerText = `Ret: ${retencionSelect.value}%`;
+
+        document.getElementById('nroOperacionText').innerText = nroOperacion;
+
+        // Guarda el monto deseado en localStorage
+        if (montoDeseado) {
+            localStorage.setItem('montoDeseado', montoDeseado);
+        }
+        
+        if (proveedorSelect) {
+            localStorage.setItem('proveedorSelect', proveedorSelect);
+        }
+
+        // Oculta la ventana modal
+        document.getElementById('popup').style.display = 'none';
+
+        // Actualiza el resumen general para reflejar los cambios actualizarResumenGeneral();
     }
-
-    // Actualiza los campos en la interfaz
-    document.getElementById('fecha').value = fecha;
-    document.getElementById('proveedorText').innerText = proveedorText;
-    document.getElementById('retencionText').innerText = `Ret: ${retencionSelect.value}%`;
-	document.getElementById('timbreText').innerText = `Tim: ${timbreSelect.value}%`;
-    document.getElementById('nroOperacionText').innerText = nroOperacion;
-
-    // Guarda el monto deseado y el timbre fiscal en localStorage
-    localStorage.setItem('montoDeseado', montoDeseado);
-    localStorage.setItem('porcentajeTimbre', timbreSelect.value);
-
-    // Oculta la ventana modal
-    document.getElementById('popup').style.display = 'none';
-
-    // Actualiza el resumen general para reflejar los cambios
-    actualizarResumenGeneral();
-}
 
 function actualizarRetencion() {
     const proveedorSelect = document.getElementById('popupProveedor');
@@ -971,39 +969,54 @@ function actualizarRetencion() {
     }
 
     function actualizarResumenGeneral() {
-    const productRows = document.querySelectorAll('.product-row');
-    let subtotalGeneral = 0;
-    let exentoGeneral = 0;
+        const productRows = document.querySelectorAll('.product-row');
+        let subtotalGeneral = 0;
+        let exentoGeneral = 0;
 
-    productRows.forEach(row => {
-        if (row) { // Verifica que la fila exista
+        productRows.forEach(row => {
             const precioTotal = parseFloat(row.querySelector('.input-precio-total').value) || 0;
-            const exentoCheckbox = row.querySelector('.input-exento'); // Asegúrate de que la clase 'input-exento' esté correctamente aplicada en el HTML
+            const exentoCheckbox = row.querySelector('.input-exento');
 
+            // Sumar al subtotal general todos los productos
             subtotalGeneral += precioTotal;
 
-            if (exentoCheckbox && exentoCheckbox.checked) { // Verifica que el checkbox exista y esté marcado
+            // Sumar al exento general solo los productos marcados como exentos
+            if (exentoCheckbox.checked) {
                 exentoGeneral += precioTotal;
             }
+        });
+
+        // El resto de la función permanece igual
+
+        const ivaGeneral = (subtotalGeneral - exentoGeneral) * 0.16;
+        const totalFactura = subtotalGeneral + ivaGeneral;
+
+        document.getElementById('subtotalGeneral').innerText = subtotalGeneral.toFixed(2);
+        document.getElementById('exentoGeneral').innerText = exentoGeneral.toFixed(2);
+        document.getElementById('ivaGeneral').innerText = ivaGeneral.toFixed(2);
+        document.getElementById('totalGeneral').innerText = totalFactura.toFixed(2);
+
+        // Cálculos adicionales
+        const retencionText = document.getElementById('retencionText').innerText;
+        const porcentajeRetencion = parseInt(retencionText.match(/\d+/)[0]) || 0;
+
+        let ivaAPagar = 0;
+
+        if (porcentajeRetencion === 75) {
+            ivaAPagar = ivaGeneral * 0.25;
+        } else if (porcentajeRetencion === 0) {
+            ivaAPagar = ivaGeneral;
         }
-    });
 
-    const ivaGeneral = (subtotalGeneral - exentoGeneral) * 0.16;
-    const totalFactura = subtotalGeneral + ivaGeneral;
+        const pagoSinTimbre = subtotalGeneral + ivaAPagar;
+        const timbreFiscal = subtotalGeneral * 0.001;
+        const totalAPagar = subtotalGeneral - timbreFiscal + ivaAPagar;
 
-    document.getElementById('subtotalGeneral').innerText = subtotalGeneral.toFixed(2);
-    document.getElementById('exentoGeneral').innerText = exentoGeneral.toFixed(2);
-    document.getElementById('ivaGeneral').innerText = ivaGeneral.toFixed(2);
-    document.getElementById('totalGeneral').innerText = totalFactura.toFixed(2);
-
-    const porcentajeTimbre = parseFloat(localStorage.getItem('porcentajeTimbre')) || 0.1; // Valor por defecto
-    const timbreFiscal = subtotalGeneral * (porcentajeTimbre / 100);
-    const totalAPagar = totalFactura - timbreFiscal;
-
-    document.getElementById('timbreFiscal').innerText = timbreFiscal.toFixed(2);
-    document.getElementById('totalAPagar').innerText = totalAPagar.toFixed(2);
-	document.getElementById('timbreText').innerText = `Tim: ${porcentajeTimbre}%`; 
-}
+        document.getElementById('ivaAPagar').innerText = ivaAPagar.toFixed(2);
+        document.getElementById('pagoSinTimbre').innerText = pagoSinTimbre.toFixed(2);
+        document.getElementById('timbreFiscal').innerText = timbreFiscal.toFixed(2);
+        document.getElementById('totalAPagar').innerText = totalAPagar.toFixed(2);
+    }
 
     // Obtener la lista de plantillas en la carpeta plantillas
     const plantillasFolder = 'plantillas/';
@@ -1601,3 +1614,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
