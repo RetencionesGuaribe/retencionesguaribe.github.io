@@ -1,6 +1,6 @@
 const proveedores = [
   {
-    nombre: "AINKAA, C.A.",
+    nombre: "ORGANIZACION AINKAA, C.A.",
     rif: "J409293165",
     retencion: 75
   },
