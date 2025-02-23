@@ -1,0 +1,53 @@
+{
+  "cuentas": [
+    {
+      "numero": "01340397033971012896",
+      "banco": "Banesco",
+      "tipo": "Corriente",
+      "concepto": "Depósito de situado institucional",
+      "categoria": "Ordinario"
+    },
+    {
+      "numero": "01020431320000370604",
+      "banco": "Venezuela",
+      "tipo": "Corriente",
+      "concepto": "Recaudacion tributaria",
+      "categoria": "Hacienda"
+    },
+    {
+      "numero": "01020431340000370617",
+      "banco": "Venezuela",
+      "tipo": "Corriente",
+      "concepto": "",
+      "categoria": "Ordinario"
+    },
+    {
+      "numero": "01020431320000031969",
+      "banco": "Venezuela",
+      "tipo": "Corriente",
+      "concepto": "Pago de obras",
+      "categoria": "FCI-CFG"
+    },
+    {
+      "numero": "01910231912100025915",
+      "banco": "BNC",
+      "tipo": "",
+      "concepto": "",
+      "categoria": "Ordinario"
+    },
+    {
+      "numero": "01910502432100002308",
+      "banco": "BNC",
+      "tipo": "",
+      "concepto": "",
+      "categoria": "Hacienda"
+    },
+    {
+      "numero": "01910502412100041577",
+      "banco": "BNC",
+      "tipo": "",
+      "concepto": "",
+      "categoria": "Ordinario"
+    }
+  ]
+}
