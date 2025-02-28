@@ -39,14 +39,14 @@
     {
       "nombre": "FUNERARIA ROSTRO DE JESUS, C.A.",
       "rif": "J-50206569-5",
-      "direccion": ".",
-      "telefono": "."
+      "direccion": "J-50206569-5",
+      "telefono": "0238-4441462"
     },
     {
       "nombre": "INVERSIONES AXEMTEK C.A.",
       "rif": "J-31752587-6",
       "direccion": "Calle Roscio, Local S/N, Sector Cañicito, San Jose de Guaribe, Estado Guarico",
-      "telefono": "."
+      "telefono": "0238-4441526"
     },
     {
       "nombre": "INVERSIONES EL TODO PODEROSO 2020",
@@ -93,8 +93,8 @@
     {
       "nombre": "INVERSIONES ROARI C,A.",
       "rif": "J-41256128-6",
-      "direccion": ".",
-      "telefono": "."
+      "direccion": "J-41256128-6",
+      "telefono": "0424-1980188"
     },
     {
       "nombre": "INVERSIONES Y SUMINISTROS C&E, C.A.",
@@ -152,9 +152,21 @@
     },
     {
       "nombre": "Julio Cesar Yanez Mosqueda",
-      "rif": "V????",
+      "rif": "V12842343",
       "direccion": "Calle Doctor Carlos Maldonado, Sector Samangacho, San Jose de Guaribe, Estado Guarico",
-      "telefono": "."
+      "telefono": "0424-2579552"
+    },
+    {
+      "nombre": "Marisela Medina",
+      "rif": "V16237917",
+      "direccion": "Sector Colinas de Inavi, San Jose de Guaribe, Estado Guarico",
+      "telefono": "0424-8873752"
+    },
+    {
+      "nombre": "Ely Andres Saez",
+      "rif": "V15452067",
+      "direccion": "Calle Doctor Carlos Maldonado, Sector Samangacho, San Jose de Guaribe, Estado Guarico",
+      "telefono": "0424-2579552"
     },
     {
       "nombre": "Adriana Polini de Gouveia - Inversiones GP",
@@ -164,7 +176,7 @@
     },
     {
       "nombre": "Jose Leonardo Camacho",
-      "rif": "V????",
+      "rif": "V10496906",
       "direccion": "Samangacho, Sector Centro, San Jose de Guaribe,Estado Guarico.",
       "telefono": "."
     },
@@ -173,6 +185,60 @@
       "rif": "V????",
       "direccion": "Calle Coromoto, Local S/N, Sector La Mirandera, San Jose de Guaribe, Estado Guarico.",
       "telefono": "."
+    },
+    {
+      "nombre": "Concejo Municipal / Secretaria Municipal",
+      "rif": "G-20006322-0",
+      "direccion": "Calle Miranda, Sector Cañicito,San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
+    },
+    {
+      "nombre": "Contraloria Municipal",
+      "rif": "G-20001860-7",
+      "direccion": "Calle Urdaneta, Sector Centro,San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
+    },
+    {
+      "nombre": "Mercado de Alimentos Guaribe",
+      "rif": "G-20012289-7",
+      "direccion": "Sector Inavi frente al CDI, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
+    },
+    {
+      "nombre": "Instituto Autonomo Municipal de Habitat y Vivienda.",
+      "rif": "G-20010072-9",
+      "direccion": "Sector Inavi, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
+    },
+    {
+      "nombre": "Instituto Autonomo Municipal de la Mujer Yolanda Romero de Barrios.",
+      "rif": "J-40189926-9",
+      "direccion": "Sector Centro, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
+    },
+    {
+      "nombre": "Instituto Autonomo Municipal del Deporte.",
+      "rif": "J-G20007033-0",
+      "direccion": "Sector Centro, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
+    },
+    {
+      "nombre": "Direccion Municipal de Proteccion Civil y Administracion de Desastres.",
+      "rif": "J-40189938-2",
+      "direccion": "Sector Centro, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
+    },
+    {
+      "nombre": "Instituto Autonomo Municipal de Cultura.",
+      "rif": "G-20012289-7",
+      "direccion": "Calle Principal, Sector Las Delicias, Espacio Cultural, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
+    },
+    {
+      "nombre": "Magnulys Sanchez.",
+      "rif": "14705027",
+      "direccion": "Calle Doctor Carlos Maldonado, Sector Samangacho, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "0"
     },
     {
       "nombre": "Norman Parada - Cauchos La Mirandera",
