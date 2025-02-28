@@ -3,7 +3,7 @@
     {
       "nombre": "AINKAA, C.A.",
       "rif": "J-40929316-5",
-      "direccion": ".",
+      "direccion": "",
       "telefono": "."
     },
     {
@@ -21,7 +21,7 @@
     {
       "nombre": "COMERCIAL ANA K 1304, FP",
       "rif": "V-15565306-6",
-      "direccion": ".",
+      "direccion": "Calle Urdaneta entre Paz y Miranda, Local S/N, Sector Centro, San Jose de Guaribe, Estado Guarico.",
       "telefono": "."
     },
     {
@@ -45,7 +45,7 @@
     {
       "nombre": "INVERSIONES AXEMTEK C.A.",
       "rif": "J-31752587-6",
-      "direccion": ".",
+      "direccion": "Calle Roscio, Local S/N, Sector Cañicito, San Jose de Guaribe, Estado Guarico",
       "telefono": "."
     },
     {
@@ -57,13 +57,13 @@
     {
       "nombre": "INVERSIONES GRAN VICTORIA 2015, C.A.",
       "rif": "J-40722900-1",
-      "direccion": ".",
+      "direccion": "Calle Principal, Casa S/N, Sector Aserradero, San Jose de Guaribe, Estado Guarico.",
       "telefono": "."
     },
     {
       "nombre": "INVERSIONES GRATEROL 2020, C.A.",
       "rif": "J-41314512-0",
-      "direccion": ".",
+      "direccion": "Calle Palmito,casa NRO 13, Sector las Palmas, San Juan de los Morros, Estado Guarico.",
       "telefono": "."
     },
     {
@@ -81,7 +81,7 @@
     {
       "nombre": "INVERSIONES LA VIRTUD",
       "rif": "J-40862362-5",
-      "direccion": ".",
+      "direccion": "Altagracia de Orituco, Estado Guarico.",
       "telefono": "."
     },
     {
@@ -99,7 +99,7 @@
     {
       "nombre": "INVERSIONES Y SUMINISTROS C&E, C.A.",
       "rif": "J-40994813-7",
-      "direccion": ".",
+      "direccion": "A.V Principal, Vereda NO. 34, Casa NO. 4, Urbanizacion Boyaca I, Barcelona, Estado Anzoategui.",
       "telefono": "."
     },
     {
@@ -111,7 +111,7 @@
     {
       "nombre": "MUEBLERIA, INVERSIONES Y VARIEDADES EL REY, C.A.",
       "rif": "J-31170892-8",
-      "direccion": ".",
+      "direccion": "Calle Ilustes Proceres NRO. 30 - Sector Centro, Altagracia de Orituco, Estado Guarico.",
       "telefono": "."
     },
     {
@@ -148,6 +148,36 @@
       "nombre": "NOVEDADES J&V, C.A.",
       "rif": "J-40643834-0",
       "direccion": ".",
+      "telefono": "."
+    },
+    {
+      "nombre": "Julio Cesar Yanez Mosqueda",
+      "rif": "V????",
+      "direccion": "Calle Doctor Carlos Maldonado, Sector Samangacho, San Jose de Guaribe, Estado Guarico",
+      "telefono": "."
+    },
+    {
+      "nombre": "Adriana Polini de Gouveia - Inversiones GP",
+      "rif": "V????",
+      "direccion": "Calle Principal, Casa S/N, Sector Caraquita, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "."
+    },
+    {
+      "nombre": "Jose Leonardo Camacho",
+      "rif": "V????",
+      "direccion": "Samangacho, Sector Centro, San Jose de Guaribe,Estado Guarico.",
+      "telefono": "."
+    },
+    {
+      "nombre": "Carmen Arvelaez",
+      "rif": "V????",
+      "direccion": "Calle Coromoto, Local S/N, Sector La Mirandera, San Jose de Guaribe, Estado Guarico.",
+      "telefono": "."
+    },
+    {
+      "nombre": "Norman Parada - Cauchos La Mirandera",
+      "rif": "J-41000266-2",
+      "direccion": "Sector La Mirandera, San Jose de Guaribe, Estado Guarico",
       "telefono": "."
     }
   ]
