@@ -1,9 +1,15 @@
 {
   "beneficiarios": [
     {
-      "nombre": "AINKAA, C.A.",
+      "nombre": "ORGANIZACION AINKAA, C.A.",
       "rif": "J-40929316-5",
-      "direccion": "",
+      "direccion": "Calle 3, Casa NRO. 3-6A, URB Castilleko, Guatire, Miranda.",
+      "telefono": "."
+    },
+    {
+      "nombre": "Jhon Sport / Confecciones Yomaira",
+      "rif": "J-503200294",
+      "direccion": "C.C Los Mangos, Local L-24, Av Constitucion, Maracay, Estado Aragua.",
       "telefono": "."
     },
     {
@@ -58,7 +64,7 @@
       "nombre": "INVERSIONES GRAN VICTORIA 2015, C.A.",
       "rif": "J-40722900-1",
       "direccion": "Calle Principal, Casa S/N, Sector Aserradero, San Jose de Guaribe, Estado Guarico.",
-      "telefono": "."
+      "telefono": "0424-3134085"
     },
     {
       "nombre": "INVERSIONES GRATEROL 2020, C.A.",
