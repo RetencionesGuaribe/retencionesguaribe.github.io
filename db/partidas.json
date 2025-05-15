@@ -23,149 +23,547 @@
   },
   "partidas_presupuestarias": [
     {
-      "categoria": "MATERIALES, SUMINISTROS Y MERCANCÍAS",
+      "categoria": "GASTOS DE PERSONAL",
+      "codigo_general": "4.01",
+      "subcategorias": [
+        {
+          "codigo": "4.01.00.00.00",
+          "denominacion": "GASTOS DE PERSONAL"
+        },
+        {
+          "codigo": "4.01.01.29.00",
+          "denominacion": "DIETAS"
+        }
+      ]
+    },
+    {
+      "categoria": "MATERIALES, SUMINISTROS Y MERCANCIAS",
       "codigo_general": "4.02",
       "subcategorias": [
-        {"codigo": "4.02.00.00.00", "denominacion": "MATERIALES, SUMINISTROS Y MERCANCÍAS"},
-        {"codigo": "4.02.01.00.00", "denominacion": "PRODUCTOS ALIMENTICIOS Y AGROPECUARIOS", "subcategorias": [{"codigo": "4.02.01.01.00", "denominacion": "ALIMENTOS Y BEBIDAS PARA PERSONAS"}]},
-        {"codigo": "4.02.02.00.00", "denominacion": "PRODUCTOS DE MINAS, CANTERAS Y YACIMIENTOS", "subcategorias": [{"codigo": "4.02.02.02.00", "denominacion": "PETRÓLEO CRUDO Y GAS NATURAL"}]},
-        {"codigo": "4.02.04.00.00", "denominacion": "PRODUCTOS DE CUERO Y CAUCHO", "subcategorias": [{"codigo": "4.02.04.03.00", "denominacion": "CAUCHOS Y TRIPAS PARA VEHÍCULOS"}]},
-        {"codigo": "4.02.03.00.00", "denominacion": "TEXTILES Y VESTUARIOS", "subcategorias": [{"codigo": "4.02.03.02.00", "denominacion": "PRENDAS DE VESTIR"}]},
-        {"codigo": "4.02.05.00.00", "denominacion": "PRODUCTOS DE PAPEL Y CARTÓN E IMPRESOS", "subcategorias": [
-          {"codigo": "4.02.05.02.00", "denominacion": "ENVASES Y CAJAS DE PAPEL Y CARTÓN"},
-          {"codigo": "4.02.05.03.00", "denominacion": "PRODUCTOS DE PAPEL Y CARTÓN PARA OFICINAS"},
-          {"codigo": "4.02.05.06.00", "denominacion": "PRODUCTOS DE PAPEL Y CARTÓN PARA COMPUTACIÓN"},
-          {"codigo": "4.02.05.07.00", "denominacion": "PRODUCTOS DE PAPEL Y CARTÓN PARA IMPRENTA Y REPRODUCCIÓN"},
-          {"codigo": "4.02.05.99.00", "denominacion": "OTROS PRODUCTOS DE PULPA, PAPEL Y CARTÓN"}
-        ]},
-        {"codigo": "4.02.06.00.00", "denominacion": "PRODUCTOS QUÍMICOS Y DERIVADOS", "subcategorias": [
-          {"codigo": "4.02.06.01.00", "denominacion": "SUSTANCIAS QUÍMICAS Y DE USO INDUSTRIAL"},
-          {"codigo": "4.02.06.02.00", "denominacion": "ABONOS, PLAGUICIDAS Y OTROS"},
-          {"codigo": "4.02.06.03.00", "denominacion": "TINTAS, PINTURAS Y COLORANTES"},
-          {"codigo": "4.02.06.04.00", "denominacion": "PRODUCTOS FARMACÉUTICOS"},
-          {"codigo": "4.02.06.06.00", "denominacion": "COMBUSTIBLES Y LUBRICANTES"},
-          {"codigo": "4.02.06.07.00", "denominacion": "PRODUCTOS DIVERSOS DERIVADOS DEL PETRÓLEO"},
-          {"codigo": "4.02.06.08.00", "denominacion": "PRODUCTOS PLÁSTICOS"}
-        ]},
-        {"codigo": "4.02.07.00.00", "denominacion": "PRODUCTOS MINERALES NO METÁLICOS", "subcategorias": [{"codigo": "4.02.07.04.00", "denominacion": "CEMENTO, CAL Y YESO"}]},
-        {"codigo": "4.02.08.00.00", "denominacion": "PRODUCTOS METÁLICOS", "subcategorias": [
-          {"codigo": "4.02.08.01.00", "denominacion": "DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO"},
-          {"codigo": "4.02.08.03.00", "denominacion": "HERRAMIENTAS, CUCHILLERÍA Y ARTÍCULOS GENERALES DE FERRETERÍA"},
-          {"codigo": "4.02.08.09.00", "denominacion": "REPUESTOS Y ACCESORIOS PARA EQUIPOS DE TRANSPORTE"},
-          {"codigo": "4.02.08.10.00", "denominacion": "REPUESTOS Y ACCESORIOS PARA OTROS EQUIPOS"}
-        ]},
-        {"codigo": "4.02.10.00.00", "denominacion": "PRODUCTOS VARIOS Y ÚTILES DIVERSOS", "subcategorias": [
-          {"codigo": "4.02.10.01.00", "denominacion": "ARTÍCULOS DE DEPORTE, RECREACIÓN Y JUGUETES"},
-          {"codigo": "4.02.10.02.00", "denominacion": "MATERIALES Y ÚTILES DE LIMPIEZA Y ASEO"},
-          {"codigo": "4.02.10.05.00", "denominacion": "ÚTILES DE ESCRITORIO, OFICINA Y MATERIALES DE INSTRUCCIÓN"},
-          {"codigo": "4.02.10.06.00", "denominacion": "CONDECORACIONES, OFRENDAS Y SIMILARES"},
-          {"codigo": "4.02.10.07.00", "denominacion": "PRODUCTOS DE SEGURIDAD EN EL TRABAJO"},
-          {"codigo": "4.02.10.08.00", "denominacion": "MATERIALES PARA EQUIPOS DE COMPUTACIÓN"},
-          {"codigo": "4.02.10.11.00", "denominacion": "MATERIALES ELÉCTRICOS"},
-          {"codigo": "4.02.10.12.00", "denominacion": "MATERIALES PARA INSTALACIONES SANITARIAS"},
-          {"codigo": "4.02.10.13.00", "denominacion": "MATERIALES FOTOGRÁFICOS"},
-          {"codigo": "4.02.10.99.00", "denominacion": "OTROS PRODUCTOS Y ÚTILES DIVERSOS"}
-        ]},
-        {"codigo": "4.02.99.00.00", "denominacion": "OTROS MATERIALES Y SUMINISTROS", "subcategorias": [{"codigo": "4.02.99.01.00", "denominacion": "OTROS MATERIALES Y SUMINISTROS"}]}
+        {
+          "codigo": "4.02.00.00.00",
+          "denominacion": "MATERIALES, SUMINISTROS Y MERCANCIAS"
+        },
+        {
+          "codigo": "4.02.01.00.00",
+          "denominacion": "PRODUCTOS ALIMENTICIOS Y AGROPECUARIOS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.01.01.00",
+              "denominacion": "ALIMENTOS Y BEBIDAS PARA PERSONAS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.02.00.00",
+          "denominacion": "PRODUCTOS DE MINAS, CANTERAS Y YACIMIENTOS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.02.02.00",
+              "denominacion": "PETROLEO CRUDO Y GAS NATURAL"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.03.00.00",
+          "denominacion": "TEXTILES Y VESTUARIOS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.03.02.00",
+              "denominacion": "PRENDAS DE VESTIR"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.04.00.00",
+          "denominacion": "PRODUCTOS DE CUERO Y CAUCHO",
+          "subcategorias": [
+            {
+              "codigo": "4.02.04.03.00",
+              "denominacion": "CAUCHOS Y TRIPAS PARA VEHÍCULOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.05.00.00",
+          "denominacion": "PRODUCTOS DE PAPEL Y CARTON E IMPRESOS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.05.02.00",
+              "denominacion": "ENVASES Y CAJAS DE PAPEL Y CARTÓN"
+            },
+            {
+              "codigo": "4.02.05.03.00",
+              "denominacion": "PRODUCTOS DE PAPEL Y CARTON PARA OFICINAS"
+            },
+            {
+              "codigo": "4.02.05.06.00",
+              "denominacion": "PRODUCTOS DE PAPEL Y CARTON PARA COMPUTACIÓN"
+            },
+            {
+              "codigo": "4.02.05.07.00",
+              "denominacion": "PRODUCTOS DE PAPEL Y CARTON PARA IMPRENTA Y REPRODUCCIÓN"
+            },
+            {
+              "codigo": "4.02.05.99.00",
+              "denominacion": "OTROS PRODUCTOS DE PULPA PAPEL Y CARTÓN"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.06.00.00",
+          "denominacion": "PRODUCTOS QUIMICOS Y DERIVADOS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.06.01.00",
+              "denominacion": "SUSTANCIAS QUIMICAS Y DE USO INDUSTRIAL"
+            },
+            {
+              "codigo": "4.02.06.02.00",
+              "denominacion": "ABONOS PLAGUISIDAS Y OTROS"
+            },
+            {
+              "codigo": "4.02.06.03.00",
+              "denominacion": "TINTAS PINTURAS Y COLORANTES"
+            },
+            {
+              "codigo": "4.02.06.04.00",
+              "denominacion": "PRODUCTOS FARMACEUTICOS"
+            },
+            {
+              "codigo": "4.02.06.06.00",
+              "denominacion": "COMBUSTIBLES Y LUBRICANTES"
+            },
+            {
+              "codigo": "4.02.06.07.00",
+              "denominacion": "PRODUCTOS DIVERSOS DERIVADOS DEL PETROLEO"
+            },
+            {
+              "codigo": "4.02.06.08.00",
+              "denominacion": "PRODUCTOS PLASTICOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.07.00.00",
+          "denominacion": "PRODUTOS MINERALES NO METALICOS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.07.04.00",
+              "denominacion": "CEMENTO CAL Y YESO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.08.00.00",
+          "denominacion": "PRODUCTOS METÁLICOS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.08.01.00",
+              "denominacion": "DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+            },
+            {
+              "codigo": "4.02.08.03.00",
+              "denominacion": "HERRAMIENTAS CUCHILLERIA Y ARTICULOS GENERALES DE FERRETERIA"
+            },
+            {
+              "codigo": "4.02.08.09.00",
+              "denominacion": "REPUESTOS Y ACCESORIOS PARA EQUIPOS TRANSPORTE"
+            },
+            {
+              "codigo": "4.02.08.10.00",
+              "denominacion": "REPUESTOS Y ACCESORIOS PARA OTROS EQUIPOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.10.00.00",
+          "denominacion": "PRODUCTOS VARIOS Y UTILES DIVERSOS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.10.01.00",
+              "denominacion": "ARTICULOS DE DEPORTE Y RECREACION Y JUGUETES"
+            },
+            {
+              "codigo": "4.02.10.02.00",
+              "denominacion": "MATERIALES Y UTILES DE LIMPIEZA Y ASEO"
+            },
+            {
+              "codigo": "4.02.10.05.00",
+              "denominacion": "UTILES DE ESCRITORIO OFICINA Y MATERIALES DE INSTRUCCIÓN"
+            },
+            {
+              "codigo": "4.02.10.06.00",
+              "denominacion": "CONDECORACIONES OFRENDAS Y SIMILARES"
+            },
+            {
+              "codigo": "4.02.10.07.00",
+              "denominacion": "PRODUCTOS DE SEGURIDAD EN EL TRABAJO"
+            },
+            {
+              "codigo": "4.02.10.08.00",
+              "denominacion": "MATERIALES PARA EQUIPOS DE COMPUTACIÓN"
+            },
+            {
+              "codigo": "4.02.10.11.00",
+              "denominacion": "MATERIALES ELECTRICOS"
+            },
+            {
+              "codigo": "4.02.10.12.00",
+              "denominacion": "MATERIALES PARA INSTALACIONES SANITARIAS"
+            },
+            {
+              "codigo": "4.02.10.13.00",
+              "denominacion": "MATERIALES FOTOGRAFICOS"
+            },
+            {
+              "codigo": "4.02.10.99.00",
+              "denominacion": "OTROS PRODUCTOS Y UTILES DIVERSOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.99.00.00",
+          "denominacion": "OTROS MATERIALES Y SUMINISTROS",
+          "subcategorias": [
+            {
+              "codigo": "4.02.99.01.00",
+              "denominacion": "OTROS MATERIALES Y SUMINISTROS"
+            }
+          ]
+        }
       ]
     },
     {
       "categoria": "SERVICIOS NO PERSONALES",
       "codigo_general": "4.03",
       "subcategorias": [
-        {"codigo": "4.03.00.00.00", "denominacion": "SERVICIOS NO PERSONALES"},
-        {"codigo": "4.03.01.00.00", "denominacion": "ALQUILER DE INMUEBLES", "subcategorias": [{"codigo": "4.03.01.01.00", "denominacion": "ALQUILER DE EDIFICIOS Y LOCALES"}]},
-        {"codigo": "4.03.02.00.00", "denominacion": "ALQUILER DE MAQUINARIAS Y EQUIPOS", "subcategorias": [
-          {"codigo": "4.03.02.02.00", "denominacion": "ALQUILER DE EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"},
-          {"codigo": "4.03.02.99.00", "denominacion": "ALQUILER DE OTRAS MAQUINARIAS Y EQUIPOS"}
-        ]},
-        {"codigo": "4.03.04.00.00", "denominacion": "SERVICIOS BÁSICOS", "subcategorias": [
-          {"codigo": "4.03.04.01.00", "denominacion": "ELECTRICIDAD"},
-          {"codigo": "4.03.04.03.00", "denominacion": "AGUA"},
-          {"codigo": "4.03.04.05.00", "denominacion": "SERVICIOS DE COMUNICACIONES"}
-        ]},
-        {"codigo": "4.03.07.00.00", "denominacion": "SERVICIOS DE INFORMACIÓN, IMPRESIÓN Y RELACIONES PÚBLICAS", "subcategorias": [
-          {"codigo": "4.03.07.01.00", "denominacion": "PUBLICIDAD Y PROPAGANDA"},
-          {"codigo": "4.03.07.02.00", "denominacion": "IMPRENTA Y REPRODUCCIÓN"},
-          {"codigo": "4.03.07.03.00", "denominacion": "RELACIONES SOCIALES"}
-        ]},
-        {"codigo": "4.03.08.00.00", "denominacion": "PRIMAS Y OTROS GASTOS DE SEGUROS Y COMISIONES BANCARIAS", "subcategorias": [
-          {"codigo": "4.03.08.02.00", "denominacion": "COMISIONES Y GASTOS BANCARIOS"},
-          {"codigo": "4.03.08.03.00", "denominacion": "COMISIONES Y GASTOS DE ADQUISICIÓN DE SEGUROS"}
-        ]},
-        {"codigo": "4.03.09.00.00", "denominacion": "VIÁTICOS Y PASAJES", "subcategorias": [{"codigo": "4.03.09.01.00", "denominacion": "VIÁTICOS Y PASAJES DENTRO DEL PAÍS"}]},
-        {"codigo": "4.03.10.00.00", "denominacion": "SERVICIOS PROFESIONALES Y TÉCNICOS", "subcategorias": [
-          {"codigo": "4.03.10.01.00", "denominacion": "SERVICIOS JURÍDICOS"},
-          {"codigo": "4.03.10.07.00", "denominacion": "SERVICIOS DE CAPACITACIÓN Y ADIESTRAMIENTO"},
-          {"codigo": "4.03.10.08.00", "denominacion": "SERVICIOS PRESUPUESTARIOS"},
-          {"codigo": "4.03.10.99.00", "denominacion": "OTROS SERVICIOS PROFESIONALES Y TÉCNICOS"}
-        ]},
-        {"codigo": "4.03.11.00.00", "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE MAQUINARIAS Y EQUIPOS", "subcategorias": [
-          {"codigo": "4.03.11.02.00", "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"},
-          {"codigo": "4.03.11.07.00", "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE MAQUINARIAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA Y ALOJAMIENTO"},
-          {"codigo": "4.03.11.99.00", "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OTRAS MAQUINARIAS Y EQUIPOS"}
-        ]},
-        {"codigo": "4.03.12.00.00", "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OBRAS", "subcategorias": [
-          {"codigo": "4.03.12.01.00", "denominacion": "CONSERVACIÓN Y REPARACIONES DE OBRAS EN BIENES DEL DOMINIO PRIVADO"},
-          {"codigo": "4.03.12.02.00", "denominacion": "CONSERVACIÓN Y REPARACIONES DE OBRAS EN BIENES DEL DOMINIO PÚBLICO"}
-        ]},
-        {"codigo": "4.03.18.00.00", "denominacion": "IMPUESTOS INDIRECTOS", "subcategorias": [
-          {"codigo": "4.03.18.01.00", "denominacion": "IMPUESTOS AL VALOR AGREGADO"},
-          {"codigo": "4.03.18.99.00", "denominacion": "OTROS IMPUESTOS INDIRECTOS"}
-        ]}
+        {
+          "codigo": "4.03.00.00.00",
+          "denominacion": "SERVICIOS NO PERSONALES"
+        },
+        {
+          "codigo": "4.03.01.00.00",
+          "denominacion": "ALQUILER DE INMUEBLES",
+          "subcategorias": [
+            {
+              "codigo": "4.03.01.01.00",
+              "denominacion": "ALQUILER DE EDIFICIOS Y LOCALES"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.02.00.00",
+          "denominacion": "ALQUILER DE MAQUINARIAS Y EQUIPOS",
+          "subcategorias": [
+            {
+              "codigo": "4.03.02.02.00",
+              "denominacion": "ALQUILER DE EQUIPOS DE TRANSPORTE, TRACCION Y ELEVACIÓN"
+            },
+            {
+              "codigo": "4.03.02.99.00",
+              "denominacion": "ALQUILER DE OTRAS MAQUINARIAS Y EQUIPOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.04.00.00",
+          "denominacion": "SERVICIOS BÁSICOS",
+          "subcategorias": [
+            {
+              "codigo": "4.03.04.01.00",
+              "denominacion": "ELECTRICIDAD"
+            },
+            {
+              "codigo": "4.03.04.03.00",
+              "denominacion": "AGUA"
+            },
+            {
+              "codigo": "4.03.04.05.00",
+              "denominacion": "SERVICIOS DE COMUNICACIONES"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.07.00.00",
+          "denominacion": "SERVICIOS DE INFORMACIÓN, IMPRESIÓN Y RELACIONES PÚBLICAS",
+          "subcategorias": [
+            {
+              "codigo": "4.03.07.01.00",
+              "denominacion": "PUBLICIDAD Y PROPAGANDA"
+            },
+            {
+              "codigo": "4.03.07.02.00",
+              "denominacion": "IMPRENTA Y REPRODUCCIÓN"
+            },
+            {
+              "codigo": "4.03.07.03.00",
+              "denominacion": "RELACIONES SOCIALES"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.08.00.00",
+          "denominacion": "PRIMAS Y OTROS GASTOS DE SEGUROS Y COMISIONES BANCARIAS",
+          "subcategorias": [
+            {
+              "codigo": "4.03.08.02.00",
+              "denominacion": "COMISIONES Y GASTOS BANCARIOS"
+            },
+            {
+              "codigo": "4.03.08.03.00",
+              "denominacion": "COMISIONES Y GASTOS DE ADQUISICIÓN DE SEGUROS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.09.00.00",
+          "denominacion": "VIATICOS Y PASAJES",
+          "subcategorias": [
+            {
+              "codigo": "4.03.09.01.00",
+              "denominacion": "VIATICOS Y PASAJES DENTRO DEL PAIS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.10.00.00",
+          "denominacion": "SERVICIOS PROFESIONALES Y TÉCNICOS",
+          "subcategorias": [
+            {
+              "codigo": "4.03.10.01.00",
+              "denominacion": "SERVICIOS JURIDICOS"
+            },
+            {
+              "codigo": "4.03.10.07.00",
+              "denominacion": "SERVICIOS DE CAPACITACIÓN Y ADIESTRAMIENTO"
+            },
+            {
+              "codigo": "4.03.10.08.00",
+              "denominacion": "SERVICIOS PRESUPUESTARIOS"
+            },
+            {
+              "codigo": "4.03.10.99.00",
+              "denominacion": "OTROS SERVICIOS PROFESIONALES Y TÉCNICOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.11.00.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE MAQUINARIAS Y EQUIPOS",
+          "subcategorias": [
+            {
+              "codigo": "4.03.11.02.00",
+              "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE EQUIPOS DE TRANSPORTE, TRACCION Y ELEVACÓN"
+            },
+            {
+              "codigo": "4.03.11.07.00",
+              "denominacion": "CONSERVACIÓN Y REPACIONES MENORES DE MAQUINARIAS, MUEBLES Y DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+            },
+            {
+              "codigo": "4.03.11.99.00",
+              "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OTRAS MAQUINARIAS Y EQUIPOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.12.00.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OBRAS",
+          "subcategorias": [
+            {
+              "codigo": "4.03.12.01.00",
+              "denominacion": "CONSERVACIÓN Y REPARACIONES DE OBRAS EN BIENES DEL DOMINIO PRIVADO"
+            },
+            {
+              "codigo": "4.03.12.02.00",
+              "denominacion": "CONSERVACIÓN Y REPARACIONES DE OBRAS EN BIENES DEL DOMINIO PÚBLICO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.18.00.00",
+          "denominacion": "IMPUESTOS INDIRECTOS",
+          "subcategorias": [
+            {
+              "codigo": "4.03.18.01.00",
+              "denominacion": "IMPUESTOS AL VALOR AGREGADO"
+            },
+            {
+              "codigo": "4.03.18.99.00",
+              "denominacion": "OTROS IMPUESTOS INDIRECTOS"
+            }
+          ]
+        }
       ]
     },
     {
       "categoria": "ACTIVOS REALES",
       "codigo_general": "4.04",
       "subcategorias": [
-        {"codigo": "4.04.00.00.00", "denominacion": "ACTIVOS REALES"},
-        {"codigo": "4.04.01.00.00", "denominacion": "EDIFICIOS Y LOCALES", "subcategorias": [{"codigo": "4.04.01.01.00", "denominacion": "EDIFICIOS"}]},
-        {"codigo": "4.04.02.00.00", "denominacion": "VEHÍCULOS", "subcategorias": [{"codigo": "4.04.02.01.00", "denominacion": "VEHÍCULOS DE TRANSPORTE"}]},
-        {"codigo": "4.04.03.00.00", "denominacion": "MAQUINARIAS Y EQUIPOS", "subcategorias": [
-          {"codigo": "4.04.03.01.00", "denominacion": "EQUIPOS DE OFICINA Y ALOJAMIENTO"},
-          {"codigo": "4.04.03.02.00", "denominacion": "EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"},
-          {"codigo": "4.04.03.99.00", "denominacion": "OTRAS MAQUINARIAS Y EQUIPOS"}
-        ]},
-        {"codigo": "4.04.05.00.00", "denominacion": "TIERRAS", "subcategorias": [{"codigo": "4.04.05.01.00", "denominacion": "TERRENOS"}]},
-        {"codigo": "4.04.06.00.00", "denominacion": "OTROS ACTIVOS REALES", "subcategorias": [{"codigo": "4.04.06.01.00", "denominacion": "BIENES HISTÓRICOS Y ARTÍSTICOS"}]}
+        {
+          "codigo": "4.04.00.00.00",
+          "denominacion": "ACTIVOS REALES"
+        },
+        {
+          "codigo": "4.04.01.00.00",
+          "denominacion": "REPUESTOS Y REPARACIONES MAYORES",
+          "subcategorias": [
+            {
+              "codigo": "4.04.01.01.00",
+              "denominacion": "REPUESTOS MAYORES",
+              "subcategorias": [
+                {
+                  "codigo": "4.04.01.01.02",
+                  "denominacion": "REPUESTOS MAYORES PARA EQUIPOS DE TRANSPORTE, TRACCION Y ELEVACIÓN"
+                },
+                {
+                  "codigo": "4.04.01.01.99",
+                  "denominacion": "REPUESTOS MAYORES DE OTRAS MAQUINARIAS Y EQUIPOS"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.04.00.00",
+          "denominacion": "EQUIPOS DE TRANSPORTE TRACCION Y ELEVACION",
+          "subcategorias": [
+            {
+              "codigo": "4.04.04.01.00",
+              "denominacion": "VEHICULOS AUTOMOTORES TERRESTRES"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.07.00.00",
+          "denominacion": "EQUIPOS CIENTIFICOS, RELIGIOSOS DE ENSEÑANZA Y RECREACION",
+          "subcategorias": [
+            {
+              "codigo": "4.04.07.02.00",
+              "denominacion": "EQUIPOS DE ENSEÑANZA DEPORTE Y RECREACION"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.09.00.00",
+          "denominacion": "MAQUINAS MUEBLES Y DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO",
+          "subcategorias": [
+            {
+              "codigo": "4.04.09.01.00",
+              "denominacion": "MOBILIARIO Y EQUIPOS DE OFICINA"
+            },
+            {
+              "codigo": "4.04.09.02.00",
+              "denominacion": "EQUIPOS DE COMPUTACIÓN"
+            },
+            {
+              "codigo": "4.04.09.99.00",
+              "denominacion": "OTRAS MAQUINAS, MUEBLES Y DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.11.00.00",
+          "denominacion": "INMUEBLES, MAQUINARIAS Y DEMAS EQUIPOS USADOS",
+          "subcategorias": [
+            {
+              "codigo": "4.04.11.01.00",
+              "denominacion": "ADQUISICION DE TIERRAS Y TERRENOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.12.00.00",
+          "denominacion": "ACTIVOS INTANGIBLES",
+          "subcategorias": [
+            {
+              "codigo": "4.04.12.04.00",
+              "denominacion": "PAQUETES Y PROGRAMAS DE COMPUTACION"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.13.00.00",
+          "denominacion": "ESTUDIOS Y PROYECTOS PARA INVERSION EN ACTIVOS FIJOS",
+          "subcategorias": [
+            {
+              "codigo": "4.04.13.01.00",
+              "denominacion": "PROYECTOS Y ESTUDIOS APLICABLES A BIENES DEL DOMINIO PRIVADO"
+            },
+            {
+              "codigo": "4.04.13.02.00",
+              "denominacion": "PROYECTOS Y ESTUDIOS APLICABLES A BIENES DEL DOMINIO PUBLICO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.15.00.00",
+          "denominacion": "CONSTRUCCIONES DEL DOMINIO PRIVADO",
+          "subcategorias": [
+            {
+              "codigo": "4.04.15.03.00",
+              "denominacion": "CONSTRUCCIONES DE EDIFICACIONES EDUCATIVAS, RELIGIOSAS Y RECREATIVAS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.16.00.00",
+          "denominacion": "CONSTRUCCIONES DEL DOMINIO PUBLICO",
+          "subcategorias": [
+            {
+              "codigo": "4.04.16.99.00",
+              "denominacion": "OTRAS CONSTRUCCIONES DEL DOMINIO PUBLICO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.99.00.00",
+          "denominacion": "OTROS ACTIVOS REALES",
+          "subcategorias": [
+            {
+              "codigo": "4.04.99.01.00",
+              "denominacion": "OTROS ACTIVOS REALES"
+            }
+          ]
+        }
       ]
     },
     {
       "categoria": "TRANSFERENCIAS Y DONACIONES",
       "codigo_general": "4.07",
       "subcategorias": [
-        {"codigo": "4.07.00.00.00", "denominacion": "TRANSFERENCIAS Y DONACIONES"},
-        {"codigo": "4.07.01.00.00", "denominacion": "TRANSFERENCIAS CORRIENTES", "subcategorias": [
-          {"codigo": "4.07.01.01.00", "denominacion": "TRANSFERENCIAS DEL GOBIERNO CENTRAL"},
-          {"codigo": "4.07.01.02.00", "denominacion": "TRANSFERENCIAS DE OTRAS INSTITUCIONES PÚBLICAS"},
-          {"codigo": "4.07.01.03.00", "denominacion": "TRANSFERENCIAS DE OTRAS ENTIDADES"},
-          {"codigo": "4.07.01.04.00", "denominacion": "TRANSFERENCIAS DE ORGANIZACIONES INTERNACIONALES"},
-          {"codigo": "4.07.01.05.00", "denominacion": "TRANSFERENCIAS DE EMPRESAS"},
-          {"codigo": "4.07.01.06.00", "denominacion": "TRANSFERENCIAS DE HOGARES"},
-          {"codigo": "4.07.01.07.00", "denominacion": "OTRAS TRANSFERENCIAS CORRIENTES"}
-        ]},
-        {"codigo": "4.07.02.00.00", "denominacion": "TRANSFERENCIAS DE CAPITAL", "subcategorias": [
-          {"codigo": "4.07.02.01.00", "denominacion": "TRANSFERENCIAS DEL GOBIERNO CENTRAL"},
-          {"codigo": "4.07.02.02.00", "denominacion": "TRANSFERENCIAS DE OTRAS INSTITUCIONES PÚBLICAS"},
-          {"codigo": "4.07.02.03.00", "denominacion": "TRANSFERENCIAS DE OTRAS ENTIDADES"},
-          {"codigo": "4.07.02.04.00", "denominacion": "TRANSFERENCIAS DE ORGANIZACIONES INTERNACIONALES"},
-          {"codigo": "4.07.02.05.00", "denominacion": "TRANSFERENCIAS DE EMPRESAS"},
-          {"codigo": "4.07.02.06.00", "denominacion": "TRANSFERENCIAS DE HOGARES"},
-          {"codigo": "4.07.02.07.00", "denominacion": "OTRAS TRANSFERENCIAS DE CAPITAL"}
-        ]},
-        {"codigo": "4.07.03.00.00", "denominacion": "DONACIONES", "subcategorias": [
-          {"codigo": "4.07.03.01.00", "denominacion": "DONACIONES CORRIENTES"},
-          {"codigo": "4.07.03.02.00", "denominacion": "DONACIONES DE CAPITAL"}
-        ]}
-      ]
-    },
-    {
-      "categoria": "RECTIFICACIÓN AL PRESUPUESTO",
-      "codigo_general": "4.98",
-      "subcategorias": [
-        {"codigo": "4.98.00.00.00", "denominacion": "RECTIFICACIÓN AL PRESUPUESTO"},
-        {"codigo": "4.98.01.00.00", "denominacion": "RECTIFICACIÓN AL PRESUPUESTO", "subcategorias": [{"codigo": "4.98.01.01.00", "denominacion": "RECTIFICACIÓN AL PRESUPUESTO"}]}
+        {
+          "codigo": "4.07.00.00.00",
+          "denominacion": "TRANSFERENCIAS Y DONACIONES"
+        },
+        {
+          "codigo": "4.07.01.00.00",
+          "denominacion": "TRANSFERENCIAS Y DONACIONES CORRIENTES INTERNAS",
+          "subcategorias": [
+            {
+              "codigo": "4.07.01.01.02",
+              "denominacion": "JUBILACIONES AL PERSONAL EMPLEADO, OBRERO Y MILITAR"
+            },
+            {
+              "codigo": "4.07.01.01.13",
+              "denominacion": "AGUINALDO AL PERSONAL EMPLEADO, OBRERO Y MILITAR JUBILADO"
+            },
+            {
+              "codigo": "4.07.01.02.01",
+              "denominacion": "DONACIONES CORRIENTES A PERSONAS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.07.03.00.00",
+          "denominacion": "TRANSFERENCIAS Y DONACIONES DE CAPITAL INTERNA",
+          "subcategorias": [
+            {
+              "codigo": "4.07.03.03.02",
+              "denominacion": "TRANSFERENCIAS DE CAPITAL A ENTES DESCENTRALIZADOS SIN FINES EMPRESARIALES"
+            }
+          ]
+        }
       ]
     },
     {
@@ -183,6 +581,26 @@
             {
               "codigo": "4.11.11.03.00",
               "denominacion": "INDEMNIZACIONES DIVERSAS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "categoria": "RECTIFICACION AL PRESUPUESTO",
+      "codigo_general": "4.98",
+      "subcategorias": [
+        {
+          "codigo": "4.98.00.00.00",
+          "denominacion": "RECTIFICACION AL PRESUPUESTO"
+        },
+        {
+          "codigo": "4.98.01.00.00",
+          "denominacion": "RECTIFICACION AL PRESUPUESTO",
+          "subcategorias": [
+            {
+              "codigo": "4.98.01.01.00",
+              "denominacion": "RECTIFICACION AL PRESUPUESTO"
             }
           ]
         }
