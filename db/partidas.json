@@ -533,44 +533,42 @@
       ]
     },
     {
-      "categoria": "TRANSFERENCIAS Y DONACIONES",
-      "codigo_general": "4.07",
+  "categoria": "TRANSFERENCIAS Y DONACIONES",
+  "codigo_general": "4.07",
+  "subcategorias": [
+    {
+      "codigo": "4.07.00.00.00",
+      "denominacion": "TRANSFERENCIAS Y DONACIONES"
+    },
+    {
+      "codigo": "4.07.01.00.00",
+      "denominacion": "TRANSFERENCIAS Y DONACIONES CORRIENTES INTERNAS",
       "subcategorias": [
         {
-          "codigo": "4.07.00.00.00",
-          "denominacion": "TRANSFERENCIAS Y DONACIONES"
+          "codigo": "4.07.01.01.02",
+          "denominacion": "JUBILACIONES AL PERSONAL EMPLEADO, OBRERO Y MILITAR"
         },
         {
-          "codigo": "4.07.01.00.00",
-          "denominacion": "TRANSFERENCIAS Y DONACIONES CORRIENTES INTERNAS",
-          "subcategorias": [
-            {
-              "codigo": "4.07.01.01.02",
-              "denominacion": "JUBILACIONES AL PERSONAL EMPLEADO, OBRERO Y MILITAR"
-            },
-            {
-              "codigo": "4.07.01.01.13",
-              "denominacion": "AGUINALDO AL PERSONAL EMPLEADO, OBRERO Y MILITAR JUBILADO"
-            },
-            {
-              "codigo": "4.07.01.02.01",
-              "denominacion": "DONACIONES CORRIENTES A PERSONAS"
-            }
-          ]
+          "codigo": "4.07.01.01.13",
+          "denominacion": "AGUINALDO AL PERSONAL EMPLEADO, OBRERO Y MILITAR JUBILADO"
         },
-        
-                {
-          "codigo": "4.07.03.00.00",
-          "denominacion": "TRANSFERENCIAS Y DONACIONES DE CAPITAL INTERNA",
-          "subcategorias": [
-            {
-              "codigo": "4.07.03.03.02",
-              "denominacion": "TRANSFERENCIAS DE CAPITAL A ENTES DESCENTRALIZADOS SIN FINES EMPRESARIALES"
-            }
-          ]
+        {
+          "codigo": "4.07.01.02.01",
+          "denominacion": "DONACIONES CORRIENTES A PERSONAS"
         }
       ]
     },
+    {
+      "codigo": "4.07.03.00.00",
+      "denominacion": "TRANSFERENCIAS Y DONACIONES DE CAPITAL INTERNA",
+      "subcategorias": [
+        {
+          "codigo": "4.07.03.03.02",
+          "denominacion": "TRANSFERENCIAS DE CAPITAL A ENTES DESCENTRALIZADOS SIN FINES EMPRESARIALES"
+        }
+      ]
+    },
+    // SUBCATEGORÍA CORRECTAMENTE AGREGADA AQUÍ
     {
       "codigo": "4.07.12.00.00",
       "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR",
