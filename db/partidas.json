@@ -335,6 +335,10 @@
               "denominacion": "SERVICIOS JURIDICOS"
             },
             {
+              "codigo": "4.03.10.02.00",
+              "denominacion": "SERVICIO DE PROCESAMIENTO DE DATOS"
+            },
+            {
               "codigo": "4.03.10.07.00",
               "denominacion": "SERVICIOS DE CAPACITACIÓN Y ADIESTRAMIENTO"
             },
