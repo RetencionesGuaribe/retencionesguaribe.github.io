@@ -335,6 +335,10 @@
               "denominacion": "SERVICIOS JURIDICOS"
             },
             {
+              "codigo": "4.03.10.03.00",
+              "denominacion": "SERVICIO DE PROCESAMIENTO DE DATOS"
+            },
+            {
               "codigo": "4.03.10.07.00",
               "denominacion": "SERVICIOS DE CAPACITACIÓN Y ADIESTRAMIENTO"
             },
@@ -561,6 +565,16 @@
             {
               "codigo": "4.07.03.03.02",
               "denominacion": "TRANSFERENCIAS DE CAPITAL A ENTES DESCENTRALIZADOS SIN FINES EMPRESARIALES"
+            }
+          ]
+        },
+        {
+          "codigo": "4.07.12.00.00",
+          "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR",
+          "subcategorias": [
+            {
+              "codigo": "4.07.12.01.00",
+              "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR"
             }
           ]
         }
