@@ -558,7 +558,8 @@
             }
           ]
         },
-        {
+        
+                {
           "codigo": "4.07.03.00.00",
           "denominacion": "TRANSFERENCIAS Y DONACIONES DE CAPITAL INTERNA",
           "subcategorias": [
@@ -570,6 +571,18 @@
         }
       ]
     },
+    {
+      "codigo": "4.07.12.00.00",
+      "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR",
+      "subcategorias": [
+        {
+          "codigo": "4.07.12.01.00",
+          "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR"
+        }
+      ]
+    }
+  ]
+},
     {
       "categoria": "OBLIGACIONES DE EJERCICIOS ANTERIORES",
       "codigo_general": "4.11",
@@ -590,6 +603,7 @@
         }
       ]
     },
+    
     {
       "categoria": "RECTIFICACION AL PRESUPUESTO",
       "codigo_general": "4.98",
