@@ -26,6 +26,20 @@
       "categoria": "GASTOS DE PERSONAL",
       "codigo_general": "4.01",
       "subcategorias": [
+	  {
+          "codigo": "4.01.06.00.00",
+          "denominacion": "APORTES PATRONALES Y LEGALES",
+          "subcategorias": [
+            {
+              "codigo": "4.01.06.01.00",
+              "denominacion": "APORTE PATRONAL AL I.V.S.S POR EMPLEADOS"
+            },
+            {
+              "codigo": "4.01.06.39.00",
+              "denominacion": "APORTE PATRONAL AL I.V.S.S PARA PERSONAL DE ALTO NIVEL Y DIRECCIÓN"
+            }
+          ]
+        },
         {
           "codigo": "4.01.00.00.00",
           "denominacion": "GASTOS DE PERSONAL"
@@ -51,6 +65,10 @@
             {
               "codigo": "4.02.01.01.00",
               "denominacion": "ALIMENTOS Y BEBIDAS PARA PERSONAS"
+            },
+			{
+              "codigo": "4.02.01.04.00",
+              "denominacion": "PRODUCTOS DE LA CAZA Y PESCA"
             }
           ]
         },
@@ -61,6 +79,10 @@
             {
               "codigo": "4.02.02.02.00",
               "denominacion": "PETROLEO CRUDO Y GAS NATURAL"
+            },
+			{
+              "codigo": "4.02.02.05.00",
+              "denominacion": "ARENA PIEDRA Y ARCILLA"
             }
           ]
         },
@@ -71,6 +93,10 @@
             {
               "codigo": "4.02.03.02.00",
               "denominacion": "PRENDAS DE VESTIR"
+            },
+			{
+              "codigo": "4.02.03.03.00",
+              "denominacion": "CALZADOS"
             }
           ]
         },
@@ -95,6 +121,10 @@
             {
               "codigo": "4.02.05.03.00",
               "denominacion": "PRODUCTOS DE PAPEL Y CARTON PARA OFICINAS"
+            },
+			{
+              "codigo": "4.02.05.04.00",
+              "denominacion": "LIBROS, REVISTAS Y PERIÓDICOS"
             },
             {
               "codigo": "4.02.05.06.00",
@@ -141,6 +171,10 @@
             {
               "codigo": "4.02.06.08.00",
               "denominacion": "PRODUCTOS PLASTICOS"
+            },
+			{
+              "codigo": "4.02.06.47.00",
+              "denominacion": "PRODUCTOS FARMACEUTICOS Y MEDICAMENTOS"
             }
           ]
         },
@@ -148,9 +182,21 @@
           "codigo": "4.02.07.00.00",
           "denominacion": "PRODUTOS MINERALES NO METALICOS",
           "subcategorias": [
+			{
+              "codigo": "4.02.07.02.00",
+              "denominacion": "VIDRIOS Y PRODUCTOS DE VIDRIOS"
+            },
+			{
+              "codigo": "4.02.07.03.00",
+              "denominacion": "PRODUCTOS DE ARCILLA PARA CONSTRUCCION"
+            },
             {
               "codigo": "4.02.07.04.00",
               "denominacion": "CEMENTO CAL Y YESO"
+            },
+			{
+              "codigo": "4.02.07.99.00",
+              "denominacion": "OTROS PRODUCTOS MINERALES NO METALICOS"
             }
           ]
         },
@@ -173,6 +219,10 @@
             {
               "codigo": "4.02.08.10.00",
               "denominacion": "REPUESTOS Y ACCESORIOS PARA OTROS EQUIPOS"
+            },
+			{
+              "codigo": "4.02.08.99.00",
+              "denominacion": "OTROS PRODUCTOS METALICOS"
             }
           ]
         },
@@ -187,6 +237,14 @@
             {
               "codigo": "4.02.10.02.00",
               "denominacion": "MATERIALES Y UTILES DE LIMPIEZA Y ASEO"
+            },
+			{
+              "codigo": "4.02.10.03.00",
+              "denominacion": "UTENSILIOS DE COCINA Y COMEDOR"
+            },
+			{
+              "codigo": "4.02.10.04.00",
+              "denominacion": "ÚTILES MENORES MÉDICO-QUIRÚRGICOS DE LABORATORIO, DENTALES Y DE VETERINARIA"
             },
             {
               "codigo": "4.02.10.05.00",
@@ -219,6 +277,20 @@
             {
               "codigo": "4.02.10.99.00",
               "denominacion": "OTROS PRODUCTOS Y UTILES DIVERSOS"
+            }
+          ]
+        },
+		{
+          "codigo": "4.02.11.00.00",
+          "denominacion": "BIENES PARA LA VENTA",
+          "subcategorias": [
+            {
+              "codigo": "4.02.11.01.00",
+              "denominacion": "PRODUCTOS Y ARTICULOS PARA LA VENTA"
+            },
+            {
+              "codigo": "4.02.11.99.00",
+              "denominacion": "OTROS BIENES PARA LA VENTA"
             }
           ]
         },
@@ -274,13 +346,35 @@
               "codigo": "4.03.04.01.00",
               "denominacion": "ELECTRICIDAD"
             },
+			{
+              "codigo": "4.03.04.02.00",
+              "denominacion": "GAS"
+            },
             {
               "codigo": "4.03.04.03.00",
               "denominacion": "AGUA"
             },
+			{
+              "codigo": "4.03.04.04.00",
+              "denominacion": "TELÉFONO"
+            },
             {
               "codigo": "4.03.04.05.00",
               "denominacion": "SERVICIOS DE COMUNICACIONES"
+            }
+          ]
+        },
+		{
+          "codigo": "4.03.06.00.00",
+          "denominacion": "SERVICIOS DE TRANSPORTE Y ALMACENAJE",
+          "subcategorias": [
+            {
+              "codigo": "4.03.06.01.00",
+              "denominacion": "FLETES Y EMBALAJES"
+            },
+            {
+              "codigo": "4.03.06.02.00",
+              "denominacion": "ALMACENAJE"
             }
           ]
         },
@@ -306,6 +400,10 @@
           "codigo": "4.03.08.00.00",
           "denominacion": "PRIMAS Y OTROS GASTOS DE SEGUROS Y COMISIONES BANCARIAS",
           "subcategorias": [
+		  {
+              "codigo": "4.03.08.01.00",
+              "denominacion": "PRIMAS Y GASTOS DE SEGURO"
+            },
             {
               "codigo": "4.03.08.02.00",
               "denominacion": "COMISIONES Y GASTOS BANCARIOS"
@@ -334,9 +432,17 @@
               "codigo": "4.03.10.01.00",
               "denominacion": "SERVICIOS JURIDICOS"
             },
+			{
+              "codigo": "4.03.10.02.00",
+              "denominacion": "SERVICIOS DE CONTABILIDAD Y AUDITORIA"
+            },
             {
               "codigo": "4.03.10.03.00",
               "denominacion": "SERVICIO DE PROCESAMIENTO DE DATOS"
+            },
+			{
+              "codigo": "4.03.10.05.00",
+              "denominacion": "SERVICIOS MÉDICOS, ODONTOLÓGICOS Y OTROS SERVICIOS DE SANIDAD"
             },
             {
               "codigo": "4.03.10.07.00",
@@ -345,6 +451,10 @@
             {
               "codigo": "4.03.10.08.00",
               "denominacion": "SERVICIOS PRESUPUESTARIOS"
+            },
+			{
+              "codigo": "4.03.10.11.00",
+              "denominacion": "SERVICIOS PARA LA ELABORACIÓN Y SERVICIOS DE COMIDA"
             },
             {
               "codigo": "4.03.10.99.00",
@@ -384,6 +494,16 @@
             }
           ]
         },
+		{
+          "codigo": "4.03.16.00.00",
+          "denominacion": "SERVICIOS DE DIVERSIÓN, ESPARCIMIENTO Y CULTURALES",
+          "subcategorias": [
+            {
+              "codigo": "4.03.16.01.00",
+              "denominacion": "SERVICIOS DE DIVERSIÓN, ESPARCIMIENTO Y CULTURALES"
+            }
+          ]
+        },
         {
           "codigo": "4.03.18.00.00",
           "denominacion": "IMPUESTOS INDIRECTOS",
@@ -420,11 +540,39 @@
                   "codigo": "4.04.01.01.02",
                   "denominacion": "REPUESTOS MAYORES PARA EQUIPOS DE TRANSPORTE, TRACCION Y ELEVACIÓN"
                 },
+				{
+              "codigo": "4.04.01.02.02",
+              "denominacion": "REPARACIONES MAYORES PARA EQUIPOS DE TRACCIÓN Y ELEVACIÓN"
+            },
+			{
+              "codigo": "4.04.01.02.08",
+              "denominacion": "REPARACIONES MAYORES PARA MÁQUINAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA"
+            },
                 {
                   "codigo": "4.04.01.01.99",
                   "denominacion": "REPUESTOS MAYORES DE OTRAS MAQUINARIAS Y EQUIPOS"
                 }
               ]
+            }
+          ]
+        },
+		{
+          "codigo": "4.04.02.00.00",
+          "denominacion": "CONSERVACIÓN, AMPLIACIÓN Y MEJORAS",
+          "subcategorias": [
+            {
+              "codigo": "4.04.02.01.00",
+              "denominacion": "CONSERVACIÓN, AMPLIACIÓN Y MEJORAS EN BIENES DEL DOMINIO PÚBLICO"
+            }
+          ]
+        },
+		{
+          "codigo": "4.04.03.00.00",
+          "denominacion": "MAQUINARIAS, MUEBLES Y DEMAS EQUIPOS DE CONSTRUCCION, CAMPO, INDUSTRIA Y TALLER",
+          "subcategorias": [
+            {
+              "codigo": "4.04.03.08.00",
+              "denominacion": "EQUIPOS DE ALMACEN"
             }
           ]
         },
@@ -438,6 +586,16 @@
             }
           ]
         },
+		{
+          "codigo": "4.04.06.00.00",
+          "denominacion": "EQUIPOS MÉDICO - QUIRÚRGICOS, DENTALES Y DE VETERINARIA",
+          "subcategorias": [
+            {
+              "codigo": "4.04.06.01.00",
+              "denominacion": "EQUIPOS MÉDICO - QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
+            }
+          ]
+        },
         {
           "codigo": "4.04.07.00.00",
           "denominacion": "EQUIPOS CIENTIFICOS, RELIGIOSOS DE ENSEÑANZA Y RECREACION",
@@ -445,6 +603,10 @@
             {
               "codigo": "4.04.07.02.00",
               "denominacion": "EQUIPOS DE ENSEÑANZA DEPORTE Y RECREACION"
+            },
+			{
+              "codigo": "4.04.07.06.00",
+              "denominacion": "INSTRUMENTOS MUSICALES Y EQUIPOS DE AUDIO"
             }
           ]
         },
@@ -459,6 +621,10 @@
             {
               "codigo": "4.04.09.02.00",
               "denominacion": "EQUIPOS DE COMPUTACIÓN"
+            },
+			{
+              "codigo": "4.04.09.03.00",
+              "denominacion": "MOBILIARIO Y EQUIPOS DE ALOJAMIENTO"
             },
             {
               "codigo": "4.04.09.99.00",
@@ -512,11 +678,19 @@
         },
         {
           "codigo": "4.04.16.00.00",
-          "denominacion": "CONSTRUCCIONES DEL DOMINIO PUBLICO",
+          "denominacion": "CONSTRUCCIONES DEL DOMINIO PÚBLICO",
           "subcategorias": [
             {
-              "codigo": "4.04.16.99.00",
-              "denominacion": "OTRAS CONSTRUCCIONES DEL DOMINIO PUBLICO"
+              "codigo": "4.04.16.01.00",
+              "denominacion": "CONSTRUCCIÓN DE VIALIDAD"
+            },
+            {
+              "codigo": "4.04.16.02.00",
+              "denominacion": "CONSTRUCCIÓN DE PLAZAS, PARQUES Y SIMILARES"
+            },
+            {
+              "codigo": "4.04.16.03.00",
+              "denominacion": "CONSTRUCCIÓN DE INSTALACIONES HIDRÁULICAS"
             }
           ]
         },
@@ -548,6 +722,14 @@
               "codigo": "4.07.01.01.02",
               "denominacion": "JUBILACIONES AL PERSONAL EMPLEADO, OBRERO Y MILITAR"
             },
+			{
+              "codigo": "4.07.01.01.03",
+              "denominacion": "BECAS ESCOLARES"
+            },
+			{
+              "codigo": "4.07.01.01.07",
+              "denominacion": "OTRAS BECAS"
+            },
             {
               "codigo": "4.07.01.01.13",
               "denominacion": "AGUINALDO AL PERSONAL EMPLEADO, OBRERO Y MILITAR JUBILADO"
@@ -555,6 +737,18 @@
             {
               "codigo": "4.07.01.02.01",
               "denominacion": "DONACIONES CORRIENTES A PERSONAS"
+            },
+			{
+              "codigo": "4.07.01.03.11",
+              "denominacion": "TRANSFERENCIAS CORRIENTES AL PODER MUNICIPAL"
+            },
+			{
+              "codigo": "4.07.01.04.00",
+              "denominacion": "DONACIONES CORRIENTES INTERNAS AL SECTOR PUBLICO"
+            },
+            {
+              "codigo": "4.07.01.04.09",
+              "denominacion": "DONACIONES CORRIENTES AL PODER MUNICIPAL"
             }
           ]
         },
@@ -575,6 +769,26 @@
             {
               "codigo": "4.07.12.01.00",
               "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR"
+            }
+          ]
+        }
+      ]
+    },
+	{
+      "categoria": "FONDOS PARA LA CANCELACIÓN DE PASIVOS LABORALES",
+      "codigo_general": "4.09",
+      "subcategorias": [
+        {
+          "codigo": "4.09.00.00.00",
+          "denominacion": "FONDOS PARA LA CANCELACIÓN DE PASIVOS LABORALES"
+        },
+        {
+          "codigo": "4.09.12.00.00",
+          "denominacion": "FONDO PARA LA CANCELACIÓN DE PASIVOS LABORALES",
+          "subcategorias": [
+            {
+              "codigo": "4.09.12.01.00",
+              "denominacion": "FONDO PARA LA CANCELACIÓN DE PASIVOS LABORALES"
             }
           ]
         }
