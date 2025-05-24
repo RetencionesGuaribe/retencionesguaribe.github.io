@@ -26,27 +26,1175 @@
       "categoria": "GASTOS DE PERSONAL",
       "codigo_general": "4.01",
       "subcategorias": [
-	  {
-          "codigo": "4.01.06.00.00",
-          "denominacion": "APORTES PATRONALES Y LEGALES",
-          "subcategorias": [
-            {
-              "codigo": "4.01.06.01.00",
-              "denominacion": "APORTE PATRONAL AL I.V.S.S POR EMPLEADOS"
-            },
-            {
-              "codigo": "4.01.06.39.00",
-              "denominacion": "APORTE PATRONAL AL I.V.S.S PARA PERSONAL DE ALTO NIVEL Y DIRECCIÓN"
-            }
-          ]
-        },
         {
           "codigo": "4.01.00.00.00",
           "denominacion": "GASTOS DE PERSONAL"
         },
         {
-          "codigo": "4.01.01.29.00",
-          "denominacion": "DIETAS"
+          "codigo": "4.01.01.00.00",
+          "denominacion": "SUELDOS, SALARIOS Y OTRAS RETRIBUCIONES",
+          "subcategorias": [
+            {
+              "codigo": "4.01.01.01.00",
+              "denominacion": "SUELDOS BÁSICOS PERSONAL FIJO A TIEMPO COMPLETO"
+            },
+            {
+              "codigo": "4.01.01.02.00",
+              "denominacion": "SUELDOS BÁSICOS PERSONAL FIJO A TIEMPO PARCIAL"
+            },
+            {
+              "codigo": "4.01.01.03.00",
+              "denominacion": "SUPLENCIAS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.01.08.00",
+              "denominacion": "SUELDO AL PERSONAL EN TRÁMITE DE NOMBRAMIENTO"
+            },
+            {
+              "codigo": "4.01.01.09.00",
+              "denominacion": "REMUNERACIONES AL PERSONAL EN PERÍODO DE DISPONIBILIDAD"
+            },
+            {
+              "codigo": "4.01.01.10.00",
+              "denominacion": "SALARIOS AL PERSONAL OBRERO EN PUESTOS PERMANENTES A TIEMPO COMPLETO"
+            },
+            {
+              "codigo": "4.01.01.11.00",
+              "denominacion": "SALARIOS AL PERSONAL OBRERO EN PUESTOS PERMANENTES A TIEMPO PARCIAL"
+            },
+            {
+              "codigo": "4.01.01.12.00",
+              "denominacion": "SALARIOS AL PERSONAL OBRERO EN PUESTOS NO PERMANENTES"
+            },
+            {
+              "codigo": "4.01.01.13.00",
+              "denominacion": "SUPLENCIAS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.01.18.00",
+              "denominacion": "REMUNERACIONES AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.01.18.01",
+              "denominacion": "REMUNERACIONES AL PERSONAL CONTRATADO A TIEMPO DETERMINADO"
+            },
+            {
+              "codigo": "4.01.01.18.02",
+              "denominacion": "REMUNERACIONES POR HONORARIOS PROFESIONALES"
+            },
+            {
+              "codigo": "4.01.01.19.00",
+              "denominacion": "RETRIBUCIONES POR BECAS SALARIOS, BOLSAS DE TRABAJO, PASANTÍAS Y SIMILARES"
+            },
+            {
+              "codigo": "4.01.01.20.00",
+              "denominacion": "SUELDO DEL PERSONAL MILITAR PROFESIONAL"
+            },
+            {
+              "codigo": "4.01.01.21.00",
+              "denominacion": "SUELDO O RACIÓN DEL PERSONAL MILITAR NO PROFESIONAL"
+            },
+            {
+              "codigo": "4.01.01.22.00",
+              "denominacion": "SUELDO DEL PERSONAL MILITAR DE RESERVA"
+            },
+            {
+              "codigo": "4.01.01.29.00",
+              "denominacion": "DIETAS"
+            },
+            {
+              "codigo": "4.01.01.30.00",
+              "denominacion": "RETRIBUCIÓN AL PERSONAL DE RESERVA"
+            },
+            {
+              "codigo": "4.01.01.35.00",
+              "denominacion": "SUELDO BÁSICO DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.01.36.00",
+              "denominacion": "SUELDO BÁSICO DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.01.37.00",
+              "denominacion": "DIETAS DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.01.38.00",
+              "denominacion": "DIETAS DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.01.99.00",
+              "denominacion": "OTRAS RETRIBUCIONES"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.02.00.00",
+          "denominacion": "COMPENSACIONES PREVISTAS EN LAS ESCALAS DE SUELDOS Y SALARIOS",
+          "subcategorias": [
+            {
+              "codigo": "4.01.02.01.00",
+              "denominacion": "COMPENSACIONES PREVISTAS EN LAS ESCALAS DE SUELDOS AL PERSONAL EMPLEADO FIJO A TIEMPO COMPLETO"
+            },
+            {
+              "codigo": "4.01.02.02.00",
+              "denominacion": "COMPENSACIONES PREVISTAS EN LAS ESCALAS DE SUELDOS AL PERSONAL EMPLEADO FIJO A TIEMPO PARCIAL"
+            },
+            {
+              "codigo": "4.01.02.03.00",
+              "denominacion": "COMPENSACIONES PREVISTAS EN LAS ESCALAS DE SALARIOS AL PERSONAL OBRERO FIJO A TIEMPO COMPLETO"
+            },
+            {
+              "codigo": "4.01.02.04.00",
+              "denominacion": "COMPENSACIONES PREVISTAS EN LAS ESCALAS DE SALARIOS AL PERSONAL OBRERO FIJO A TIEMPO PARCIAL"
+            },
+            {
+              "codigo": "4.01.02.05.00",
+              "denominacion": "COMPENSACIONES PREVISTAS EN LAS ESCALAS DE SUELDOS AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.02.06.00",
+              "denominacion": "COMPENSACIONES PREVISTAS EN LAS ESCALAS DE SUELDOS DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.02.07.00",
+              "denominacion": "COMPENSACIONES PREVISTAS EN LAS ESCALAS DE SUELDOS DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.03.00.00",
+          "denominacion": "PRIMAS",
+          "subcategorias": [
+            {
+              "codigo": "4.01.03.01.00",
+              "denominacion": "PRIMAS POR MÉRITO AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.02.00",
+              "denominacion": "PRIMAS DE TRANSPORTE AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.03.00",
+              "denominacion": "PRIMAS POR HOGAR PARA LA PROTECCIÓN Y ESTABILIDAD FAMILIAR DEL PERSONAL EMPLEADO."
+            },
+            {
+              "codigo": "4.01.03.04.00",
+              "denominacion": "PRIMAS POR HIJOS E HIJAS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.05.00",
+              "denominacion": "PRIMAS POR ALQUILERES AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.06.00",
+              "denominacion": "PRIMAS POR RESIDENCIA AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.07.00",
+              "denominacion": "PRIMAS POR CATEGORÍA DE ESCUELAS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.08.00",
+              "denominacion": "PRIMAS DE PROFESIONALIZACIÓN AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.09.00",
+              "denominacion": "PRIMAS POR ANTIGÜEDAD AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.10.00",
+              "denominacion": "PRIMAS POR JERARQUÍA O RESPONSABILIDAD EN EL CARGO"
+            },
+            {
+              "codigo": "4.01.03.11.00",
+              "denominacion": "PRIMAS AL PERSONAL EN SERVICIO EN EL EXTERIOR"
+            },
+            {
+              "codigo": "4.01.03.16.00",
+              "denominacion": "PRIMAS POR MÉRITO AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.03.17.00",
+              "denominacion": "PRIMAS DE TRANSPORTE AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.03.18.00",
+              "denominacion": "PRIMAS POR HOGAR PARA LA PROTECCIÓN Y ESTABILIDAD FAMILIAR DEL PERSONAL OBRERO."
+            },
+            {
+              "codigo": "4.01.03.19.00",
+              "denominacion": "PRIMAS POR HIJOS E HIJAS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.03.20.00",
+              "denominacion": "PRIMAS POR RESIDENCIA AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.03.21.00",
+              "denominacion": "PRIMAS POR ANTIGÜEDAD AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.03.22.00",
+              "denominacion": "PRIMAS DE PROFESIONALIZACIÓN AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.03.26.00",
+              "denominacion": "PRIMAS POR HIJOS E HIJAS AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.03.27.00",
+              "denominacion": "PRIMAS DE PROFESIONALIZACIÓN AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.03.28.00",
+              "denominacion": "PRIMAS POR ANTIGÜEDAD AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.03.29.00",
+              "denominacion": "PRIMAS POR POTENCIAL DE ASCENSO AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.03.30.00",
+              "denominacion": "PRIMAS POR FRONTERA Y SITIOS INHÓSPITOS AL PERSONAL MILITAR Y DE SEGURIDAD"
+            },
+            {
+              "codigo": "4.01.03.31.00",
+              "denominacion": "PRIMAS POR RIESGO AL PERSONAL MILITAR Y DE SEGURIDAD"
+            },
+            {
+              "codigo": "4.01.03.37.00",
+              "denominacion": "PRIMAS DE TRANSPORTE AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.03.38.00",
+              "denominacion": "PRIMAS POR HOGAR PARA LA PROTECCIÓN Y ESTABILIDAD FAMILIAR DEL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.03.39.00",
+              "denominacion": "PRIMAS POR HIJOS E HIJAS AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.03.40.00",
+              "denominacion": "PRIMAS DE PROFESIONALIZACIÓN AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.03.41.00",
+              "denominacion": "PRIMAS POR ANTIGÜEDAD AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.03.42.00",
+              "denominacion": "PRIMAS POR HIJOS E HIJAS DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.03.43.00",
+              "denominacion": "PRIMAS DE PROFESIONALIZACIÓN DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.03.44.00",
+              "denominacion": "PRIMAS POR ANTIGÜEDAD DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.03.45.00",
+              "denominacion": "PRIMAS POR HIJOS E HIJAS AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.03.48.00",
+              "denominacion": "PRIMAS DE PROFESIONALIZACIÓN AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.03.49.00",
+              "denominacion": "PRIMAS DE ANTIGÜEDAD AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.03.50.00",
+              "denominacion": "PRIMAS POR HOGAR PARA LA PROTECCIÓN Y ESTABILIDAD FAMILIAR DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.03.51.00",
+              "denominacion": "PRIMAS POR HOGAR PARA LA PROTECCIÓN Y ESTABILIDAD FAMILIAR AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.03.94.00",
+              "denominacion": "OTRAS PRIMAS A LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.03.95.00",
+              "denominacion": "OTRAS PRIMAS AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.03.96.00",
+              "denominacion": "OTRAS PRIMAS AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.03.97.00",
+              "denominacion": "OTRAS PRIMAS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.03.98.00",
+              "denominacion": "OTRAS PRIMAS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.03.99.00",
+              "denominacion": "OTRAS PRIMAS AL PERSONAL MILITAR"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.04.00.00",
+          "denominacion": "COMPLEMENTOS DE SUELDOS Y SALARIOS",
+          "subcategorias": [
+            {
+              "codigo": "4.01.04.01.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL EMPLEADO POR HORAS EXTRAORDINARIAS O POR SOBRE TIEMPO"
+            },
+            {
+              "codigo": "4.01.04.02.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL EMPLEADO POR TRABAJO NOCTURNO"
+            },
+            {
+              "codigo": "4.01.04.03.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL EMPLEADO POR GASTOS DE ALIMENTACIÓN"
+            },
+            {
+              "codigo": "4.01.04.04.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL EMPLEADO POR GASTOS DE TRANSPORTE"
+            },
+            {
+              "codigo": "4.01.04.05.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL EMPLEADO POR GASTOS DE REPRESENTACIÓN"
+            },
+            {
+              "codigo": "4.01.04.06.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL EMPLEADO POR COMISIÓN DE SERVICIOS"
+            },
+            {
+              "codigo": "4.01.04.07.00",
+              "denominacion": "BONIFICACIÓN AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.04.08.00",
+              "denominacion": "BONO COMPENSATORIO DE ALIMENTACIÓN AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.04.09.00",
+              "denominacion": "BONO COMPENSATORIO DE TRANSPORTE AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.04.10.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL EMPLEADO POR DÍAS FERIADOS"
+            },
+            {
+              "codigo": "4.01.04.14.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL OBRERO POR HORAS EXTRAORDINARIAS O POR SOBRE TIEMPO"
+            },
+            {
+              "codigo": "4.01.04.15.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL OBRERO POR TRABAJO O JORNADA NOCTURNA"
+            },
+            {
+              "codigo": "4.01.04.16.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL OBRERO POR GASTOS DE ALIMENTACIÓN"
+            },
+            {
+              "codigo": "4.01.04.17.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL OBRERO POR GASTOS DE TRANSPORTE"
+            },
+            {
+              "codigo": "4.01.04.18.00",
+              "denominacion": "BONO COMPENSATORIO DE ALIMENTACIÓN AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.04.19.00",
+              "denominacion": "BONO COMPENSATORIO DE TRANSPORTE AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.04.20.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL OBRERO POR DÍAS FERIADOS"
+            },
+            {
+              "codigo": "4.01.04.24.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL CONTRATADO POR HORAS EXTRAORDINARIAS O POR SOBRE TIEMPO"
+            },
+            {
+              "codigo": "4.01.04.25.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL CONTRATADO POR GASTOS DE ALIMENTACIÓN"
+            },
+            {
+              "codigo": "4.01.04.26.00",
+              "denominacion": "BONO COMPENSATORIO DE ALIMENTACIÓN AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.04.27.00",
+              "denominacion": "BONO COMPENSATORIO DE TRANSPORTE AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.04.28.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL CONTRATADO POR DÍAS FERIADOS"
+            },
+            {
+              "codigo": "4.01.04.32.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL MILITAR POR GASTOS DE ALIMENTACIÓN"
+            },
+            {
+              "codigo": "4.01.04.33.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL MILITAR POR GASTOS DE TRANSPORTE"
+            },
+            {
+              "codigo": "4.01.04.34.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL MILITAR EN EL EXTERIOR"
+            },
+            {
+              "codigo": "4.01.04.35.00",
+              "denominacion": "BONO COMPENSATORIO DE ALIMENTACIÓN AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.04.43.00",
+              "denominacion": "COMPLEMENTO A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR POR GASTOS DE REPRESENTACIÓN"
+            },
+            {
+              "codigo": "4.01.04.44.00",
+              "denominacion": "COMPLEMENTO A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR POR COMISIÓN DE SERVICIOS"
+            },
+            {
+              "codigo": "4.01.04.45.00",
+              "denominacion": "BONIFICACIÓN A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.04.46.00",
+              "denominacion": "BONO COMPENSATORIO DE ALIMENTACIÓN A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.04.47.00",
+              "denominacion": "BONO COMPENSATORIO DE TRANSPORTE A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.04.48.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN POR GASTOS DE REPRESENTACIÓN"
+            },
+            {
+              "codigo": "4.01.04.49.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN POR COMISIÓN DE SERVICIOS"
+            },
+            {
+              "codigo": "4.01.04.50.00",
+              "denominacion": "BONIFICACIÓN AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.04.51.00",
+              "denominacion": "BONO COMPENSATORIO DE ALIMENTACIÓN AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.04.52.00",
+              "denominacion": "BONO COMPENSATORIO DE TRANSPORTE AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.04.53.00",
+              "denominacion": "COMPLEMENTOS A OBREROS POR EL USO DE SU EQUIPO DE TRANSPORTE EN EL DESEMPEÑO DE SU TRABAJO"
+            },
+            {
+              "codigo": "4.01.04.54.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL CONTRATADO POR TRABAJO O JORNADA NOCTURNA"
+            },
+            {
+              "codigo": "4.01.04.55.00",
+              "denominacion": "COMPLEMENTO AL PERSONAL CONTRATADO POR GASTOS DE TRANSPORTE"
+            },
+            {
+              "codigo": "4.01.04.94.00",
+              "denominacion": "OTROS COMPLEMENTOS A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL SECTOR PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.04.95.00",
+              "denominacion": "OTROS COMPLEMENTOS AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.04.96.00",
+              "denominacion": "OTROS COMPLEMENTOS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.04.97.00",
+              "denominacion": "OTROS COMPLEMENTOS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.04.98.00",
+              "denominacion": "OTROS COMPLEMENTOS AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.04.99.00",
+              "denominacion": "OTROS COMPLEMENTOS AL PERSONAL MILITAR"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.05.00.00",
+          "denominacion": "AGUINALDOS, UTILIDADES O BONIFICACIÓN JURÍDICA, Y BONO VACACIONAL",
+          "subcategorias": [
+            {
+              "codigo": "4.01.05.01.00",
+              "denominacion": "AGUINALDOS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.05.02.00",
+              "denominacion": "UTILIDADES AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.05.03.00",
+              "denominacion": "BONO VACACIONAL AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.05.04.00",
+              "denominacion": "AGUINALDOS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.05.05.00",
+              "denominacion": "UTILIDADES AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.05.06.00",
+              "denominacion": "BONO VACACIONAL AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.05.07.00",
+              "denominacion": "AGUINALDOS AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.05.08.00",
+              "denominacion": "BONO VACACIONAL AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.05.09.00",
+              "denominacion": "AGUINALDOS AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.05.10.00",
+              "denominacion": "BONO VACACIONAL AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.05.13.00",
+              "denominacion": "AGUINALDOS A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.05.14.00",
+              "denominacion": "UTILIDADES A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.05.15.00",
+              "denominacion": "BONO VACACIONAL A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.05.16.00",
+              "denominacion": "AGUINALDOS AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.05.17.00",
+              "denominacion": "UTILIDADES AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.05.18.00",
+              "denominacion": "BONO VACACIONAL AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.06.00.00",
+          "denominacion": "APORTES PATRONALES",
+          "subcategorias": [
+            {
+              "codigo": "4.01.06.01.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO VENEZOLANO DE LOS SEGUROS SOCIALES (I.V.S.S.) AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.06.02.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO DE PREVISIÓN Y ASISTENCIA SOCIAL PARA EL PERSONAL DEL MINISTERIO DE EDUCACIÓN (IPASME) AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.06.03.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE JUBILACIONES AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.06.04.00",
+              "denominacion": "APORTE PATRONAL AL FONDO CONTRIBUTIVO DEL RÉGIMEN PRESTACIONAL DE EMPLEO AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.06.05.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE AHORRO OBLIGATORIO PARA LA VIVIENDA AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.06.06.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO NACIONAL DE CAPACITACIÓN Y EDUCACIÓN SOCIALISTA (INCES) AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.06.10.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO VENEZOLANO DE LOS SEGUROS SOCIALES (I.V.S.S.) AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.06.11.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE JUBILACIONES AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.06.12.00",
+              "denominacion": "APORTE PATRONAL AL FONDO CONTRIBUTIVO DEL RÉGIMEN PRESTACIONAL DE EMPLEO AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.06.13.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE AHORRO OBLIGATORIO PARA LA VIVIENDA AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.06.14.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO NACIONAL DE CAPACITACIÓN Y EDUCACIÓN SOCIALISTA (INCES) AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.06.18.00",
+              "denominacion": "APORTE PATRONAL A LOS ORGANISMOS DE SEGURIDAD SOCIAL AL PERSONAL EMPLEADO LOCAL, EN LAS REPRESENTACIONES DE VENEZUELA EN EL EXTERIOR"
+            },
+            {
+              "codigo": "4.01.06.19.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE AHORRO OBLIGATORIO PARA LA VIVIENDA POR PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.06.25.00",
+              "denominacion": "APORTE LEGAL AL INSTITUTO VENEZOLANO DE LOS SEGUROS SOCIALES (IVSS) POR PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.06.26.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE AHORRO OBLIGATORIO PARA LA VIVIENDA POR PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.06.27.00",
+              "denominacion": "APORTE PATRONAL AL FONDO CONTRIBUTIVO DEL RÉGIMEN PRESTACIONAL DE EMPLEO AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.06.28.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE JUBILACIONES POR PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.06.29.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO NACIONAL DE CAPACITACIÓN Y EDUCACIÓN SOCIALISTA (INCES) POR PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.06.31.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO VENEZOLANO DE LOS SEGUROS SOCIALES (IVSS) POR ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.06.32.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO DE PREVISIÓN Y ASISTENCIA SOCIAL PARA EL PERSONAL DEL MINISTERIO DE EDUCACIÓN (IPASME) POR ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO"
+            },
+            {
+              "codigo": "4.01.06.33.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE JUBILACIONES POR ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.06.34.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE AHORRO OBLIGATORIO PARA LA VIVIENDA POR ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.06.35.00",
+              "denominacion": "APORTE PATRONAL AL FONDO CONTRIBUTIVO DEL RÉGIMEN PRESTACIONAL DE EMPLEO POR ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.06.39.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO VENEZOLANO DE LOS SEGUROS SOCIALES (IVSS) POR PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.06.40.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO DE PREVISIÓN Y ASISTENCIA SOCIAL PARA EL PERSONAL DEL MINISTERIO DE EDUCACIÓN (IPASME) POR PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.06.41.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE JUBILACIONES POR PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.06.42.00",
+              "denominacion": "APORTE PATRONAL AL FONDO DE AHORRO OBLIGATORIO PARA LA VIVIENDA POR PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.06.43.00",
+              "denominacion": "APORTE PATRONAL AL FONDO CONTRIBUTIVO DEL RÉGIMEN PRESTACIONAL DE EMPLEO POR PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.06.44.00",
+              "denominacion": "APORTE PATRONAL AL INSTITUTO NACIONAL DE CAPACITACIÓN Y EDUCACIÓN SOCIALISTA (INCES) POR PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.06.93.00",
+              "denominacion": "OTROS APORTES PATRONALES POR ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.06.94.00",
+              "denominacion": "OTROS APORTES PATRONALES POR EL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.06.95.00",
+              "denominacion": "OTROS APORTES PATRONALES POR PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.06.96.00",
+              "denominacion": "OTROS APORTES PATRONALES AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.06.97.00",
+              "denominacion": "OTROS APORTES PATRONALES AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.06.98.00",
+              "denominacion": "OTROS APORTES PATRONALES POR PERSONAL MILITAR"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.07.00.00",
+          "denominacion": "ASISTENCIA SOCIO-ECONÓMICA",
+          "subcategorias": [
+            {
+              "codigo": "4.01.07.01.00",
+              "denominacion": "CAPACITACIÓN Y ADIESTRAMIENTO AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.02.00",
+              "denominacion": "BECAS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.03.00",
+              "denominacion": "AYUDAS POR MATRIMONIO AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.04.00",
+              "denominacion": "AYUDAS POR NACIMIENTO DE HIJOS E HIJAS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.05.00",
+              "denominacion": "AYUDAS POR DEFUNCIÓN AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.06.00",
+              "denominacion": "AYUDAS PARA MEDICINAS, GASTOS MÉDICOS, ODONTOLÓGICOS Y DE HOSPITALIZACIÓN AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.07.00",
+              "denominacion": "APORTE PATRONAL A CAJAS DE AHORRO AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.08.00",
+              "denominacion": "APORTE PATRONAL A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.09.00",
+              "denominacion": "AYUDAS AL PERSONAL EMPLEADO PARA ADQUISICIÓN DE UNIFORMES Y ÚTILES ESCOLARES DE SUS HIJOS E HIJAS"
+            },
+            {
+              "codigo": "4.01.07.10.00",
+              "denominacion": "DOTACIÓN DE UNIFORMES AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.11.00",
+              "denominacion": "APORTE PATRONAL PARA GASTOS DE GUARDERÍAS Y PREESCOLAR PARA HIJOS E HIJAS DEL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.12.00",
+              "denominacion": "APORTES PARA LA ADQUISICIÓN DE JUGUETES PARA LOS HIJOS E HIJAS DEL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.17.00",
+              "denominacion": "CAPACITACIÓN Y ADIESTRAMIENTO AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.18.00",
+              "denominacion": "BECAS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.19.00",
+              "denominacion": "AYUDAS POR MATRIMONIO AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.20.00",
+              "denominacion": "AYUDAS POR NACIMIENTO DE HIJOS E HIJAS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.21.00",
+              "denominacion": "AYUDAS POR DEFUNCIÓN AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.22.00",
+              "denominacion": "AYUDAS PARA MEDICINAS, GASTOS MÉDICOS, ODONTOLÓGICOS Y DE HOSPITALIZACIÓN AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.23.00",
+              "denominacion": "APORTE PATRONAL A CAJAS DE AHORRO AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.24.00",
+              "denominacion": "APORTE PATRONAL A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.25.00",
+              "denominacion": "AYUDAS AL PERSONAL OBRERO PARA ADQUISICIÓN DE UNIFORMES Y ÚTILES ESCOLARES DE SUS HIJOS E HIJAS"
+            },
+            {
+              "codigo": "4.01.07.26.00",
+              "denominacion": "DOTACIÓN DE UNIFORMES AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.27.00",
+              "denominacion": "APORTE PATRONAL PARA GASTOS DE GUARDERÍAS Y PREESCOLAR PARA HIJOS E HIJAS DEL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.28.00",
+              "denominacion": "APORTES PARA LA ADQUISICIÓN DE JUGUETES PARA LOS HIJOS E HIJAS DEL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.29.00",
+              "denominacion": "AYUDAS POR HIJOS E HIJAS CON NECESIDADES ESPECIALES AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.30.00",
+              "denominacion": "AYUDAS POR HIJOS E HIJAS CON NECESIDADES ESPECIALES AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.31.00",
+              "denominacion": "AYUDAS POR HIJOS E HIJAS CON NECESIDADES ESPECIALES AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.32.00",
+              "denominacion": "AYUDAS POR HIJOS E HIJAS CON NECESIDADES ESPECIALES AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.33.00",
+              "denominacion": "AYUDAS POR HIJOS E HIJAS CON NECESIDADES ESPECIALES AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.34.00",
+              "denominacion": "CAPACITACIÓN Y ADIESTRAMIENTO AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.35.00",
+              "denominacion": "BECAS AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.36.00",
+              "denominacion": "AYUDAS POR MATRIMONIO AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.37.00",
+              "denominacion": "AYUDAS POR NACIMIENTO DE HIJOS E HIJAS AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.38.00",
+              "denominacion": "AYUDAS POR DEFUNCIÓN AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.39.00",
+              "denominacion": "AYUDAS PARA MEDICINAS, GASTOS MÉDICOS, ODONTOLÓGICOS Y DE HOSPITALIZACIÓN AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.40.00",
+              "denominacion": "APORTE PATRONAL A CAJA DE AHORRO POR PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.41.00",
+              "denominacion": "APORTE PATRONAL A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.42.00",
+              "denominacion": "AYUDAS AL PERSONAL MILITAR PARA ADQUISICIÓN DE UNIFORMES Y ÚTILES ESCOLARES DE SUS HIJOS E HIJAS"
+            },
+            {
+              "codigo": "4.01.07.43.00",
+              "denominacion": "APORTES PARA LA ADQUISICIÓN DE JUGUETES PARA LOS HIJOS E HIJAS DEL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.44.00",
+              "denominacion": "APORTE PATRONAL PARA GASTOS DE GUARDERÍAS Y PREESCOLAR PARA HIJOS E HIJAS DEL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.52.00",
+              "denominacion": "CAPACITACIÓN Y ADIESTRAMIENTO A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.53.00",
+              "denominacion": "AYUDAS POR MATRIMONIO A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.54.00",
+              "denominacion": "AYUDAS POR NACIMIENTO DE HIJOS E HIJAS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.55.00",
+              "denominacion": "AYUDAS POR DEFUNCIÓN A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.56.00",
+              "denominacion": "AYUDAS PARA MEDICINAS, GASTOS MÉDICOS, ODONTOLÓGICOS Y DE HOSPITALIZACIÓN A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.57.00",
+              "denominacion": "APORTE PATRONAL A CAJAS DE AHORRO POR ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR."
+            },
+            {
+              "codigo": "4.01.07.58.00",
+              "denominacion": "APORTE PATRONAL A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS POR ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR."
+            },
+            {
+              "codigo": "4.01.07.59.00",
+              "denominacion": "BECAS A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.60.00",
+              "denominacion": "AYUDAS A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR PARA ADQUISICIÓN DE UNIFORMES Y ÚTILES ESCOLARES DE SUS HIJOS E HIJAS"
+            },
+            {
+              "codigo": "4.01.07.61.00",
+              "denominacion": "APORTE PATRONAL PARA GASTOS DE GUARDERÍAS Y PREESCOLAR PARA HIJOS E HIJAS DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.62.00",
+              "denominacion": "APORTES PARA LA ADQUISICIÓN DE JUGUETES PARA LOS HIJOS E HIJAS DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.63.00",
+              "denominacion": "CAPACITACIÓN Y ADIESTRAMIENTO AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.64.00",
+              "denominacion": "AYUDAS POR MATRIMONIO AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.65.00",
+              "denominacion": "AYUDAS POR NACIMIENTO DE HIJOS E HIJAS AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.66.00",
+              "denominacion": "AYUDAS POR DEFUNCIÓN AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.67.00",
+              "denominacion": "AYUDAS PARA MEDICINAS, GASTOS MÉDICOS, ODONTOLÓGICOS Y DE HOSPITALIZACIÓN AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.68.00",
+              "denominacion": "APORTE PATRONAL A CAJAS DE AHORRO POR PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.69.00",
+              "denominacion": "APORTE PATRONAL A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS POR PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.70.00",
+              "denominacion": "AYUDAS AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN PARA ADQUISICIÓN DE UNIFORMES Y ÚTILES ESCOLARES DE SUS HIJOS E HIJAS"
+            },
+            {
+              "codigo": "4.01.07.71.00",
+              "denominacion": "APORTES PARA LA ADQUISICIÓN DE JUGUETES PARA LOS HIJOS E HIJAS DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN."
+            },
+            {
+              "codigo": "4.01.07.72.00",
+              "denominacion": "BECAS AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.73.00",
+              "denominacion": "APORTE PATRONAL PARA GASTOS DE GUARDERÍAS Y PREESCOLAR PARA HIJOS E HIJAS DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.74.00",
+              "denominacion": "CAPACITACIÓN Y ADIESTRAMIENTO AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.75.00",
+              "denominacion": "BECAS AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.76.00",
+              "denominacion": "AYUDAS POR MATRIMONIO AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.77.00",
+              "denominacion": "AYUDAS POR NACIMIENTO DE HIJOS E HIJAS AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.78.00",
+              "denominacion": "AYUDAS POR DEFUNCIÓN AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.79.00",
+              "denominacion": "AYUDAS PARA MEDICINAS, GASTOS MÉDICOS, ODONTOLÓGICOS Y DE HOSPITALIZACIÓN AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.80.00",
+              "denominacion": "APORTE PATRONAL A CAJAS DE AHORRO POR PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.81.00",
+              "denominacion": "APORTE PATRONAL A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS POR PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.82.00",
+              "denominacion": "AYUDAS AL PERSONAL CONTRATADO PARA ADQUISICIÓN DE UNIFORMES Y ÚTILES ESCOLARES DE SUS HIJOS E HIJAS"
+            },
+            {
+              "codigo": "4.01.07.83.00",
+              "denominacion": "DOTACIÓN DE UNIFORMES AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.84.00",
+              "denominacion": "APORTE PATRONAL PARA GASTOS DE GUARDERÍAS Y PREESCOLAR PARA HIJOS E HIJAS DEL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.85.00",
+              "denominacion": "APORTES PARA LA ADQUISICIÓN DE JUGUETES PARA LOS HIJOS E HIJAS DEL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.86.00",
+              "denominacion": "AYUDAS ESPECIALES ASIGNADAS AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.87.00",
+              "denominacion": "AYUDAS ESPECIALES ASIGNADAS AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.88.00",
+              "denominacion": "AYUDAS ESPECIALES ASIGNADAS AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.07.89.00",
+              "denominacion": "AYUDAS ESPECIALES ASIGNADAS AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.90.00",
+              "denominacion": "AYUDAS ESPECIALES ASIGNADAS AL PERSONAL DE ALTO NIVEL Y DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.91.00",
+              "denominacion": "AYUDAS ESPECIALES ASIGNADAS PARA ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR."
+            },
+            {
+              "codigo": "4.01.07.92.00",
+              "denominacion": "AYUDAS POR HIJOS E HIJAS CON NECESIDADES ESPECIALES PARA ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.94.00",
+              "denominacion": "OTRAS SUBVENCIONES A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.07.95.00",
+              "denominacion": "OTRAS SUBVENCIONES AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.01.07.96.00",
+              "denominacion": "OTRAS SUBVENCIONES AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.07.97.00",
+              "denominacion": "OTRAS SUBVENCIONES AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.07.98.00",
+              "denominacion": "OTRAS SUBVENCIONES AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.07.99.00",
+              "denominacion": "OTRAS SUBVENCIONES AL PERSONAL CONTRATADO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.08.00.00",
+          "denominacion": "PRESTACIONES SOCIALES E INDEMNIZACIONES",
+          "subcategorias": [
+            {
+              "codigo": "4.01.08.01.00",
+              "denominacion": "PRESTACIONES SOCIALES E INDEMNIZACIONES AL PERSONAL EMPLEADO"
+            },
+            {
+              "codigo": "4.01.08.02.00",
+              "denominacion": "PRESTACIONES SOCIALES E INDEMNIZACIONES AL PERSONAL OBRERO"
+            },
+            {
+              "codigo": "4.01.08.03.00",
+              "denominacion": "PRESTACIONES SOCIALES E INDEMNIZACIONES AL PERSONAL CONTRATADO"
+            },
+            {
+              "codigo": "4.01.08.04.00",
+              "denominacion": "PRESTACIONES SOCIALES E INDEMNIZACIONES AL PERSONAL MILITAR"
+            },
+            {
+              "codigo": "4.01.08.06.00",
+              "denominacion": "PRESTACIONES SOCIALES E INDEMNIZACIONES A ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.01.08.07.00",
+              "denominacion": "PRESTACIONES SOCIALES E INDEMNIZACIONES AL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.09.00.00",
+          "denominacion": "CAPACITACIÓN Y ADIESTRAMIENTO REALIZADO POR PERSONAL DEL ORGANISMO",
+          "subcategorias": [
+            {
+              "codigo": "4.01.09.01.00",
+              "denominacion": "CAPACITACIÓN Y ADIESTRAMIENTO REALIZADO POR PERSONAL DEL ORGANISMO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.93.00.00",
+          "denominacion": "OTROS GASTOS DEL PERSONAL CONTRATADO",
+          "subcategorias": [
+            {
+              "codigo": "4.01.93.01.00",
+              "denominacion": "OTROS GASTOS DEL PERSONAL CONTRATADO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.94.00.00",
+          "denominacion": "OTROS GASTOS DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR",
+          "subcategorias": [
+            {
+              "codigo": "4.01.94.01.00",
+              "denominacion": "OTROS GASTOS DE LOS ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.95.00.00",
+          "denominacion": "OTROS GASTOS DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN",
+          "subcategorias": [
+            {
+              "codigo": "4.01.95.01.00",
+              "denominacion": "OTROS GASTOS DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.96.00.00",
+          "denominacion": "OTROS GASTOS DEL PERSONAL EMPLEADO",
+          "subcategorias": [
+            {
+              "codigo": "4.01.96.01.00",
+              "denominacion": "OTROS GASTOS DEL PERSONAL EMPLEADO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.97.00.00",
+          "denominacion": "OTROS GASTOS DEL PERSONAL OBRERO",
+          "subcategorias": [
+            {
+              "codigo": "4.01.97.01.00",
+              "denominacion": "OTROS GASTOS DEL PERSONAL OBRERO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.01.98.00.00",
+          "denominacion": "OTROS GASTOS DEL PERSONAL MILITAR",
+          "subcategorias": [
+            {
+              "codigo": "4.01.98.01.00",
+              "denominacion": "OTROS GASTOS DEL PERSONAL MILITAR"
+            }
+          ]
         }
       ]
     },
@@ -56,7 +1204,7 @@
       "subcategorias": [
         {
           "codigo": "4.02.00.00.00",
-          "denominacion": "MATERIALES, SUMINISTROS Y MERCANCIAS"
+          "denominacion": "MATERIALES, SUMINISTROS Y MERCANCÍAS"
         },
         {
           "codigo": "4.02.01.00.00",
@@ -66,9 +1214,21 @@
               "codigo": "4.02.01.01.00",
               "denominacion": "ALIMENTOS Y BEBIDAS PARA PERSONAS"
             },
-			{
+            {
+              "codigo": "4.02.01.02.00",
+              "denominacion": "ALIMENTOS PARA ANIMALES"
+            },
+            {
+              "codigo": "4.02.01.03.00",
+              "denominacion": "PRODUCTOS AGRÍCOLAS Y PECUARIOS"
+            },
+            {
               "codigo": "4.02.01.04.00",
               "denominacion": "PRODUCTOS DE LA CAZA Y PESCA"
+            },
+            {
+              "codigo": "4.02.01.99.00",
+              "denominacion": "OTROS PRODUCTOS ALIMENTICIOS Y AGROPECUARIOS"
             }
           ]
         },
@@ -77,12 +1237,36 @@
           "denominacion": "PRODUCTOS DE MINAS, CANTERAS Y YACIMIENTOS",
           "subcategorias": [
             {
-              "codigo": "4.02.02.02.00",
-              "denominacion": "PETROLEO CRUDO Y GAS NATURAL"
+              "codigo": "4.02.02.01.00",
+              "denominacion": "CARBÓN MINERAL"
             },
-			{
+            {
+              "codigo": "4.02.02.02.00",
+              "denominacion": "PETRÓLEO CRUDO Y GAS NATURAL"
+            },
+            {
+              "codigo": "4.02.02.03.00",
+              "denominacion": "MINERAL DE HIERRO"
+            },
+            {
+              "codigo": "4.02.02.04.00",
+              "denominacion": "MINERAL NO FERROSO"
+            },
+            {
               "codigo": "4.02.02.05.00",
-              "denominacion": "ARENA PIEDRA Y ARCILLA"
+              "denominacion": "PIEDRA, ARCILLA, ARENA Y TIERRA"
+            },
+            {
+              "codigo": "4.02.02.06.00",
+              "denominacion": "MINERAL PARA LA FABRICACIÓN DE PRODUCTOS QUÍMICOS"
+            },
+            {
+              "codigo": "4.02.02.07.00",
+              "denominacion": "SAL PARA USO INDUSTRIAL"
+            },
+            {
+              "codigo": "4.02.02.99.00",
+              "denominacion": "OTROS PRODUCTOS DE MINAS, CANTERAS Y YACIMIENTOS"
             }
           ]
         },
@@ -91,12 +1275,20 @@
           "denominacion": "TEXTILES Y VESTUARIOS",
           "subcategorias": [
             {
+              "codigo": "4.02.03.01.00",
+              "denominacion": "TEXTILES"
+            },
+            {
               "codigo": "4.02.03.02.00",
               "denominacion": "PRENDAS DE VESTIR"
             },
-			{
+            {
               "codigo": "4.02.03.03.00",
               "denominacion": "CALZADOS"
+            },
+            {
+              "codigo": "4.02.03.99.00",
+              "denominacion": "OTROS PRODUCTOS TEXTILES Y VESTUARIOS"
             }
           ]
         },
@@ -105,60 +1297,84 @@
           "denominacion": "PRODUCTOS DE CUERO Y CAUCHO",
           "subcategorias": [
             {
+              "codigo": "4.02.04.01.00",
+              "denominacion": "CUEROS Y PIELES"
+            },
+            {
+              "codigo": "4.02.04.02.00",
+              "denominacion": "PRODUCTOS DE CUERO Y SUCEDÁNEOS DEL CUERO"
+            },
+            {
               "codigo": "4.02.04.03.00",
               "denominacion": "CAUCHOS Y TRIPAS PARA VEHÍCULOS"
+            },
+            {
+              "codigo": "4.02.04.99.00",
+              "denominacion": "OTROS PRODUCTOS DE CUERO Y CAUCHO"
             }
           ]
         },
         {
           "codigo": "4.02.05.00.00",
-          "denominacion": "PRODUCTOS DE PAPEL Y CARTON E IMPRESOS",
+          "denominacion": "PRODUCTOS DE PAPEL, CARTÓN E IMPRESOS",
           "subcategorias": [
+            {
+              "codigo": "4.02.05.01.00",
+              "denominacion": "PULPA DE MADERA, PAPEL Y CARTÓN"
+            },
             {
               "codigo": "4.02.05.02.00",
               "denominacion": "ENVASES Y CAJAS DE PAPEL Y CARTÓN"
             },
             {
               "codigo": "4.02.05.03.00",
-              "denominacion": "PRODUCTOS DE PAPEL Y CARTON PARA OFICINAS"
+              "denominacion": "PRODUCTOS DE PAPEL Y CARTÓN PARA OFICINA"
             },
-			{
+            {
               "codigo": "4.02.05.04.00",
               "denominacion": "LIBROS, REVISTAS Y PERIÓDICOS"
             },
             {
+              "codigo": "4.02.05.05.00",
+              "denominacion": "MATERIAL DE ENSEÑANZA"
+            },
+            {
               "codigo": "4.02.05.06.00",
-              "denominacion": "PRODUCTOS DE PAPEL Y CARTON PARA COMPUTACIÓN"
+              "denominacion": "PRODUCTOS DE PAPEL Y CARTÓN PARA COMPUTACIÓN"
             },
             {
               "codigo": "4.02.05.07.00",
-              "denominacion": "PRODUCTOS DE PAPEL Y CARTON PARA IMPRENTA Y REPRODUCCIÓN"
+              "denominacion": "PRODUCTOS DE PAPEL Y CARTÓN PARA LA IMPRENTA Y REPRODUCCIÓN"
             },
             {
               "codigo": "4.02.05.99.00",
-              "denominacion": "OTROS PRODUCTOS DE PULPA PAPEL Y CARTÓN"
+              "denominacion": "OTROS PRODUCTOS DE PULPA, PAPEL Y CARTÓN"
             }
           ]
         },
         {
           "codigo": "4.02.06.00.00",
-          "denominacion": "PRODUCTOS QUIMICOS Y DERIVADOS",
+          "denominacion": "PRODUCTOS QUÍMICOS Y DERIVADOS",
           "subcategorias": [
             {
               "codigo": "4.02.06.01.00",
-              "denominacion": "SUSTANCIAS QUIMICAS Y DE USO INDUSTRIAL"
+              "denominacion": "SUSTANCIAS QUÍMICAS Y DE USO INDUSTRIAL"
             },
             {
               "codigo": "4.02.06.02.00",
-              "denominacion": "ABONOS PLAGUISIDAS Y OTROS"
+              "denominacion": "ABONOS, PLAGUICIDAS Y OTROS"
             },
             {
               "codigo": "4.02.06.03.00",
-              "denominacion": "TINTAS PINTURAS Y COLORANTES"
+              "denominacion": "TINTAS, PINTURAS Y COLORANTES"
             },
             {
               "codigo": "4.02.06.04.00",
-              "denominacion": "PRODUCTOS FARMACEUTICOS"
+              "denominacion": "PRODUCTOS FARMACÉUTICOS Y MEDICAMENTOS"
+            },
+            {
+              "codigo": "4.02.06.05.00",
+              "denominacion": "PRODUCTOS DE TOCADOR"
             },
             {
               "codigo": "4.02.06.06.00",
@@ -166,37 +1382,45 @@
             },
             {
               "codigo": "4.02.06.07.00",
-              "denominacion": "PRODUCTOS DIVERSOS DERIVADOS DEL PETROLEO"
+              "denominacion": "PRODUCTOS DIVERSOS DERIVADOS DEL PETRÓLEO Y DEL CARBÓN"
             },
             {
               "codigo": "4.02.06.08.00",
-              "denominacion": "PRODUCTOS PLASTICOS"
+              "denominacion": "PRODUCTOS PLÁSTICOS"
             },
-			{
-              "codigo": "4.02.06.47.00",
-              "denominacion": "PRODUCTOS FARMACEUTICOS Y MEDICAMENTOS"
+            {
+              "codigo": "4.02.06.09.00",
+              "denominacion": "MEZCLAS EXPLOSIVAS"
+            },
+            {
+              "codigo": "4.02.06.99.00",
+              "denominacion": "OTROS PRODUCTOS DE LA INDUSTRIA QUÍMICA Y CONEXOS"
             }
           ]
         },
         {
           "codigo": "4.02.07.00.00",
-          "denominacion": "PRODUTOS MINERALES NO METALICOS",
+          "denominacion": "PRODUCTOS MINERALES NO METÁLICOS",
           "subcategorias": [
-			{
-              "codigo": "4.02.07.02.00",
-              "denominacion": "VIDRIOS Y PRODUCTOS DE VIDRIOS"
+            {
+              "codigo": "4.02.07.01.00",
+              "denominacion": "PRODUCTOS DE BARRO, LOZA Y PORCELANA"
             },
-			{
+            {
+              "codigo": "4.02.07.02.00",
+              "denominacion": "VIDRIOS Y PRODUCTOS DE VIDRIO"
+            },
+            {
               "codigo": "4.02.07.03.00",
-              "denominacion": "PRODUCTOS DE ARCILLA PARA CONSTRUCCION"
+              "denominacion": "PRODUCTOS DE ARCILLA PARA CONSTRUCCIÓN"
             },
             {
               "codigo": "4.02.07.04.00",
-              "denominacion": "CEMENTO CAL Y YESO"
+              "denominacion": "CEMENTO, CAL Y YESO"
             },
-			{
+            {
               "codigo": "4.02.07.99.00",
-              "denominacion": "OTROS PRODUCTOS MINERALES NO METALICOS"
+              "denominacion": "OTROS PRODUCTOS MINERALES NO METÁLICOS"
             }
           ]
         },
@@ -206,53 +1430,91 @@
           "subcategorias": [
             {
               "codigo": "4.02.08.01.00",
-              "denominacion": "DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+              "denominacion": "PRODUCTOS PRIMARIOS DE HIERRO Y ACERO"
+            },
+            {
+              "codigo": "4.02.08.02.00",
+              "denominacion": "PRODUCTOS DE METALES NO FERROSOS"
             },
             {
               "codigo": "4.02.08.03.00",
-              "denominacion": "HERRAMIENTAS CUCHILLERIA Y ARTICULOS GENERALES DE FERRETERIA"
+              "denominacion": "HERRAMIENTAS MENORES, CUCHILLERÍA Y ARTÍCULOS GENERALES DE FERRETERÍA"
+            },
+            {
+              "codigo": "4.02.08.04.00",
+              "denominacion": "PRODUCTOS METÁLICOS ESTRUCTURALES"
+            },
+            {
+              "codigo": "4.02.08.05.00",
+              "denominacion": "MATERIALES DE ORDEN PÚBLICO, SEGURIDAD Y DEFENSA"
+            },
+            {
+              "codigo": "4.02.08.07.00",
+              "denominacion": "MATERIAL DE SEÑALAMIENTO"
+            },
+            {
+              "codigo": "4.02.08.08.00",
+              "denominacion": "MATERIAL DE EDUCACIÓN"
             },
             {
               "codigo": "4.02.08.09.00",
-              "denominacion": "REPUESTOS Y ACCESORIOS PARA EQUIPOS TRANSPORTE"
+              "denominacion": "REPUESTOS Y ACCESORIOS PARA EQUIPOS DE TRANSPORTE"
             },
             {
               "codigo": "4.02.08.10.00",
               "denominacion": "REPUESTOS Y ACCESORIOS PARA OTROS EQUIPOS"
             },
-			{
+            {
               "codigo": "4.02.08.99.00",
-              "denominacion": "OTROS PRODUCTOS METALICOS"
+              "denominacion": "OTROS PRODUCTOS METÁLICOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.02.09.00.00",
+          "denominacion": "PRODUCTOS DE MADERA",
+          "subcategorias": [
+            {
+              "codigo": "4.02.09.01.00",
+              "denominacion": "PRODUCTOS PRIMARIOS DE MADERA"
+            },
+            {
+              "codigo": "4.02.09.02.00",
+              "denominacion": "MUEBLES Y ACCESORIOS DE MADERA PARA EDIFICACIONES"
+            },
+            {
+              "codigo": "4.02.09.99.00",
+              "denominacion": "OTROS PRODUCTOS DE MADERA"
             }
           ]
         },
         {
           "codigo": "4.02.10.00.00",
-          "denominacion": "PRODUCTOS VARIOS Y UTILES DIVERSOS",
+          "denominacion": "PRODUCTOS VARIOS Y ÚTILES DIVERSOS",
           "subcategorias": [
             {
               "codigo": "4.02.10.01.00",
-              "denominacion": "ARTICULOS DE DEPORTE Y RECREACION Y JUGUETES"
+              "denominacion": "ARTÍCULOS DE DEPORTE, RECREACIÓN Y JUGUETES"
             },
             {
               "codigo": "4.02.10.02.00",
-              "denominacion": "MATERIALES Y UTILES DE LIMPIEZA Y ASEO"
+              "denominacion": "MATERIALES Y ÚTILES DE LIMPIEZA Y ASEO"
             },
-			{
+            {
               "codigo": "4.02.10.03.00",
               "denominacion": "UTENSILIOS DE COCINA Y COMEDOR"
             },
-			{
+            {
               "codigo": "4.02.10.04.00",
-              "denominacion": "ÚTILES MENORES MÉDICO-QUIRÚRGICOS DE LABORATORIO, DENTALES Y DE VETERINARIA"
+              "denominacion": "ÚTILES MENORES MÉDICO QUIRÚRGICOS DE LABORATORIO, DENTALES Y DE VETERINARIA"
             },
             {
               "codigo": "4.02.10.05.00",
-              "denominacion": "UTILES DE ESCRITORIO OFICINA Y MATERIALES DE INSTRUCCIÓN"
+              "denominacion": "ÚTILES DE ESCRITORIO, OFICINA Y MATERIALES DE INSTRUCCIÓN"
             },
             {
               "codigo": "4.02.10.06.00",
-              "denominacion": "CONDECORACIONES OFRENDAS Y SIMILARES"
+              "denominacion": "CONDECORACIONES, OFRENDAS Y SIMILARES"
             },
             {
               "codigo": "4.02.10.07.00",
@@ -263,8 +1525,16 @@
               "denominacion": "MATERIALES PARA EQUIPOS DE COMPUTACIÓN"
             },
             {
+              "codigo": "4.02.10.09.00",
+              "denominacion": "ESPECIES TIMBRADAS Y VALORES"
+            },
+            {
+              "codigo": "4.02.10.10.00",
+              "denominacion": "ÚTILES RELIGIOSOS"
+            },
+            {
               "codigo": "4.02.10.11.00",
-              "denominacion": "MATERIALES ELECTRICOS"
+              "denominacion": "MATERIALES ELÉCTRICOS"
             },
             {
               "codigo": "4.02.10.12.00",
@@ -272,21 +1542,33 @@
             },
             {
               "codigo": "4.02.10.13.00",
-              "denominacion": "MATERIALES FOTOGRAFICOS"
+              "denominacion": "MATERIALES FOTOGRÁFICOS"
             },
             {
               "codigo": "4.02.10.99.00",
-              "denominacion": "OTROS PRODUCTOS Y UTILES DIVERSOS"
+              "denominacion": "OTROS PRODUCTOS Y ÚTILES DIVERSOS"
             }
           ]
         },
-		{
+        {
           "codigo": "4.02.11.00.00",
           "denominacion": "BIENES PARA LA VENTA",
           "subcategorias": [
             {
               "codigo": "4.02.11.01.00",
-              "denominacion": "PRODUCTOS Y ARTICULOS PARA LA VENTA"
+              "denominacion": "PRODUCTOS Y ARTÍCULOS PARA LA VENTA"
+            },
+            {
+              "codigo": "4.02.11.02.00",
+              "denominacion": "MAQUINARIAS Y EQUIPOS PARA LA VENTA"
+            },
+            {
+              "codigo": "4.02.11.03.00",
+              "denominacion": "INMUEBLES PARA LA VENTA"
+            },
+            {
+              "codigo": "4.02.11.04.00",
+              "denominacion": "TIERRAS Y TERRENOS PARA LA VENTA"
             },
             {
               "codigo": "4.02.11.99.00",
@@ -307,444 +1589,1159 @@
       ]
     },
     {
-      "categoria": "SERVICIOS NO PERSONALES",
-      "codigo_general": "4.03",
+  "categoria": "SERVICIOS NO PERSONALES",
+  "codigo_general": "4.03",
+  "subcategorias": [
+    {
+      "codigo": "4.03.00.00.00",
+      "denominacion": "SERVICIOS NO PERSONALES"
+    },
+    {
+      "codigo": "4.03.01.00.00",
+      "denominacion": "ALQUILERES DE INMUEBLES",
       "subcategorias": [
         {
-          "codigo": "4.03.00.00.00",
-          "denominacion": "SERVICIOS NO PERSONALES"
+          "codigo": "4.03.01.01.00",
+          "denominacion": "ALQUILERES DE EDIFICIOS Y LOCALES"
         },
         {
-          "codigo": "4.03.01.00.00",
-          "denominacion": "ALQUILER DE INMUEBLES",
-          "subcategorias": [
-            {
-              "codigo": "4.03.01.01.00",
-              "denominacion": "ALQUILER DE EDIFICIOS Y LOCALES"
-            }
-          ]
+          "codigo": "4.03.01.02.00",
+          "denominacion": "ALQUILERES DE INSTALACIONES CULTURALES Y RECREATIVAS"
         },
         {
-          "codigo": "4.03.02.00.00",
-          "denominacion": "ALQUILER DE MAQUINARIAS Y EQUIPOS",
-          "subcategorias": [
-            {
-              "codigo": "4.03.02.02.00",
-              "denominacion": "ALQUILER DE EQUIPOS DE TRANSPORTE, TRACCION Y ELEVACIÓN"
-            },
-            {
-              "codigo": "4.03.02.99.00",
-              "denominacion": "ALQUILER DE OTRAS MAQUINARIAS Y EQUIPOS"
-            }
-          ]
-        },
-        {
-          "codigo": "4.03.04.00.00",
-          "denominacion": "SERVICIOS BÁSICOS",
-          "subcategorias": [
-            {
-              "codigo": "4.03.04.01.00",
-              "denominacion": "ELECTRICIDAD"
-            },
-			{
-              "codigo": "4.03.04.02.00",
-              "denominacion": "GAS"
-            },
-            {
-              "codigo": "4.03.04.03.00",
-              "denominacion": "AGUA"
-            },
-			{
-              "codigo": "4.03.04.04.00",
-              "denominacion": "TELÉFONO"
-            },
-            {
-              "codigo": "4.03.04.05.00",
-              "denominacion": "SERVICIOS DE COMUNICACIONES"
-            }
-          ]
-        },
-		{
-          "codigo": "4.03.06.00.00",
-          "denominacion": "SERVICIOS DE TRANSPORTE Y ALMACENAJE",
-          "subcategorias": [
-            {
-              "codigo": "4.03.06.01.00",
-              "denominacion": "FLETES Y EMBALAJES"
-            },
-            {
-              "codigo": "4.03.06.02.00",
-              "denominacion": "ALMACENAJE"
-            }
-          ]
-        },
-        {
-          "codigo": "4.03.07.00.00",
-          "denominacion": "SERVICIOS DE INFORMACIÓN, IMPRESIÓN Y RELACIONES PÚBLICAS",
-          "subcategorias": [
-            {
-              "codigo": "4.03.07.01.00",
-              "denominacion": "PUBLICIDAD Y PROPAGANDA"
-            },
-            {
-              "codigo": "4.03.07.02.00",
-              "denominacion": "IMPRENTA Y REPRODUCCIÓN"
-            },
-            {
-              "codigo": "4.03.07.03.00",
-              "denominacion": "RELACIONES SOCIALES"
-            }
-          ]
-        },
-        {
-          "codigo": "4.03.08.00.00",
-          "denominacion": "PRIMAS Y OTROS GASTOS DE SEGUROS Y COMISIONES BANCARIAS",
-          "subcategorias": [
-		  {
-              "codigo": "4.03.08.01.00",
-              "denominacion": "PRIMAS Y GASTOS DE SEGURO"
-            },
-            {
-              "codigo": "4.03.08.02.00",
-              "denominacion": "COMISIONES Y GASTOS BANCARIOS"
-            },
-            {
-              "codigo": "4.03.08.03.00",
-              "denominacion": "COMISIONES Y GASTOS DE ADQUISICIÓN DE SEGUROS"
-            }
-          ]
-        },
-        {
-          "codigo": "4.03.09.00.00",
-          "denominacion": "VIATICOS Y PASAJES",
-          "subcategorias": [
-            {
-              "codigo": "4.03.09.01.00",
-              "denominacion": "VIATICOS Y PASAJES DENTRO DEL PAIS"
-            }
-          ]
-        },
-        {
-          "codigo": "4.03.10.00.00",
-          "denominacion": "SERVICIOS PROFESIONALES Y TÉCNICOS",
-          "subcategorias": [
-            {
-              "codigo": "4.03.10.01.00",
-              "denominacion": "SERVICIOS JURIDICOS"
-            },
-			{
-              "codigo": "4.03.10.02.00",
-              "denominacion": "SERVICIOS DE CONTABILIDAD Y AUDITORIA"
-            },
-            {
-              "codigo": "4.03.10.03.00",
-              "denominacion": "SERVICIO DE PROCESAMIENTO DE DATOS"
-            },
-			{
-              "codigo": "4.03.10.05.00",
-              "denominacion": "SERVICIOS MÉDICOS, ODONTOLÓGICOS Y OTROS SERVICIOS DE SANIDAD"
-            },
-            {
-              "codigo": "4.03.10.07.00",
-              "denominacion": "SERVICIOS DE CAPACITACIÓN Y ADIESTRAMIENTO"
-            },
-            {
-              "codigo": "4.03.10.08.00",
-              "denominacion": "SERVICIOS PRESUPUESTARIOS"
-            },
-			{
-              "codigo": "4.03.10.11.00",
-              "denominacion": "SERVICIOS PARA LA ELABORACIÓN Y SERVICIOS DE COMIDA"
-            },
-            {
-              "codigo": "4.03.10.99.00",
-              "denominacion": "OTROS SERVICIOS PROFESIONALES Y TÉCNICOS"
-            }
-          ]
-        },
-        {
-          "codigo": "4.03.11.00.00",
-          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE MAQUINARIAS Y EQUIPOS",
-          "subcategorias": [
-            {
-              "codigo": "4.03.11.02.00",
-              "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE EQUIPOS DE TRANSPORTE, TRACCION Y ELEVACÓN"
-            },
-            {
-              "codigo": "4.03.11.07.00",
-              "denominacion": "CONSERVACIÓN Y REPACIONES MENORES DE MAQUINARIAS, MUEBLES Y DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO"
-            },
-            {
-              "codigo": "4.03.11.99.00",
-              "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OTRAS MAQUINARIAS Y EQUIPOS"
-            }
-          ]
-        },
-        {
-          "codigo": "4.03.12.00.00",
-          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OBRAS",
-          "subcategorias": [
-            {
-              "codigo": "4.03.12.01.00",
-              "denominacion": "CONSERVACIÓN Y REPARACIONES DE OBRAS EN BIENES DEL DOMINIO PRIVADO"
-            },
-            {
-              "codigo": "4.03.12.02.00",
-              "denominacion": "CONSERVACIÓN Y REPARACIONES DE OBRAS EN BIENES DEL DOMINIO PÚBLICO"
-            }
-          ]
-        },
-		{
-          "codigo": "4.03.16.00.00",
-          "denominacion": "SERVICIOS DE DIVERSIÓN, ESPARCIMIENTO Y CULTURALES",
-          "subcategorias": [
-            {
-              "codigo": "4.03.16.01.00",
-              "denominacion": "SERVICIOS DE DIVERSIÓN, ESPARCIMIENTO Y CULTURALES"
-            }
-          ]
-        },
-        {
-          "codigo": "4.03.18.00.00",
-          "denominacion": "IMPUESTOS INDIRECTOS",
-          "subcategorias": [
-            {
-              "codigo": "4.03.18.01.00",
-              "denominacion": "IMPUESTOS AL VALOR AGREGADO"
-            },
-            {
-              "codigo": "4.03.18.99.00",
-              "denominacion": "OTROS IMPUESTOS INDIRECTOS"
-            }
-          ]
+          "codigo": "4.03.01.03.00",
+          "denominacion": "ALQUILERES DE TIERRAS Y TERRENOS"
         }
       ]
     },
     {
-      "categoria": "ACTIVOS REALES",
-      "codigo_general": "4.04",
+      "codigo": "4.03.02.00.00",
+      "denominacion": "ALQUILERES DE MAQUINARIA Y EQUIPOS",
       "subcategorias": [
         {
-          "codigo": "4.04.00.00.00",
-          "denominacion": "ACTIVOS REALES"
+          "codigo": "4.03.02.01.00",
+          "denominacion": "ALQUILERES DE MAQUINARIA Y DEMÁS EQUIPOS DE CONSTRUCCIÓN, CAMPO, INDUSTRIA Y TALLER"
         },
         {
-          "codigo": "4.04.01.00.00",
-          "denominacion": "REPUESTOS Y REPARACIONES MAYORES",
+          "codigo": "4.03.02.02.00",
+          "denominacion": "ALQUILERES DE EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"
+        },
+        {
+          "codigo": "4.03.02.03.00",
+          "denominacion": "ALQUILERES DE EQUIPOS DE COMUNICACIONES Y DE SEÑALAMIENTO"
+        },
+        {
+          "codigo": "4.03.02.04.00",
+          "denominacion": "ALQUILERES DE EQUIPOS MÉDICO QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
+        },
+        {
+          "codigo": "4.03.02.05.00",
+          "denominacion": "ALQUILERES DE EQUIPOS CIENTÍFICOS, RELIGIOSOS, DE ENSEÑANZA Y RECREACIÓN"
+        },
+        {
+          "codigo": "4.03.02.06.00",
+          "denominacion": "ALQUILERES DE MÁQUINAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+        },
+        {
+          "codigo": "4.03.02.99.00",
+          "denominacion": "ALQUILERES DE OTRAS MAQUINARIA Y EQUIPOS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.03.00.00",
+      "denominacion": "DERECHOS SOBRE BIENES INTANGIBLES",
+      "subcategorias": [
+        {
+          "codigo": "4.03.03.01.00",
+          "denominacion": "MARCAS DE FÁBRICA Y PATENTES DE INVENCIÓN"
+        },
+        {
+          "codigo": "4.03.03.02.00",
+          "denominacion": "DERECHOS DE AUTOR"
+        },
+        {
+          "codigo": "4.03.03.03.00",
+          "denominacion": "PAQUETES Y PROGRAMAS DE COMPUTACIÓN"
+        },
+        {
+          "codigo": "4.03.03.04.00",
+          "denominacion": "CONCESIÓN DE BIENES Y SERVICIOS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.04.00.00",
+      "denominacion": "SERVICIOS BÁSICOS",
+      "subcategorias": [
+        {
+          "codigo": "4.03.04.01.00",
+          "denominacion": "ELECTRICIDAD"
+        },
+        {
+          "codigo": "4.03.04.02.00",
+          "denominacion": "GAS"
+        },
+        {
+          "codigo": "4.03.04.03.00",
+          "denominacion": "AGUA"
+        },
+        {
+          "codigo": "4.03.04.04.00",
+          "denominacion": "TELÉFONOS",
           "subcategorias": [
             {
-              "codigo": "4.04.01.01.00",
-              "denominacion": "REPUESTOS MAYORES",
-              "subcategorias": [
-                {
-                  "codigo": "4.04.01.01.02",
-                  "denominacion": "REPUESTOS MAYORES PARA EQUIPOS DE TRANSPORTE, TRACCION Y ELEVACIÓN"
-                },
-				{
+              "codigo": "4.03.04.04.01",
+              "denominacion": "SERVICIOS DE TELEFONÍA PRESTADOS POR ORGANISMOS PÚBLICOS"
+            },
+            {
+              "codigo": "4.03.04.04.02",
+              "denominacion": "SERVICIOS DE TELEFONÍA PRESTADOS POR INSTITUCIONES PRIVADAS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.03.04.05.00",
+          "denominacion": "SERVICIO DE COMUNICACIONES"
+        },
+        {
+          "codigo": "4.03.04.06.00",
+          "denominacion": "SERVICIO DE ASEO URBANO Y DOMICILIARIO"
+        },
+        {
+          "codigo": "4.03.04.07.00",
+          "denominacion": "SERVICIO DE CONDOMINIO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.05.00.00",
+      "denominacion": "SERVICIO DE ADMINISTRACIÓN, VIGILANCIA Y MANTENIMIENTO DE LOS SERVICIOS BÁSICOS",
+      "subcategorias": [
+        {
+          "codigo": "4.03.05.01.00",
+          "denominacion": "SERVICIO DE ADMINISTRACIÓN, VIGILANCIA Y MANTENIMIENTO DEL SERVICIO DE ELECTRICIDAD"
+        },
+        {
+          "codigo": "4.03.05.02.00",
+          "denominacion": "SERVICIO DE ADMINISTRACIÓN, VIGILANCIA Y MANTENIMIENTO DEL SERVICIO DE GAS"
+        },
+        {
+          "codigo": "4.03.05.03.00",
+          "denominacion": "SERVICIO DE ADMINISTRACIÓN, VIGILANCIA Y MANTENIMIENTO DEL SERVICIO DE AGUA"
+        },
+        {
+          "codigo": "4.03.05.04.00",
+          "denominacion": "SERVICIO DE ADMINISTRACIÓN, VIGILANCIA Y MANTENIMIENTO DEL SERVICIO DE TELÉFONOS"
+        },
+        {
+          "codigo": "4.03.05.05.00",
+          "denominacion": "SERVICIO DE ADMINISTRACIÓN, VIGILANCIA Y MANTENIMIENTO DEL SERVICIO DE COMUNICACIONES"
+        },
+        {
+          "codigo": "4.03.05.06.00",
+          "denominacion": "SERVICIO DE ADMINISTRACIÓN, VIGILANCIA Y MANTENIMIENTO DEL SERVICIO DE ASEO URBANO Y DOMICILIARIO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.06.00.00",
+      "denominacion": "SERVICIOS DE TRANSPORTE Y ALMACENAJE",
+      "subcategorias": [
+        {
+          "codigo": "4.03.06.01.00",
+          "denominacion": "FLETES Y EMBALAJES"
+        },
+        {
+          "codigo": "4.03.06.02.00",
+          "denominacion": "ALMACENAJE"
+        },
+        {
+          "codigo": "4.03.06.03.00",
+          "denominacion": "ESTACIONAMIENTO"
+        },
+        {
+          "codigo": "4.03.06.04.00",
+          "denominacion": "PEAJE"
+        },
+        {
+          "codigo": "4.03.06.05.00",
+          "denominacion": "SERVICIOS DE PROTECCIÓN EN TRASLADO DE FONDOS Y DE MENSAJERÍA"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.07.00.00",
+      "denominacion": "SERVICIOS DE INFORMACIÓN, IMPRESIÓN Y RELACIONES PÚBLICAS",
+      "subcategorias": [
+        {
+          "codigo": "4.03.07.01.00",
+          "denominacion": "PUBLICIDAD Y PROPAGANDA"
+        },
+        {
+          "codigo": "4.03.07.02.00",
+          "denominacion": "IMPRENTA Y REPRODUCCIÓN"
+        },
+        {
+          "codigo": "4.03.07.03.00",
+          "denominacion": "RELACIONES SOCIALES"
+        },
+        {
+          "codigo": "4.03.07.04.00",
+          "denominacion": "AVISOS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.08.00.00",
+      "denominacion": "PRIMAS Y OTROS GASTOS DE SEGUROS Y COMISIONES BANCARIAS",
+      "subcategorias": [
+        {
+          "codigo": "4.03.08.01.00",
+          "denominacion": "PRIMAS Y GASTOS DE SEGUROS"
+        },
+        {
+          "codigo": "4.03.08.02.00",
+          "denominacion": "COMISIONES Y GASTOS BANCARIOS"
+        },
+        {
+          "codigo": "4.03.08.03.00",
+          "denominacion": "COMISIONES Y GASTOS DE ADQUISICIÓN DE SEGUROS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.09.00.00",
+      "denominacion": "VIÁTICOS Y PASAJES",
+      "subcategorias": [
+        {
+          "codigo": "4.03.09.01.00",
+          "denominacion": "VIÁTICOS Y PASAJES DENTRO DEL PAÍS"
+        },
+        {
+          "codigo": "4.03.09.02.00",
+          "denominacion": "VIÁTICOS Y PASAJES FUERA DEL PAÍS"
+        },
+        {
+          "codigo": "4.03.09.03.00",
+          "denominacion": "ASIGNACIÓN POR KILÓMETROS RECORRIDOS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.10.00.00",
+      "denominacion": "SERVICIOS PROFESIONALES, TÉCNICOS Y DEMÁS OFICIOS Y OCUPACIONES",
+      "subcategorias": [
+        {
+          "codigo": "4.03.10.01.00",
+          "denominacion": "SERVICIOS JURÍDICOS"
+        },
+        {
+          "codigo": "4.03.10.02.00",
+          "denominacion": "SERVICIOS DE CONTABILIDAD Y AUDITORÍA"
+        },
+        {
+          "codigo": "4.03.10.03.00",
+          "denominacion": "SERVICIOS DE PROCESAMIENTO DE DATOS"
+        },
+        {
+          "codigo": "4.03.10.04.00",
+          "denominacion": "SERVICIOS DE INGENIERÍA Y ARQUITECTÓNICOS"
+        },
+        {
+          "codigo": "4.03.10.05.00",
+          "denominacion": "SERVICIOS MÉDICOS, ODONTOLÓGICOS Y OTROS SERVICIOS DE SANIDAD"
+        },
+        {
+          "codigo": "4.03.10.06.00",
+          "denominacion": "SERVICIOS DE VETERINARIA"
+        },
+        {
+          "codigo": "4.03.10.07.00",
+          "denominacion": "SERVICIOS DE CAPACITACIÓN Y ADIESTRAMIENTO"
+        },
+        {
+          "codigo": "4.03.10.08.00",
+          "denominacion": "SERVICIOS PRESUPUESTARIOS"
+        },
+        {
+          "codigo": "4.03.10.09.00",
+          "denominacion": "SERVICIOS DE LAVANDERÍA Y TINTORERÍA"
+        },
+        {
+          "codigo": "4.03.10.10.00",
+          "denominacion": "SERVICIOS DE VIGILANCIA Y SEGURIDAD"
+        },
+        {
+          "codigo": "4.03.10.11.00",
+          "denominacion": "SERVICIOS PARA LA ELABORACIÓN Y SUMINISTRO DE COMIDA"
+        },
+        {
+          "codigo": "4.03.10.99.00",
+          "denominacion": "OTROS SERVICIOS PROFESIONALES Y TÉCNICOS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.11.00.00",
+      "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE MAQUINARIA Y EQUIPOS",
+      "subcategorias": [
+        {
+          "codigo": "4.03.11.01.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE MAQUINARIA Y DEMÁS EQUIPOS DE CONSTRUCCIÓN, CAMPO, INDUSTRIA Y TALLER"
+        },
+        {
+          "codigo": "4.03.11.02.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"
+        },
+        {
+          "codigo": "4.03.11.03.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE EQUIPOS DE COMUNICACIONES Y DE SEÑALAMIENTO"
+        },
+        {
+          "codigo": "4.03.11.04.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE EQUIPOS MÉDICO-QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
+        },
+        {
+          "codigo": "4.03.11.05.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE EQUIPOS CIENTÍFICOS, RELIGIOSOS, DE ENSEÑANZA Y RECREACIÓN"
+        },
+        {
+          "codigo": "4.03.11.06.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE EQUIPOS Y ARMAMENTOS DE ORDEN PÚBLICO, SEGURIDAD Y DEFENSA NACIONAL"
+        },
+        {
+          "codigo": "4.03.11.07.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE MÁQUINAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+        },
+        {
+          "codigo": "4.03.11.99.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OTRAS MAQUINARIA Y EQUIPOS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.12.00.00",
+      "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OBRAS",
+      "subcategorias": [
+        {
+          "codigo": "4.03.12.01.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OBRAS EN BIENES DEL DOMINIO PRIVADO"
+        },
+        {
+          "codigo": "4.03.12.02.00",
+          "denominacion": "CONSERVACIÓN Y REPARACIONES MENORES DE OBRAS EN BIENES DEL DOMINIO PÚBLICO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.13.00.00",
+      "denominacion": "SERVICIOS DE CONSTRUCCIONES TEMPORALES",
+      "subcategorias": [
+        {
+          "codigo": "4.03.13.01.00",
+          "denominacion": "SERVICIOS DE CONSTRUCCIONES TEMPORALES"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.14.00.00",
+      "denominacion": "SERVICIOS DE CONSTRUCCIÓN DE EDIFICACIONES PARA LA VENTA",
+      "subcategorias": [
+        {
+          "codigo": "4.03.14.01.00",
+          "denominacion": "SERVICIOS DE CONSTRUCCIÓN DE EDIFICACIONES PARA LA VENTA"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.15.00.00",
+      "denominacion": "SERVICIOS FISCALES",
+      "subcategorias": [
+        {
+          "codigo": "4.03.15.01.00",
+          "denominacion": "DERECHOS DE IMPORTACIÓN Y SERVICIOS ADUANEROS"
+        },
+        {
+          "codigo": "4.03.15.02.00",
+          "denominacion": "TASAS Y OTROS DERECHOS OBLIGATORIOS"
+        },
+        {
+          "codigo": "4.03.15.03.00",
+          "denominacion": "ASIGNACIÓN A AGENTES DE ESPECIES FISCALES"
+        },
+        {
+          "codigo": "4.03.15.99.00",
+          "denominacion": "OTROS SERVICIOS FISCALES"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.16.00.00",
+      "denominacion": "SERVICIOS DE DIVERSIÓN, ESPARCIMIENTO Y CULTURALES",
+      "subcategorias": [
+        {
+          "codigo": "4.03.16.01.00",
+          "denominacion": "SERVICIOS DE DIVERSIÓN, ESPARCIMIENTO Y CULTURALES"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.17.00.00",
+      "denominacion": "SERVICIOS DE GESTIÓN ADMINISTRATIVA PRESTADOS POR ORGANISMOS DE ASISTENCIA TÉCNICA",
+      "subcategorias": [
+        {
+          "codigo": "4.03.17.01.00",
+          "denominacion": "SERVICIOS DE GESTIÓN ADMINISTRATIVA PRESTADOS POR ORGANISMOS DE ASISTENCIA TÉCNICA"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.18.00.00",
+      "denominacion": "IMPUESTOS INDIRECTOS",
+      "subcategorias": [
+        {
+          "codigo": "4.03.18.01.00",
+          "denominacion": "IMPUESTO AL VALOR AGREGADO"
+        },
+        {
+          "codigo": "4.03.18.02.00",
+          "denominacion": "IMPUESTO A LAS GRANDES TRANSACCIONES FINANCIERAS"
+        },
+        {
+          "codigo": "4.03.18.99.00",
+          "denominacion": "OTROS IMPUESTOS INDIRECTOS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.19.00.00",
+      "denominacion": "COMISIONES POR SERVICIOS PARA CUMPLIR CON LOS BENEFICIOS SOCIALES",
+      "subcategorias": [
+        {
+          "codigo": "4.03.19.01.00",
+          "denominacion": "COMISIONES POR SERVICIOS PARA CUMPLIR CON LOS BENEFICIOS SOCIALES"
+        }
+      ]
+    },
+    {
+      "codigo": "4.03.99.00.00",
+      "denominacion": "OTROS SERVICIOS NO PERSONALES",
+      "subcategorias": []
+    }
+  ]
+},
+    {
+  "categoria": "ACTIVOS REALES",
+  "codigo_general": "4.04",
+  "subcategorias": [
+    {
+      "codigo": "4.04.00.00.00",
+      "denominacion": "ACTIVOS REALES"
+    },
+    {
+      "codigo": "4.04.01.00.00",
+      "denominacion": "REPUESTOS, REPARACIONES, MEJORAS Y ADICIONES MAYORES",
+      "subcategorias": [
+        {
+          "codigo": "4.04.01.01.00",
+          "denominacion": "REPUESTOS MAYORES",
+          "subcategorias": [
+            {
+              "codigo": "4.04.01.01.01",
+              "denominacion": "REPUESTOS MAYORES PARA MAQUINARIA Y DEMÁS EQUIPOS DE CONSTRUCCIÓN, CAMPO, INDUSTRIA Y TALLER"
+            },
+            {
+              "codigo": "4.04.01.01.02",
+              "denominacion": "REPUESTOS MAYORES PARA EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"
+            },
+            {
+              "codigo": "4.04.01.01.03",
+              "denominacion": "REPUESTOS MAYORES PARA EQUIPOS DE COMUNICACIONES Y DE SEÑALAMIENTO"
+            },
+            {
+              "codigo": "4.04.01.01.04",
+              "denominacion": "REPUESTOS MAYORES PARA EQUIPOS MÉDICO-QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
+            },
+            {
+              "codigo": "4.04.01.01.05",
+              "denominacion": "REPUESTOS MAYORES PARA EQUIPOS CIENTÍFICOS, RELIGIOSOS, DE ENSEÑANZA Y RECREACIÓN"
+            },
+            {
+              "codigo": "4.04.01.01.06",
+              "denominacion": "REPUESTOS MAYORES PARA EQUIPOS Y ARMAMENTOS DE ORDEN PÚBLICO, SEGURIDAD Y DEFENSA"
+            },
+            {
+              "codigo": "4.04.01.01.07",
+              "denominacion": "REPUESTOS MAYORES PARA MÁQUINAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+            },
+            {
+              "codigo": "4.04.01.01.99",
+              "denominacion": "REPUESTOS MAYORES PARA OTRAS MAQUINARIA Y EQUIPOS"
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.01.02.00",
+          "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE MAQUINARIA Y EQUIPOS",
+          "subcategorias": [
+            {
+              "codigo": "4.04.01.02.01",
+              "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE MAQUINARIA Y DEMÁS EQUIPOS DE CONSTRUCCIÓN, CAMPO, INDUSTRIA Y TALLER"
+            },
+            {
               "codigo": "4.04.01.02.02",
-              "denominacion": "REPARACIONES MAYORES PARA EQUIPOS DE TRACCIÓN Y ELEVACIÓN"
-            },
-			{
-              "codigo": "4.04.01.02.08",
-              "denominacion": "REPARACIONES MAYORES PARA MÁQUINAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA"
-            },
-                {
-                  "codigo": "4.04.01.01.99",
-                  "denominacion": "REPUESTOS MAYORES DE OTRAS MAQUINARIAS Y EQUIPOS"
-                }
-              ]
-            }
-          ]
-        },
-		{
-          "codigo": "4.04.02.00.00",
-          "denominacion": "CONSERVACIÓN, AMPLIACIÓN Y MEJORAS",
-          "subcategorias": [
-            {
-              "codigo": "4.04.02.01.00",
-              "denominacion": "CONSERVACIÓN, AMPLIACIÓN Y MEJORAS EN BIENES DEL DOMINIO PÚBLICO"
-            }
-          ]
-        },
-		{
-          "codigo": "4.04.03.00.00",
-          "denominacion": "MAQUINARIAS, MUEBLES Y DEMAS EQUIPOS DE CONSTRUCCION, CAMPO, INDUSTRIA Y TALLER",
-          "subcategorias": [
-            {
-              "codigo": "4.04.03.08.00",
-              "denominacion": "EQUIPOS DE ALMACEN"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.04.00.00",
-          "denominacion": "EQUIPOS DE TRANSPORTE TRACCION Y ELEVACION",
-          "subcategorias": [
-            {
-              "codigo": "4.04.04.01.00",
-              "denominacion": "VEHICULOS AUTOMOTORES TERRESTRES"
-            }
-          ]
-        },
-		{
-          "codigo": "4.04.06.00.00",
-          "denominacion": "EQUIPOS MÉDICO - QUIRÚRGICOS, DENTALES Y DE VETERINARIA",
-          "subcategorias": [
-            {
-              "codigo": "4.04.06.01.00",
-              "denominacion": "EQUIPOS MÉDICO - QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.07.00.00",
-          "denominacion": "EQUIPOS CIENTIFICOS, RELIGIOSOS DE ENSEÑANZA Y RECREACION",
-          "subcategorias": [
-            {
-              "codigo": "4.04.07.02.00",
-              "denominacion": "EQUIPOS DE ENSEÑANZA DEPORTE Y RECREACION"
-            },
-			{
-              "codigo": "4.04.07.06.00",
-              "denominacion": "INSTRUMENTOS MUSICALES Y EQUIPOS DE AUDIO"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.09.00.00",
-          "denominacion": "MAQUINAS MUEBLES Y DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO",
-          "subcategorias": [
-            {
-              "codigo": "4.04.09.01.00",
-              "denominacion": "MOBILIARIO Y EQUIPOS DE OFICINA"
+              "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"
             },
             {
-              "codigo": "4.04.09.02.00",
-              "denominacion": "EQUIPOS DE COMPUTACIÓN"
-            },
-			{
-              "codigo": "4.04.09.03.00",
-              "denominacion": "MOBILIARIO Y EQUIPOS DE ALOJAMIENTO"
+              "codigo": "4.04.01.02.03",
+              "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE EQUIPOS DE COMUNICACIONES Y DE SEÑALAMIENTO"
             },
             {
-              "codigo": "4.04.09.99.00",
-              "denominacion": "OTRAS MAQUINAS, MUEBLES Y DEMAS EQUIPOS DE OFICINA Y ALOJAMIENTO"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.11.00.00",
-          "denominacion": "INMUEBLES, MAQUINARIAS Y DEMAS EQUIPOS USADOS",
-          "subcategorias": [
-            {
-              "codigo": "4.04.11.01.00",
-              "denominacion": "ADQUISICION DE TIERRAS Y TERRENOS"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.12.00.00",
-          "denominacion": "ACTIVOS INTANGIBLES",
-          "subcategorias": [
-            {
-              "codigo": "4.04.12.04.00",
-              "denominacion": "PAQUETES Y PROGRAMAS DE COMPUTACION"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.13.00.00",
-          "denominacion": "ESTUDIOS Y PROYECTOS PARA INVERSION EN ACTIVOS FIJOS",
-          "subcategorias": [
-            {
-              "codigo": "4.04.13.01.00",
-              "denominacion": "PROYECTOS Y ESTUDIOS APLICABLES A BIENES DEL DOMINIO PRIVADO"
+              "codigo": "4.04.01.02.04",
+              "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE EQUIPOS MÉDICO QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
             },
             {
-              "codigo": "4.04.13.02.00",
-              "denominacion": "PROYECTOS Y ESTUDIOS APLICABLES A BIENES DEL DOMINIO PUBLICO"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.15.00.00",
-          "denominacion": "CONSTRUCCIONES DEL DOMINIO PRIVADO",
-          "subcategorias": [
-            {
-              "codigo": "4.04.15.03.00",
-              "denominacion": "CONSTRUCCIONES DE EDIFICACIONES EDUCATIVAS, RELIGIOSAS Y RECREATIVAS"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.16.00.00",
-          "denominacion": "CONSTRUCCIONES DEL DOMINIO PÚBLICO",
-          "subcategorias": [
-            {
-              "codigo": "4.04.16.01.00",
-              "denominacion": "CONSTRUCCIÓN DE VIALIDAD"
+              "codigo": "4.04.01.02.05",
+              "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE EQUIPOS CIENTÍFICOS, RELIGIOSOS, DE ENSEÑANZA Y RECREACIÓN"
             },
             {
-              "codigo": "4.04.16.02.00",
-              "denominacion": "CONSTRUCCIÓN DE PLAZAS, PARQUES Y SIMILARES"
+              "codigo": "4.04.01.02.06",
+              "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE EQUIPOS Y ARMAMENTOS DE ORDEN PÚBLICO, SEGURIDAD Y DEFENSA NACIONAL"
             },
             {
-              "codigo": "4.04.16.03.00",
-              "denominacion": "CONSTRUCCIÓN DE INSTALACIONES HIDRÁULICAS"
-            }
-          ]
-        },
-        {
-          "codigo": "4.04.99.00.00",
-          "denominacion": "OTROS ACTIVOS REALES",
-          "subcategorias": [
+              "codigo": "4.04.01.02.07",
+              "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE MÁQUINAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+            },
             {
-              "codigo": "4.04.99.01.00",
-              "denominacion": "OTROS ACTIVOS REALES"
+              "codigo": "4.04.01.02.99",
+              "denominacion": "REPARACIONES, MEJORAS Y ADICIONES MAYORES DE OTRAS MAQUINARIA Y EQUIPOS"
             }
           ]
         }
       ]
     },
     {
-      "categoria": "TRANSFERENCIAS Y DONACIONES",
-      "codigo_general": "4.07",
+      "codigo": "4.04.02.00.00",
+      "denominacion": "CONSERVACIÓN, AMPLIACIONES Y MEJORAS MAYORES DE OBRAS",
       "subcategorias": [
         {
-          "codigo": "4.07.00.00.00",
-          "denominacion": "TRANSFERENCIAS Y DONACIONES"
+          "codigo": "4.04.02.01.00",
+          "denominacion": "CONSERVACIÓN, AMPLIACIONES Y MEJORAS MAYORES DE OBRAS EN BIENES DEL DOMINIO PRIVADO"
         },
         {
-          "codigo": "4.07.01.00.00",
-          "denominacion": "TRANSFERENCIAS Y DONACIONES CORRIENTES INTERNAS",
+          "codigo": "4.04.02.02.00",
+          "denominacion": "CONSERVACIÓN, AMPLIACIONES Y MEJORAS MAYORES DE OBRAS EN BIENES DEL DOMINIO PÚBLICO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.03.00.00",
+      "denominacion": "MAQUINARIA Y DEMÁS EQUIPOS DE CONSTRUCCIÓN, CAMPO, INDUSTRIA Y TALLER",
+      "subcategorias": [
+        {
+          "codigo": "4.04.03.01.00",
+          "denominacion": "MAQUINARIA Y DEMÁS EQUIPOS DE CONSTRUCCIÓN Y MANTENIMIENTO"
+        },
+        {
+          "codigo": "4.04.03.02.00",
+          "denominacion": "MAQUINARIA Y EQUIPOS PARA MANTENIMIENTO DE AUTOMOTORES"
+        },
+        {
+          "codigo": "4.04.03.03.00",
+          "denominacion": "MAQUINARIA Y EQUIPOS AGRÍCOLAS Y PECUARIOS"
+        },
+        {
+          "codigo": "4.04.03.04.00",
+          "denominacion": "MAQUINARIA Y EQUIPOS DE ARTES GRÁFICAS Y REPRODUCCIÓN"
+        },
+        {
+          "codigo": "4.04.03.05.00",
+          "denominacion": "MAQUINARIA Y EQUIPOS INDUSTRIALES Y DE TALLER"
+        },
+        {
+          "codigo": "4.04.03.06.00",
+          "denominacion": "MAQUINARIA Y EQUIPOS DE ENERGÍA"
+        },
+        {
+          "codigo": "4.04.03.07.00",
+          "denominacion": "MAQUINARIA Y EQUIPOS DE RIEGO Y ACUEDUCTOS"
+        },
+        {
+          "codigo": "4.04.03.08.00",
+          "denominacion": "EQUIPOS DE ALMACÉN"
+        },
+        {
+          "codigo": "4.04.03.99.00",
+          "denominacion": "OTRA MAQUINARIA Y DEMÁS EQUIPOS DE CONSTRUCCIÓN, CAMPO, INDUSTRIA Y TALLER"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.04.00.00",
+      "denominacion": "EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN",
+      "subcategorias": [
+        {
+          "codigo": "4.04.04.01.00",
+          "denominacion": "VEHÍCULOS AUTOMOTORES TERRESTRES"
+        },
+        {
+          "codigo": "4.04.04.02.00",
+          "denominacion": "EQUIPOS FERROVIARIOS Y DE CABLES AÉREOS"
+        },
+        {
+          "codigo": "4.04.04.03.00",
+          "denominacion": "EQUIPOS MARÍTIMOS DE TRANSPORTE"
+        },
+        {
+          "codigo": "4.04.04.04.00",
+          "denominacion": "EQUIPOS AÉREOS DE TRANSPORTE"
+        },
+        {
+          "codigo": "4.04.04.05.00",
+          "denominacion": "VEHÍCULOS DE TRACCIÓN NO MOTORIZADOS"
+        },
+        {
+          "codigo": "4.04.04.06.00",
+          "denominacion": "EQUIPOS AUXILIARES DE TRANSPORTE"
+        },
+        {
+          "codigo": "4.04.04.99.00",
+          "denominacion": "OTROS EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.05.00.00",
+      "denominacion": "EQUIPOS DE COMUNICACIONES Y DE SEÑALAMIENTO",
+      "subcategorias": [
+        {
+          "codigo": "4.04.05.01.00",
+          "denominacion": "EQUIPOS DE TELECOMUNICACIONES"
+        },
+        {
+          "codigo": "4.04.05.02.00",
+          "denominacion": "EQUIPOS DE SEÑALAMIENTO"
+        },
+        {
+          "codigo": "4.04.05.03.00",
+          "denominacion": "EQUIPOS DE CONTROL DE TRÁFICO AÉREO"
+        },
+        {
+          "codigo": "4.04.05.04.00",
+          "denominacion": "EQUIPOS DE CORREO"
+        },
+        {
+          "codigo": "4.04.05.99.00",
+          "denominacion": "OTROS EQUIPOS DE COMUNICACIONES Y DE SEÑALAMIENTO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.06.00.00",
+      "denominacion": "EQUIPOS MÉDICO-QUIRÚRGICOS, DENTALES Y DE VETERINARIA",
+      "subcategorias": [
+        {
+          "codigo": "4.04.06.01.00",
+          "denominacion": "EQUIPOS MÉDICO-QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
+        },
+        {
+          "codigo": "4.04.06.99.00",
+          "denominacion": "OTROS EQUIPOS MÉDICO-QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.07.00.00",
+      "denominacion": "EQUIPOS CIENTÍFICOS, RELIGIOSOS, DE ENSEÑANZA Y RECREACIÓN",
+      "subcategorias": [
+        {
+          "codigo": "4.04.07.01.00",
+          "denominacion": "EQUIPOS CIENTÍFICOS Y DE LABORATORIO"
+        },
+        {
+          "codigo": "4.04.07.02.00",
+          "denominacion": "EQUIPOS DE ENSEÑANZA, DEPORTE Y RECREACIÓN"
+        },
+        {
+          "codigo": "4.04.07.03.00",
+          "denominacion": "OBRAS DE ARTE"
+        },
+        {
+          "codigo": "4.04.07.04.00",
+          "denominacion": "LIBROS, REVISTAS Y OTROS INSTRUMENTOS DE ENSEÑANZAS"
+        },
+        {
+          "codigo": "4.04.07.05.00",
+          "denominacion": "EQUIPOS RELIGIOSOS"
+        },
+        {
+          "codigo": "4.04.07.06.00",
+          "denominacion": "INSTRUMENTOS MUSICALES Y EQUIPOS DE AUDIO"
+        },
+        {
+          "codigo": "4.04.07.99.00",
+          "denominacion": "OTROS EQUIPOS CIENTÍFICOS, RELIGIOSOS, DE ENSEÑANZA Y RECREACIÓN"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.08.00.00",
+      "denominacion": "EQUIPOS Y ARMAMENTOS DE ORDEN PÚBLICO, SEGURIDAD Y DEFENSA",
+      "subcategorias": [
+        {
+          "codigo": "4.04.08.01.00",
+          "denominacion": "EQUIPOS Y ARMAMENTOS DE ORDEN PÚBLICO, SEGURIDAD Y DEFENSA NACIONAL"
+        },
+        {
+          "codigo": "4.04.08.02.00",
+          "denominacion": "EQUIPOS Y ARMAMENTOS DE SEGURIDAD PARA LA CUSTODIA Y RESGUARDO PERSONAL"
+        },
+        {
+          "codigo": "4.04.08.99.00",
+          "denominacion": "OTROS EQUIPOS Y ARMAMENTOS DE ORDEN PÚBLICO, SEGURIDAD Y DEFENSA"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.09.00.00",
+      "denominacion": "MÁQUINAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA Y ALOJAMIENTO",
+      "subcategorias": [
+        {
+          "codigo": "4.04.09.01.00",
+          "denominacion": "Mobiliario y Equipos de Oficina"
+        },
+        {
+          "codigo": "4.04.09.02.00",
+          "denominacion": "EQUIPOS DE COMPUTACIÓN"
+        },
+        {
+          "codigo": "4.04.09.03.00",
+          "denominacion": "MOBILIARIO Y EQUIPOS DE ALOJAMIENTO"
+        },
+        {
+          "codigo": "4.04.09.99.00",
+          "denominacion": "OTRAS MÁQUINAS, MUEBLES Y DEMÁS EQUIPOS DE OFICINA Y ALOJAMIENTO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.10.00.00",
+      "denominacion": "SEMOVIENTES",
+      "subcategorias": [
+        {
+          "codigo": "4.04.10.01.00",
+          "denominacion": "SEMOVIENTES"
+        }
+      ]
+    },
+    {
+      "codigo": "4.04.11.00.00",
+      "denominacion": "INMUEBLES, MAQUINARIA Y EQUIPOS USADOS",
+      "subcategorias": [
+        {
+          "codigo": "4.04.11.01.00",
+          "denominacion": "ADQUISICIÓN DE TIERRAS Y TERRENOS"
+        },
+        {
+          "codigo": "4.04.11.02.00",
+          "denominacion": "ADQUISICIÓN DE EDIFICIOS E INSTALACIONES"
+        },
+        {
+          "codigo": "4.04.11.03.00",
+          "denominacion": "EXPROPIACIÓN DE TIERRAS Y TERRENOS"
+        },
+        {
+          "codigo": "4.04.11.04.00",
+          "denominacion": "EXPROPIACIÓN DE EDIFICIOS E INSTALACIONES"
+        },
+        {
+          "codigo": "4.04.11.05.00",
+          "denominacion": "ADQUISICIÓN DE MAQUINARIA Y EQUIPOS USADOS",
           "subcategorias": [
+            {
+              "codigo": "4.04.11.05.01",
+              "denominacion": "MAQUINARIA Y DEMÁS EQUIPOS DE CONSTRUCCIÓN, CAMPO, INDUSTRIA Y TALLER"
+            },
+            {
+              "codigo": "4.04.11.05.02",
+              "denominacion": "EQUIPOS DE TRANSPORTE, TRACCIÓN Y ELEVACIÓN"
+            },
+            {
+              "codigo": "4.04.11.05.03",
+              "denominacion": "EQUIPOS DE COMUNICACIONES Y DE SEÑALAMIENTO"
+            },
+            {
+              "codigo": "4.04.11.05.04",
+              "denominacion": "EQUIPOS MÉDICO QUIRÚRGICOS, DENTALES Y DE VETERINARIA"
+            },
+            {
+              "codigo": "4.04.11.05.05",
+              "denominacion": "EQUIPOS CIENTÍFICOS, RELIGIOSOS"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+},
+    {
+  "categoria": "TRANSFERENCIAS Y DONACIONES",
+  "codigo_general": "4.07",
+  "subcategorias": [
+    {
+      "codigo": "4.07.00.00.00",
+      "denominacion": "TRANSFERENCIAS Y DONACIONES"
+    },
+    {
+      "codigo": "4.07.01.00.00",
+      "denominacion": "TRANSFERENCIAS Y DONACIONES CORRIENTES INTERNAS",
+      "subcategorias": [
+        {
+          "codigo": "4.07.01.01.00",
+          "denominacion": "TRANSFERENCIAS CORRIENTES INTERNAS AL SECTOR PRIVADO",
+          "subcategorias": [
+            {
+              "codigo": "4.07.01.01.01",
+              "denominacion": "PENSIONES DEL PERSONAL EMPLEADO, OBRERO Y MILITAR"
+            },
             {
               "codigo": "4.07.01.01.02",
-              "denominacion": "JUBILACIONES AL PERSONAL EMPLEADO, OBRERO Y MILITAR"
+              "denominacion": "JUBILACIONES DEL PERSONAL EMPLEADO, OBRERO Y MILITAR"
             },
-			{
+            {
               "codigo": "4.07.01.01.03",
               "denominacion": "BECAS ESCOLARES"
             },
-			{
+            {
+              "codigo": "4.07.01.01.04",
+              "denominacion": "BECAS UNIVERSITARIAS EN EL PAÍS"
+            },
+            {
+              "codigo": "4.07.01.01.05",
+              "denominacion": "BECAS DE PERFECCIONAMIENTO PROFESIONAL EN EL PAÍS"
+            },
+            {
+              "codigo": "4.07.01.01.06",
+              "denominacion": "BECAS PARA ESTUDIOS EN EL EXTRANJERO"
+            },
+            {
               "codigo": "4.07.01.01.07",
               "denominacion": "OTRAS BECAS"
             },
             {
-              "codigo": "4.07.01.01.13",
-              "denominacion": "AGUINALDO AL PERSONAL EMPLEADO, OBRERO Y MILITAR JUBILADO"
+              "codigo": "4.07.01.01.08",
+              "denominacion": "PREVISIÓN POR ACCIDENTES DE TRABAJO"
             },
+            {
+              "codigo": "4.07.01.01.09",
+              "denominacion": "AGUINALDOS AL PERSONAL PENSIONADO"
+            },
+            {
+              "codigo": "4.07.01.01.10",
+              "denominacion": "APORTES A CAJA DE AHORRO DEL PERSONAL PENSIONADO"
+            },
+            {
+              "codigo": "4.07.01.01.11",
+              "denominacion": "APORTES A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS AL PERSONAL PENSIONADO"
+            },
+            {
+              "codigo": "4.07.01.01.12",
+              "denominacion": "OTRAS SUBVENCIONES SOCIO ECONÓMICAS DEL PERSONAL PENSIONADO"
+            },
+            {
+              "codigo": "4.07.01.01.13",
+              "denominacion": "AGUINALDOS AL PERSONAL JUBILADO"
+            },
+            {
+              "codigo": "4.07.01.01.14",
+              "denominacion": "APORTES A CAJA DE AHORRO DEL PERSONAL JUBILADO"
+            },
+            {
+              "codigo": "4.07.01.01.15",
+              "denominacion": "APORTES A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS DEL PERSONAL JUBILADO"
+            },
+            {
+              "codigo": "4.07.01.01.16",
+              "denominacion": "OTRAS SUBVENCIONES SOCIO ECONÓMICAS DEL PERSONAL JUBILADO"
+            },
+            {
+              "codigo": "4.07.01.01.30",
+              "denominacion": "INCAPACIDAD TEMPORAL SIN HOSPITALIZACIÓN"
+            },
+            {
+              "codigo": "4.07.01.01.31",
+              "denominacion": "INCAPACIDAD TEMPORAL CON HOSPITALIZACIÓN"
+            },
+            {
+              "codigo": "4.07.01.01.32",
+              "denominacion": "REPOSO POR MATERNIDAD"
+            },
+            {
+              "codigo": "4.07.01.01.33",
+              "denominacion": "INDEMNIZACIÓN POR FONDO CONTRIBUTIVO DEL RÉGIMEN PRESTACIONAL DE EMPLEO"
+            },
+            {
+              "codigo": "4.07.01.01.34",
+              "denominacion": "OTROS TIPOS DE INCAPACIDAD TEMPORAL"
+            },
+            {
+              "codigo": "4.07.01.01.35",
+              "denominacion": "INDEMNIZACIÓN POR COMISIÓN POR PENSIONES"
+            },
+            {
+              "codigo": "4.07.01.01.36",
+              "denominacion": "INDEMNIZACIÓN POR COMISIÓN POR CESANTÍA"
+            },
+            {
+              "codigo": "4.07.01.01.37",
+              "denominacion": "INCAPACIDAD PARCIAL"
+            },
+            {
+              "codigo": "4.07.01.01.38",
+              "denominacion": "INVALIDEZ"
+            },
+            {
+              "codigo": "4.07.01.01.39",
+              "denominacion": "PENSIONES POR VEJEZ, VIUDEZ Y ORFANDAD"
+            },
+            {
+              "codigo": "4.07.01.01.40",
+              "denominacion": "INDEMNIZACIÓN POR CESANTÍA"
+            },
+            {
+              "codigo": "4.07.01.01.41",
+              "denominacion": "OTRAS PENSIONES Y DEMÁS PRESTACIONES EN DINERO"
+            },
+            {
+              "codigo": "4.07.01.01.42",
+              "denominacion": "INCAPACIDAD PARCIAL POR ACCIDENTE COMÚN"
+            },
+            {
+              "codigo": "4.07.01.01.43",
+              "denominacion": "INCAPACIDAD PARCIAL POR ENFERMEDADES PROFESIONALES"
+            },
+            {
+              "codigo": "4.07.01.01.44",
+              "denominacion": "INCAPACIDAD PARCIAL POR ACCIDENTE DE TRABAJO"
+            },
+            {
+              "codigo": "4.07.01.01.45",
+              "denominacion": "INDEMNIZACIÓN ÚNICA POR INVALIDEZ"
+            },
+            {
+              "codigo": "4.07.01.01.46",
+              "denominacion": "INDEMNIZACIÓN ÚNICA POR VEJEZ"
+            },
+            {
+              "codigo": "4.07.01.01.47",
+              "denominacion": "SOBREVIVIENTES POR ENFERMEDAD COMÚN"
+            },
+            {
+              "codigo": "4.07.01.01.48",
+              "denominacion": "SOBREVIVIENTES POR ACCIDENTE COMÚN"
+            },
+            {
+              "codigo": "4.07.01.01.49",
+              "denominacion": "SOBREVIVIENTES POR ENFERMEDADES PROFESIONALES"
+            },
+            {
+              "codigo": "4.07.01.01.50",
+              "denominacion": "SOBREVIVIENTES POR ACCIDENTES DE TRABAJO"
+            },
+            {
+              "codigo": "4.07.01.01.51",
+              "denominacion": "INDEMNIZACIONES POR CONMUTACIÓN DE RENTA"
+            },
+            {
+              "codigo": "4.07.01.01.52",
+              "denominacion": "INDEMNIZACIONES POR CONMUTACIÓN DE PENSIONES"
+            },
+            {
+              "codigo": "4.07.01.01.53",
+              "denominacion": "INDEMNIZACIONES POR COMISIÓN DE RENTA"
+            },
+            {
+              "codigo": "4.07.01.01.54",
+              "denominacion": "ASIGNACIÓN POR NUPCIAS"
+            },
+            {
+              "codigo": "4.07.01.01.55",
+              "denominacion": "ASIGNACIÓN PARA GASTOS FUNERARIOS"
+            },
+            {
+              "codigo": "4.07.01.01.56",
+              "denominacion": "OTRAS ASIGNACIONES"
+            },
+            {
+              "codigo": "4.07.01.01.70",
+              "denominacion": "SUBSIDIOS EDUCACIONALES AL SECTOR PRIVADO"
+            },
+            {
+              "codigo": "4.07.01.01.71",
+              "denominacion": "SUBSIDIOS A UNIVERSIDADES PRIVADAS"
+            },
+            {
+              "codigo": "4.07.01.01.72",
+              "denominacion": "SUBSIDIOS CULTURALES AL SECTOR PRIVADO"
+            },
+            {
+              "codigo": "4.07.01.01.73",
+              "denominacion": "SUBSIDIOS A INSTITUCIONES BENÉFICAS PRIVADAS"
+            },
+            {
+              "codigo": "4.07.01.01.74",
+              "denominacion": "SUBSIDIOS A CENTROS DE EMPLEADOS"
+            },
+            {
+              "codigo": "4.07.01.01.75",
+              "denominacion": "SUBSIDIOS A ORGANISMOS LABORALES Y GREMIALES"
+            },
+            {
+              "codigo": "4.07.01.01.76",
+              "denominacion": "SUBSIDIOS A ENTIDADES RELIGIOSAS"
+            },
+            {
+              "codigo": "4.07.01.01.77",
+              "denominacion": "SUBSIDIOS A ENTIDADES DEPORTIVAS Y RECREATIVAS DE CARÁCTER PRIVADO"
+            },
+            {
+              "codigo": "4.07.01.01.78",
+              "denominacion": "SUBSIDIOS CIENTÍFICOS AL SECTOR PRIVADO"
+            },
+            {
+              "codigo": "4.07.01.01.79",
+              "denominacion": "SUBSIDIOS A COOPERATIVAS"
+            },
+            {
+              "codigo": "4.07.01.01.80",
+              "denominacion": "SUBSIDIOS A EMPRESAS PRIVADAS"
+            },
+            {
+              "codigo": "4.07.01.01.99",
+              "denominacion": "OTRAS TRANSFERENCIAS CORRIENTES INTERNAS AL SECTOR PRIVADO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.07.01.02.00",
+          "denominacion": "DONACIONES CORRIENTES INTERNAS AL SECTOR PRIVADO",
+          "subcategorias": [
             {
               "codigo": "4.07.01.02.01",
               "denominacion": "DONACIONES CORRIENTES A PERSONAS"
             },
-			{
+            {
+              "codigo": "4.07.01.02.02",
+              "denominacion": "DONACIONES CORRIENTES A INSTITUCIONES SIN FINES DE LUCRO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.07.01.03.00",
+          "denominacion": "TRANSFERENCIAS CORRIENTES INTERNAS AL SECTOR PÚBLICO",
+          "subcategorias": [
+            {
+              "codigo": "4.07.01.03.01",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A LA REPÚBLICA"
+            },
+            {
+              "codigo": "4.07.01.03.02",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A ENTES DESCENTRALIZADOS SIN FINES EMPRESARIALES"
+            },
+            {
+              "codigo": "4.07.01.03.03",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A ENTES DESCENTRALIZADOS SIN FINES EMPRESARIALES PARA ATENDER BENEFICIOS DE LA SEGURIDAD SOCIAL"
+            },
+            {
+              "codigo": "4.07.01.03.04",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A INSTITUCIONES DE PROTECCIÓN SOCIAL"
+            },
+            {
+              "codigo": "4.07.01.03.05",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A INSTITUCIONES DE PROTECCIÓN SOCIAL PARA ATENDER BENEFICIOS DE LA SEGURIDAD SOCIAL"
+            },
+            {
+              "codigo": "4.07.01.03.06",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A ENTES DESCENTRALIZADOS CON FINES EMPRESARIALES PETROLEROS"
+            },
+            {
+              "codigo": "4.07.01.03.07",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A ENTES DESCENTRALIZADOS CON FINES EMPRESARIALES NO PETROLEROS"
+            },
+            {
+              "codigo": "4.07.01.03.08",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A ENTES DESCENTRALIZADOS FINANCIEROS BANCARIOS"
+            },
+            {
+              "codigo": "4.07.01.03.09",
+              "denominacion": "TRANSFERENCIAS CORRIENTES A ENTES DESCENTRALIZADOS FINANCIEROS NO BANCARIOS"
+            },
+            {
+              "codigo": "4.07.01.03.10",
+              "denominacion": "TRANSFERENCIAS CORRIENTES AL PODER ESTADAL"
+            },
+            {
               "codigo": "4.07.01.03.11",
               "denominacion": "TRANSFERENCIAS CORRIENTES AL PODER MUNICIPAL"
             },
-			{
-              "codigo": "4.07.01.04.00",
-              "denominacion": "DONACIONES CORRIENTES INTERNAS AL SECTOR PUBLICO"
+            {
+              "codigo": "4.07.01.03.13",
+              "denominacion": "SUBSIDIOS OTORGADOS POR NORMAS EXTERNAS"
+            },
+            {
+              "codigo": "4.07.01.03.14",
+              "denominacion": "INCENTIVOS OTORGADOS POR NORMAS EXTERNAS"
+            },
+            {
+              "codigo": "4.07.01.03.15",
+              "denominacion": "SUBSIDIOS OTORGADOS POR PRECIOS POLÍTICOS"
+            },
+            {
+              "codigo": "4.07.01.03.16",
+              "denominacion": "SUBSIDIOS DE COSTOS SOCIALES POR NORMAS EXTERNAS"
+            },
+            {
+              "codigo": "4.07.01.03.99",
+              "denominacion": "OTRAS TRANSFERENCIAS CORRIENTES INTERNAS AL SECTOR PÚBLICO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.07.01.04.00",
+          "denominacion": "DONACIONES CORRIENTES INTERNAS AL SECTOR PÚBLICO",
+          "subcategorias": [
+            {
+              "codigo": "4.07.01.04.01",
+              "denominacion": "DONACIONES CORRIENTES A LA REPÚBLICA"
+            },
+            {
+              "codigo": "4.07.01.04.02",
+              "denominacion": "DONACIONES CORRIENTES A ENTES DESCENTRALIZADOS SIN FINES EMPRESARIALES"
+            },
+            {
+              "codigo": "4.07.01.04.03",
+              "denominacion": "DONACIONES CORRIENTES A INSTITUCIONES DE PROTECCIÓN SOCIAL"
+            },
+            {
+              "codigo": "4.07.01.04.04",
+              "denominacion": "DONACIONES CORRIENTES A ENTES DESCENTRALIZADOS CON FINES EMPRESARIALES PETROLEROS"
+            },
+            {
+              "codigo": "4.07.01.04.05",
+              "denominacion": "DONACIONES CORRIENTES A ENTES DESCENTRALIZADOS CON FINES EMPRESARIALES NO PETROLEROS"
+            },
+            {
+              "codigo": "4.07.01.04.06",
+              "denominacion": "DONACIONES CORRIENTES A ENTES DESCENTRALIZADOS FINANCIEROS BANCARIOS"
+            },
+            {
+              "codigo": "4.07.01.04.07",
+              "denominacion": "DONACIONES CORRIENTES A ENTES DESCENTRALIZADOS FINANCIEROS NO BANCARIOS"
+            },
+            {
+              "codigo": "4.07.01.04.08",
+              "denominacion": "DONACIONES CORRIENTES AL PODER ESTADAL"
             },
             {
               "codigo": "4.07.01.04.09",
@@ -753,67 +2750,275 @@
           ]
         },
         {
-          "codigo": "4.07.03.00.00",
-          "denominacion": "TRANSFERENCIAS Y DONACIONES DE CAPITAL INTERNA",
+          "codigo": "4.07.01.05.00",
+          "denominacion": "PENSIONES DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR, DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN",
           "subcategorias": [
             {
-              "codigo": "4.07.03.03.02",
-              "denominacion": "TRANSFERENCIAS DE CAPITAL A ENTES DESCENTRALIZADOS SIN FINES EMPRESARIALES"
+              "codigo": "4.07.01.05.01",
+              "denominacion": "PENSIONES DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
+            },
+            {
+              "codigo": "4.07.01.05.02",
+              "denominacion": "PENSIONES DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.07.01.05.06",
+              "denominacion": "AGUINALDOS DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR PENSIONADOS"
+            },
+            {
+              "codigo": "4.07.01.05.07",
+              "denominacion": "AGUINALDOS DEL PERSONAL PENSIONADO DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.07.01.05.11",
+              "denominacion": "APORTES A CAJA DE AHORRO DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR PENSIONADOS"
+            },
+            {
+              "codigo": "4.07.01.05.12",
+              "denominacion": "APORTES A CAJA DE AHORRO DEL PERSONAL PENSIONADO DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.07.01.05.16",
+              "denominacion": "APORTES A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR PENSIONADOS"
+            },
+            {
+              "codigo": "4.07.01.05.17",
+              "denominacion": "APORTES A LOS SERVICIOS DE SALUD, ACCIDENTES PERSONALES Y GASTOS FUNERARIOS DEL PERSONAL PENSIONADO DE ALTO NIVEL Y DE DIRECCIÓN"
+            },
+            {
+              "codigo": "4.07.01.05.98",
+              "denominacion": "OTRAS SUBVENCIONES DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR PENSIONADOS"
+            },
+            {
+              "codigo": "4.07.01.05.99",
+              "denominacion": "OTRAS SUBVENCIONES DEL PERSONAL PENSIONADO DE ALTO NIVEL Y DE DIRECCIÓN"
             }
           ]
         },
         {
-          "codigo": "4.07.12.00.00",
-          "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR",
+          "codigo": "4.07.01.06.00",
+          "denominacion": "JUBILACIONES DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR, DEL PERSONAL DE ALTO NIVEL Y DE DIRECCIÓN",
           "subcategorias": [
             {
-              "codigo": "4.07.12.01.00",
-              "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR"
+              "codigo": "4.07.01.06.01",
+              "denominacion": "JUBILACIONES DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
             }
           ]
         }
       ]
-    },
+    }
+  ]
+},
 	{
-      "categoria": "FONDOS PARA LA CANCELACIÓN DE PASIVOS LABORALES",
-      "codigo_general": "4.09",
+  "categoria": "ASIGNACIONES NO DISTRIBUIDAS",
+  "codigo_general": "4.09",
+  "subcategorias": [
+    {
+      "codigo": "4.09.00.00.00",
+      "denominacion": "ASIGNACIONES NO DISTRIBUIDAS"
+    },
+    {
+      "codigo": "4.09.01.00.00",
+      "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DE LA ASAMBLEA NACIONAL",
       "subcategorias": [
         {
-          "codigo": "4.09.00.00.00",
-          "denominacion": "FONDOS PARA LA CANCELACIÓN DE PASIVOS LABORALES"
-        },
-        {
-          "codigo": "4.09.12.00.00",
-          "denominacion": "FONDO PARA LA CANCELACIÓN DE PASIVOS LABORALES",
-          "subcategorias": [
-            {
-              "codigo": "4.09.12.01.00",
-              "denominacion": "FONDO PARA LA CANCELACIÓN DE PASIVOS LABORALES"
-            }
-          ]
+          "codigo": "4.09.01.01.00",
+          "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DE LA ASAMBLEA NACIONAL"
         }
       ]
     },
     {
-      "categoria": "OBLIGACIONES DE EJERCICIOS ANTERIORES",
-      "codigo_general": "4.11",
+      "codigo": "4.09.02.00.00",
+      "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DE LA CONTRALORÍA GENERAL DE LA REPÚBLICA",
       "subcategorias": [
         {
-          "codigo": "4.11.00.00.00",
-          "denominacion": "OBLIGACIONES DE EJERCICIOS ANTERIORES"
-        },
-        {
-          "codigo": "4.11.11.00.00",
-          "denominacion": "OBLIGACIONES DE EJERCICIOS ANTERIORES",
-          "subcategorias": [
-            {
-              "codigo": "4.11.11.03.00",
-              "denominacion": "INDEMNIZACIONES DIVERSAS"
-            }
-          ]
+          "codigo": "4.09.02.01.00",
+          "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DE LA CONTRALORÍA GENERAL DE LA REPÚBLICA"
         }
       ]
     },
+    {
+      "codigo": "4.09.03.00.00",
+      "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DEL CONSEJO NACIONAL ELECTORAL",
+      "subcategorias": [
+        {
+          "codigo": "4.09.03.01.00",
+          "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DEL CONSEJO NACIONAL ELECTORAL"
+        }
+      ]
+    },
+    {
+      "codigo": "4.09.04.00.00",
+      "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DEL TRIBUNAL SUPREMO DE JUSTICIA",
+      "subcategorias": [
+        {
+          "codigo": "4.09.04.01.00",
+          "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DEL TRIBUNAL SUPREMO DE JUSTICIA"
+        }
+      ]
+    },
+    {
+      "codigo": "4.09.05.00.00",
+      "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DEL MINISTERIO PÚBLICO",
+      "subcategorias": [
+        {
+          "codigo": "4.09.05.01.00",
+          "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DEL MINISTERIO PÚBLICO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.09.06.00.00",
+      "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DE LA DEFENSORÍA DEL PUEBLO",
+      "subcategorias": [
+        {
+          "codigo": "4.09.06.01.00",
+          "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DE LA DEFENSORÍA DEL PUEBLO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.09.07.00.00",
+      "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DEL CONSEJO MORAL REPUBLICANO",
+      "subcategorias": [
+        {
+          "codigo": "4.09.07.01.00",
+          "denominacion": "ASIGNACIONES NO DISTRIBUIDAS DEL CONSEJO MORAL REPUBLICANO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.09.08.00.00",
+      "denominacion": "REESTRUCTURACIÓN DE ORGANISMOS DEL SECTOR PÚBLICO",
+      "subcategorias": [
+        {
+          "codigo": "4.09.08.01.00",
+          "denominacion": "REESTRUCTURACIÓN DE ORGANISMOS DEL SECTOR PÚBLICO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.09.09.00.00",
+      "denominacion": "FONDO DE APOYO AL TRABAJADOR Y SU GRUPO FAMILIAR",
+      "subcategorias": [
+        {
+          "codigo": "4.09.09.01.00",
+          "denominacion": "FONDO DE APOYO AL PERSONAL Y SU GRUPO FAMILIAR DE LA ADMINISTRACIÓN PÚBLICA NACIONAL"
+        },
+        {
+          "codigo": "4.09.09.02.00",
+          "denominacion": "FONDO DE APOYO AL PERSONAL Y SU GRUPO FAMILIAR"
+        }
+      ]
+    }
+  ]
+},
+    {
+  "categoria": "DISMINUCION DE PASIVOS",
+  "codigo_general": "4.11",
+  "subcategorias": [
+    {
+      "codigo": "4.11.00.00.00",
+      "denominacion": "DISMINUCION DE PASIVOS"
+    },
+    {
+      "codigo": "4.11.01.00.00",
+      "denominacion": "DISMINUCION DE GASTOS DE PERSONAL POR PAGAR",
+      "subcategorias": [
+        {
+          "codigo": "4.11.01.01.00",
+          "denominacion": "DISMINUCION DE SUELDOS, SALARIOS Y OTRAS REMUNERACIONES POR PAGAR"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.02.00.00",
+      "denominacion": "DISMINUCION DE APORTES PATRONALES Y RETENCIONES LABORALES POR PAGAR",
+      "subcategorias": [
+        {
+          "codigo": "4.11.02.01.00",
+          "denominacion": "DISMINUCION DE APORTES PATRONALES Y RETENCIONES LABORALES POR PAGAR AL INSTITUTO VENEZOLANO DE LOS SEGUROS SOCIALES (IVSS)"
+        },
+        {
+          "codigo": "4.11.02.02.00",
+          "denominacion": "DISMINUCION DE APORTES PATRONALES Y RETENCIONES LABORALES POR PAGAR AL INSTITUTO DE PREVISIÓN SOCIAL DEL MINISTERIO DE EDUCACIÓN (IPASME)"
+        },
+        {
+          "codigo": "4.11.02.03.00",
+          "denominacion": "DISMINUCION DE APORTES PATRONALES Y RETENCIONES LABORALES POR PAGAR AL FONDO DE JUBILACIONES"
+        },
+        {
+          "codigo": "4.11.02.04.00",
+          "denominacion": "DISMINUCION DE APORTES PATRONALES Y RETENCIONES LABORALES POR PAGAR AL FONDO CONTRIBUTIVO DEL RÉGIMEN PRESTACIONAL DE EMPLEO"
+        },
+        {
+          "codigo": "4.11.02.05.00",
+          "denominacion": "DISMINUCION DE APORTES PATRONALES Y RETENCIONES LABORALES POR PAGAR AL FONDO DE AHORRO OBLIGATORIO PARA LA VIVIENDA (FAOV)"
+        },
+        {
+          "codigo": "4.11.02.06.00",
+          "denominacion": "DISMINUCION DE APORTES PATRONALES Y RETENCIONES LABORALES POR PAGAR AL SEGURO DE VIDA, ACCIDENTES PERSONALES, HOSPITALIZACIÓN, CIRUGÍA, MATERNIDAD (HCM) Y GASTOS FUNERARIOS"
+        },
+        {
+          "codigo": "4.11.02.07.00",
+          "denominacion": "DISMINUCION DE APORTES PATRONALES Y RETENCIONES LABORALES POR PAGAR A CAJAS DE AHORRO"
+        },
+        {
+          "codigo": "4.11.02.08.00",
+          "denominacion": "DISMINUCION DE APORTES PATRONALES POR PAGAR A ORGANISMOS DE SEGURIDAD SOCIAL"
+        },
+        {
+          "codigo": "4.11.02.09.00",
+          "denominacion": "DISMINUCION DE RETENCIONES LABORALES POR PAGAR AL INSTITUTO NACIONAL DE CAPACITACIÓN Y EDUCACIÓN SOCIALISTA (INCES)"
+        },
+        {
+          "codigo": "4.11.02.10.00",
+          "denominacion": "DISMINUCION DE RETENCIONES LABORALES POR PAGAR POR PENSIÓN ALIMENTICIA"
+        },
+        {
+          "codigo": "4.11.02.98.00",
+          "denominacion": "DISMINUCION DE OTROS APORTES LEGALES POR PAGAR"
+        },
+        {
+          "codigo": "4.11.02.99.00",
+          "denominacion": "DISMINUCION DE OTRAS RETENCIONES LABORALES POR PAGAR"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.03.00.00",
+      "denominacion": "DISMINUCION DE CUENTAS Y EFECTOS POR PAGAR A PROVEEDORES",
+      "subcategorias": [
+        {
+          "codigo": "4.11.03.01.00",
+          "denominacion": "DISMINUCION DE CUENTAS POR PAGAR A PROVEEDORES A CORTO PLAZO"
+        },
+        {
+          "codigo": "4.11.03.02.00",
+          "denominacion": "DISMINUCION DE EFECTOS POR PAGAR A PROVEEDORES A CORTO PLAZO"
+        },
+        {
+          "codigo": "4.11.03.03.00",
+          "denominacion": "DISMINUCION DE CUENTAS POR PAGAR A PROVEEDORES A MEDIANO Y LARGO PLAZO"
+        },
+        {
+          "codigo": "4.11.03.04.00",
+          "denominacion": "DISMINUCION DE EFECTOS POR PAGAR A PROVEEDORES A MEDIANO Y LARGO PLAZO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.04.00.00",
+      "denominacion": "DISMINUCION DE CUENTAS Y EFECTOS POR PAGAR A CONTRATISTAS",
+      "subcategorias": [
+        {
+          "codigo": "4.11.04.01.00",
+          "denominacion": "DISMINUCION DE CUENTAS POR PAGAR A CONTRATISTAS A CORTO PLAZO"
+        }
+      ]
+    }
+  ]
+},
     {
       "categoria": "RECTIFICACION AL PRESUPUESTO",
       "codigo_general": "4.98",
