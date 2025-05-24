@@ -3014,9 +3014,222 @@
         {
           "codigo": "4.11.04.01.00",
           "denominacion": "DISMINUCION DE CUENTAS POR PAGAR A CONTRATISTAS A CORTO PLAZO"
+        },
+        {
+          "codigo": "4.11.04.02.00",
+          "denominacion": "DISMINUCION DE EFECTOS POR PAGAR A CONTRATISTAS A CORTO PLAZO"
+        },
+        {
+          "codigo": "4.11.04.03.00",
+          "denominacion": "DISMINUCION DE CUENTAS POR PAGAR A CONTRATISTAS A MEDIANO LARGO PLAZO"
+        },
+        {
+          "codigo": "4.11.04.04.00",
+          "denominacion": "DISMINUCION DE EFECTOS POR PAGAR A CONTRATISTAS A MEDIANO PLAZO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.05.00.00",
+      "denominacion": "DISMINUCION DE INTERESES POR PAGAR",
+      "subcategorias": [
+        {
+          "codigo": "4.11.05.01.00",
+          "denominacion": "DISMINUCION DE INTERESES INTERNOS POR PAGAR"
+        },
+        {
+          "codigo": "4.11.05.02.00",
+          "denominacion": "DISMINUCION DE INTERESES EXTERNOS POR PAGAR"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.06.00.00",
+      "denominacion": "DISMINUCION DE OTRAS CUENTAS Y EFECTOS POR PAGAR A CORTO PLAZO",
+      "subcategorias": [
+        {
+          "codigo": "4.11.06.01.00",
+          "denominacion": "DISMINUCION DE OBLIGACIONES DE EJERCICIOS ECONÓMICO FINANCIEROS ANTERIORES"
+        },
+        {
+          "codigo": "4.11.06.02.00",
+          "denominacion": "DISMINUCION DE OTRAS CUENTAS POR PAGAR A CORTO PLAZO"
+        },
+        {
+          "codigo": "4.11.06.03.00",
+          "denominacion": "DISMINUCION DE OTROS EFECTOS POR PAGAR A CORTO PLAZO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.07.00.00",
+      "denominacion": "DISMINUCION DE PASIVOS DIFERIDOS",
+      "subcategorias": [
+        {
+          "codigo": "4.11.07.01.00",
+          "denominacion": "DISMINUCION DE PASIVOS DIFERIDOS A CORTO PLAZO",
+          "subcategorias": [
+            {
+              "codigo": "4.11.07.01.01",
+              "denominacion": "DISMINUCION DE RENTAS DIFERIDAS POR RECAUDAR A CORTO PLAZO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.11.07.02.00",
+          "denominacion": "DISMINUCION DE PASIVOS DIFERIDOS A MEDIANO Y LARGO PLAZO",
+          "subcategorias": [
+            {
+              "codigo": "4.11.07.02.01",
+              "denominacion": "DISMINUCION DEL RESCATE DE CERTIFICADOS DE REINTEGRO TRIBUTARIO"
+            },
+            {
+              "codigo": "4.11.07.02.02",
+              "denominacion": "DISMINUCION DEL RESCATE DE BONOS DE EXPORTACIÓN"
+            },
+            {
+              "codigo": "4.11.07.02.03",
+              "denominacion": "DISMINUCION DEL RESCATE DE BONOS EN DACIÓN DE PAGOS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.08.00.00",
+      "denominacion": "DISMINUCION DE PROVISIONES Y RESERVAS TÉCNICAS",
+      "subcategorias": [
+        {
+          "codigo": "4.11.08.01.00",
+          "denominacion": "DISMINUCION DE PROVISIONES",
+          "subcategorias": [
+            {
+              "codigo": "4.11.08.01.01",
+              "denominacion": "DISMINUCION DE PROVISIONES PARA CUENTAS INCOBRABLES"
+            },
+            {
+              "codigo": "4.11.08.01.02",
+              "denominacion": "DISMINUCION DE PROVISIONES PARA DESPIDOS"
+            },
+            {
+              "codigo": "4.11.08.01.03",
+              "denominacion": "DISMINUCION DE PROVISIONES PARA PÉRDIDAS EN EL INVENTARIO"
+            },
+            {
+              "codigo": "4.11.08.01.04",
+              "denominacion": "DISMINUCION DE PROVISIONES PARA BENEFICIOS SOCIALES"
+            },
+            {
+              "codigo": "4.11.08.01.99",
+              "denominacion": "DISMINUCION DE OTRAS PROVISIONES"
+            }
+          ]
+        },
+        {
+          "codigo": "4.11.08.02.00",
+          "denominacion": "DISMINUCION DE RESERVAS TÉCNICAS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.09.00.00",
+      "denominacion": "DISMINUCION DE FONDOS DE TERCEROS",
+      "subcategorias": [
+        {
+          "codigo": "4.11.09.01.00",
+          "denominacion": "DISMINUCION DE DEPÓSITOS RECIBIDOS EN GARANTÍA"
+        },
+        {
+          "codigo": "4.11.09.02.00",
+          "denominacion": "DISMINUCION DE DEPÓSITOS RECIBIDOS POR ENTERAMIENTO DE FONDOS PÚBLICOS"
+        },
+        {
+          "codigo": "4.11.09.99.00",
+          "denominacion": "DISMINUCION DE OTROS FONDOS DE TERCEROS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.10.00.00",
+      "denominacion": "DISMINUCION DE DEPÓSITOS DE INSTITUCIONES FINANCIERAS",
+      "subcategorias": [
+        {
+          "codigo": "4.11.10.01.00",
+          "denominacion": "DISMINUCION DE DEPÓSITOS A LA VISTA",
+          "subcategorias": [
+            {
+              "codigo": "4.11.10.01.01",
+              "denominacion": "DISMINUCION DE DEPÓSITOS DE TERCEROS A LA VISTA DE ORGANISMOS DEL SECTOR PÚBLICO"
+            },
+            {
+              "codigo": "4.11.10.01.02",
+              "denominacion": "DISMINUCION DE DEPÓSITOS DE TERCEROS A LA VISTA DE PERSONAS NATURALES Y JURÍDICAS DEL SECTOR PRIVADO"
+            }
+          ]
+        },
+        {
+          "codigo": "4.11.10.02.00",
+          "denominacion": "DISMINUCION DE DEPÓSITOS A PLAZO FIJO",
+          "subcategorias": [
+            {
+              "codigo": "4.11.10.02.01",
+              "denominacion": "DISMINUCION DE DEPÓSITOS A PLAZO FIJO DE ORGANISMOS DEL SECTOR PÚBLICO"
+            },
+            {
+              "codigo": "4.11.10.02.02",
+              "denominacion": "DISMINUCION DE DEPÓSITOS A PLAZO FIJO DE PERSONAS NATURALES Y JURÍDICAS DEL SECTOR PRIVADO"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.11.00.00",
+      "denominacion": "OBLIGACIONES DE EJERCICIOS ECONÓMICO FINANCIEROS ANTERIORES",
+      "subcategorias": [
+        {
+          "codigo": "4.11.11.01.00",
+          "denominacion": "DEVOLUCIONES DE COBROS INDEBIDOS"
+        },
+        {
+          "codigo": "4.11.11.02.00",
+          "denominacion": "DEVOLUCIONES Y REINTEGROS DIVERSOS"
+        },
+        {
+          "codigo": "4.11.11.03.00",
+          "denominacion": "INDEMNIZACIONES DIVERSAS"
+        },
+        {
+          "codigo": "4.11.11.04.00",
+          "denominacion": "COMPROMISOS PENDIENTES DE EJERCICIOS ECONÓMICO FINANCIEROS ANTERIORES"
+        },
+        {
+          "codigo": "4.11.11.05.00",
+          "denominacion": "PRESTACIONES SOCIALES ORIGINADAS POR LA APLICACIÓN DE LA LEY ORGÁNICA DEL TRABAJO, LOS TRABAJADORES Y LAS TRABAJADORAS"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.98.00.00",
+      "denominacion": "DISMINUCION DE OTROS PASIVOS A CORTO PLAZO",
+      "subcategorias": [
+        {
+          "codigo": "4.11.98.01.00",
+          "denominacion": "DISMINUCION DE OTROS PASIVOS A CORTO PLAZO"
+        }
+      ]
+    },
+    {
+      "codigo": "4.11.99.00.00",
+      "denominacion": "DISMINUCION DE OTROS PASIVOS A MEDIANO Y LARGO PLAZO",
+      "subcategorias": [
+        {
+          "codigo": "4.11.99.01.00",
+          "denominacion": "DISMINUCION DE OTROS PASIVOS A MEDIANO Y LARGO PLAZO"
         }
       ]
     }
+ 
   ]
 },
     {
