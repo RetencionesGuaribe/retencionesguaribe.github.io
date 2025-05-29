@@ -4381,6 +4381,16 @@
                   ]
                 }
               ]
+            },
+            {
+              "codigo": "4.04.99.00.00",
+              "denominacion": "OTROS ACTIVOS REALES",
+              "subcategorias": [
+                {
+                  "codigo": "4.04.99.01.00",
+                  "denominacion": "OTROS ACTIVOS REALES"
+                }
+              ]
             }
           ]
         },
@@ -4725,6 +4735,16 @@
                   "denominacion": "EQUIPOS CIENTÍFICOS, RELIGIOSOS"
                 }
               ]
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.99.00.00",
+          "denominacion": "OTROS ACTIVOS REALES",
+          "subcategorias": [
+            {
+              "codigo": "4.04.99.01.00",
+              "denominacion": "OTROS ACTIVOS REALES"
             }
           ]
         }
