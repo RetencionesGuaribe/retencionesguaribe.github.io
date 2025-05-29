@@ -4383,6 +4383,16 @@
               ]
             },
             {
+              "codigo": "4.04.12.00.00",
+              "denominacion": "ACTIVOS INTANGIBLES",
+              "subcategorias": [
+                {
+                  "codigo": "4.04.12.04.00",
+                  "denominacion": "PAQUETES Y PROGRAMAS DE COMPUTACIÓN"
+                }
+              ]
+            },
+            {
               "codigo": "4.04.99.00.00",
               "denominacion": "OTROS ACTIVOS REALES",
               "subcategorias": [
@@ -4735,6 +4745,16 @@
                   "denominacion": "EQUIPOS CIENTÍFICOS, RELIGIOSOS"
                 }
               ]
+            }
+          ]
+        },
+        {
+          "codigo": "4.04.12.00.00",
+          "denominacion": "ACTIVOS INTANGIBLES",
+          "subcategorias": [
+            {
+              "codigo": "4.04.12.04.00",
+              "denominacion": "PAQUETES Y PROGRAMAS DE COMPUTACIÓN"
             }
           ]
         },
