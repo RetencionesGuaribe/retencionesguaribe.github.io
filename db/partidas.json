@@ -3580,7 +3580,13 @@
             },
             {
               "codigo": "4.03.99.00.00",
-              "denominacion": "OTROS SERVICIOS NO PERSONALES"
+              "denominacion": "OTROS SERVICIOS NO PERSONALES",
+              "subcategorias": [
+                {
+                  "codigo": "4.03.99.01.00",
+                  "denominacion": "OTROS SERVICIOS NO PERSONALES"
+                }
+              ]
             }
           ]
         },
@@ -4014,7 +4020,13 @@
         },
         {
           "codigo": "4.03.99.00.00",
-          "denominacion": "OTROS SERVICIOS NO PERSONALES"
+          "denominacion": "OTROS SERVICIOS NO PERSONALES",
+          "subcategorias": [
+            {
+              "codigo": "4.03.99.01.00",
+              "denominacion": "OTROS SERVICIOS NO PERSONALES"
+            }
+          ]
         }
       ]
     },
@@ -5139,6 +5151,16 @@
                   ]
                 }
               ]
+            },
+            {
+              "codigo": "4.07.12.00.00",
+              "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR",
+              "subcategorias": [
+                {
+                  "codigo": "4.07.12.01.00",
+                  "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR"
+                }
+              ]
             }
           ]
         },
@@ -5553,6 +5575,16 @@
                   "denominacion": "JUBILACIONES DE ALTOS FUNCIONARIOS Y ALTAS FUNCIONARIAS DEL PODER PÚBLICO Y DE ELECCIÓN POPULAR"
                 }
               ]
+            }
+          ]
+        },
+        {
+          "codigo": "4.07.12.00.00",
+          "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR",
+          "subcategorias": [
+            {
+              "codigo": "4.07.12.01.00",
+              "denominacion": "TRANSFERENCIAS Y DONACIONES DE ORGANISMOS DEL SECTOR PUBLICO A CONSEJOS COMUNALES COMUNAS Y DEMAS ORGANIZACIONES DE BASE DEL PODER POPULAR"
             }
           ]
         }
